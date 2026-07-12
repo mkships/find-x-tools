@@ -1,0 +1,38 @@
+---
+import { CATS, PRICE_STYLES } from '../data/tools.js';
+
+const { tool: t } = Astro.props;
+const cat = CATS[t.cat] || {};
+const p = PRICE_STYLES[t.price] || PRICE_STYLES.Freemium;
+const initial = (t.name || '?').trim().charAt(0).toUpperCase();
+const fmt = (n) => n >= 1000 ? (n % 1000 === 0 ? (n / 1000) + 'K' : (n / 1000).toFixed(1) + 'K') : String(n || 0);
+---
+<a
+  class="tool-card"
+  href={`/tools/${t.id}/`}
+  data-name={t.name.toLowerCase()}
+  data-tagline={t.tagline.toLowerCase()}
+  data-catlabel={(cat.label || '').toLowerCase()}
+  data-cat={t.cat}
+  data-price={t.price}
+  data-users={t.users}
+  data-rating={t.rating}
+  data-year={t.year}
+>
+  <div class="tool-card-top">
+    <div class="tile" style={`background:${t.color || '#1D9BF0'}`}>{initial}</div>
+    <div class="tool-card-body">
+      <div class="tool-card-title">
+        <span class="name">{t.name}</span>
+        {t.verified && <span class="badge-verified" title="Verified">✓</span>}
+        {t.featured && <span class="badge-featured">★ Featured</span>}
+      </div>
+      <p class="tool-card-tagline">{t.tagline}</p>
+    </div>
+  </div>
+  <div class="tool-card-foot">
+    <span class="cat-chip">{cat.label || 'Tool'}</span>
+    <span class="users-chip">↗ {fmt(t.users)}</span>
+    <span class="price-badge" style={`background:${p.bg};color:${p.fg}`}>{t.price || 'Freemium'}</span>
+  </div>
+</a>

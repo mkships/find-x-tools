@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import BrowseView from '../../components/BrowseView.astro';
+import { CATS, TOOLS } from '../../data/tools.js';
+import { SITE_NAME } from '../../config.js';
+
+export function getStaticPaths() {
+  return Object.keys(CATS).map(slug => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const cat = CATS[slug];
+const tools = TOOLS.filter(t => t.cat === slug).sort((a, b) => b.users - a.users);
+
+const title = `Best ${cat.label} Tools for X (${tools.length}) | ${SITE_NAME}`;
+const description = `Compare the ${tools.length} best ${cat.label.toLowerCase()} tools for X — ${tools.slice(0, 3).map(t => t.name).join(', ')} and more. Pricing, ratings and key features, hand-curated.`;
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${cat.label} tools for X`,
+    numberOfItems: tools.length,
+    itemListElement: tools.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      url: new URL(`/tools/${t.id}/`, Astro.site).toString()
+    }))
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: cat.label, item: new URL(`/category/${slug}/`, Astro.site).toString() }
+    ]
+  }
+];
+---
+<Base title={title} description={description} jsonld={jsonld}>
+  <BrowseView cat={slug} />
+</Base>

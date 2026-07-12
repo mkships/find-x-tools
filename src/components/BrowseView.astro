@@ -1,0 +1,123 @@
+---
+import { CATS, TOOLS } from '../data/tools.js';
+import ToolCard from './ToolCard.astro';
+import CategorySidebar from './CategorySidebar.astro';
+
+// cat: 'all' or a category key. All matching tools are prerendered (SEO);
+// the client script only hides/reorders them for search/price/sort.
+const { cat = 'all' } = Astro.props;
+const tools = (cat === 'all' ? [...TOOLS] : TOOLS.filter(t => t.cat === cat))
+  .sort((a, b) => b.users - a.users);
+const title = cat === 'all' ? 'All tools' : CATS[cat].label;
+const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' + CATS[cat].label;
+---
+<main class="page">
+  <div style="margin-bottom:22px">
+    <div class="crumb">{crumb}</div>
+    <h1 class="page-title">{title}</h1>
+  </div>
+  <div class="browse-controls">
+    <div class="search-box">
+      <span class="glyph">⌕</span>
+      <input id="browseSearch" placeholder="Search tools…" aria-label="Search tools" />
+    </div>
+    <div class="seg-sq" id="priceChips">
+      {['All', 'Free', 'Freemium', 'Paid'].map(p => (
+        <span class={`seg-sq-btn${p === 'All' ? ' active' : ''}`} data-price={p}>{p}</span>
+      ))}
+    </div>
+    <select class="sort-select" id="sortSelect" aria-label="Sort tools">
+      <option value="popular">Sort: Popular</option>
+      <option value="rating">Sort: Top rated</option>
+      <option value="recent">Sort: Recently added</option>
+    </select>
+  </div>
+  <div class="layout-sidebar">
+    <CategorySidebar active={cat} />
+    <div>
+      <div class="results-count" id="resultsCount">{tools.length} result{tools.length === 1 ? '' : 's'}</div>
+      <div class="grid-tools" id="browseGrid">
+        {tools.map(t => <ToolCard tool={t} />)}
+      </div>
+      <div class="empty-state hidden" id="emptyState">
+        <div class="glyph">⌕</div>
+        <div class="title">No tools match your filters</div>
+        <p>Try clearing the search or picking another category.</p>
+        <button class="btn-dark" id="clearFilters">Clear filters</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const grid = document.getElementById('browseGrid')!;
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>('.tool-card'));
+  const searchInput = document.getElementById('browseSearch') as HTMLInputElement;
+  const sortSelect = document.getElementById('sortSelect') as HTMLSelectElement;
+  const priceChips = document.getElementById('priceChips')!;
+  const countEl = document.getElementById('resultsCount')!;
+  const emptyEl = document.getElementById('emptyState')!;
+
+  let price = 'All';
+
+  function apply() {
+    const q = searchInput.value.trim().toLowerCase();
+    const sort = sortSelect.value;
+
+    const key = (el: HTMLElement) =>
+      sort === 'rating' ? Number(el.dataset.rating) :
+      sort === 'recent' ? Number(el.dataset.year) * 1e6 + Number(el.dataset.users) :
+      Number(el.dataset.users);
+    cards.sort((a, b) => key(b) - key(a)).forEach(c => grid.appendChild(c));
+
+    let visible = 0;
+    for (const c of cards) {
+      const matchQ = !q || c.dataset.name!.includes(q) || c.dataset.tagline!.includes(q) || c.dataset.catlabel!.includes(q);
+      const matchP = price === 'All' || c.dataset.price === price;
+      const show = matchQ && matchP;
+      c.classList.toggle('hidden', !show);
+      if (show) visible++;
+    }
+    countEl.textContent = visible + ' result' + (visible === 1 ? '' : 's');
+    grid.classList.toggle('hidden', visible === 0);
+    emptyEl.classList.toggle('hidden', visible > 0);
+
+    const params = new URLSearchParams();
+    if (q) params.set('q', searchInput.value.trim());
+    if (price !== 'All') params.set('price', price);
+    if (sort !== 'popular') params.set('sort', sort);
+    const qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+  }
+
+  searchInput.addEventListener('input', apply);
+  sortSelect.addEventListener('change', apply);
+  priceChips.addEventListener('click', (e) => {
+    const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-price]');
+    if (!chip) return;
+    price = chip.dataset.price!;
+    priceChips.querySelectorAll('.seg-sq-btn').forEach(b => b.classList.toggle('active', b === chip));
+    apply();
+  });
+  document.getElementById('clearFilters')!.addEventListener('click', () => {
+    searchInput.value = '';
+    price = 'All';
+    sortSelect.value = 'popular';
+    priceChips.querySelectorAll<HTMLElement>('.seg-sq-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.price === 'All'));
+    apply();
+  });
+
+  // Seed controls from URL (?q=, ?price=, ?sort=) — used by header/hero search.
+  const init = new URLSearchParams(location.search);
+  if (init.get('q')) searchInput.value = init.get('q')!;
+  const initPrice = init.get('price');
+  if (initPrice && ['Free', 'Freemium', 'Paid'].includes(initPrice)) {
+    price = initPrice;
+    priceChips.querySelectorAll<HTMLElement>('.seg-sq-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.price === price));
+  }
+  const initSort = init.get('sort');
+  if (initSort && ['popular', 'rating', 'recent'].includes(initSort)) sortSelect.value = initSort;
+  if (init.toString()) apply();
+</script>

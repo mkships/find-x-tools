@@ -1,0 +1,112 @@
+---
+import { SITE_NAME } from '../config.js';
+import { CATS } from '../data/tools.js';
+
+const { title, description, jsonld, ogImage } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const footerCats = Object.keys(CATS).slice(0, 6);
+const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/assets/x-black.png" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={new URL(ogImage || '/assets/x-black.png', Astro.site)} />
+<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/styles.css" />
+{jsonldBlocks.map(block => (
+  <script type="application/ld+json" set:html={JSON.stringify(block)} />
+))}
+</head>
+<body>
+<div id="app">
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="/" style="text-decoration:none">
+        <div class="logo-badge"><img src="/assets/x-white.png" alt={SITE_NAME + ' logo'} /></div>
+        <span class="logo-text">Tools<span> Directory</span></span>
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="/tools/">Browse Tools</a>
+        <a class="nav-link" href="/tools/#categories">Categories</a>
+        <a class="nav-link" href="/about/">About</a>
+      </nav>
+      <div class="header-right">
+        <div class="search-pill">
+          <span class="glyph">⌕</span>
+          <input id="headerSearch" placeholder="Search tools…" aria-label="Search tools" />
+        </div>
+        <a class="btn-submit-header" href="/submit/" style="text-decoration:none;display:inline-block">Submit a Tool</a>
+      </div>
+    </div>
+  </header>
+
+  <slot />
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-badge"><img src="/assets/x-black.png" alt="" /></div>
+          <span>Tools Directory</span>
+        </div>
+        <p>The independent directory of tools for growing on X — hand-curated for creators, marketers and agencies. Not affiliated with X Corp.</p>
+        <span class="badge-updated"><span class="dot"></span>Updated weekly</span>
+      </div>
+      <div>
+        <div class="footer-col-label">Categories</div>
+        <div class="footer-links">
+          {footerCats.map(k => <a href={`/category/${k}/`}>{CATS[k].label}</a>)}
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Resources</div>
+        <div class="footer-links">
+          <a href="/tools/">Browse All Tools</a>
+          <a href="/submit/">Submit a Tool</a>
+          <a href="/about/">About</a>
+          <span>Contact</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Legal</div>
+        <div class="footer-links">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+          <span>Advertise</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <span>© 2026 X Tools Directory. All rights reserved.</span>
+        <span class="right">Built for the X creator community</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const headerSearch = document.getElementById('headerSearch') as HTMLInputElement;
+  headerSearch?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && headerSearch.value.trim()) {
+      location.href = '/tools/?q=' + encodeURIComponent(headerSearch.value.trim());
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATS } from '../data/tools.js';
+import { PAID_SUBMISSIONS, PLANS, SITE_NAME } from '../config.js';
+
+const title = `Submit a Tool | ${SITE_NAME}`;
+const description = 'List your X tool in the directory. Free listings are reviewed within 5 days.';
+const submitData = {
+  paid: PAID_SUBMISSIONS,
+  cats: Object.fromEntries(Object.entries(CATS).map(([k, v]) => [k, v.label])),
+  plans: PLANS
+};
+---
+<Base title={title} description={description}>
+<main class="page-submit">
+  <div class="submit-head">
+    <h1>Submit a tool</h1>
+    <p>List your X tool in the directory. Free listings are reviewed within 5 days.</p>
+  </div>
+  <div id="wizard"></div>
+</main>
+
+<script type="application/json" id="submitData" set:html={JSON.stringify(submitData)} />
+
+<script>
+  const { paid, cats, plans } = JSON.parse(document.getElementById('submitData')!.textContent!);
+  const wizard = document.getElementById('wizard')!;
+
+  const state = {
+    step: 1,
+    submitted: false,
+    sending: false,
+    error: '',
+    form: { name: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' }
+  };
+
+  const esc = (s: unknown) => String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+  const STEP_LABELS = [
+    { n: 1, label: 'Tool details' },
+    { n: 2, label: paid ? 'Category & plan' : 'Category & pricing' },
+    { n: 3, label: 'Review' }
+  ];
+
+  function stepsHTML() {
+    return `<div class="steps">${STEP_LABELS.map(s => {
+      const done = state.step > s.n, active = state.step === s.n;
+      const cls = done ? ' done' : active ? ' active' : '';
+      return `<div class="step"><div class="step-dot${cls}">${done ? '✓' : s.n}</div><span class="step-label${cls}">${s.label}</span></div>`;
+    }).join('')}</div>`;
+  }
+
+  function bodyHTML() {
+    const f = state.form;
+    if (state.step === 1) {
+      return `<div class="form-fields">
+        <div><label class="field-label" for="f-name">Tool name</label>
+          <input id="f-name" class="input" data-field="name" value="${esc(f.name)}" placeholder="e.g. Typefully"></div>
+        <div><label class="field-label" for="f-url">Website URL</label>
+          <input id="f-url" class="input" data-field="url" value="${esc(f.url)}" placeholder="https://"></div>
+        <div><label class="field-label" for="f-tagline">One-line tagline</label>
+          <input id="f-tagline" class="input" data-field="tagline" value="${esc(f.tagline)}" placeholder="What does it do, in one sentence?"></div>
+        <div><label class="field-label" for="f-desc">Description</label>
+          <textarea id="f-desc" class="input" data-field="desc" placeholder="Tell us what makes it great for X creators…">${esc(f.desc)}</textarea></div>
+        <input data-field="website" value="${esc(f.website)}" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      </div>`;
+    }
+    if (state.step === 2) {
+      const catPills = Object.keys(cats).map(k =>
+        `<span class="pill-option${f.cat === k ? ' active' : ''}" data-set="cat" data-val="${k}">${esc(cats[k])}</span>`).join('');
+      const pricePills = ['Free', 'Freemium', 'Paid'].map(p =>
+        `<span class="price-option${f.price === p ? ' active' : ''}" data-set="price" data-val="${p}">${p}</span>`).join('');
+      const planCards = !paid ? '' : `<div><label class="field-label-lg">Listing plan</label><div class="plan-options">${
+        plans.map((p: any) => `<div class="plan-card${f.plan === p.id ? ' active' : ''}" data-set="plan" data-val="${p.id}">
+          <div class="plan-radio"></div>
+          <div style="flex:1">
+            <div class="plan-name-row"><span class="plan-name">${p.name}</span><span class="plan-price">${p.price}</span></div>
+            <div class="plan-desc">${p.desc}</div>
+          </div>
+        </div>`).join('')}</div></div>`;
+      return `<div class="form-fields-lg">
+        <div><label class="field-label-lg">Category</label><div class="pill-options">${catPills}</div></div>
+        <div><label class="field-label-lg">Pricing model</label><div class="price-options">${pricePills}</div></div>
+        ${planCards}
+      </div>`;
+    }
+    const plan = plans.find((p: any) => p.id === f.plan) || plans[0];
+    return `<div>
+      <h3 class="review-title">Review your submission</h3>
+      <div class="review-rows">
+        <div class="review-row"><span class="k">Tool</span><span class="v">${esc(f.name || 'Untitled tool')}</span></div>
+        <div class="review-row"><span class="k">Website</span><span class="v link">${esc(f.url || '—')}</span></div>
+        <div class="review-row"><span class="k">Tagline</span><span class="v">${esc(f.tagline || '—')}</span></div>
+        <div class="review-row"><span class="k">Category</span><span class="v">${esc(cats[f.cat])}</span></div>
+        <div class="review-row"><span class="k">Pricing</span><span class="v">${esc(f.price)}</span></div>
+        ${paid ? `<div class="review-row"><span class="k">Plan</span><span class="v strong">${esc(plan.name)}</span></div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  function render() {
+    if (state.submitted) {
+      wizard.innerHTML = `<div class="success-card">
+        <div class="success-mark">✓</div>
+        <h1>Submission received</h1>
+        <p>Thanks — <strong>${esc(state.form.name || 'Untitled tool')}</strong> is in the review queue. We'll email you within 5 days once it's live in the directory.</p>
+        <div class="success-actions">
+          <a class="btn-dark-lg" href="/" style="text-decoration:none;display:inline-block;color:#fff">Back to directory</a>
+          <button class="btn-outline-lg" data-action="reset">Submit another</button>
+        </div>
+      </div>`;
+      return;
+    }
+    wizard.innerHTML = `${stepsHTML()}
+      <div class="form-card">
+        ${bodyHTML()}
+        <div class="form-error${state.error ? ' show' : ''}" role="alert">${esc(state.error)}</div>
+        <div class="form-actions">
+          <button class="btn-back" data-action="prev">← Back</button>
+          <button class="btn-next" data-action="next"${state.sending ? ' disabled' : ''}>${
+            state.step === 3 ? (state.sending ? 'Submitting…' : 'Submit tool') : 'Continue'}</button>
+        </div>
+      </div>`;
+  }
+
+  async function submit() {
+    state.sending = true; state.error = ''; render();
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state.form)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      state.submitted = true;
+    } catch (err: any) {
+      state.error = err.message || 'Something went wrong. Please try again.';
+    }
+    state.sending = false;
+    render();
+    window.scrollTo({ top: 0 });
+  }
+
+  wizard.addEventListener('click', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLElement>('[data-action],[data-set]');
+    if (!el) return;
+    if (el.dataset.set) {
+      (state.form as any)[el.dataset.set] = el.dataset.val;
+      render();
+      return;
+    }
+    switch (el.dataset.action) {
+      case 'next':
+        if (state.step === 1) {
+          if (!state.form.name.trim()) { state.error = 'Please enter the tool name.'; render(); return; }
+          if (!/^https?:\/\/.+\..+/.test(state.form.url.trim())) { state.error = 'Please enter a valid website URL (starting with https://).'; render(); return; }
+          state.error = '';
+        }
+        if (state.step < 3) { state.step++; render(); window.scrollTo({ top: 0 }); }
+        else submit();
+        break;
+      case 'prev':
+        if (state.step > 1) { state.step--; state.error = ''; render(); }
+        else location.href = '/';
+        break;
+      case 'reset':
+        state.step = 1; state.submitted = false; state.error = '';
+        state.form = { name: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' };
+        render();
+        break;
+    }
+  });
+
+  wizard.addEventListener('input', (e) => {
+    const el = e.target as HTMLInputElement;
+    if (el.dataset.field) (state.form as any)[el.dataset.field] = el.value;
+  });
+
+  render();
+</script>
+</Base>

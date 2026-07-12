@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATS, ICONS, TOOLS } from '../data/tools.js';
+import { SITE_NAME } from '../config.js';
+
+const counts = {};
+TOOLS.forEach(t => { counts[t.cat] = (counts[t.cat] || 0) + 1; });
+
+const title = `About — The Independent Directory of X Growth Tools | ${SITE_NAME}`;
+const description = 'How we hand-curate every tool for growing on X: reviewed by a person, organized by the job to be done, and revisited weekly so listings stay current.';
+---
+<Base title={title} description={description}>
+<main class="page-about">
+  <div class="crumb" style="margin-bottom:8px">Directory / About</div>
+  <h1 class="about-title">The independent directory of tools for growing on X</h1>
+  <p class="about-intro">We track every serious tool built for X — thread writing, scheduling, analytics, engagement and profile clean-up — and organize them so you can find the right one in minutes instead of scrolling for hours.</p>
+
+  <h2 class="about-h2">How we curate</h2>
+  <div class="curate-grid">
+    <div class="curate-card">
+      <div class="curate-num" style="color:#1D9BF0">01</div>
+      <div class="title">Hand-reviewed, not scraped</div>
+      <p>Every listing is checked by a person before it goes live, so the directory stays useful signal — never spam.</p>
+    </div>
+    <div class="curate-card">
+      <div class="curate-num" style="color:#00BA7C">02</div>
+      <div class="title">Organized by the job</div>
+      <p>Tools are grouped into practical categories so you search by what you’re trying to do, not by brand name.</p>
+    </div>
+    <div class="curate-card">
+      <div class="curate-num" style="color:#7856FF">03</div>
+      <div class="title">Kept current</div>
+      <p>We revisit listings every week — pricing, links and new arrivals — so what you see is what’s live.</p>
+    </div>
+  </div>
+
+  <h2 class="about-h2">Browse by category</h2>
+  <div class="catnav-grid">
+    {Object.keys(CATS).map(k => (
+      <a class="catnav-card" href={`/category/${k}/`}>
+        <span class="icon">{ICONS[k] || '•'}</span>
+        <span class="label">{CATS[k].label}</span>
+        <span class="count">{counts[k] || 0}</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="about-cta">
+    <div class="about-cta-glow"></div>
+    <div class="about-cta-body">
+      <h3>Know a tool we’re missing?</h3>
+      <p>Submit it in two minutes. Free listings are reviewed within 5 days.</p>
+    </div>
+    <a href="/submit/" style="position:relative;text-decoration:none"><button>Submit a Tool</button></a>
+  </div>
+</main>
+</Base>
