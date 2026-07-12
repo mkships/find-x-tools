@@ -17,7 +17,6 @@ const domain = (t.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
 // Homepage screenshot captured via Firecrawl (see .firecrawl/batch.sh); pages
 // without one fall back to the placeholder so a failed capture never blocks a build.
 const hasScreenshot = fs.existsSync(`public/screenshots/${t.id}.jpg`);
-const fmt = (n) => n >= 1000 ? (n % 1000 === 0 ? (n / 1000) + 'K' : (n / 1000).toFixed(1) + 'K') : String(n || 0);
 
 const title = `${t.name} — ${cat.label} Tool for X | ${SITE_NAME}`;
 const description = `${t.tagline} ${t.name} review: pricing (${t.price.toLowerCase()}), key features and the best alternatives in ${cat.label.toLowerCase()} for X.`;
@@ -55,11 +54,6 @@ const jsonld = [
         {t.featured && <span class="badge-featured-lg">★ Featured</span>}
       </div>
       <p class="detail-tagline">{t.tagline}</p>
-      <div class="detail-stats">
-        <span class="detail-stat">★ {t.rating.toFixed(1)} <span>rating</span></span>
-        <span class="detail-stat">↗ {fmt(t.users)} <span>users</span></span>
-        <span class="detail-stat">◷ Since {t.year}</span>
-      </div>
     </div>
     <div class="detail-cta">
       <a class="btn-visit" href={t.url || '#'} target="_blank" rel="noopener">Visit {domain} ↗</a>
@@ -99,8 +93,6 @@ const jsonld = [
         <div class="facts-list">
           <div class="fact-row"><span class="k">Category</span><a class="v" style={`color:${cat.color}`} href={`/category/${t.cat}/`}>{cat.label}</a></div>
           <div class="fact-row"><span class="k">Pricing</span><span class="v">{t.price}</span></div>
-          <div class="fact-row"><span class="k">Rating</span><span class="v">★ {t.rating.toFixed(1)}</span></div>
-          <div class="fact-row"><span class="k">Users</span><span class="v">{fmt(t.users)}</span></div>
         </div>
       </div>
       <div class="bestfor-card">

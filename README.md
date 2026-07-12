@@ -99,10 +99,11 @@ manually from a logged-in browser and save as `public/screenshots/xpro.jpg`.
 
 ## Before real launch — honesty checklist
 
-- **Ratings and user counts in `src/data/tools.js` are prototype sample numbers.**
-  Replace them with real data (or remove those fields) before launch; publishing
-  invented ratings can hurt trust and violates Google's structured-data guidelines
-  if ever added to JSON-LD (they are deliberately left out of it today).
+- Fabricated stats (ratings, user counts, founding years) were removed from the
+  UI and data in 2026-07. The `users` field that remains in `src/data/tools.js`
+  is an internal curation weight that drives the "Recommended" ordering and the
+  Editorial Picks section — it is never displayed. Reorder recommendations by
+  editing those weights.
 - The tool "Visit" links are plain external URLs marked `rel="sponsored"`; swap in
   real affiliate URLs per tool when you have them (add an `affiliateUrl` field).
 - Footer "Privacy Policy / Terms / Contact" entries are placeholders with no pages.

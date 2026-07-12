@@ -27,9 +27,8 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
       ))}
     </div>
     <select class="sort-select" id="sortSelect" aria-label="Sort tools">
-      <option value="popular">Sort: Popular</option>
-      <option value="rating">Sort: Top rated</option>
-      <option value="recent">Sort: Recently added</option>
+      <option value="recommended">Sort: Recommended</option>
+      <option value="az">Sort: A–Z</option>
     </select>
   </div>
   <div class="layout-sidebar">
@@ -59,16 +58,18 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
   const emptyEl = document.getElementById('emptyState')!;
 
   let price = 'All';
+  const curatedOrder = new Map(cards.map((c, i) => [c, i]));
 
   function apply() {
     const q = searchInput.value.trim().toLowerCase();
     const sort = sortSelect.value;
 
-    const key = (el: HTMLElement) =>
-      sort === 'rating' ? Number(el.dataset.rating) :
-      sort === 'recent' ? Number(el.dataset.year) * 1e6 + Number(el.dataset.users) :
-      Number(el.dataset.users);
-    cards.sort((a, b) => key(b) - key(a)).forEach(c => grid.appendChild(c));
+    // "Recommended" is the server-rendered curation order; A–Z sorts by name.
+    cards.sort((a, b) =>
+      sort === 'az'
+        ? a.dataset.name!.localeCompare(b.dataset.name!)
+        : curatedOrder.get(a)! - curatedOrder.get(b)!
+    ).forEach(c => grid.appendChild(c));
 
     let visible = 0;
     for (const c of cards) {
@@ -85,7 +86,7 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
     const params = new URLSearchParams();
     if (q) params.set('q', searchInput.value.trim());
     if (price !== 'All') params.set('price', price);
-    if (sort !== 'popular') params.set('sort', sort);
+    if (sort !== 'recommended') params.set('sort', sort);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
@@ -102,7 +103,7 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
   document.getElementById('clearFilters')!.addEventListener('click', () => {
     searchInput.value = '';
     price = 'All';
-    sortSelect.value = 'popular';
+    sortSelect.value = 'recommended';
     priceChips.querySelectorAll<HTMLElement>('.seg-sq-btn').forEach(b =>
       b.classList.toggle('active', b.dataset.price === 'All'));
     apply();
@@ -118,6 +119,6 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
       b.classList.toggle('active', b.dataset.price === price));
   }
   const initSort = init.get('sort');
-  if (initSort && ['popular', 'rating', 'recent'].includes(initSort)) sortSelect.value = initSort;
+  if (initSort && ['recommended', 'az'].includes(initSort)) sortSelect.value = initSort;
   if (init.toString()) apply();
 </script>

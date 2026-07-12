@@ -7,8 +7,7 @@ import { SITE_NAME } from '../config.js';
 
 const heroChips = Object.keys(CATS).slice(0, 6);
 const featured = TOOLS.filter(t => t.featured).slice(0, 3);
-const popular = [...TOOLS].sort((a, b) => b.users - a.users).slice(0, 9);
-const recent = [...TOOLS].sort((a, b) => b.year - a.year || b.users - a.users).slice(0, 9);
+const picks = [...TOOLS].sort((a, b) => b.users - a.users).slice(0, 9);
 
 const title = `${SITE_NAME} — Every tool to grow on X, in one place`;
 const description = `Discover, compare and pick the best tools for content, growth, scheduling, analytics and engagement on X. Hand-curated directory of ${TOOLS.length} X-native tools.`;
@@ -57,17 +56,13 @@ const jsonld = {
       <CategorySidebar active="" />
       <div>
         <div class="toolbar">
-          <div class="seg" id="homeTabs">
-            <span class="seg-btn active" data-tab="popular">📈 Popular Tools</span>
-            <span class="seg-btn" data-tab="recent">🕘 Recently Added</span>
+          <div class="seg">
+            <span class="seg-btn active">⭐ Editorial Picks</span>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
-        <div class="grid-tools" id="gridPopular">
-          {popular.map(t => <ToolCard tool={t} />)}
-        </div>
-        <div class="grid-tools hidden" id="gridRecent">
-          {recent.map(t => <ToolCard tool={t} />)}
+        <div class="grid-tools">
+          {picks.map(t => <ToolCard tool={t} />)}
         </div>
         <div style="margin-top:28px;text-align:center">
           <a class="btn-view-all btn-view-all-link" href="/tools/">View all {TOOLS.length} tools →</a>
@@ -86,13 +81,5 @@ const jsonld = {
   document.getElementById('heroSearchBtn')!.addEventListener('click', go);
   heroInput.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
 
-  const tabs = document.getElementById('homeTabs')!;
-  tabs.addEventListener('click', (e) => {
-    const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-tab]');
-    if (!btn) return;
-    tabs.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b === btn));
-    document.getElementById('gridPopular')!.classList.toggle('hidden', btn.dataset.tab !== 'popular');
-    document.getElementById('gridRecent')!.classList.toggle('hidden', btn.dataset.tab !== 'recent');
-  });
 </script>
 </Base>
