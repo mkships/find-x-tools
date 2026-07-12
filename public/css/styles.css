@@ -276,7 +276,7 @@ main { animation: xfade .3s ease; }
 .detail-stats { margin-top: 16px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
 .detail-stat { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #0F1419; }
 .detail-stat span { color: #8B98A5; }
-.detail-cta { display: flex; flex-direction: column; gap: 10px; min-width: 180px; }
+.detail-cta { display: flex; flex-direction: column; gap: 10px; min-width: 180px; justify-content: center; align-self: center; }
 .btn-visit {
   text-align: center; background: #1D9BF0; color: #fff; font-size: 15px;
   font-weight: 700; padding: 13px 22px; border-radius: 999px; display: block;
@@ -465,7 +465,7 @@ textarea.input { min-height: 110px; resize: vertical; }
 .footer { margin-top: auto; background: #0F1419; color: #fff; }
 .footer-inner {
   max-width: 1240px; margin: 0 auto; padding: 56px 28px 44px;
-  display: grid; grid-template-columns: 1.9fr 1fr 1fr 1fr; gap: 40px;
+  display: grid; grid-template-columns: 1.9fr 1fr 1fr; gap: 40px;
 }
 .footer-brand { max-width: 320px; }
 .footer-logo { display: flex; align-items: center; gap: 11px; }
@@ -548,3 +548,6 @@ a.link-view-all:hover { color: #1478C4; }
   display: block; width: 100%; height: auto;
   border-radius: 16px; border: 1px solid #E7E9EA; background: #F0F3F5;
 }
+
+/* Header CTA is an anchor — keep its text white on hover (global a:hover would tint it) */
+a.btn-submit-header, a.btn-submit-header:hover { color: #fff; }

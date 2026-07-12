@@ -4,7 +4,7 @@ import { CATS } from '../data/tools.js';
 import { PAID_SUBMISSIONS, PLANS, SITE_NAME } from '../config.js';
 
 const title = `Submit a Tool | ${SITE_NAME}`;
-const description = 'List your X tool in the directory. Free listings are reviewed within 5 days.';
+const description = 'List your X tool in the directory. Submissions are reviewed within 24 hours.';
 const submitData = {
   paid: PAID_SUBMISSIONS,
   cats: Object.fromEntries(Object.entries(CATS).map(([k, v]) => [k, v.label])),
@@ -15,7 +15,7 @@ const submitData = {
 <main class="page-submit">
   <div class="submit-head">
     <h1>Submit a tool</h1>
-    <p>List your X tool in the directory. Free listings are reviewed within 5 days.</p>
+    <p>List your X tool in the directory. Submissions are reviewed within 24 hours.</p>
   </div>
   <div id="wizard"></div>
 </main>
@@ -105,7 +105,7 @@ const submitData = {
       wizard.innerHTML = `<div class="success-card">
         <div class="success-mark">✓</div>
         <h1>Submission received</h1>
-        <p>Thanks — <strong>${esc(state.form.name || 'Untitled tool')}</strong> is in the review queue. We'll email you within 5 days once it's live in the directory.</p>
+        <p>Thanks — <strong>${esc(state.form.name || 'Untitled tool')}</strong> is in the review queue. We'll email you within 24 hours once it's live in the directory.</p>
         <div class="success-actions">
           <a class="btn-dark-lg" href="/" style="text-decoration:none;display:inline-block;color:#fff">Back to directory</a>
           <button class="btn-outline-lg" data-action="reset">Submit another</button>
