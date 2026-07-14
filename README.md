@@ -31,38 +31,48 @@ Everything else is identical.
 
 ## Submissions → Google Sheets (one-time setup, ~5 minutes)
 
-1. Create a Google Sheet with a tab named `Submissions` and this header row:
-   `Submitted at | Name | URL | Tagline | Description | Category | Pricing | Plan | Status`
+1. Create a Google Sheet with a tab named exactly `Submissions` (case-sensitive) and this header row:
+   `Submitted at | Name | Email | URL | Tagline | Description | Category | Pricing | Plan | Status`
+   If `getSheetByName('Submissions')` returns null, `appendRow` throws and the web app
+   returns an HTML error page instead of `{ ok: true }`.
 2. In the Sheet: **Extensions → Apps Script**, paste:
 
    ```js
    function doPost(e) {
      const d = JSON.parse(e.postData.contents);
      SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Submissions').appendRow([
-       d.submittedAt, d.name, d.url, d.tagline, d.desc, d.category, d.pricing, d.plan, d.status
+       d.submittedAt, d.name, d.email, d.url, d.tagline, d.desc, d.category, d.pricing, d.plan, d.status
      ]);
      return ContentService.createTextOutput(JSON.stringify({ ok: true }))
        .setMimeType(ContentService.MimeType.JSON);
    }
    ```
 
+   If the sheet already exists, insert an **Email** column after **Name**, update the
+   script as above, then **Deploy → Manage deployments → Edit → New version** so the
+   live web app picks up the change.
+
 3. **Deploy → New deployment → Web app**, execute as **Me**, access **Anyone**.
    Copy the web app URL into the `SUBMISSIONS_WEBHOOK_URL` env var.
 
-The endpoint (`src/pages/api/submit.js`) validates input, drops bot submissions via a
-honeypot field, and stamps each row `pending review` — your review queue is the sheet
-itself (add an "approved/rejected" value in the Status column as you process them).
+The endpoint (`src/pages/api/submit.js`) validates input, checks `Origin`/`Referer`
+against the site host, rate-limits to 5 submissions per IP per hour (in-memory /
+best-effort on serverless), drops bot submissions via a honeypot field, and stamps
+each row `pending review` — your review queue is the sheet itself (add an
+"approved/rejected" value in the Status column as you process them).
 
 ## Free vs. paid submissions
 
 `src/config.js` → `PAID_SUBMISSIONS`:
 
 - `false` (current, launch mode): the wizard is Tool details → Category & pricing →
-  Review. No plan selection; every submission records plan `free`.
-- `true`: enables the designed paid plans step (Free / Featured $49 / Premium $99/mo).
-  The screens are already built — flipping the flag is the only change. Note that
-  actually charging requires adding a payment step (e.g. Stripe Payment Links) —
-  the flag only restores the plan-selection UI and records the chosen plan in the sheet.
+  Review. No plan selection; the API always records plan `free` even if a client
+  sends another value.
+- `true`: enables the designed paid plans step (Free / Featured $49 / Premium $99/mo)
+  and allows those plan ids through to the sheet. The screens are already built —
+  flipping the flag restores the UI. Note that actually charging requires adding a
+  payment step (e.g. Stripe Payment Links) — the flag only restores plan selection
+  and records the chosen plan; it does not charge anyone.
 
 ## Adding / editing tools
 
@@ -104,9 +114,11 @@ manually from a logged-in browser and save as `public/screenshots/xpro.jpg`.
   is an internal curation weight that drives the "Recommended" ordering and the
   Editorial Picks section — it is never displayed. Reorder recommendations by
   editing those weights.
-- The tool "Visit" links are plain external URLs marked `rel="sponsored"`; swap in
-  real affiliate URLs per tool when you have them (add an `affiliateUrl` field).
-- Footer "Privacy Policy / Terms / Contact" entries are placeholders with no pages.
+- Tool "Visit" links are plain external URLs with `rel="noopener"` (no affiliate /
+  sponsored markup yet). Swap in real affiliate URLs per tool when you have them
+  (add an `affiliateUrl` field).
+- Footer Contact is a non-link placeholder; Privacy Policy / Terms pages are not
+  shipped yet.
 - Removed after the 2026-07 screenshot audit: `blackmagic` (shut down 2026-07-01),
   `tweetflick`, `hashtagify`, `twindr`, `tweetmonk` (sites dead or blank).
   `geniusx`/`clonex` URLs corrected to their blockmm.ai service pages.

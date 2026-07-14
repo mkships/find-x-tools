@@ -31,8 +31,10 @@ const submitData = {
     submitted: false,
     sending: false,
     error: '',
-    form: { name: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' }
+    form: { name: '', email: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' }
   };
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const esc = (s: unknown) => String(s ?? '')
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -58,6 +60,8 @@ const submitData = {
       return `<div class="form-fields">
         <div><label class="field-label" for="f-name">Tool name</label>
           <input id="f-name" class="input" data-field="name" value="${esc(f.name)}" placeholder="e.g. Typefully"></div>
+        <div><label class="field-label" for="f-email">Your email</label>
+          <input id="f-email" class="input" type="email" data-field="email" value="${esc(f.email)}" placeholder="you@company.com" autocomplete="email"></div>
         <div><label class="field-label" for="f-url">Website URL</label>
           <input id="f-url" class="input" data-field="url" value="${esc(f.url)}" placeholder="https://"></div>
         <div><label class="field-label" for="f-tagline">One-line tagline</label>
@@ -91,6 +95,7 @@ const submitData = {
       <h3 class="review-title">Review your submission</h3>
       <div class="review-rows">
         <div class="review-row"><span class="k">Tool</span><span class="v">${esc(f.name || 'Untitled tool')}</span></div>
+        <div class="review-row"><span class="k">Email</span><span class="v">${esc(f.email || '—')}</span></div>
         <div class="review-row"><span class="k">Website</span><span class="v link">${esc(f.url || '—')}</span></div>
         <div class="review-row"><span class="k">Tagline</span><span class="v">${esc(f.tagline || '—')}</span></div>
         <div class="review-row"><span class="k">Category</span><span class="v">${esc(cats[f.cat])}</span></div>
@@ -105,7 +110,7 @@ const submitData = {
       wizard.innerHTML = `<div class="success-card">
         <div class="success-mark">✓</div>
         <h1>Submission received</h1>
-        <p>Thanks — <strong>${esc(state.form.name || 'Untitled tool')}</strong> is in the review queue. We'll email you within 24 hours once it's live in the directory.</p>
+        <p>Thanks — <strong>${esc(state.form.name || 'Untitled tool')}</strong> is in the review queue. We'll review within 24 hours and email you when it's live.</p>
         <div class="success-actions">
           <a class="btn-dark-lg" href="/" style="text-decoration:none;display:inline-block;color:#fff">Back to directory</a>
           <button class="btn-outline-lg" data-action="reset">Submit another</button>
@@ -156,6 +161,7 @@ const submitData = {
       case 'next':
         if (state.step === 1) {
           if (!state.form.name.trim()) { state.error = 'Please enter the tool name.'; render(); return; }
+          if (!EMAIL_RE.test(state.form.email.trim())) { state.error = 'Please enter a valid email address.'; render(); return; }
           if (!/^https?:\/\/.+\..+/.test(state.form.url.trim())) { state.error = 'Please enter a valid website URL (starting with https://).'; render(); return; }
           state.error = '';
         }
@@ -168,7 +174,7 @@ const submitData = {
         break;
       case 'reset':
         state.step = 1; state.submitted = false; state.error = '';
-        state.form = { name: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' };
+        state.form = { name: '', email: '', url: '', tagline: '', desc: '', cat: 'content', price: 'Freemium', plan: 'free', website: '' };
         render();
         break;
     }

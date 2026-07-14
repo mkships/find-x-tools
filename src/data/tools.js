@@ -10,12 +10,13 @@ export const CATS = {
   ai:{label:'AI Reply & Engagement',color:'#F91880'},
   design:{label:'Design & Media',color:'#00A9C0'},
   audit:{label:'Profile Audit',color:'#E8A400'},
-  comments:{label:'Comment Management',color:'#5B6EF5'},
+  // Slug stays `comments` for stable URLs; label matches what's actually listed (bookmark tools).
+  comments:{label:'Bookmarks & Saves',color:'#5B6EF5'},
   bio:{label:'Bio Link Tools',color:'#14B8A6'},
   listening:{label:'Social Listening',color:'#8B5CF6'}
 };
 
-export const ICONS = {all:'🗂️',content:'✍️',growth:'📈',schedule:'🗓️',analytics:'📊',ai:'🤖',design:'🎨',audit:'🔍',comments:'💬',bio:'🔗',listening:'👂'};
+export const ICONS = {all:'🗂️',content:'✍️',growth:'📈',schedule:'🗓️',analytics:'📊',ai:'🤖',design:'🎨',audit:'🔍',comments:'🔖',bio:'🔗',listening:'👂'};
 
 export const PRICE_STYLES = {
   Free:{bg:'#E3F7EF',fg:'#00875A'},
@@ -54,7 +55,7 @@ export const TOOLS = [
   {id:'manychat',name:'Manychat',cat:'ai',price:'Paid',url:'https://manychat.com',users:40000,verified:true,featured:true,color:'#1D9BF0',tagline:'Automate DMs and build complex chat workflows.',desc:'Manychat powers automated DM flows and chatbots that capture leads, answer questions and drive sales across X and other messaging channels.',best:'Brands needing complex DM automation workflows.',features:['Visual DM flow builder','Keyword triggers','Lead capture','CRM integrations']},
   {id:'autopublix',name:'AutoPubliX',cat:'ai',price:'Paid',url:'https://autopublix.com',users:6000,verified:false,featured:false,color:'#00A9C0',tagline:'Set up automated DM replies on X in minutes.',desc:'AutoPubliX makes DM automation beginner-friendly — connect your account and launch auto-reply and welcome flows without a learning curve.',best:'Beginners and creators seeking quick DM setup.',features:['Quick DM automation setup','Auto-reply templates','Welcome messages','Simple dashboard']},
   {id:'dmdad',name:'DM Dad',cat:'ai',price:'Paid',url:'https://dmdad.com',users:7000,verified:false,featured:false,color:'#E8A400',tagline:'Automate outreach DMs to book more conversations.',desc:'DM Dad helps salespeople and founders run personalized outbound DM campaigns on X, turning cold profiles into booked conversations.',best:'Salespeople, marketers and founders doing DM outreach.',features:['Bulk personalized DMs','Outreach sequences','Reply tracking','Prospect lists']},
-  {id:'xpro',name:'X Pro (TweetDeck)',cat:'ai',price:'Paid',url:'https://pro.x.com',users:55000,verified:true,featured:false,color:'#1D9BF0',tagline:'The multi-column dashboard for monitoring X in real time.',desc:'X Pro (formerly TweetDeck) gives power users customizable columns to monitor timelines, searches, lists and mentions all at once.',best:'Power users monitoring multiple timelines.',features:['Customizable column decks','Real-time monitoring','Multi-account switching','Advanced search columns']},
+  {id:'xpro',name:'X Pro (TweetDeck)',cat:'listening',price:'Paid',url:'https://pro.x.com',users:55000,verified:true,featured:false,color:'#1D9BF0',tagline:'The multi-column dashboard for monitoring X in real time.',desc:'X Pro (formerly TweetDeck) gives power users customizable columns to monitor timelines, searches, lists and mentions all at once.',best:'Power users monitoring multiple timelines.',features:['Customizable column decks','Real-time monitoring','Multi-account switching','Advanced search columns']},
   {id:'brandbird',name:'BrandBird',cat:'design',price:'Paid',url:'https://brandbird.app',users:14000,verified:false,featured:false,color:'#FF7A00',tagline:'Turn screenshots and posts into polished branded graphics.',desc:'BrandBird helps creators beautify screenshots, mockups and social graphics with backgrounds, devices and brand kits in seconds.',best:'Creators and brand builders making polished visuals.',features:['Screenshot beautifier','Device mockups','Brand kit presets','One-click export']},
   {id:'tweetpik',name:'TweetPik',cat:'design',price:'Paid',url:'https://tweetpik.com',users:11000,verified:false,featured:false,color:'#F91880',tagline:'Turn tweets into beautiful images for cross-posting.',desc:'TweetPik renders any post as a customizable, on-brand image so you can share X content beautifully on other platforms.',best:'Creators cross-posting X content visually.',features:['Tweet-to-image rendering','Custom themes and colors','Bulk export','API access']},
   {id:'beautifythis',name:'Beautify This',cat:'design',price:'Freemium',url:'https://tweets.beauty',users:8000,verified:false,featured:false,color:'#00A9C0',tagline:'Make your posts look stunning with one-click styling.',desc:'Beautify This transforms plain posts and screenshots into eye-catching, shareable graphics with templates and backgrounds — no design skills needed.',best:'Content creators who want quick, good-looking visuals.',features:['One-click beautify','Template gallery','Background and gradient library','Free tier']},
