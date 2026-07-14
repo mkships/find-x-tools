@@ -7,7 +7,7 @@ import CategorySidebar from './CategorySidebar.astro';
 // the client script only hides/reorders them for search/price/sort.
 const { cat = 'all' } = Astro.props;
 const tools = (cat === 'all' ? [...TOOLS] : TOOLS.filter(t => t.cat === cat))
-  .sort((a, b) => b.users - a.users);
+  .sort((a, b) => b.trendingScore - a.trendingScore);
 const title = cat === 'all' ? 'All tools' : CATS[cat].label;
 const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' + CATS[cat].label;
 ---
@@ -26,10 +26,15 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
         <span class={`seg-sq-btn${p === 'All' ? ' active' : ''}`} data-price={p}>{p}</span>
       ))}
     </div>
-    <select class="sort-select" id="sortSelect" aria-label="Sort tools">
-      <option value="recommended">Sort: Recommended</option>
-      <option value="az">Sort: A–Z</option>
-    </select>
+    <label class="sort-field">
+      <span class="sort-field-label">Sort</span>
+      <span class="sort-value" id="sortValue">Recommended</span>
+      <span class="sort-chevron" aria-hidden="true"></span>
+      <select class="sort-select" id="sortSelect" aria-label="Sort tools">
+        <option value="recommended">Recommended</option>
+        <option value="az">A–Z</option>
+      </select>
+    </label>
   </div>
   <div class="layout-sidebar">
     <CategorySidebar active={cat} />
@@ -53,6 +58,7 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
   const cards = Array.from(grid.querySelectorAll<HTMLElement>('.tool-card'));
   const searchInput = document.getElementById('browseSearch') as HTMLInputElement;
   const sortSelect = document.getElementById('sortSelect') as HTMLSelectElement;
+  const sortValue = document.getElementById('sortValue')!;
   const priceChips = document.getElementById('priceChips')!;
   const countEl = document.getElementById('resultsCount')!;
   const emptyEl = document.getElementById('emptyState')!;
@@ -60,9 +66,15 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
   let price = 'All';
   const curatedOrder = new Map(cards.map((c, i) => [c, i]));
 
+  function syncSortLabel() {
+    const opt = sortSelect.selectedOptions[0];
+    sortValue.textContent = opt ? opt.textContent! : 'Recommended';
+  }
+
   function apply() {
     const q = searchInput.value.trim().toLowerCase();
     const sort = sortSelect.value;
+    syncSortLabel();
 
     // "Recommended" is the server-rendered curation order; A–Z sorts by name.
     cards.sort((a, b) =>
@@ -120,5 +132,6 @@ const crumb = cat === 'all' ? 'Directory / All Tools' : 'Directory / Tools / ' +
   }
   const initSort = init.get('sort');
   if (initSort && ['recommended', 'az'].includes(initSort)) sortSelect.value = initSort;
+  syncSortLabel();
   if (init.toString()) apply();
 </script>

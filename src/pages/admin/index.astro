@@ -1,0 +1,402 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE_NAME } from '../../config.js';
+
+const title = `Admin — ${SITE_NAME}`;
+const description = 'Private catalog editor for X Tools Directory.';
+---
+<Base title={title} description={description} noindex={true}>
+<main class="page-admin">
+  <div id="adminLogin" class="admin-login hidden">
+    <h1>Catalog admin</h1>
+    <p>Password-gated editor for Verified, Featured, scores, and rich detail fields.</p>
+    <form id="loginForm" class="admin-login-form">
+      <label>
+        <span>Password</span>
+        <input type="password" id="adminPassword" name="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit" class="btn-admin-primary">Sign in</button>
+      <p id="loginError" class="admin-error hidden" role="alert"></p>
+    </form>
+  </div>
+
+  <div id="adminApp" class="admin-app hidden">
+    <header class="admin-bar">
+      <div>
+        <h1>Catalog admin</h1>
+        <p id="writeHint" class="admin-hint"></p>
+      </div>
+      <div class="admin-bar-actions">
+        <button type="button" id="btnDownload" class="btn-admin-secondary">Download tools.js</button>
+        <button type="button" id="btnSave" class="btn-admin-primary">Save</button>
+        <button type="button" id="btnLogout" class="btn-admin-ghost">Log out</button>
+      </div>
+    </header>
+    <p id="saveStatus" class="admin-status" aria-live="polite"></p>
+
+    <div class="admin-layout">
+      <aside class="admin-list-pane">
+        <input type="search" id="toolSearch" placeholder="Search tools…" aria-label="Search tools" />
+        <label class="admin-sort">
+          <span>Sort</span>
+          <select id="toolSort">
+            <option value="name">Name</option>
+            <option value="trending">Trending score</option>
+            <option value="added">Recently added</option>
+            <option value="rich">Rich completeness</option>
+          </select>
+        </label>
+        <div id="toolList" class="admin-tool-list" role="listbox" aria-label="Tools"></div>
+      </aside>
+
+      <section id="editorPane" class="admin-editor-pane">
+        <p class="admin-empty">Select a tool to edit.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>
+  type Tool = {
+    id: string;
+    name: string;
+    cat: string;
+    price: string;
+    url: string;
+    trendingScore: number;
+    addedAt: string;
+    verified: boolean;
+    featured: boolean;
+    color: string;
+    tagline: string;
+    desc: string;
+    best: string;
+    features: string[];
+    useCases?: string[];
+    watchOuts?: string[];
+    pricingNote?: string;
+    faqs?: { q: string; a: string }[];
+    lastChecked?: string;
+    quotes?: { source?: string; author?: string; text: string; url?: string; date?: string }[];
+    _rich?: number;
+  };
+
+  let tools: Tool[] = [];
+  let cats: Record<string, { label: string }> = {};
+  let selectedId = '';
+  let dirty = false;
+  let canWrite = false;
+
+  const loginView = document.getElementById('adminLogin')!;
+  const appView = document.getElementById('adminApp')!;
+  const loginForm = document.getElementById('loginForm') as HTMLFormElement;
+  const loginError = document.getElementById('loginError')!;
+  const toolSearch = document.getElementById('toolSearch') as HTMLInputElement;
+  const toolSort = document.getElementById('toolSort') as HTMLSelectElement;
+  const toolList = document.getElementById('toolList')!;
+  const editorPane = document.getElementById('editorPane')!;
+  const saveStatus = document.getElementById('saveStatus')!;
+  const writeHint = document.getElementById('writeHint')!;
+
+  function richScore(t: Tool) {
+    let n = 0;
+    if (t.useCases?.length) n++;
+    if (t.watchOuts?.length) n++;
+    if (t.pricingNote) n++;
+    if (t.faqs?.length) n++;
+    if (t.lastChecked) n++;
+    if (t.quotes?.length) n++;
+    return n;
+  }
+
+  function setStatus(msg: string, kind: 'ok' | 'err' | '' = '') {
+    saveStatus.textContent = msg;
+    saveStatus.className = 'admin-status' + (kind ? ' is-' + kind : '');
+  }
+
+  function linesToArr(text: string) {
+    return text.split('\n').map(s => s.trim()).filter(Boolean);
+  }
+
+  function arrToLines(arr?: string[]) {
+    return (arr || []).join('\n');
+  }
+
+  async function api(url: string, init?: RequestInit) {
+    const res = await fetch(url, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', ...(init?.headers || {}) },
+      ...init
+    });
+    const data = await res.json().catch(() => ({}));
+    return { res, data };
+  }
+
+  async function bootstrap() {
+    const { res, data } = await api('/api/admin/session');
+    if (!res.ok || !data.configured) {
+      loginView.classList.remove('hidden');
+      appView.classList.add('hidden');
+      loginError.textContent = data.error || 'Set ADMIN_PASSWORD in your environment to use admin.';
+      loginError.classList.remove('hidden');
+      return;
+    }
+    if (data.authed) {
+      await enterApp();
+    } else {
+      loginView.classList.remove('hidden');
+      appView.classList.add('hidden');
+    }
+  }
+
+  async function enterApp() {
+    loginView.classList.add('hidden');
+    appView.classList.remove('hidden');
+    const { res, data } = await api('/api/admin/tools');
+    if (!res.ok) {
+      setStatus(data.error || 'Failed to load tools', 'err');
+      return;
+    }
+    tools = data.tools;
+    cats = data.cats || {};
+    canWrite = !!data.canWrite;
+    writeHint.textContent = canWrite
+      ? 'Local write enabled — Save updates src/data/tools.js directly.'
+      : 'Read-only host — use Download tools.js, then commit and redeploy.';
+    renderList();
+    if (selectedId) renderEditor();
+  }
+
+  function sortedFiltered() {
+    const q = toolSearch.value.trim().toLowerCase();
+    let list = tools.filter(t =>
+      !q || t.name.toLowerCase().includes(q) || t.id.includes(q) || t.cat.includes(q)
+    );
+    const sort = toolSort.value;
+    list = [...list].sort((a, b) => {
+      if (sort === 'trending') return b.trendingScore - a.trendingScore;
+      if (sort === 'added') return (b.addedAt || '').localeCompare(a.addedAt || '');
+      if (sort === 'rich') return richScore(b) - richScore(a);
+      return a.name.localeCompare(b.name);
+    });
+    return list;
+  }
+
+  function renderList() {
+    const list = sortedFiltered();
+    toolList.innerHTML = list.map(t => {
+      const rich = richScore(t);
+      const active = t.id === selectedId ? ' is-active' : '';
+      const flags = [
+        t.verified ? '✓' : '',
+        t.featured ? '★' : '',
+        rich ? `rich ${rich}/6` : 'thin'
+      ].filter(Boolean).join(' · ');
+      return `<button type="button" class="admin-tool-row${active}" data-id="${t.id}" role="option" aria-selected="${t.id === selectedId}">
+        <span class="admin-tool-name">${t.name}</span>
+        <span class="admin-tool-meta">${cats[t.cat]?.label || t.cat} · ${flags}</span>
+      </button>`;
+    }).join('');
+  }
+
+  function currentTool() {
+    return tools.find(t => t.id === selectedId);
+  }
+
+  function readEditorIntoTool() {
+    const t = currentTool();
+    if (!t) return;
+    const form = document.getElementById('toolEditor') as HTMLFormElement | null;
+    if (!form) return;
+
+    const fd = new FormData(form);
+    t.verified = fd.get('verified') === 'on';
+    t.featured = fd.get('featured') === 'on';
+    t.trendingScore = Number(fd.get('trendingScore') || t.trendingScore) || 0;
+    t.addedAt = String(fd.get('addedAt') || '').trim();
+    t.lastChecked = String(fd.get('lastChecked') || '').trim();
+    t.pricingNote = String(fd.get('pricingNote') || '').trim();
+    t.best = String(fd.get('best') || '').trim();
+    t.tagline = String(fd.get('tagline') || '').trim();
+    t.desc = String(fd.get('desc') || '').trim();
+    t.useCases = linesToArr(String(fd.get('useCases') || ''));
+    t.watchOuts = linesToArr(String(fd.get('watchOuts') || ''));
+    t.features = linesToArr(String(fd.get('features') || ''));
+
+    const faqRaw = String(fd.get('faqs') || '').trim();
+    t.faqs = faqRaw
+      ? faqRaw.split('\n---\n').map(block => {
+          const [qLine, ...rest] = block.split('\n');
+          const q = qLine.replace(/^Q:\s*/i, '').trim();
+          const a = rest.join('\n').replace(/^A:\s*/i, '').trim();
+          return { q, a };
+        }).filter(f => f.q && f.a)
+      : [];
+
+    const quotesRaw = String(fd.get('quotes') || '').trim();
+    t.quotes = quotesRaw
+      ? quotesRaw.split('\n---\n').map(block => {
+          const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+          const text = (lines.find(l => l.startsWith('text:')) || '').slice(5).trim();
+          const author = (lines.find(l => l.startsWith('author:')) || '').slice(7).trim();
+          const source = (lines.find(l => l.startsWith('source:')) || '').slice(7).trim();
+          const url = (lines.find(l => l.startsWith('url:')) || '').slice(4).trim();
+          const date = (lines.find(l => l.startsWith('date:')) || '').slice(5).trim();
+          return { text, author, source, url, date };
+        }).filter(q => q.text)
+      : [];
+
+    dirty = true;
+  }
+
+  function faqsToEditor(faqs?: { q: string; a: string }[]) {
+    if (!faqs?.length) return '';
+    return faqs.map(f => `Q: ${f.q}\nA: ${f.a}`).join('\n---\n');
+  }
+
+  function quotesToEditor(quotes?: Tool['quotes']) {
+    if (!quotes?.length) return '';
+    return quotes.map(q =>
+      [`text: ${q.text}`, q.author ? `author: ${q.author}` : '', q.source ? `source: ${q.source}` : '', q.url ? `url: ${q.url}` : '', q.date ? `date: ${q.date}` : '']
+        .filter(Boolean).join('\n')
+    ).join('\n---\n');
+  }
+
+  function renderEditor() {
+    const t = currentTool();
+    if (!t) {
+      editorPane.innerHTML = '<p class="admin-empty">Select a tool to edit.</p>';
+      return;
+    }
+    editorPane.innerHTML = `
+      <form id="toolEditor" class="admin-editor">
+        <div class="admin-editor-head">
+          <h2>${t.name}</h2>
+          <a href="/tools/${t.id}/" target="_blank" rel="noopener">View page ↗</a>
+        </div>
+
+        <fieldset class="admin-fieldset">
+          <legend>Flags &amp; scores</legend>
+          <div class="admin-checks">
+            <label><input type="checkbox" name="verified" ${t.verified ? 'checked' : ''}/> Verified</label>
+            <label><input type="checkbox" name="featured" ${t.featured ? 'checked' : ''}/> Featured</label>
+          </div>
+          <div class="admin-grid-2">
+            <label>Trending score<input type="number" name="trendingScore" value="${t.trendingScore}" /></label>
+            <label>Listed (addedAt)<input type="date" name="addedAt" value="${t.addedAt || ''}" /></label>
+            <label>Last checked<input type="date" name="lastChecked" value="${t.lastChecked || ''}" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Copy</legend>
+          <label>Tagline<input type="text" name="tagline" value="${escapeAttr(t.tagline)}" /></label>
+          <label>Description<textarea name="desc" rows="4">${escapeHtml(t.desc)}</textarea></label>
+          <label>Best for<textarea name="best" rows="2">${escapeHtml(t.best)}</textarea></label>
+          <label>Pricing note<input type="text" name="pricingNote" value="${escapeAttr(t.pricingNote || '')}" placeholder="Freemium — free tier; Pro from ~$15/mo" /></label>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Lists (one per line)</legend>
+          <label>Features<textarea name="features" rows="4">${escapeHtml(arrToLines(t.features))}</textarea></label>
+          <label>Use cases<textarea name="useCases" rows="4">${escapeHtml(arrToLines(t.useCases))}</textarea></label>
+          <label>Watch outs<textarea name="watchOuts" rows="3">${escapeHtml(arrToLines(t.watchOuts))}</textarea></label>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>FAQ (blocks separated by ---)</legend>
+          <label class="admin-help">Format each block as Q: … then A: …</label>
+          <textarea name="faqs" rows="8" placeholder="Q: Is there a free plan?\nA: Yes — …\n---\nQ: …\nA: …">${escapeHtml(faqsToEditor(t.faqs))}</textarea>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Quotes (optional; blocks separated by ---)</legend>
+          <label class="admin-help">Use keys text:, author:, source:, url:, date:</label>
+          <textarea name="quotes" rows="6" placeholder="text: Great for threads\nauthor: Jane\nsource: x\nurl: https://…">${escapeHtml(quotesToEditor(t.quotes))}</textarea>
+        </fieldset>
+      </form>
+    `;
+    document.getElementById('toolEditor')!.addEventListener('input', () => { dirty = true; setStatus('Unsaved changes', ''); });
+    document.getElementById('toolEditor')!.addEventListener('change', () => { dirty = true; setStatus('Unsaved changes', ''); });
+  }
+
+  function escapeHtml(s: string) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function escapeAttr(s: string) {
+    return escapeHtml(s).replace(/"/g, '&quot;');
+  }
+
+  function downloadFile(content: string) {
+    const blob = new Blob([content], { type: 'text/javascript;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'tools.js';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function saveCatalog({ downloadOnly = false } = {}) {
+    readEditorIntoTool();
+    const payload = tools.map(({ _rich, ...rest }) => rest);
+    const { res, data } = await api('/api/admin/tools', {
+      method: 'PUT',
+      body: JSON.stringify({ tools: payload })
+    });
+    if (!res.ok) {
+      setStatus(data.error || 'Save failed', 'err');
+      return;
+    }
+    if (downloadOnly || !data.written) {
+      downloadFile(data.file);
+      setStatus(data.written ? 'Saved and downloaded.' : 'Downloaded tools.js — commit and redeploy.', 'ok');
+    } else {
+      setStatus('Saved to src/data/tools.js. Refresh the tool page to preview.', 'ok');
+    }
+    dirty = false;
+    renderList();
+  }
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    loginError.classList.add('hidden');
+    const password = (document.getElementById('adminPassword') as HTMLInputElement).value;
+    const { res, data } = await api('/api/admin/session', {
+      method: 'POST',
+      body: JSON.stringify({ password })
+    });
+    if (!res.ok) {
+      loginError.textContent = data.error || 'Login failed';
+      loginError.classList.remove('hidden');
+      return;
+    }
+    await enterApp();
+  });
+
+  document.getElementById('btnLogout')!.addEventListener('click', async () => {
+    await api('/api/admin/session', { method: 'DELETE' });
+    tools = [];
+    selectedId = '';
+    appView.classList.add('hidden');
+    loginView.classList.remove('hidden');
+  });
+
+  document.getElementById('btnSave')!.addEventListener('click', () => saveCatalog());
+  document.getElementById('btnDownload')!.addEventListener('click', () => saveCatalog({ downloadOnly: true }));
+
+  toolList.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('[data-id]') as HTMLElement | null;
+    if (!btn?.dataset.id) return;
+    if (dirty) readEditorIntoTool();
+    selectedId = btn.dataset.id;
+    renderList();
+    renderEditor();
+  });
+
+  toolSearch.addEventListener('input', renderList);
+  toolSort.addEventListener('change', renderList);
+
+  bootstrap();
+</script>
+</Base>

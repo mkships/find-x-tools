@@ -10,7 +10,7 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const cat = CATS[slug];
-const tools = TOOLS.filter(t => t.cat === slug).sort((a, b) => b.users - a.users);
+const tools = TOOLS.filter(t => t.cat === slug).sort((a, b) => b.trendingScore - a.trendingScore);
 
 const title = `Best ${cat.label} Tools for X (${tools.length}) | ${SITE_NAME}`;
 const description = `Compare the ${tools.length} best ${cat.label.toLowerCase()} tools for X — ${tools.slice(0, 3).map(t => t.name).join(', ')} and more. Pricing and key features, hand-curated.`;

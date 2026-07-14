@@ -11,5 +11,7 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://x-tools-directory.vercel.app',
   output: 'static',
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    filter: (page) => !page.includes('/admin'),
+  })],
 });

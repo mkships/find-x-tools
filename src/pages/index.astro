@@ -7,7 +7,8 @@ import { SITE_NAME } from '../config.js';
 
 const heroChips = Object.keys(CATS).slice(0, 6);
 const featured = TOOLS.filter(t => t.featured).slice(0, 3);
-const picks = [...TOOLS].sort((a, b) => b.users - a.users).slice(0, 9);
+const trending = [...TOOLS].sort((a, b) => b.trendingScore - a.trendingScore).slice(0, 9);
+const recent = [...TOOLS].sort((a, b) => b.addedAt.localeCompare(a.addedAt)).slice(0, 9);
 
 const title = `${SITE_NAME} — Every tool to grow on X, in one place`;
 const description = `Discover, compare and pick the best tools for content, growth, scheduling, analytics and engagement on X. Hand-curated directory of ${TOOLS.length} X-native tools.`;
@@ -56,13 +57,17 @@ const jsonld = {
       <CategorySidebar active="" />
       <div>
         <div class="toolbar">
-          <div class="seg">
-            <span class="seg-btn active">⭐ Editorial Picks</span>
+          <div class="seg" role="tablist" aria-label="Homepage tool lists">
+            <button type="button" class="seg-btn active" role="tab" aria-selected="true" data-picks-tab="trending" id="tabTrending">Trending</button>
+            <button type="button" class="seg-btn" role="tab" aria-selected="false" data-picks-tab="recent" id="tabRecent">Recently Added</button>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
-        <div class="grid-tools">
-          {picks.map(t => <ToolCard tool={t} />)}
+        <div class="grid-tools" id="picksTrending" data-picks-panel="trending">
+          {trending.map(t => <ToolCard tool={t} />)}
+        </div>
+        <div class="grid-tools hidden" id="picksRecent" data-picks-panel="recent" hidden>
+          {recent.map(t => <ToolCard tool={t} />)}
         </div>
         <div style="margin-top:28px;text-align:center">
           <a class="btn-view-all btn-view-all-link" href="/tools/">View all {TOOLS.length} tools →</a>
@@ -81,5 +86,31 @@ const jsonld = {
   document.getElementById('heroSearchBtn')!.addEventListener('click', go);
   heroInput.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
 
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-picks-tab]'));
+  const panels = {
+    trending: document.getElementById('picksTrending')!,
+    recent: document.getElementById('picksRecent')!
+  };
+
+  function showPicks(tab: 'trending' | 'recent') {
+    tabs.forEach(btn => {
+      const on = btn.dataset.picksTab === tab;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    (Object.keys(panels) as Array<'trending' | 'recent'>).forEach(key => {
+      const el = panels[key];
+      const on = key === tab;
+      el.classList.toggle('hidden', !on);
+      el.hidden = !on;
+    });
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.picksTab as 'trending' | 'recent';
+      if (tab) showPicks(tab);
+    });
+  });
 </script>
 </Base>

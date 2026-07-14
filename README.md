@@ -76,16 +76,38 @@ each row `pending review` — your review queue is the sheet itself (add an
 
 ## Adding / editing tools
 
-All listings live in `src/data/tools.js`. Add or edit an entry and redeploy — the
-tool page, category counts, sitemap and structured data all regenerate at build time.
-Tool `id` becomes the URL slug (`/tools/<id>/`), so don't change ids of live pages
+All listings live in `src/data/tools.js`. Prefer editing via the **admin CRM**
+(`/admin`) locally; alternatively edit the file by hand and redeploy. Tool `id`
+becomes the URL slug (`/tools/<id>/`), so don't change ids of live pages
 (that breaks indexed URLs; if you must rename, add a redirect).
+
+## Admin CRM (`/admin`)
+
+Password-gated catalog editor for flags (`verified`, `featured`), scores/dates
+(`trendingScore`, `addedAt`, `lastChecked`), and rich detail fields.
+
+1. Set `ADMIN_PASSWORD` in `.env` (local) and in the Vercel project env.
+2. Run `npm run dev`, open `/admin`, sign in.
+3. Pick tools (sort by trending / rich completeness), fill fields, then **Save**.
+4. In local/dev, Save writes `src/data/tools.js` directly. On Vercel (no
+   filesystem write unless you set `ADMIN_WRITE=1`, not recommended), use
+   **Download tools.js**, commit the file, and redeploy.
+
+The page is `noindex` and excluded from the sitemap. Google Sheet remains
+submissions-only — not the live catalog.
+
+### Content workflow (pilot queue)
+
+You do not need all 78 tools richly filled. Suggested first wave: Featured tools,
+top Trending, plus one per major category. Per tool (~15–25 min): open the vendor
+homepage + pricing page and only fill what you can verify in ~30 seconds. Leave
+fields empty when unsure — empty sections hide on the detail page.
 
 ## URL structure
 
 - `/` home · `/tools/` browse all · `/tools/<slug>/` tool page
 - `/category/<slug>/` category landing pages (the main SEO surface)
-- `/about/` · `/submit/` · `/api/submit` (POST only)
+- `/about/` · `/submit/` · `/admin/` (private) · `/api/submit` · `/api/admin/*`
 
 The `/tools/` prefix deliberately leaves room for future listing types, e.g.
 `/agencies/<slug>/` for X growth agencies — copy the pattern of
@@ -107,13 +129,31 @@ per page.
 Known gap (placeholder shown): `xpro` — pro.x.com blocks all bots; capture
 manually from a logged-in browser and save as `public/screenshots/xpro.jpg`.
 
+## Catalog field meanings (`src/data/tools.js`)
+
+- `trendingScore` — editorial trend weight (never displayed). Drives homepage
+  **Trending**, browse **Recommended**, category ItemLists, and related-tool
+  sorts. Raise or lower a tool’s score to change order; this is not live traffic.
+- `addedAt` — listing date (`YYYY-MM-DD`). Drives homepage **Recently Added**.
+  When approving a submission into the catalog, set `addedAt` to the day it goes live.
+- `verified` — team reviewed functionality and use-cases. Shown as the Verified
+  badge on cards and tool detail pages.
+- `featured` — homepage Featured strip.
+- `useCases` — optional bullets for “Main use-cases” on the detail page.
+- `watchOuts` — optional honest caveats (“when not to use”).
+- `pricingNote` — optional one-line pricing honesty beyond Free/Freemium/Paid.
+- `faqs` — optional `{ q, a }[]`; renders FAQ accordion + `FAQPage` JSON-LD.
+- `lastChecked` — optional date shown in the sidebar when you last reviewed the listing.
+- `quotes` — optional curated public testimonials
+  `{ source, author, text, url, date }`. Never invent quotes; leave empty for the
+  placeholder (“collecting public reviews…”).
+
 ## Before real launch — honesty checklist
 
 - Fabricated stats (ratings, user counts, founding years) were removed from the
-  UI and data in 2026-07. The `users` field that remains in `src/data/tools.js`
-  is an internal curation weight that drives the "Recommended" ordering and the
-  Editorial Picks section — it is never displayed. Reorder recommendations by
-  editing those weights.
+  UI and data in 2026-07. Do not reintroduce displayed user counts or ratings.
+  Use `trendingScore` / `addedAt` as above instead of inventing popularity metrics.
+- Do not invent `quotes`, `watchOuts`, or pricing claims you cannot source.
 - Tool "Visit" links are plain external URLs with `rel="noopener"` (no affiliate /
   sponsored markup yet). Swap in real affiliate URLs per tool when you have them
   (add an `affiliateUrl` field).

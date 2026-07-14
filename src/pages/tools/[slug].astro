@@ -1,8 +1,7 @@
 ---
 import fs from 'node:fs';
 import Base from '../../layouts/Base.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import { CATS, TOOLS } from '../../data/tools.js';
+import { CATS, PRICE_STYLES, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
 
 export function getStaticPaths() {
@@ -11,15 +10,30 @@ export function getStaticPaths() {
 
 const { tool: t } = Astro.props;
 const cat = CATS[t.cat];
+const priceStyle = PRICE_STYLES[t.price] || PRICE_STYLES.Freemium;
 const related = TOOLS.filter(x => x.cat === t.cat && x.id !== t.id)
-  .sort((a, b) => b.users - a.users).slice(0, 3);
+  .sort((a, b) => b.trendingScore - a.trendingScore).slice(0, 4);
+
+function whyLook(alt) {
+  if (alt.price !== t.price) return `Different pricing (${alt.price}) in the same category`;
+  if (alt.trendingScore > t.trendingScore) return 'Higher editorial trend weight in this category';
+  if (alt.verified && !t.verified) return 'Team-verified alternative in this category';
+  if (alt.featured) return 'Featured listing worth comparing';
+  return `Another ${cat.label.toLowerCase()} option to compare`;
+}
+
 const domain = (t.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
-// Homepage screenshot captured via Firecrawl (see .firecrawl/batch.sh); pages
-// without one fall back to the placeholder so a failed capture never blocks a build.
 const hasScreenshot = fs.existsSync(`public/screenshots/${t.id}.jpg`);
+const useCases = Array.isArray(t.useCases) ? t.useCases.filter(Boolean) : [];
+const watchOuts = Array.isArray(t.watchOuts) ? t.watchOuts.filter(Boolean) : [];
+const faqs = Array.isArray(t.faqs) ? t.faqs.filter(f => f?.q && f?.a) : [];
+const quotes = Array.isArray(t.quotes) ? t.quotes.filter(q => q?.text) : [];
+const pricingNote = (t.pricingNote || '').trim();
+const lastChecked = (t.lastChecked || '').trim();
 
 const title = `${t.name} — ${cat.label} Tool for X | ${SITE_NAME}`;
 const description = `${t.tagline} ${t.name} review: pricing (${t.price.toLowerCase()}), key features and the best alternatives in ${cat.label.toLowerCase()} for X.`;
+
 const jsonld = [
   {
     '@context': 'https://schema.org',
@@ -41,19 +55,42 @@ const jsonld = [
     ]
   }
 ];
+
+if (faqs.length) {
+  jsonld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a }
+    }))
+  });
+}
 ---
 <Base title={title} description={description} jsonld={jsonld} ogImage={hasScreenshot ? `/screenshots/${t.id}.jpg` : undefined}>
 <main class="page-detail">
-  <a class="back-link" href={`/category/${t.cat}/`}>← Back to directory</a>
+  <nav class="detail-breadcrumb" aria-label="Breadcrumb">
+    <a href="/tools/">Tools</a>
+    <span class="sep">/</span>
+    <a href={`/category/${t.cat}/`}>{cat.label}</a>
+    <span class="sep">/</span>
+    <span aria-current="page">{t.name}</span>
+  </nav>
+
   <div class="detail-card">
     <div class="detail-tile" style={`background:${t.color}`}>{t.name.charAt(0).toUpperCase()}</div>
     <div class="detail-head">
       <div class="detail-title-row">
         <h1>{t.name}</h1>
-        {t.verified && <span class="badge-verified-lg">✓</span>}
+        {t.verified && <span class="badge-verified-lg" title="Verified by our team — functionality and use-cases checked">✓ Verified</span>}
         {t.featured && <span class="badge-featured-lg">★ Featured</span>}
       </div>
       <p class="detail-tagline">{t.tagline}</p>
+      <div class="detail-chips">
+        <a class="detail-chip" href={`/category/${t.cat}/`} style={`color:${cat.color};border-color:${cat.color}33`}>{cat.label}</a>
+        <span class="detail-chip" style={`background:${priceStyle.bg};color:${priceStyle.fg};border-color:transparent`}>{t.price}</span>
+      </div>
     </div>
     <div class="detail-cta">
       <a class="btn-visit" href={t.url || '#'} target="_blank" rel="noopener">Visit {domain} ↗</a>
@@ -61,53 +98,159 @@ const jsonld = [
   </div>
 
   <div class="detail-layout">
-    <div>
-      <h2>About {t.name}</h2>
-      <p>{t.desc}</p>
-      <h2 class="spaced">Key features</h2>
-      <div class="features-grid">
-        {t.features.map(f => (
-          <div class="feature-item">
-            <span class="check">✓</span>
-            <span class="text">{f}</span>
-          </div>
-        ))}
-      </div>
-      <h2 class="spaced">Preview</h2>
-      {hasScreenshot ? (
-        <img
-          class="preview-img"
-          src={`/screenshots/${t.id}.jpg`}
-          alt={`${t.name} homepage — ${t.tagline}`}
-          width="1200"
-          height="675"
-          loading="lazy"
-        />
-      ) : (
-        <div class="preview-box"><span>product screenshot — {t.name}</span></div>
+    <div class="detail-main">
+      {useCases.length > 0 && (
+        <section class="detail-section">
+          <h2>Main use-cases</h2>
+          <ul class="use-case-list">
+            {useCases.map(u => <li>{u}</li>)}
+          </ul>
+        </section>
       )}
+
+      <section class="detail-section">
+        <h2>About {t.name}</h2>
+        <p>{t.desc}</p>
+      </section>
+
+      <section class="detail-section">
+        <h2>Key features</h2>
+        <div class="features-grid">
+          {t.features.map(f => (
+            <div class="feature-item">
+              <span class="check">✓</span>
+              <span class="text">{f}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h2>Preview</h2>
+        {hasScreenshot ? (
+          <img
+            class="preview-img"
+            src={`/screenshots/${t.id}.jpg`}
+            alt={`${t.name} homepage — ${t.tagline}`}
+            width="1200"
+            height="675"
+            loading="lazy"
+          />
+        ) : (
+          <div class="preview-box"><span>product screenshot — {t.name}</span></div>
+        )}
+      </section>
+
+      {(t.best || watchOuts.length > 0) && (
+        <section class="detail-section fit-grid">
+          {t.best && (
+            <div class="fit-card fit-best">
+              <h2>Best for</h2>
+              <p>{t.best}</p>
+            </div>
+          )}
+          {watchOuts.length > 0 && (
+            <div class="fit-card fit-watch">
+              <h2>Watch outs</h2>
+              <ul>
+                {watchOuts.map(w => <li>{w}</li>)}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
+
+      {pricingNote && (
+        <section class="detail-section">
+          <h2>Pricing</h2>
+          <p class="pricing-note">{pricingNote}</p>
+        </section>
+      )}
+
+      {faqs.length > 0 && (
+        <section class="detail-section">
+          <h2>FAQ</h2>
+          <div class="faq-list">
+            {faqs.map(f => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="detail-section">
+        <h2>What people say</h2>
+        {quotes.length > 0 ? (
+          <div class="quotes-list">
+            {quotes.map(q => (
+              <blockquote class="quote-card">
+                <p>“{q.text}”</p>
+                <footer>
+                  <span>{q.author || 'Anonymous'}</span>
+                  {q.source && <span class="quote-source">{q.source}</span>}
+                  {q.url && <a href={q.url} target="_blank" rel="noopener">Source ↗</a>}
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        ) : (
+          <p class="proof-empty">We’re collecting public reviews from X, YouTube, LinkedIn, and Trustpilot — none listed yet.</p>
+        )}
+      </section>
     </div>
+
     <aside class="detail-aside">
       <div class="facts-card">
         <div class="aside-label">Quick facts</div>
         <div class="facts-list">
           <div class="fact-row"><span class="k">Category</span><a class="v" style={`color:${cat.color}`} href={`/category/${t.cat}/`}>{cat.label}</a></div>
           <div class="fact-row"><span class="k">Pricing</span><span class="v">{t.price}</span></div>
+          {t.addedAt && <div class="fact-row"><span class="k">Listed</span><span class="v">{t.addedAt}</span></div>}
+          {lastChecked && <div class="fact-row"><span class="k">Last checked</span><span class="v">{lastChecked}</span></div>}
+          <div class="fact-row"><span class="k">Verified</span><span class="v">{t.verified ? 'Yes' : 'No'}</span></div>
         </div>
+        {pricingNote && <p class="facts-pricing-note">{pricingNote}</p>}
       </div>
-      <div class="bestfor-card">
-        <div class="title">Best for</div>
-        <p>{t.best}</p>
-      </div>
+      {t.best && (
+        <div class="bestfor-card">
+          <div class="title">Best for</div>
+          <p>{t.best}</p>
+        </div>
+      )}
       <a class="claim-card" href="/submit/" style="text-decoration:none;display:block">Own this tool? <span class="cta">Suggest an update →</span></a>
     </aside>
   </div>
 
-  <div class="alternatives">
-    <h2>Alternatives in {cat.label}</h2>
-    <div class="grid-tools">
-      {related.map(r => <ToolCard tool={r} />)}
+  {related.length > 0 && (
+    <div class="alternatives">
+      <h2>Alternatives in {cat.label}</h2>
+      <div class="alt-strip">
+        {related.map(r => {
+          const rPrice = PRICE_STYLES[r.price] || PRICE_STYLES.Freemium;
+          const rDomain = (r.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+          return (
+            <article class="alt-card">
+              <div class="alt-card-top">
+                <div class="alt-tile" style={`background:${r.color || '#1D9BF0'}`}>{r.name.charAt(0).toUpperCase()}</div>
+                <div class="alt-card-body">
+                  <a class="alt-name" href={`/tools/${r.id}/`}>{r.name}</a>
+                  <span class="alt-price" style={`background:${rPrice.bg};color:${rPrice.fg}`}>{r.price}</span>
+                </div>
+              </div>
+              <p class="alt-tagline">{r.tagline}</p>
+              <p class="alt-why">{whyLook(r)}</p>
+              <div class="alt-actions">
+                <a class="alt-link" href={`/tools/${r.id}/`}>Compare →</a>
+                <a class="alt-visit" href={r.url || '#'} target="_blank" rel="noopener">Visit {rDomain.split('/')[0]} ↗</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
-  </div>
+  )}
 </main>
 </Base>
