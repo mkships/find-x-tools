@@ -2,15 +2,14 @@
 import Base from '../layouts/Base.astro';
 import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
-import { CATS, TOOLS } from '../data/tools.js';
+import { TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
+import { ArrowRight, Clock3, TrendingUp } from '@lucide/astro';
 
-const heroChips = Object.keys(CATS).slice(0, 6);
-const featured = TOOLS.filter(t => t.featured).slice(0, 3);
-const picks = [...TOOLS].sort((a, b) => b.users - a.users).slice(0, 9);
+const picks = [...TOOLS].sort((a, b) => b.popularityScore - a.popularityScore).slice(0, 18);
 
-const title = `${SITE_NAME} — Every tool to grow on X, in one place`;
-const description = `Discover, compare and pick the best tools for content, growth, scheduling, analytics and engagement on X. Hand-curated directory of ${TOOLS.length} X-native tools.`;
+const title = `${SITE_NAME} — Grow, engage and monetise your audience on X`;
+const description = `Discover, compare and pick the best tools for content writing, growth, scheduling, analytics and engagement on X. Hand-curated directory of X-native tools.`;
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -28,36 +27,37 @@ const jsonld = {
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-inner">
-      <div class="hero-badge">🚀 {TOOLS.length} X-native tools, hand-curated</div>
-      <h1>Every tool to grow<br />on <span class="grad-text">X, in one place</span></h1>
-      <p>Discover, compare and pick the best tools for content, growth, scheduling, analytics and engagement on X.</p>
+      <div class="hero-badge">🚀 100+ tools, hand-curated</div>
+      <h1>
+        <span class="hero-title-line">Every tool to grow and monetise</span>
+        <span class="hero-title-line">your audience on <span class="grad-text">X, in one place.</span></span>
+      </h1>
+      <p>Discover, compare and pick the best X tools for content writing, growth, scheduling and analytics.</p>
       <div class="hero-search">
-        <input id="heroSearch" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics…" aria-label="Search X tools" />
+        <input id="heroSearch" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
         <button id="heroSearchBtn">Search</button>
       </div>
-      <div class="hero-chips">
-        {heroChips.map(k => <a class="hero-chip" href={`/category/${k}/`}>{CATS[k].label}</a>)}
+      <div class="hero-actions">
+        <a class="hero-action hero-action-primary" href="/tools/">Browse Tools</a>
+        <a class="hero-action hero-action-secondary" href="/submit/">Submit a Tool</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <h2>Featured tools</h2>
-      <a class="link-view-all" href="/tools/">View all →</a>
-    </div>
-    <div class="grid-featured">
-      {featured.map(t => <ToolCard tool={t} />)}
     </div>
   </section>
 
   <section class="section-home-main">
     <div class="layout-sidebar">
-      <CategorySidebar active="" />
+      <CategorySidebar active="all" />
       <div>
         <div class="toolbar">
-          <div class="seg">
-            <span class="seg-btn active">⭐ Editorial Picks</span>
+          <div class="seg" aria-label="Tool ordering">
+            <button class="seg-btn active" type="button" aria-pressed="true">
+              <TrendingUp size={16} strokeWidth={2} aria-hidden="true" />
+              Popular Tools
+            </button>
+            <button class="seg-btn" type="button" disabled title="Recently Added is coming soon">
+              <Clock3 size={16} strokeWidth={2} aria-hidden="true" />
+              Recently Added
+            </button>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
@@ -65,7 +65,10 @@ const jsonld = {
           {picks.map(t => <ToolCard tool={t} />)}
         </div>
         <div style="margin-top:28px;text-align:center">
-          <a class="btn-view-all btn-view-all-link" href="/tools/">View all {TOOLS.length} tools →</a>
+          <a class="btn-view-all btn-view-all-link" href="/tools/">
+            View All Tools
+            <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </div>

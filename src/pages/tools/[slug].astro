@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import { CATS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
+import { BadgeCheck, Star } from '@lucide/astro';
 
 export function getStaticPaths() {
   return TOOLS.map(t => ({ params: { slug: t.id }, props: { tool: t } }));
@@ -11,8 +12,8 @@ export function getStaticPaths() {
 
 const { tool: t } = Astro.props;
 const cat = CATS[t.cat];
-const related = TOOLS.filter(x => x.cat === t.cat && x.id !== t.id)
-  .sort((a, b) => b.users - a.users).slice(0, 3);
+const related = TOOLS.filter(x => x.categories.includes(t.cat) && x.id !== t.id)
+  .sort((a, b) => b.popularityScore - a.popularityScore).slice(0, 3);
 const domain = (t.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
 // Homepage screenshot captured via Firecrawl (see .firecrawl/batch.sh); pages
 // without one fall back to the placeholder so a failed capture never blocks a build.
@@ -50,8 +51,8 @@ const jsonld = [
     <div class="detail-head">
       <div class="detail-title-row">
         <h1>{t.name}</h1>
-        {t.verified && <span class="badge-verified-lg">✓</span>}
-        {t.featured && <span class="badge-featured-lg">★ Featured</span>}
+        {t.tested && <span class="badge-tested badge-tested-lg"><BadgeCheck size={14} strokeWidth={2.2} aria-hidden="true" /> Tested</span>}
+        {t.editorPick && <span class="badge-editor-pick badge-editor-pick-lg"><Star size={13} strokeWidth={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span>}
       </div>
       <p class="detail-tagline">{t.tagline}</p>
     </div>

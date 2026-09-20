@@ -1,10 +1,15 @@
 ---
 import { CATS, PRICE_STYLES } from '../data/tools.js';
+import { BadgeCheck, Star, TrendingUp } from '@lucide/astro';
 
 const { tool: t } = Astro.props;
 const cat = CATS[t.cat] || {};
 const p = PRICE_STYLES[t.price] || PRICE_STYLES.Freemium;
 const initial = (t.name || '?').trim().charAt(0).toUpperCase();
+const popularity = Number(t.popularityScore || 0).toLocaleString('en-US');
+const categories = (t.categories || [t.cat])
+  .map(key => CATS[key])
+  .filter(Boolean);
 ---
 <a
   class="tool-card"
@@ -14,20 +19,38 @@ const initial = (t.name || '?').trim().charAt(0).toUpperCase();
   data-catlabel={(cat.label || '').toLowerCase()}
   data-cat={t.cat}
   data-price={t.price}
+  data-editor-pick={String(Boolean(t.editorPick))}
+  data-popularity={t.popularityScore}
 >
   <div class="tool-card-top">
     <div class="tile" style={`background:${t.color || '#1D9BF0'}`}>{initial}</div>
     <div class="tool-card-body">
       <div class="tool-card-title">
         <span class="name">{t.name}</span>
-        {t.verified && <span class="badge-verified" title="Verified">✓</span>}
-        {t.featured && <span class="badge-featured">★ Featured</span>}
+        {t.tested && (
+          <span class="badge-tested" title="Personally used and checked by X Tools Directory">
+            <BadgeCheck size={13} strokeWidth={2.2} aria-hidden="true" />
+            Tested
+          </span>
+        )}
+        {t.editorPick && (
+          <span class="badge-editor-pick" title="Recommended by the X Tools Directory editorial team">
+            <Star size={12} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
+            Editor's Pick
+          </span>
+        )}
       </div>
       <p class="tool-card-tagline">{t.tagline}</p>
     </div>
   </div>
   <div class="tool-card-foot">
-    <span class="cat-chip">{cat.label || 'Tool'}</span>
-    <span class="price-badge" style={`margin-left:auto;background:${p.bg};color:${p.fg}`}>{t.price || 'Freemium'}</span>
+    <div class="category-chips">
+      {categories.map(category => <span class="cat-chip">{category.label}</span>)}
+    </div>
+    <span class="popularity-chip" title="Temporary popularity score based on placeholder Reddit and X mention data">
+      <TrendingUp size={13} strokeWidth={1.9} aria-hidden="true" />
+      {popularity}
+    </span>
+    <span class="price-badge" style={`background:${p.bg};color:${p.fg}`}>{t.price || 'Freemium'}</span>
   </div>
 </a>

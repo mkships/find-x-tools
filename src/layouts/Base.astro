@@ -1,6 +1,7 @@
 ---
 import { SITE_NAME } from '../config.js';
 import { CATS } from '../data/tools.js';
+import { Search } from '@lucide/astro';
 
 const { title, description, jsonld, ogImage } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -35,22 +36,24 @@ const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
 <body>
 <div id="app">
   <header class="header">
-    <div class="header-inner">
-      <a class="logo" href="/" style="text-decoration:none">
-        <div class="logo-badge"><img src="/assets/x-white.png" alt={SITE_NAME + ' logo'} /></div>
-        <span class="logo-text">Tools<span> Directory</span></span>
-      </a>
-      <nav class="nav">
+    <div class="header-layout">
+      <div class="header-left">
+        <a class="logo" href="/" style="text-decoration:none">
+          <div class="logo-badge"><img src="/assets/x-white.png" alt={SITE_NAME + ' logo'} /></div>
+          <span class="logo-text">Tools<span> Directory</span></span>
+        </a>
+      </div>
+      <nav class="header-center nav">
         <a class="nav-link" href="/tools/">Browse Tools</a>
-        <a class="nav-link" href="/tools/#categories">Categories</a>
+        <a class="nav-link" href="/categories/">Categories</a>
         <a class="nav-link" href="/about/">About</a>
       </nav>
       <div class="header-right">
         <div class="search-pill">
-          <span class="glyph">⌕</span>
-          <input id="headerSearch" placeholder="Search tools…" aria-label="Search tools" />
+          <Search class="search-icon" size={18} strokeWidth={1.75} aria-hidden="true" />
+          <input id="headerSearch" placeholder="Search tools" aria-label="Search tools" />
         </div>
-        <a class="btn-submit-header" href="/submit/" style="text-decoration:none;display:inline-block">Submit a Tool</a>
+        <a class="btn-submit-header" href="/submit/">Submit a Tool</a>
       </div>
     </div>
   </header>
@@ -77,6 +80,7 @@ const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
         <div class="footer-col-label">Resources</div>
         <div class="footer-links">
           <a href="/tools/">Browse All Tools</a>
+          <a href="/categories/">Browse Categories</a>
           <a href="/submit/">Submit a Tool</a>
           <a href="/about/">About</a>
           <span>Contact</span>

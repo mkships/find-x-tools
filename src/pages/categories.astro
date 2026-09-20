@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATS, ICONS, TOOLS } from '../data/tools.js';
+import { SITE_NAME } from '../config.js';
+import { ArrowRight, ChevronRight, Plus } from '@lucide/astro';
+
+const categoryDescriptions = {
+  content: 'Write sharper posts and threads, generate ideas, and publish consistently.',
+  growth: 'Grow a relevant audience and turn attention into meaningful engagement.',
+  schedule: 'Plan, schedule, automate, and recycle your X content from one workflow.',
+  analytics: 'Measure reach, engagement, audience growth, and the content that performs.',
+  ai: 'Draft thoughtful replies, automate conversations, and engage more efficiently.',
+  design: 'Create polished visuals, screenshots, videos, and branded media for X.',
+  audit: 'Review follower quality, clean up your account, and strengthen your profile.',
+  comments: 'Save, organize, search, and revisit the best ideas you find on X.',
+  bio: 'Turn your profile link into a focused destination for your work and offers.',
+  listening: 'Monitor mentions, keywords, competitors, and conversations in real time.'
+};
+
+const categories = Object.entries(CATS).map(([key, category]) => ({
+  key,
+  ...category,
+  icon: ICONS[key] || '🧰',
+  count: TOOLS.filter(tool => tool.categories.includes(key)).length,
+  description: categoryDescriptions[key]
+})).sort((a, b) => a.label.localeCompare(b.label));
+
+const title = `Browse X Tool Categories | ${SITE_NAME}`;
+const description = `Find the right X tool by category. Explore ${categories.length} categories covering ${TOOLS.length} hand-curated tools for creators, marketers, and agencies.`;
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'X tool categories',
+    numberOfItems: categories.length,
+    itemListElement: categories.map((category, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: category.label,
+      url: new URL(`/category/${category.key}/`, Astro.site).toString()
+    }))
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: 'Categories', item: new URL('/categories/', Astro.site).toString() }
+    ]
+  }
+];
+---
+<Base title={title} description={description} jsonld={jsonld}>
+  <main class="page-categories">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+      <span aria-current="page">Categories</span>
+    </nav>
+
+    <header class="categories-heading">
+      <h1>Browse by Category</h1>
+      <p>
+        Find the right X tool for your exact need — <strong>{categories.length} categories</strong>
+        covering <strong>{TOOLS.length} tools</strong> for creators, marketers, and agencies.
+      </p>
+    </header>
+
+    <div class="categories-grid">
+      {categories.map(category => (
+        <a class="category-card" href={`/category/${category.key}/`}>
+          <div class="category-card-top">
+            <span class="category-card-icon" aria-hidden="true">{category.icon}</span>
+            <span class="category-count">
+              <span class="category-count-icon" aria-hidden="true">🛠️</span>
+              {category.count} tool{category.count === 1 ? '' : 's'}
+            </span>
+          </div>
+          <h2>{category.label}</h2>
+          <p>{category.description}</p>
+          <span class="category-card-link">
+            Browse tools
+            <ArrowRight size={15} strokeWidth={2} aria-hidden="true" />
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <section class="categories-cta" aria-labelledby="categories-cta-title">
+      <p id="categories-cta-title">Can’t find what you’re looking for?</p>
+      <div class="categories-cta-actions">
+        <a class="hero-action hero-action-secondary" href="/tools/">Browse All Tools</a>
+        <a class="hero-action hero-action-primary" href="/submit/">
+          <Plus size={17} strokeWidth={2.2} aria-hidden="true" />
+          Submit a Tool
+        </a>
+      </div>
+    </section>
+  </main>
+</Base>

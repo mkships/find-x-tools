@@ -1,42 +1,275 @@
 ---
 import Base from '../../layouts/Base.astro';
-import BrowseView from '../../components/BrowseView.astro';
-import { CATS, TOOLS } from '../../data/tools.js';
+import ToolCard from '../../components/ToolCard.astro';
+import { CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
+import {
+  BadgeCheck,
+  ChevronDown,
+  ChevronRight,
+  CreditCard,
+  Gift,
+  Layers3,
+  LayoutGrid,
+  Star
+} from '@lucide/astro';
 
 export function getStaticPaths() {
   return Object.keys(CATS).map(slug => ({ params: { slug } }));
 }
 
+const categoryContent = {
+  content: {
+    description: 'Write stronger posts and threads, develop ideas, and publish consistently on X.',
+    overview: 'Writing consistently on X takes more than a blank composer. Content writing tools help you find angles, sharpen hooks, structure threads, preserve your voice, and turn rough ideas into posts worth publishing. Whether you are building a personal brand or managing a content calendar, these tools reduce the friction between an idea and a finished post.'
+  },
+  growth: {
+    description: 'Build a relevant audience, find growth opportunities, and turn attention into engagement.',
+    overview: 'Sustainable growth on X comes from reaching the right people and understanding what makes them engage. Growth and audience tools help you research followers, discover relevant accounts, identify high-intent conversations, and measure whether your audience is becoming more valuable—not merely larger.'
+  },
+  schedule: {
+    description: 'Plan, schedule, automate, and recycle your X content from one reliable workflow.',
+    overview: 'Scheduling and automation tools make consistent publishing possible without keeping you tied to the timeline. They help plan campaigns, queue posts and threads, recycle evergreen ideas, coordinate approvals, and publish at useful times. The right workflow gives creators and teams more time to engage while their content calendar stays on track.'
+  },
+  analytics: {
+    description: 'Track reach, engagement, audience growth, and the posts that perform best on X.',
+    overview: 'Native metrics only tell part of the story. X analytics tools add historical trends, clearer engagement reporting, audience insight, competitor comparisons, and campaign-level measurement. They help creators and teams understand what drives growth, when their audience is active, and which content deserves to be repeated or improved.'
+  },
+  ai: {
+    description: 'Draft thoughtful replies, automate conversations, and engage more efficiently with AI.',
+    overview: 'Reply and engagement tools help you participate in more relevant conversations without losing your voice. They can surface high-intent posts, draft contextual replies, organize target accounts, and automate carefully scoped interactions. Used thoughtfully, they reduce repetitive work while keeping genuine engagement at the center of your X strategy.'
+  },
+  design: {
+    description: 'Create polished graphics, screenshots, videos, and branded media designed for X.',
+    overview: 'Strong visuals make posts easier to understand and more likely to stop the scroll. Design and media tools help create branded graphics, beautify screenshots, produce short videos, and repurpose content for X without requiring a full design workflow. They are useful for creators and teams that need consistent visual quality at speed.'
+  },
+  audit: {
+    description: 'Review follower quality, clean up your account, and strengthen your X profile.',
+    overview: 'Profile audit tools reveal issues that are difficult to spot from the timeline alone. They help identify inactive or suspicious followers, review account health, evaluate profile conversion, and clean up outdated connections or content. These checks create a stronger foundation before you invest more time in publishing and growth.'
+  },
+  comments: {
+    description: 'Save, organize, search, and revisit valuable posts and ideas from X.',
+    overview: 'Bookmarks become much more useful when they can be searched, tagged, and organized. Bookmark and save tools turn scattered posts into a practical research library for content ideas, references, customer insight, and inspiration. They help you recover what you saved and put it back to work.'
+  },
+  bio: {
+    description: 'Turn your X profile link into a focused destination for your work, offers, and audience.',
+    overview: 'A bio-link page gives your audience one clear destination for everything you want to share. These tools combine multiple links, products, lead capture, media kits, and click analytics in a mobile-friendly page. They are especially useful when your X profile needs to support several projects or conversion paths.'
+  },
+  listening: {
+    description: 'Monitor mentions, keywords, competitors, and relevant conversations across X.',
+    overview: 'Social listening tools help you see the conversations that matter beyond direct notifications. They track brand mentions, keywords, competitors, sentiment, and emerging topics so you can respond earlier and understand how the market is moving. This is useful for reputation management, research, support, and proactive engagement.'
+  }
+};
+
 const { slug } = Astro.params;
 const cat = CATS[slug];
-const tools = TOOLS.filter(t => t.cat === slug).sort((a, b) => b.users - a.users);
+const content = categoryContent[slug];
+const tools = TOOLS.filter(tool => tool.categories.includes(slug))
+  .sort((a, b) => b.popularityScore - a.popularityScore);
+const otherCategories = Object.entries(CATS)
+  .filter(([key]) => key !== slug)
+  .sort(([, a], [, b]) => a.label.localeCompare(b.label));
+const freePlanCount = tools.filter(tool => tool.price === 'Free' || tool.price === 'Freemium').length;
+const testedCount = tools.filter(tool => tool.tested).length;
+const categoryArticle = /^[aeiou]/i.test(cat.label) ? 'an' : 'a';
+
+const filters = [
+  { value: 'All', label: 'All Tools', Icon: LayoutGrid },
+  { value: 'Free', label: 'Free', Icon: Gift },
+  { value: 'Freemium', label: 'Freemium', Icon: Layers3 },
+  { value: 'Paid', label: 'Paid', Icon: CreditCard },
+  { value: 'Editor', label: "Editor's Pick", Icon: Star }
+];
+
+const faqs = [
+  {
+    question: `What should I look for in ${categoryArticle} ${cat.label} tool?`,
+    answer: `Placeholder: we are preparing a detailed buying guide for ${cat.label.toLowerCase()} tools. For now, compare the workflow fit, pricing model, supported features, and how much setup each option requires.`
+  },
+  {
+    question: `Are there free ${cat.label} tools for X?`,
+    answer: 'Placeholder: this answer will explain the strongest free and freemium options in this category, along with the common limits to expect before upgrading.'
+  },
+  {
+    question: 'How does X Tools Directory select these tools?',
+    answer: 'Placeholder: this answer will document our inclusion, testing, editorial review, and listing-update process for this category.'
+  },
+  {
+    question: `Which ${cat.label} tool is best for my workflow?`,
+    answer: 'Placeholder: this answer will compare the best options for solo creators, growing teams, agencies, and larger organizations.'
+  }
+];
 
 const title = `Best ${cat.label} Tools for X (${tools.length}) | ${SITE_NAME}`;
-const description = `Compare the ${tools.length} best ${cat.label.toLowerCase()} tools for X — ${tools.slice(0, 3).map(t => t.name).join(', ')} and more. Pricing and key features, hand-curated.`;
+const description = `Compare the ${tools.length} best ${cat.label.toLowerCase()} tools for X — ${tools.slice(0, 3).map(tool => tool.name).join(', ')} and more. Pricing and key features, hand-curated.`;
 const jsonld = [
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `${cat.label} tools for X`,
     numberOfItems: tools.length,
-    itemListElement: tools.map((t, i) => ({
+    itemListElement: tools.map((tool, index) => ({
       '@type': 'ListItem',
-      position: i + 1,
-      name: t.name,
-      url: new URL(`/tools/${t.id}/`, Astro.site).toString()
+      position: index + 1,
+      name: tool.name,
+      url: new URL(`/tools/${tool.id}/`, Astro.site).toString()
     }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
-      { '@type': 'ListItem', position: 2, name: cat.label, item: new URL(`/category/${slug}/`, Astro.site).toString() }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 3, name: cat.label, item: new URL(`/category/${slug}/`, Astro.site).toString() }
     ]
   }
 ];
 ---
 <Base title={title} description={description} jsonld={jsonld}>
-  <BrowseView cat={slug} />
+  <main class="category-landing">
+    <section class="category-landing-hero">
+      <div class="category-landing-hero-inner">
+        <nav class="breadcrumbs category-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <a href="/tools/">Tools</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <span aria-current="page">{cat.label}</span>
+        </nav>
+
+        <div class="category-hero-content">
+          <div class="category-hero-icon" aria-hidden="true">{ICONS[slug]}</div>
+          <div>
+            <h1>Best {cat.label} Tools for X</h1>
+            <p>{content.description}</p>
+            <div class="category-hero-stats" aria-label="Category statistics">
+              <span>🛠️ {tools.length} tool{tools.length === 1 ? '' : 's'}</span>
+              <span>🎁 {freePlanCount} with free plans</span>
+              <span><BadgeCheck size={14} strokeWidth={2} aria-hidden="true" /> {testedCount} tested</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="category-landing-body">
+      <section class="category-overview" aria-label={`About ${cat.label} tools`}>
+        <p>{content.overview}</p>
+      </section>
+
+      <section class="category-tools" aria-labelledby="category-tools-title">
+        <div class="category-section-heading">
+          <h2 id="category-tools-title">Explore {cat.label} Tools</h2>
+        </div>
+        <div class="toolbar category-filter-toolbar">
+          <div class="seg category-filter-seg" id="categoryFilters" aria-label="Filter category tools">
+            {filters.map(({ value, label, Icon }) => (
+              <button
+                type="button"
+                class={`seg-btn${value === 'All' ? ' active' : ''}`}
+                data-filter={value}
+                aria-pressed={value === 'All' ? 'true' : 'false'}
+              >
+                <Icon
+                  size={14}
+                  strokeWidth={value === 'Editor' ? 2.1 : 1.9}
+                  fill={value === 'Editor' ? 'currentColor' : 'none'}
+                  aria-hidden="true"
+                />
+                {label}
+              </button>
+            ))}
+          </div>
+          <span class="count-label" id="categoryToolsCount">{tools.length} tool{tools.length === 1 ? '' : 's'}</span>
+        </div>
+
+        <div class="grid-tools" id="categoryToolsGrid">
+          {tools.map(tool => <ToolCard tool={tool} />)}
+        </div>
+        <div class="empty-state hidden" id="categoryEmptyState">
+          <div class="title">No tools match this filter</div>
+          <p>Try another pricing option or view all tools in this category.</p>
+          <button class="hero-action hero-action-secondary" id="resetCategoryFilter" type="button">View All Tools</button>
+        </div>
+      </section>
+
+      <section class="category-faq" aria-labelledby="category-faq-title">
+        <h2 id="category-faq-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary>
+                <span>{faq.question}</span>
+                <ChevronDown size={18} strokeWidth={2} aria-hidden="true" />
+              </summary>
+              <div class="faq-answer"><p>{faq.answer}</p></div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="other-categories" aria-labelledby="other-categories-title">
+        <h2 id="other-categories-title">Browse Other Categories</h2>
+        <div class="other-category-list">
+          {otherCategories.map(([key, category]) => (
+            <a href={`/category/${key}/`}>
+              <span aria-hidden="true">{ICONS[key]}</span>
+              {category.label}
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const filterGroup = document.getElementById('categoryFilters')!;
+    const grid = document.getElementById('categoryToolsGrid')!;
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.tool-card'));
+    const count = document.getElementById('categoryToolsCount')!;
+    const emptyState = document.getElementById('categoryEmptyState')!;
+
+    function applyCategoryFilter(filter: string) {
+      let visible = 0;
+      cards.forEach(card => {
+        const show = filter === 'All'
+          || (filter === 'Editor' && card.dataset.editorPick === 'true')
+          || card.dataset.price === filter;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      filterGroup.querySelectorAll<HTMLElement>('[data-filter]').forEach(button => {
+        const active = button.dataset.filter === filter;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+
+      count.textContent = visible + ' tool' + (visible === 1 ? '' : 's');
+      grid.classList.toggle('hidden', visible === 0);
+      emptyState.classList.toggle('hidden', visible > 0);
+
+      const params = new URLSearchParams(location.search);
+      if (filter === 'All') params.delete('filter');
+      else params.set('filter', filter.toLowerCase());
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? '?' + query : ''));
+    }
+
+    filterGroup.addEventListener('click', event => {
+      const button = (event.target as HTMLElement).closest<HTMLElement>('[data-filter]');
+      if (button?.dataset.filter) applyCategoryFilter(button.dataset.filter);
+    });
+
+    document.getElementById('resetCategoryFilter')!.addEventListener('click', () => applyCategoryFilter('All'));
+
+    const initialFilter = new URLSearchParams(location.search).get('filter');
+    const matchingFilter = ['free', 'freemium', 'paid', 'editor'].find(value => value === initialFilter);
+    if (matchingFilter) {
+      applyCategoryFilter(matchingFilter === 'editor'
+        ? 'Editor'
+        : matchingFilter.charAt(0).toUpperCase() + matchingFilter.slice(1));
+    }
+  </script>
 </Base>

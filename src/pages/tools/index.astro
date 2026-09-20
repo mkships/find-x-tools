@@ -11,7 +11,7 @@ const jsonld = {
   '@type': 'ItemList',
   name: `All X tools on ${SITE_NAME}`,
   numberOfItems: TOOLS.length,
-  itemListElement: [...TOOLS].sort((a, b) => b.users - a.users).map((t, i) => ({
+  itemListElement: [...TOOLS].sort((a, b) => b.popularityScore - a.popularityScore).map((t, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: t.name,
