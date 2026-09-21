@@ -1,5 +1,5 @@
 ---
-import { CircleDollarSign, ExternalLink } from '@lucide/astro';
+import { BadgePercent, Check, CircleDollarSign, ExternalLink } from '@lucide/astro';
 
 const { tiers = [], pricingModel, note = '', checkedAt = '', url = '' } = Astro.props;
 const formatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -12,22 +12,22 @@ const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00
     <div><h2 id="pricing-title">Pricing</h2></div>
   </div>
   {tiers.length ? (
-    <div class="pricing-summary-list">
+    <div class="pricing-tier-grid">
       {tiers.map(tier => (
-        <div class="pricing-summary-row">
-          <strong class="pricing-summary-name">{tier.name}</strong>
-          <span class="pricing-summary-price">{tier.price}{tier.cadence && <small>{tier.cadence}</small>}</span>
-          <div class="pricing-summary-copy">
-            {tier.description && <p>{tier.description}</p>}
-            {tier.features?.length > 0 && <ul>{tier.features.map(feature => <li>{feature}</li>)}</ul>}
+        <article class="pricing-tier-card">
+          <div class="pricing-tier-head">
+            <strong>{tier.name}</strong>
+            <span class="pricing-tier-price">{tier.price}{tier.cadence && <small>{tier.cadence}</small>}</span>
           </div>
-        </div>
+          {tier.description && <p>{tier.description}</p>}
+          {tier.features?.length > 0 && <ul>{tier.features.map(feature => <li><Check size={13} strokeWidth={2.5} aria-hidden="true" /><span>{feature}</span></li>)}</ul>}
+        </article>
       ))}
     </div>
   ) : (
-    <div class="pricing-summary-list"><div class="pricing-summary-row fallback"><strong class="pricing-summary-name">{pricingModel}</strong><span class="pricing-summary-price">See website</span><p>Check the official website for current plans and availability.</p></div></div>
+    <div class="pricing-tier-grid"><article class="pricing-tier-card pricing-tier-fallback"><div class="pricing-tier-head"><strong>{pricingModel}</strong><span class="pricing-tier-price">See website</span></div><p>Check the official website for current plans and availability.</p></article></div>
   )}
-  {note && <p class="pricing-note">{note}</p>}
+  {note && <p class="pricing-note"><BadgePercent size={16} strokeWidth={2} aria-hidden="true" /><span>{note}</span></p>}
   <div class="pricing-card-foot">
     {checkedAt && <span>Checked {formatDate(checkedAt)}</span>}
     <a href={url || '#'} target="_blank" rel="noopener">View current pricing <ExternalLink size={13} strokeWidth={2} aria-hidden="true" /></a>
