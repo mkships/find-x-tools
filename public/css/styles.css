@@ -1284,7 +1284,7 @@ a.btn-submit-header, a.btn-submit-header:hover { color: var(--color-white); }
 .directory-detail-main .use-case-item p { margin-top: 3px; font-size: 13px; line-height: 1.55; }
 .directory-detail-main .detail-feature-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 13px 24px; }
 .directory-detail-main .detail-feature-item { font-size: 13.5px; }
-.directory-detail-main .tool-base-feature-list { margin-top: 18px; padding-top: 18px; }
+.directory-detail-main .tool-base-feature-list { margin-top: 18px; padding-top: 0; border-top: 0; }
 .directory-detail-main .tool-base-feature-list span { font-size: 13px; }
 .directory-detail-main .social-proof-section { margin-top: 10px; padding-top: 28px; }
 .directory-detail-main .mention-wall { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -1321,8 +1321,14 @@ a.btn-submit-header, a.btn-submit-header:hover { color: var(--color-white); }
   transform: translateY(-2px); border-color: rgba(29,155,240,.48);
   box-shadow: 0 8px 20px rgba(15,20,25,.09);
 }
-.directory-detail-sidebar .tool-section-icon { display: none; }
-.directory-detail-sidebar .tool-section-heading { margin-bottom: 12px; }
+.directory-detail-sidebar .tool-section-icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+  border-radius: 9px;
+}
+.directory-detail-sidebar .tool-section-heading { align-items: center; margin-bottom: 15px; }
 .directory-detail-sidebar .tool-section-heading h2,
 .tool-sidebar-card h2 { font-size: 15px; letter-spacing: -.01em; }
 .directory-detail-sidebar .tool-base-facts > div {
@@ -1347,6 +1353,7 @@ a.btn-submit-header, a.btn-submit-header:hover { color: var(--color-white); }
 .directory-detail-sidebar .audience-fit-card { padding: 17px; }
 .directory-detail-sidebar .audience-fit-card li { font-size: 11px; }
 .tool-sidebar-card h2 { margin: 0 0 14px; color: var(--color-ink); }
+.tool-sidebar-card .tool-section-heading h2 { margin: 0; }
 .tool-sidebar-link-list { display: flex; flex-direction: column; gap: 7px; }
 .tool-sidebar-link-list a {
   display: grid;

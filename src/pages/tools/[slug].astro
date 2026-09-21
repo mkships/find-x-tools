@@ -8,7 +8,7 @@ import PricingCard from '../../components/tool-detail/PricingCard.astro';
 import { CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { normalizeToolDetail } from '../../data/tool-detail-schema.js';
 import { SITE_NAME } from '../../config.js';
-import { ArrowRight, CheckCircle2, ChevronRight, ListChecks } from '@lucide/astro';
+import { ArrowLeftRight, ArrowRight, CheckCircle2, ChevronRight, ListChecks } from '@lucide/astro';
 
 export function getStaticPaths() {
   return TOOLS.map(tool => ({ params: { slug: tool.id }, props: { tool } }));
@@ -111,7 +111,10 @@ const jsonld = [
           <BaseToolFacts tool={tool} category={category} categories={relatedCategories} categoryIcon={ICONS[tool.cat]} />
 
           <section class="tool-sidebar-card tool-sidebar-alternatives" aria-labelledby="alternatives-title">
-            <h2 id="alternatives-title">{tool.name} alternatives</h2>
+            <div class="tool-section-heading compact">
+              <span class="tool-section-icon"><ArrowLeftRight size={18} strokeWidth={2} aria-hidden="true" /></span>
+              <div><h2 id="alternatives-title">{tool.name} alternatives</h2></div>
+            </div>
             <div class="tool-sidebar-link-list">
               {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-monogram" style={`background:${item.color}`}>{item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
             </div>
