@@ -8,7 +8,7 @@ import PricingCard from '../../components/tool-detail/PricingCard.astro';
 import { CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { normalizeToolDetail } from '../../data/tool-detail-schema.js';
 import { SITE_NAME } from '../../config.js';
-import { ArrowLeftRight, ArrowRight, CheckCircle2, ChevronRight, ListChecks } from '@lucide/astro';
+import { ArrowLeftRight, ArrowRight, CheckCircle2, ChevronRight, ListChecks, Sparkles } from '@lucide/astro';
 
 export function getStaticPaths() {
   return TOOLS.map(tool => ({ params: { slug: tool.id }, props: { tool } }));
@@ -90,7 +90,7 @@ const jsonld = [
 
         {hasFeatures && <section class="directory-editorial-card" aria-labelledby="base-features-title">
           <div class="tool-content-heading">
-            <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" />
+            <span class="tool-content-icon"><Sparkles size={19} strokeWidth={2} aria-hidden="true" /></span>
             <h2 id="base-features-title">What {tool.name} helps you do</h2>
           </div>
           <div class="tool-base-feature-list">
@@ -127,8 +127,8 @@ const jsonld = [
         <div class="tool-update-copy">
           <p>Own or operate {tool.name}? Help us keep this listing accurate.</p>
         </div>
-        <div class="tool-update-action">
-          <a class="hero-action hero-action-secondary" href="/submit/">Suggest an update<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+        <a class="hero-action hero-action-secondary" href="/submit/">Suggest an update<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+        <div class="tool-update-meta">
           <ToolDates listedAt={tool.addedAt} />
         </div>
       </section>
