@@ -1,6 +1,6 @@
 ---
 import { CATS, PRICE_STYLES } from '../data/tools.js';
-import { BadgeCheck, Star, TrendingUp, ShieldCheck } from '@lucide/astro';
+import { BadgeCheck, Star, TrendingUp } from '@lucide/astro';
 
 const { tool: t } = Astro.props;
 const cat = CATS[t.cat] || {};
@@ -39,8 +39,6 @@ const categories = (t.categories || [t.cat])
             Editor's Pick
           </span>
         )}
-        {t.verified && <span class="badge-verified"><ShieldCheck size={12} strokeWidth={2.2} aria-hidden="true" /> Verified</span>}
-        {t.featured && <span class="badge-featured">Featured</span>}
         {t.sponsored && <span class="badge-sponsored">Sponsored</span>}
       </div>
       <p class="tool-card-tagline">{t.tagline}</p>

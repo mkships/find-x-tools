@@ -93,6 +93,18 @@ function normalizeTool(input) {
   if (!['Free', 'Freemium', 'Paid'].includes(input.price)) throw new Error('Choose a valid pricing model.');
 
   const capability = value => ['yes', 'no', 'unknown'].includes(value) ? value : 'unknown';
+  const inputDetail = input.detail && typeof input.detail === 'object' ? input.detail : {};
+  const pricingTiers = (Array.isArray(inputDetail.pricingTiers) ? inputDetail.pricingTiers : [])
+    .map(tier => ({
+      name: cleanText(tier?.name, 120),
+      price: cleanText(tier?.price, 120),
+      cadence: 'per month',
+      description: cleanText(tier?.description, 1000),
+      features: (Array.isArray(tier?.features) ? tier.features : [])
+        .map(feature => cleanText(feature, 300)).filter(Boolean).slice(0, 20)
+    }))
+    .filter(tier => tier.name && tier.price)
+    .slice(0, 12);
   return {
     id,
     name,
@@ -109,14 +121,17 @@ function normalizeTool(input) {
     features: (Array.isArray(input.features) ? input.features : []).map(item => cleanText(item, 300)).filter(Boolean).slice(0, 20),
     tested: Boolean(input.tested),
     editorPick: Boolean(input.editorPick),
-    verified: Boolean(input.verified),
-    featured: Boolean(input.featured),
     sponsored: Boolean(input.sponsored),
     freePlan: capability(input.freePlan),
     mobileApp: capability(input.mobileApp),
     apiAccess: capability(input.apiAccess),
     addedAt: cleanText(input.addedAt, 10) || new Date().toISOString().slice(0, 10),
-    lastChecked: cleanText(input.lastChecked, 10)
+    lastChecked: cleanText(input.lastChecked, 10),
+    detail: {
+      pricingTiers,
+      pricingNote: cleanText(inputDetail.pricingNote, 1000),
+      pricingLastChecked: cleanText(inputDetail.pricingLastChecked, 10)
+    }
   };
 }
 

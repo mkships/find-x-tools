@@ -4,7 +4,9 @@ import ToolIntro from '../../components/tool-detail/ToolIntro.astro';
 import EditorialAbout from '../../components/tool-detail/EditorialAbout.astro';
 import ToolDates from '../../components/tool-detail/ToolDates.astro';
 import BaseToolFacts from '../../components/tool-detail/BaseToolFacts.astro';
+import PricingCard from '../../components/tool-detail/PricingCard.astro';
 import { CATS, ICONS, TOOLS } from '../../data/tools.js';
+import { normalizeToolDetail } from '../../data/tool-detail-schema.js';
 import { SITE_NAME } from '../../config.js';
 import { ArrowRight, CheckCircle2, ChevronRight, ListChecks } from '@lucide/astro';
 
@@ -15,6 +17,8 @@ export function getStaticPaths() {
 const { tool } = Astro.props;
 const category = CATS[tool.cat];
 const hasFeatures = tool.features.length > 0;
+const detail = normalizeToolDetail(tool);
+const pricingTiers = detail.isDemo ? [] : detail.pricingTiers;
 const relatedCategories = tool.categories.map(slug => ({ slug, ...CATS[slug] })).filter(item => item.label);
 
 const related = TOOLS.filter(candidate => candidate.categories.includes(tool.cat) && candidate.id !== tool.id)
@@ -93,6 +97,14 @@ const jsonld = [
             {tool.features.map(feature => <span><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" />{feature}</span>)}
           </div>
         </section>}
+
+        <PricingCard
+          tiers={pricingTiers}
+          pricingModel={tool.price}
+          note={detail.isDemo ? '' : detail.pricingNote}
+          checkedAt={detail.isDemo ? '' : detail.pricingLastChecked}
+          url={tool.url}
+        />
         </div>
 
         <aside class="directory-detail-sidebar" aria-label={`${tool.name} listing details`}>

@@ -69,9 +69,19 @@ import Base from '../layouts/Base.astro';
             <div class="admin-check-grid">
               <label><input name="tested" type="checkbox" /> Tested</label>
               <label><input name="editorPick" type="checkbox" /> Editor’s Pick</label>
-              <label><input name="verified" type="checkbox" /> Verified</label>
-              <label><input name="featured" type="checkbox" /> Featured</label>
               <label><input name="sponsored" type="checkbox" /> Sponsored</label>
+            </div>
+          </div>
+
+          <div class="admin-section">
+            <div class="admin-section-heading">
+              <div><h2>Pricing tiers</h2><p>Add the current monthly plans shown on the tool’s pricing page.</p></div>
+              <button id="addPricingTier" class="admin-secondary" type="button">+ Add tier</button>
+            </div>
+            <div id="pricingTiers" class="admin-pricing-tiers"></div>
+            <div class="admin-grid two admin-pricing-meta">
+              <label>Pricing note<input name="pricingNote" maxlength="1000" placeholder="For example: Annual billing offers a discount" /></label>
+              <label>Pricing last checked<input name="pricingLastChecked" type="date" /></label>
             </div>
           </div>
 
@@ -99,6 +109,17 @@ import Base from '../layouts/Base.astro';
         </form>
       </div>
     </section>
+    <template id="pricingTierTemplate">
+      <fieldset class="admin-pricing-tier">
+        <div class="admin-pricing-tier-heading"><strong>Pricing tier</strong><button class="admin-remove-tier" type="button">Remove</button></div>
+        <div class="admin-grid two">
+          <label>Tier name<input data-tier-field="name" maxlength="120" placeholder="For example: Professional" /></label>
+          <label>Price per month<input data-tier-field="price" maxlength="120" placeholder="For example: $49" /></label>
+          <label class="wide">Tier overview<textarea data-tier-field="description" rows="2" maxlength="1000" placeholder="A short explanation of who this tier is for and what it includes"></textarea></label>
+          <label class="wide">Included features<textarea data-tier-field="features" rows="4" placeholder="One feature per line"></textarea></label>
+        </div>
+      </fieldset>
+    </template>
   </main>
 </Base>
 
@@ -116,6 +137,8 @@ import Base from '../layouts/Base.astro';
   const categoryChecks = document.getElementById('categoryChecks');
   const publishMode = document.getElementById('publishMode');
   const iconPreview = document.getElementById('iconPreview');
+  const pricingTiers = document.getElementById('pricingTiers');
+  const pricingTierTemplate = document.getElementById('pricingTierTemplate');
   let password = sessionStorage.getItem('directoryAdminPassword') || '';
   let tools = [];
   let categories = {};
@@ -189,6 +212,30 @@ import Base from '../layouts/Base.astro';
     toolForm.elements[name].checked = Boolean(value);
   }
 
+  function addPricingTier(tier = {}) {
+    const row = pricingTierTemplate.content.firstElementChild.cloneNode(true);
+    row.querySelector('[data-tier-field="name"]').value = tier.name || '';
+    row.querySelector('[data-tier-field="price"]').value = tier.price || '';
+    row.querySelector('[data-tier-field="description"]').value = tier.description || '';
+    row.querySelector('[data-tier-field="features"]').value = (tier.features || []).join('\n');
+    row.querySelector('.admin-remove-tier').addEventListener('click', () => row.remove());
+    pricingTiers.append(row);
+  }
+
+  function renderPricingTiers(tiers = []) {
+    pricingTiers.innerHTML = '';
+    tiers.forEach(addPricingTier);
+  }
+
+  function collectPricingTiers() {
+    return [...pricingTiers.querySelectorAll('.admin-pricing-tier')].map(row => ({
+      name: row.querySelector('[data-tier-field="name"]').value.trim(),
+      price: row.querySelector('[data-tier-field="price"]').value.trim(),
+      description: row.querySelector('[data-tier-field="description"]').value.trim(),
+      features: row.querySelector('[data-tier-field="features"]').value.split('\n').map(item => item.trim()).filter(Boolean)
+    })).filter(tier => tier.name || tier.price || tier.description || tier.features.length);
+  }
+
   function selectTool(id) {
     const tool = tools.find(item => item.id === id);
     if (!tool) return;
@@ -198,7 +245,10 @@ import Base from '../layouts/Base.astro';
       toolForm.elements[name].value = tool[name] ?? fallback;
     });
     toolForm.elements.features.value = (tool.features || []).join('\n');
-    ['published','tested','editorPick','verified','featured','sponsored'].forEach(name => setCheckbox(name, tool[name]));
+    ['published','tested','editorPick','sponsored'].forEach(name => setCheckbox(name, tool[name]));
+    toolForm.elements.pricingNote.value = tool.detail?.pricingNote || '';
+    toolForm.elements.pricingLastChecked.value = tool.detail?.pricingLastChecked || '';
+    renderPricingTiers(tool.detail?.pricingTiers || []);
     toolForm.querySelectorAll('[name="categories"]').forEach(input => input.checked = (tool.categories || [tool.cat]).includes(input.value));
     showIcon(tool.icon);
     renderList();
@@ -211,6 +261,7 @@ import Base from '../layouts/Base.astro';
     toolForm.elements.published.checked = true;
     toolForm.elements.color.value = '#1D9BF0';
     toolForm.elements.addedAt.value = new Date().toISOString().slice(0, 10);
+    renderPricingTiers([]);
     showIcon('');
     renderList();
     toolForm.elements.name.focus();
@@ -243,6 +294,7 @@ import Base from '../layouts/Base.astro';
   if (password) load();
   search.addEventListener('input', renderList);
   document.getElementById('newTool').addEventListener('click', newTool);
+  document.getElementById('addPricingTier').addEventListener('click', () => addPricingTier());
   toolForm.elements.icon.addEventListener('input', event => showIcon(event.target.value));
   document.getElementById('useFavicon').addEventListener('click', () => {
     const url = toolForm.elements.url.value;
@@ -260,9 +312,14 @@ import Base from '../layouts/Base.astro';
     const data = new FormData(toolForm);
     const tool = Object.fromEntries(data.entries());
     tool.published = data.has('published');
-    ['tested','editorPick','verified','featured','sponsored'].forEach(name => tool[name] = data.has(name));
+    ['tested','editorPick','sponsored'].forEach(name => tool[name] = data.has(name));
     tool.features = String(data.get('features') || '').split('\n').map(item => item.trim()).filter(Boolean);
     tool.categories = data.getAll('categories');
+    tool.detail = {
+      pricingTiers: collectPricingTiers(),
+      pricingNote: String(data.get('pricingNote') || '').trim(),
+      pricingLastChecked: String(data.get('pricingLastChecked') || '').trim()
+    };
     saveStatus.textContent = 'Saving…';
     try {
       const result = await request('PUT', { tool });
