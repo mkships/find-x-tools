@@ -24,14 +24,45 @@
       ],
       "tested": true,
       "editorPick": false,
-      "verified": false,
-      "featured": false,
       "sponsored": false,
       "freePlan": "yes",
       "mobileApp": "yes",
       "apiAccess": "yes",
       "addedAt": "2026-09-20",
-      "lastChecked": "2026-09-21"
+      "lastChecked": "2026-09-21",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Standard",
+            "price": "$79",
+            "cadence": "per month",
+            "description": "Built for social media managers handling it all themselves",
+            "features": [
+              "1 user, 10 profiles, unified inbox, scheduling, basic reports"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$119",
+            "cadence": "per month",
+            "description": "Perfect for growing teams who need to move faster together",
+            "features": [
+              "1 user, 10 profiles, advanced inbox, scheduling, enhanced reports"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$149",
+            "cadence": "per month",
+            "description": "Ideal for enterprise teams needing structure and deeper insights",
+            "features": [
+              "1 user, 10 profiles, premium inbox, scheduling, comprehensive reports"
+            ]
+          }
+        ],
+        "pricingNote": "Annual billing offers substantial discount",
+        "pricingLastChecked": "2026-09-21"
+      }
     }
   },
   "deleted": []
