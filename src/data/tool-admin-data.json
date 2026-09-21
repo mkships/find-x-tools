@@ -63,6 +63,41 @@
         "pricingNote": "Annual billing offers substantial discount",
         "pricingLastChecked": "2026-09-21"
       }
+    },
+    "audiense": {
+      "id": "audiense",
+      "name": "Audiense",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Faudiense.com&sz=128",
+      "url": "https://audiense.com",
+      "tagline": "Audience intelligence and segmentation for X marketers.",
+      "desc": "Audiense builds rich audience segments from X data — interests, influencers and personas — so brands understand exactly who follows them and why.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "Marketers, researchers and agencies doing audience research.",
+      "color": "#ff7a00",
+      "features": [
+        "AI audience segmentation",
+        "Persona and interest reports",
+        "Influencer identification",
+        "Competitor audience insight"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "unknown",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-20",
+      "lastChecked": "",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": []
