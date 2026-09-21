@@ -2,56 +2,101 @@
 import Base from '../layouts/Base.astro';
 import { CATS, ICONS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
+import { ArrowRight, BadgeCheck, ChevronRight, Compass, FolderTree, SearchCheck, ShieldCheck } from '@lucide/astro';
 
-const counts = {};
-TOOLS.forEach(t => { counts[t.cat] = (counts[t.cat] || 0) + 1; });
+const categoryEntries = Object.entries(CATS);
+const counts = Object.fromEntries(categoryEntries.map(([slug]) => [slug, TOOLS.filter(tool => tool.categories.includes(slug)).length]));
+const testedCount = TOOLS.filter(tool => tool.tested).length;
+const freePlanCount = TOOLS.filter(tool => tool.price === 'Free' || tool.price === 'Freemium').length;
 
-const title = `About — The Independent Directory of X Tools | ${SITE_NAME}`;
-const description = 'How we hand-curate every tool for growing on X: reviewed by a person, organized by the job to be done, and revisited weekly so listings stay current.';
+const title = `About the Independent X Tools Directory | ${SITE_NAME}`;
+const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools across ${categoryEntries.length} practical categories, distinguishes tested listings and keeps corrections open to the community.`;
 ---
 <Base title={title} description={description}>
-<main class="page-about">
-  <div class="crumb" style="margin-bottom:8px">Directory / About</div>
-  <h1 class="about-title">The independent directory of tools for growing on X</h1>
-  <p class="about-intro">We track every serious tool built for X — thread writing, scheduling, analytics, engagement and profile clean-up — and organize them so you can find the right one in minutes instead of scrolling for hours.</p>
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <nav class="breadcrumbs about-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <span aria-current="page">About</span>
+        </nav>
 
-  <h2 class="about-h2">How we curate</h2>
-  <div class="curate-grid">
-    <div class="curate-card">
-      <div class="curate-num" style="color:#1D9BF0">01</div>
-      <div class="title">Hand-reviewed, not scraped</div>
-      <p>Every listing is checked by a person before it goes live, so the directory stays useful signal — never spam.</p>
-    </div>
-    <div class="curate-card">
-      <div class="curate-num" style="color:#00BA7C">02</div>
-      <div class="title">Organized by the job</div>
-      <p>Tools are grouped into practical categories so you search by what you’re trying to do, not by brand name.</p>
-    </div>
-    <div class="curate-card">
-      <div class="curate-num" style="color:#7856FF">03</div>
-      <div class="title">Kept current</div>
-      <p>We revisit listings every week — pricing, links and new arrivals — so what you see is what’s live.</p>
-    </div>
-  </div>
+        <div class="about-hero-content">
+          <div class="about-hero-icon" aria-hidden="true"><Compass size={36} strokeWidth={1.7} /></div>
+          <div>
+            <h1>A clearer way to find tools for X</h1>
+            <p>We believe finding great X (Twitter) tools should be easy. Our mission is to be the go-to resource for discovering, comparing, and evaluating every type of tool for X.</p>
+            <div class="about-hero-stats" aria-label="Directory statistics">
+              <span>🛠️ {TOOLS.length} tools</span>
+              <span>🗂️ {categoryEntries.length} categories</span>
+              <span><BadgeCheck size={14} strokeWidth={2} aria-hidden="true" /> {testedCount} tested</span>
+              <span>🎁 {freePlanCount} with free plans</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h2 class="about-h2">Browse by category</h2>
-  <div class="catnav-grid">
-    {Object.keys(CATS).map(k => (
-      <a class="catnav-card" href={`/category/${k}/`}>
-        <span class="icon">{ICONS[k] || '•'}</span>
-        <span class="label">{CATS[k].label}</span>
-        <span class="count">{counts[k] || 0}</span>
-      </a>
-    ))}
-  </div>
+    <div class="about-body">
+      <section class="about-overview" aria-label="About the directory">
+        <p>X Tools Directory is the most complete curated directory of X (Twitter) tools on the internet. We help content creators, growth marketers, agencies, and small businesses find the right tools quickly to grow on X, without the noise.</p>
+      </section>
 
-  <div class="about-cta">
-    <div class="about-cta-glow"></div>
-    <div class="about-cta-body">
-      <h3>Know a tool we’re missing?</h3>
-      <p>Submit it in two minutes. Submissions are reviewed within 24 hours.</p>
+      <section class="about-section" id="method" aria-labelledby="method-title">
+        <div class="about-section-heading">
+          <span>How we curate</span>
+          <h2 id="method-title">Every tool is reviewed before it is listed</h2>
+          <p>We check for legitimacy, describe each tool accurately, and keep our information up to date. Tools are categorized consistently so you can always find what you’re looking for.</p>
+        </div>
+
+        <div class="about-method-grid">
+          <article class="about-method-card">
+            <span class="about-method-icon"><FolderTree size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <p class="about-method-number">01</p>
+            <h3>Organized by the job</h3>
+            <p>Tools are grouped into consistent, practical categories based on the work they help you do, making relevant options easier to find and compare.</p>
+          </article>
+          <article class="about-method-card">
+            <span class="about-method-icon"><SearchCheck size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <p class="about-method-number">02</p>
+            <h3>Tested means tested</h3>
+            <p>The Tested badge is reserved for tools we have personally used and checked. It shows where our evaluation goes beyond the standard listing review.</p>
+          </article>
+          <article class="about-method-card">
+            <span class="about-method-icon"><ShieldCheck size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <p class="about-method-number">03</p>
+            <h3>Accuracy stays open</h3>
+            <p>We check each tool for legitimacy, describe it accurately, and keep its information current. Makers and readers can flag anything that needs correcting.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-categories-title">
+        <div class="about-section-heading compact">
+          <span>Explore the catalog</span>
+          <h2 id="about-categories-title">Browse by category</h2>
+        </div>
+        <div class="about-category-grid">
+          {categoryEntries.map(([slug, category]) => (
+            <a class="about-category-card" href={`/category/${slug}/`}>
+              <span class="about-category-icon" aria-hidden="true">{ICONS[slug]}</span>
+              <span class="about-category-label">{category.label}</span>
+              <span class="about-category-count">{counts[slug]} tool{counts[slug] === 1 ? '' : 's'}</span>
+              <ChevronRight size={16} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="about-submit-cta" aria-labelledby="about-submit-title">
+        <div>
+          <p class="about-submit-eyebrow">Help us improve the directory</p>
+          <h2 id="about-submit-title">Know a useful tool we’re missing?</h2>
+          <p>Built an X (Twitter) tool and want it listed? Send it our way. We review every submission within 2–3 business days.</p>
+        </div>
+        <a class="hero-action hero-action-primary" href="/submit/">Submit a Tool<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+      </section>
     </div>
-    <a href="/submit/" style="position:relative;text-decoration:none"><button>Submit a Tool</button></a>
-  </div>
-</main>
+  </main>
 </Base>

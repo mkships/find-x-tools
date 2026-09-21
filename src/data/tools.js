@@ -1,4 +1,5 @@
 // Canonical tool data for X Tools Directory.
+import adminData from './tool-admin-data.json';
 
 // Temporary seed data for the future Reddit + X mention pipeline. Keep this
 // separate from the tool records so it can be replaced by an importer later.
@@ -42,7 +43,49 @@ export const PRICE_STYLES = {
 };
 
 const TOOL_DATA = [
-  {id:'typefully',name:'Typefully',cat:'content',price:'Freemium',url:'https://typefully.com',tested:true,editorPick:true,color:'#1D9BF0',tagline:'Write, schedule and analyze X threads in a clean, focused editor.',desc:'Typefully is a distraction-free writing studio for X. Draft threads with live preview, get AI hooks and rewrites, schedule at the best times, and track exactly what performs.',best:'Solo creators, content teams and agencies who want a calm space to draft and ship.',features:['Clean thread composer with live preview','AI hooks, rewrites and ideas','Schedule and auto-retweet','Per-thread engagement analytics']},
+  {
+    id:'typefully',name:'Typefully',cat:'content',price:'Freemium',url:'https://typefully.com',tested:true,editorPick:true,color:'#1D9BF0',addedAt:'2026-07-14',
+    tagline:'Write, schedule and analyze X threads in a clean, focused editor.',
+    desc:'Typefully is a distraction-free writing studio for X. Draft threads with live preview, get AI hooks and rewrites, schedule at the best times, and track exactly what performs.',
+    best:'Solo creators, content teams and agencies who want a calm space to draft and ship.',
+    features:['Clean thread composer with live preview','AI hooks, rewrites and ideas','Schedule and auto-retweet','Per-thread engagement analytics'],
+    detail:{
+      status:'demo',
+      listedAt:'2026-07-14',
+      lastChecked:'2026-09-21',
+      useCases:[
+        {title:'Shape long-form ideas',description:'Turn a rough idea into a structured post or thread without losing the flow between updates.',icon:'write'},
+        {title:'Plan a consistent week',description:'Draft in batches and place finished posts onto a visual publishing schedule.',icon:'calendar'},
+        {title:'Improve the first draft',description:'Use writing prompts and rewrite assistance when a hook or transition needs another pass.',icon:'sparkles'},
+        {title:'Learn what resonates',description:'Review post-level performance and reuse the formats that consistently earn attention.',icon:'analytics'}
+      ],
+      bestFor:[
+        'Solo creators publishing thoughtful posts and threads several times a week',
+        'Small content teams that want a calm drafting and approval workflow'
+      ],
+      watchOuts:[
+        'Not designed to replace enterprise social listening or customer-support inboxes',
+        'Advanced collaboration and analytics may require a higher paid tier'
+      ],
+      pricingTiers:[
+        {name:'Free',price:'$0',description:'Basic writing and publishing workflow with limited usage.'},
+        {name:'Creator',price:'Starts at a sample price',cadence:'per month',description:'Scheduling, writing assistance and post-performance insights.'},
+        {name:'Team',price:'Starts at a sample price',cadence:'per month',description:'Shared workspaces, approvals, team access and expanded analytics.'}
+      ],
+      pricingNote:'Prototype tier content for design review. Verify current names, prices and limits before publication.',
+      pricingLastChecked:'2026-09-21',
+      mentions:[
+        {source:'x',kind:'workflow',author:'Sample creator',handle:'@creator',context:'My weekly thread-writing workflow',text:'Sample mention: the focused composer makes it easier to move from a rough thread idea to a scheduled draft.',url:'https://x.com/typefully',publishedAt:'2026-08-18',lastChecked:'2026-09-21',engagement:18,demo:true},
+        {source:'youtube',kind:'demo',author:'Sample reviewer',handle:'@reviewer',context:'A complete Typefully walkthrough',text:'Sample video note: a walkthrough of the drafting, scheduling and analytics workflow for regular X publishing.',url:'https://www.youtube.com/results?search_query=typefully+review',publishedAt:'2026-07-09',lastChecked:'2026-09-21',engagement:42,demo:true},
+        {source:'producthunt',kind:'review',author:'Sample Product Hunt user',handle:'@maker',context:'Why it stayed in my publishing stack',text:'Sample review: the clean writing experience is the main reason this tool stays in the publishing stack.',url:'https://www.producthunt.com/products/typefully',publishedAt:'2026-06-24',lastChecked:'2026-09-21',engagement:11,demo:true},
+        {source:'linkedin',kind:'experience',author:'Sample content lead',handle:'@contentlead',context:'Reviewing a week of content with a team',text:'Sample experience: shared drafts make it easier for a small team to review a week of content before it goes live.',url:'https://www.linkedin.com/company/typefully/',publishedAt:'2026-05-30',lastChecked:'2026-09-21',engagement:27,demo:true},
+        {source:'x',kind:'criticism',author:'Sample power user',handle:'@poweruser',context:'Where the workflow stops working for me',text:'Sample critical mention: the writing experience is excellent, but I still need a separate platform for broader social listening.',url:'https://x.com/typefully',publishedAt:'2026-05-12',lastChecked:'2026-09-21',engagement:9,demo:true},
+        {source:'youtube',kind:'demo',author:'Sample educator',handle:'@educator',context:'From blank page to scheduled thread',text:'Sample demo note: the most useful part is seeing the complete thread while drafting instead of composing one post at a time.',url:'https://www.youtube.com/results?search_query=typefully+tutorial',publishedAt:'2026-04-21',lastChecked:'2026-09-21',engagement:63,demo:true},
+        {source:'g2',kind:'review',author:'Sample reviewer',context:'A calm alternative to crowded dashboards',text:'Sample review: it keeps writing and scheduling focused without surrounding the workflow with enterprise features I do not use.',url:'https://www.g2.com/search?query=typefully',publishedAt:'2026-03-18',lastChecked:'2026-09-21',engagement:6,demo:true},
+        {source:'other',kind:'experience',author:'Sample newsletter author',context:'Tools behind a consistent publishing habit',text:'Sample mention: batching drafts first and choosing publishing times later made the weekly content routine easier to maintain.',url:'https://typefully.com',publishedAt:'2026-02-11',lastChecked:'2026-09-21',engagement:14,demo:true}
+      ]
+    }
+  },
   {id:'chirrapp',name:'Chirr App',cat:'content',price:'Freemium',url:'https://getchirrapp.com',tested:false,editorPick:false,color:'#F91880',tagline:'Turn long writing into perfectly-split X threads in one click.',desc:'Chirr App auto-splits any long text into a clean numbered thread. Preview each post, adjust the splits, add media and schedule straight to X.',best:'Remote teams and creators repurposing long-form writing into threads.',features:['Auto-split text into tweets','Live thread preview','Numbering and media support','Direct scheduling']},
   {id:'supabird',name:'SupaBird',cat:'content',price:'Freemium',url:'https://supabird.io',tested:false,editorPick:false,color:'#00BA7C',tagline:'An all-in-one writing and scheduling workspace for X creators.',desc:'SupaBird bundles a thread composer, content calendar, AI assistance and analytics into one affordable workspace built for growing on X.',best:'Freelancers and creators worldwide who want an affordable all-in-one.',features:['Thread and post composer','Content calendar','AI writing assistance','Basic analytics']},
   {id:'microposter',name:'MicroPoster',cat:'content',price:'Freemium',url:'https://microposter.so',tested:false,editorPick:false,color:'#FF7A00',tagline:'Batch-write and queue short posts to stay consistent on X.',desc:'MicroPoster helps you draft posts in bulk, organize them into a queue and keep a steady posting cadence without living in the app.',best:'Indie founders and creators building a consistent posting habit.',features:['Bulk post drafting','Simple posting queue','Best-time scheduling','Draft library']},
@@ -122,10 +165,48 @@ const TOOL_DATA = [
   {id:'mention',name:'Mention',cat:'listening',price:'Paid',url:'https://mention.com',tested:true,editorPick:false,color:'#8B5CF6',tagline:'Monitor mentions and manage social at scale.',desc:'Mention watches the web and X for your brand, competitors and keywords, pairing listening with publishing for enterprise teams.',best:'Larger enterprise teams monitoring at scale.',features:['Web and social monitoring','Competitive analysis','Publishing tools','Custom alerts']}
 ];
 
-export const TOOLS = TOOL_DATA.map(tool => ({
+export const BASE_TOOLS = TOOL_DATA.map(tool => ({
   ...tool,
   categories: tool.categories ?? [tool.cat],
   popularityScore: POPULARITY_MENTION_OVERRIDES[tool.id] ?? fallbackPopularityScore(tool.id),
   // Reserved for the Recently Added view once ingestion dates are available.
-  addedAt: tool.addedAt ?? null
+  addedAt: tool.addedAt ?? null,
+  published: tool.published ?? true
 }));
+
+export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, includeUnpublished = false) {
+  const records = overrides?.records || {};
+  const deleted = new Set(overrides?.deleted || []);
+  const seen = new Set();
+  const merged = baseTools.map(base => {
+    seen.add(base.id);
+    const override = records[base.id] || {};
+    return {
+      ...base,
+      ...override,
+      detail: { ...(base.detail || {}), ...(override.detail || {}) },
+      categories: override.categories?.length ? override.categories : (base.categories || [base.cat]),
+      published: override.published ?? base.published ?? true
+    };
+  });
+
+  Object.values(records).forEach(record => {
+    if (!record?.id || seen.has(record.id)) return;
+    merged.push({
+      color: '#1D9BF0',
+      tested: false,
+      editorPick: false,
+      features: [],
+      categories: record.cat ? [record.cat] : [],
+      popularityScore: fallbackPopularityScore(record.id),
+      addedAt: new Date().toISOString().slice(0, 10),
+      published: true,
+      ...record
+    });
+  });
+
+  return merged.filter(tool => !deleted.has(tool.id) && (includeUnpublished || tool.published !== false));
+}
+
+export const ALL_TOOLS = mergeAdminTools(BASE_TOOLS, adminData, true);
+export const TOOLS = ALL_TOOLS.filter(tool => tool.published !== false);

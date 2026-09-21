@@ -1,0 +1,32 @@
+---
+import { CircleDollarSign, ExternalLink } from '@lucide/astro';
+
+const { tiers = [], pricingModel, note = '', checkedAt = '', url = '' } = Astro.props;
+const formatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00Z`)) : '';
+---
+
+<section class="pricing-detail-card" aria-labelledby="pricing-title">
+  <div class="tool-section-heading compact">
+    <span class="tool-section-icon"><CircleDollarSign size={18} strokeWidth={2} aria-hidden="true" /></span>
+    <div><h2 id="pricing-title">Pricing</h2></div>
+  </div>
+  {tiers.length ? (
+    <div class="pricing-summary-list">
+      {tiers.map(tier => (
+        <div class="pricing-summary-row">
+          <strong class="pricing-summary-name">{tier.name}</strong>
+          <span class="pricing-summary-price">{tier.price}{tier.cadence && <small>{tier.cadence}</small>}</span>
+          <p>{tier.description}</p>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="pricing-summary-list"><div class="pricing-summary-row fallback"><strong class="pricing-summary-name">{pricingModel}</strong><span class="pricing-summary-price">See website</span><p>Check the official website for current plans and availability.</p></div></div>
+  )}
+  {note && <p class="pricing-note">{note}</p>}
+  <div class="pricing-card-foot">
+    {checkedAt && <span>Checked {formatDate(checkedAt)}</span>}
+    <a href={url || '#'} target="_blank" rel="noopener">View current pricing <ExternalLink size={13} strokeWidth={2} aria-hidden="true" /></a>
+  </div>
+</section>

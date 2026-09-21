@@ -1,0 +1,18 @@
+---
+import { TriangleAlert, UsersRound } from '@lucide/astro';
+
+const { bestFor = [], watchOuts = [] } = Astro.props;
+---
+
+{(bestFor.length > 0 || watchOuts.length > 0) && (
+  <section class:list={["audience-fit-grid", { "single": bestFor.length === 0 || watchOuts.length === 0 }]} aria-label="Who this tool suits">
+    {bestFor.length > 0 && <article class="audience-fit-card best-fit">
+      <div class="audience-fit-title"><UsersRound size={18} strokeWidth={2} aria-hidden="true" /><h2>Best for</h2></div>
+      <ul>{bestFor.map(item => <li>{item}</li>)}</ul>
+    </article>}
+    {watchOuts.length > 0 && <article class="audience-fit-card watch-out">
+      <div class="audience-fit-title"><TriangleAlert size={18} strokeWidth={2} aria-hidden="true" /><h2>Watch outs</h2></div>
+      <ul>{watchOuts.map(item => <li>{item}</li>)}</ul>
+    </article>}
+  </section>
+)}

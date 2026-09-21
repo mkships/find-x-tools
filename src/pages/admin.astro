@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Directory Admin" description="Private catalog editor" noindex={true}>
+  <main class="admin-page">
+    <section class="admin-login" id="loginPanel">
+      <p class="admin-kicker">Private catalog editor</p>
+      <h1>Manage the directory</h1>
+      <p>Edit listings, badges, categories and publishing status without touching code.</p>
+      <form id="loginForm" class="admin-login-form">
+        <label>Admin password<input id="adminPassword" type="password" autocomplete="current-password" required /></label>
+        <button class="admin-primary" type="submit">Open editor</button>
+      </form>
+      <p class="admin-status" id="loginStatus" role="status"></p>
+    </section>
+
+    <section class="admin-workspace" id="adminWorkspace" hidden>
+      <header class="admin-workspace-header">
+        <div><p class="admin-kicker">Directory admin</p><h1>Tool listings</h1></div>
+        <div class="admin-header-actions"><span id="publishMode"></span><button id="newTool" class="admin-primary" type="button">+ Add tool</button></div>
+      </header>
+
+      <div class="admin-layout">
+        <aside class="admin-list-panel">
+          <input id="toolSearch" class="admin-search" type="search" placeholder="Search tools…" aria-label="Search tools" />
+          <div id="toolList" class="admin-tool-list"></div>
+        </aside>
+
+        <form id="toolForm" class="admin-form">
+          <div class="admin-form-bar">
+            <label class="admin-publish-toggle"><input name="published" type="checkbox" checked /><span></span> Keep on directory</label>
+            <div><button id="deleteTool" class="admin-danger" type="button">Delete</button><button class="admin-primary" type="submit">Save & publish</button></div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Identity</h2>
+            <div class="admin-grid two">
+              <label>Name<input name="name" maxlength="120" required /></label>
+              <label>URL slug<input name="id" pattern="[a-z0-9-]+" required /><small>Changing a live slug can break its indexed URL.</small></label>
+              <label class="wide">Tool URL<input name="url" type="url" placeholder="https://example.com" required /></label>
+              <label class="wide">Icon or logo URL
+                <div class="admin-inline"><input name="icon" type="url" placeholder="https://…/logo.png" /><button id="useFavicon" type="button">Use website icon</button><span id="iconPreview" class="admin-icon-preview"></span></div>
+                <small>Use the tool’s official square logo or favicon URL. A letter tile remains as fallback.</small>
+              </label>
+              <label>Brand color<input name="color" type="color" value="#1D9BF0" /></label>
+              <label>Date added<input name="addedAt" type="date" /></label>
+            </div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Listing copy</h2>
+            <label>One-line tagline<input name="tagline" maxlength="300" /></label>
+            <label>Small description<textarea name="desc" rows="4" maxlength="3000"></textarea></label>
+            <label>Key features<textarea name="features" rows="6" placeholder="One feature per line"></textarea></label>
+          </div>
+
+          <div class="admin-section">
+            <h2>Quick overview</h2>
+            <div class="admin-grid three">
+              <label>Best for<input name="best" /></label>
+              <label>Pricing<select name="price"><option>Free</option><option>Freemium</option><option>Paid</option></select></label>
+              <label>Primary use<select name="cat" id="primaryCategory"></select></label>
+            </div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Badges</h2>
+            <div class="admin-check-grid">
+              <label><input name="tested" type="checkbox" /> Tested</label>
+              <label><input name="editorPick" type="checkbox" /> Editor’s Pick</label>
+              <label><input name="verified" type="checkbox" /> Verified</label>
+              <label><input name="featured" type="checkbox" /> Featured</label>
+              <label><input name="sponsored" type="checkbox" /> Sponsored</label>
+            </div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Tool details</h2>
+            <div class="admin-grid three">
+              <label>Free plan<select name="freePlan"><option value="unknown">Unknown</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+              <label>Mobile app<select name="mobileApp"><option value="unknown">Unknown</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+              <label>API<select name="apiAccess"><option value="unknown">Unknown</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+            </div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Related categories</h2>
+            <p>Select every category where this tool should appear. The primary category is always included.</p>
+            <div id="categoryChecks" class="admin-check-grid"></div>
+          </div>
+
+          <div class="admin-section">
+            <h2>Maintenance</h2>
+            <label>Last checked<input name="lastChecked" type="date" /></label>
+          </div>
+
+          <div class="admin-save-footer"><p id="saveStatus" class="admin-status" role="status"></p><button class="admin-primary" type="submit">Save & publish</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script>
+  const loginPanel = document.getElementById('loginPanel');
+  const workspace = document.getElementById('adminWorkspace');
+  const loginForm = document.getElementById('loginForm');
+  const loginStatus = document.getElementById('loginStatus');
+  const passwordInput = document.getElementById('adminPassword');
+  const toolForm = document.getElementById('toolForm');
+  const toolList = document.getElementById('toolList');
+  const search = document.getElementById('toolSearch');
+  const saveStatus = document.getElementById('saveStatus');
+  const primaryCategory = document.getElementById('primaryCategory');
+  const categoryChecks = document.getElementById('categoryChecks');
+  const publishMode = document.getElementById('publishMode');
+  const iconPreview = document.getElementById('iconPreview');
+  let password = sessionStorage.getItem('directoryAdminPassword') || '';
+  let tools = [];
+  let categories = {};
+  let selectedId = '';
+
+  const request = async (method = 'GET', body) => {
+    const response = await fetch('/api/admin/tools', {
+      method,
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Request failed.');
+    return result;
+  };
+
+  function showIcon(url) {
+    iconPreview.innerHTML = '';
+    if (!url) return;
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = '';
+    img.onerror = () => iconPreview.innerHTML = 'Invalid image';
+    iconPreview.append(img);
+  }
+
+  function buildCategoryFields() {
+    primaryCategory.innerHTML = '';
+    categoryChecks.innerHTML = '';
+    Object.entries(categories).forEach(([slug, category]) => {
+      const option = document.createElement('option');
+      option.value = slug;
+      option.textContent = category.label;
+      primaryCategory.append(option);
+      const label = document.createElement('label');
+      label.innerHTML = `<input type="checkbox" name="categories" value="${slug}"> ${category.label}`;
+      categoryChecks.append(label);
+    });
+  }
+
+  function renderList() {
+    const query = search.value.trim().toLowerCase();
+    toolList.innerHTML = '';
+    tools.filter(tool => `${tool.name} ${tool.id}`.toLowerCase().includes(query)).forEach(tool => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `admin-tool-row${tool.id === selectedId ? ' active' : ''}`;
+      let icon;
+      if (tool.icon) {
+        icon = document.createElement('img');
+        icon.src = tool.icon;
+        icon.alt = '';
+      } else {
+        icon = document.createElement('span');
+        icon.style.background = /^#[0-9a-f]{6}$/i.test(tool.color || '') ? tool.color : '#1D9BF0';
+        icon.textContent = tool.name.charAt(0);
+      }
+      const copy = document.createElement('span');
+      const name = document.createElement('strong');
+      name.textContent = tool.name;
+      const meta = document.createElement('small');
+      meta.textContent = tool.published === false ? 'Hidden' : categories[tool.cat]?.label || tool.cat;
+      copy.append(name, meta);
+      button.append(icon, copy);
+      button.addEventListener('click', () => selectTool(tool.id));
+      toolList.append(button);
+    });
+  }
+
+  function setCheckbox(name, value) {
+    toolForm.elements[name].checked = Boolean(value);
+  }
+
+  function selectTool(id) {
+    const tool = tools.find(item => item.id === id);
+    if (!tool) return;
+    selectedId = id;
+    ['id','name','url','icon','color','addedAt','tagline','desc','best','price','cat','freePlan','mobileApp','apiAccess','lastChecked'].forEach(name => {
+      const fallback = name === 'color' ? '#1D9BF0' : ['freePlan','mobileApp','apiAccess'].includes(name) ? 'unknown' : '';
+      toolForm.elements[name].value = tool[name] ?? fallback;
+    });
+    toolForm.elements.features.value = (tool.features || []).join('\n');
+    ['published','tested','editorPick','verified','featured','sponsored'].forEach(name => setCheckbox(name, tool[name]));
+    toolForm.querySelectorAll('[name="categories"]').forEach(input => input.checked = (tool.categories || [tool.cat]).includes(input.value));
+    showIcon(tool.icon);
+    renderList();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function newTool() {
+    selectedId = '';
+    toolForm.reset();
+    toolForm.elements.published.checked = true;
+    toolForm.elements.color.value = '#1D9BF0';
+    toolForm.elements.addedAt.value = new Date().toISOString().slice(0, 10);
+    showIcon('');
+    renderList();
+    toolForm.elements.name.focus();
+  }
+
+  async function load() {
+    loginStatus.textContent = 'Loading…';
+    try {
+      const result = await request();
+      tools = result.tools;
+      categories = result.categories;
+      buildCategoryFields();
+      loginPanel.hidden = true;
+      workspace.hidden = false;
+      publishMode.textContent = result.publishingConfigured ? 'Publishing ready' : 'Publishing needs setup';
+      sessionStorage.setItem('directoryAdminPassword', password);
+      renderList();
+      if (tools[0]) selectTool(tools[0].id); else newTool();
+    } catch (error) {
+      loginStatus.textContent = error.message;
+      sessionStorage.removeItem('directoryAdminPassword');
+    }
+  }
+
+  loginForm.addEventListener('submit', event => {
+    event.preventDefault();
+    password = passwordInput.value;
+    load();
+  });
+  if (password) load();
+  search.addEventListener('input', renderList);
+  document.getElementById('newTool').addEventListener('click', newTool);
+  toolForm.elements.icon.addEventListener('input', event => showIcon(event.target.value));
+  document.getElementById('useFavicon').addEventListener('click', () => {
+    const url = toolForm.elements.url.value;
+    if (!url) return;
+    toolForm.elements.icon.value = `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(url)}&sz=128`;
+    showIcon(toolForm.elements.icon.value);
+  });
+  toolForm.elements.name.addEventListener('input', () => {
+    if (selectedId || toolForm.elements.id.value) return;
+    toolForm.elements.id.value = toolForm.elements.name.value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  });
+
+  toolForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const data = new FormData(toolForm);
+    const tool = Object.fromEntries(data.entries());
+    tool.published = data.has('published');
+    ['tested','editorPick','verified','featured','sponsored'].forEach(name => tool[name] = data.has(name));
+    tool.features = String(data.get('features') || '').split('\n').map(item => item.trim()).filter(Boolean);
+    tool.categories = data.getAll('categories');
+    saveStatus.textContent = 'Saving…';
+    try {
+      const result = await request('PUT', { tool });
+      const index = tools.findIndex(item => item.id === result.tool.id);
+      if (index >= 0) tools[index] = result.tool; else tools.push(result.tool);
+      tools.sort((a, b) => a.name.localeCompare(b.name));
+      selectedId = result.tool.id;
+      renderList();
+      saveStatus.textContent = result.mode === 'github' ? 'Saved. A new site deployment has started.' : 'Saved locally.';
+    } catch (error) { saveStatus.textContent = error.message; }
+  });
+
+  document.getElementById('deleteTool').addEventListener('click', async () => {
+    if (!selectedId) return;
+    const tool = tools.find(item => item.id === selectedId);
+    if (!confirm(`Delete ${tool?.name || selectedId} from the directory? This can be restored from Git history.`)) return;
+    saveStatus.textContent = 'Deleting…';
+    try {
+      await request('DELETE', { id: selectedId });
+      tools = tools.filter(item => item.id !== selectedId);
+      saveStatus.textContent = 'Deleted. A new site deployment has started.';
+      if (tools[0]) selectTool(tools[0].id); else newTool();
+    } catch (error) { saveStatus.textContent = error.message; }
+  });
+</script>

@@ -1,0 +1,10 @@
+---
+const { listedAt, lastChecked } = Astro.props;
+const formatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const format = value => formatter.format(new Date(`${value}T00:00:00Z`));
+---
+
+{(listedAt || lastChecked) && <section class="tool-dates" aria-label="Directory record dates">
+  {listedAt && <span>Listed <time datetime={listedAt}>{format(listedAt)}</time></span>}
+  {lastChecked && <span>Last checked <time datetime={lastChecked}>{format(lastChecked)}</time></span>}
+</section>}

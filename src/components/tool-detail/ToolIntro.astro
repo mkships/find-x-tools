@@ -1,0 +1,30 @@
+---
+import { BadgeCheck, ExternalLink, Star, ShieldCheck } from '@lucide/astro';
+import { PRICE_STYLES } from '../../data/tools.js';
+
+const { tool, category } = Astro.props;
+const domain = (tool.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
+---
+
+<div class="tool-hero-content">
+  <div class="tool-intro-tile" style={`background:${tool.color}`}>{tool.icon ? <img src={tool.icon} alt={`${tool.name} logo`} /> : tool.name.charAt(0).toUpperCase()}</div>
+  <div class="tool-intro-copy">
+    <div class="tool-intro-title-row">
+      <h1>{tool.name}</h1>
+      {tool.tested && <span class="badge-tested"><BadgeCheck size={13} strokeWidth={2.2} aria-hidden="true" /> Tested</span>}
+      {tool.editorPick && <span class="badge-editor-pick"><Star size={12} strokeWidth={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span>}
+      {tool.verified && <span class="badge-verified"><ShieldCheck size={12} strokeWidth={2.2} aria-hidden="true" /> Verified</span>}
+      {tool.featured && <span class="badge-featured">Featured</span>}
+      {tool.sponsored && <span class="badge-sponsored">Sponsored</span>}
+    </div>
+    <p>{tool.tagline}</p>
+    <div class="tool-intro-pills">
+      <a class="cat-chip tool-hero-category" href={`/category/${tool.cat}/`}>{category.label}</a>
+      <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price}</span>
+    </div>
+  </div>
+  <a class="tool-primary-cta" href={tool.url || '#'} target="_blank" rel="noopener">
+    Visit {domain}<ExternalLink size={15} strokeWidth={2} aria-hidden="true" />
+  </a>
+</div>

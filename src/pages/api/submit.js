@@ -81,11 +81,17 @@ export async function POST({ request }) {
   const name = String(data.name || '').trim();
   const email = String(data.email || '').trim().toLowerCase();
   const url = String(data.url || '').trim();
+  const desc = String(data.desc || '').trim();
+  const category = String(data.category ?? data.cat ?? '').trim();
+  const pricing = String(data.pricing ?? data.price ?? '').trim();
   if (!name || name.length > 120) return json(400, { error: 'Please enter the tool name.' });
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
+  if (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) {
     return json(400, { error: 'Please enter a valid email address.' });
   }
   if (!/^https?:\/\/.+\..+/.test(url) || url.length > 500) return json(400, { error: 'Please enter a valid website URL.' });
+  if (!desc || desc.length > 2000) return json(400, { error: 'Please add a short description of the tool.' });
+  if (!category || category.length > 80) return json(400, { error: 'Please choose or suggest a category.' });
+  if (!['Free', 'Freemium', 'Paid'].includes(pricing)) return json(400, { error: 'Please choose a valid pricing model.' });
 
   const requestedPlan = String(data.plan || 'free').slice(0, 20);
   const plan = PAID_SUBMISSIONS && ['free', 'featured', 'premium'].includes(requestedPlan)
@@ -98,9 +104,9 @@ export async function POST({ request }) {
     email,
     url,
     tagline: String(data.tagline || '').slice(0, 300),
-    desc: String(data.desc || '').slice(0, 2000),
-    category: String(data.category ?? data.cat ?? '').slice(0, 40),
-    pricing: String(data.pricing ?? data.price ?? '').slice(0, 20),
+    desc,
+    category,
+    pricing,
     plan,
     status: 'pending review'
   };

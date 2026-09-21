@@ -9,7 +9,7 @@ export const SITE_NAME = 'X Tools Directory';
 export const PAID_SUBMISSIONS = false;
 
 export const PLANS = [
-  { id: 'free', name: 'Free listing', price: '$0', desc: 'Standard placement in the directory. Reviewed within 24 hours.' },
+  { id: 'free', name: 'Free listing', price: '$0', desc: 'Standard placement in the directory. Reviewed within 2–3 business days.' },
   { id: 'featured', name: 'Featured', price: '$49', desc: '★ Featured badge and top-of-category placement for 30 days.' },
   { id: 'premium', name: 'Premium spotlight', price: '$99/mo', desc: 'Homepage sponsored slot, featured badge and a newsletter mention.' }
 ];

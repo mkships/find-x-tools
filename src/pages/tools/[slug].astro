@@ -1,114 +1,122 @@
 ---
-import fs from 'node:fs';
 import Base from '../../layouts/Base.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import { CATS, TOOLS } from '../../data/tools.js';
+import ToolIntro from '../../components/tool-detail/ToolIntro.astro';
+import EditorialAbout from '../../components/tool-detail/EditorialAbout.astro';
+import ToolDates from '../../components/tool-detail/ToolDates.astro';
+import BaseToolFacts from '../../components/tool-detail/BaseToolFacts.astro';
+import { CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
-import { BadgeCheck, Star } from '@lucide/astro';
+import { ArrowRight, CheckCircle2, ChevronRight, ListChecks } from '@lucide/astro';
 
 export function getStaticPaths() {
-  return TOOLS.map(t => ({ params: { slug: t.id }, props: { tool: t } }));
+  return TOOLS.map(tool => ({ params: { slug: tool.id }, props: { tool } }));
 }
 
-const { tool: t } = Astro.props;
-const cat = CATS[t.cat];
-const related = TOOLS.filter(x => x.categories.includes(t.cat) && x.id !== t.id)
-  .sort((a, b) => b.popularityScore - a.popularityScore).slice(0, 3);
-const domain = (t.url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
-// Homepage screenshot captured via Firecrawl (see .firecrawl/batch.sh); pages
-// without one fall back to the placeholder so a failed capture never blocks a build.
-const hasScreenshot = fs.existsSync(`public/screenshots/${t.id}.jpg`);
+const { tool } = Astro.props;
+const category = CATS[tool.cat];
+const hasFeatures = tool.features.length > 0;
+const relatedCategories = tool.categories.map(slug => ({ slug, ...CATS[slug] })).filter(item => item.label);
 
-const title = `${t.name} — ${cat.label} Tool for X | ${SITE_NAME}`;
-const description = `${t.tagline} ${t.name} review: pricing (${t.price.toLowerCase()}), key features and the best alternatives in ${cat.label.toLowerCase()} for X.`;
+const related = TOOLS.filter(candidate => candidate.categories.includes(tool.cat) && candidate.id !== tool.id)
+  .sort((a, b) => b.popularityScore - a.popularityScore)
+  .slice(0, 3);
+
+const title = `${tool.name} — ${category.label} Tool for X | ${SITE_NAME}`;
+const description = `${tool.tagline} Explore ${tool.name}, its core features, pricing model and best-fit use cases.`;
 const jsonld = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: t.name,
-    description: t.desc,
-    url: t.url,
+    name: tool.name,
+    description: tool.desc,
+    url: tool.url,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: t.price === 'Free' ? '0' : undefined, description: `${t.price} pricing` }
+    offers: { '@type': 'Offer', price: tool.price === 'Free' ? '0' : undefined, description: `${tool.price} pricing` }
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
-      { '@type': 'ListItem', position: 2, name: cat.label, item: new URL(`/category/${t.cat}/`, Astro.site).toString() },
-      { '@type': 'ListItem', position: 3, name: t.name, item: new URL(`/tools/${t.id}/`, Astro.site).toString() }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 3, name: category.label, item: new URL(`/category/${tool.cat}/`, Astro.site).toString() },
+      { '@type': 'ListItem', position: 4, name: tool.name, item: new URL(`/tools/${tool.id}/`, Astro.site).toString() }
     ]
   }
 ];
 ---
-<Base title={title} description={description} jsonld={jsonld} ogImage={hasScreenshot ? `/screenshots/${t.id}.jpg` : undefined}>
-<main class="page-detail">
-  <a class="back-link" href={`/category/${t.cat}/`}>← Back to directory</a>
-  <div class="detail-card">
-    <div class="detail-tile" style={`background:${t.color}`}>{t.name.charAt(0).toUpperCase()}</div>
-    <div class="detail-head">
-      <div class="detail-title-row">
-        <h1>{t.name}</h1>
-        {t.tested && <span class="badge-tested badge-tested-lg"><BadgeCheck size={14} strokeWidth={2.2} aria-hidden="true" /> Tested</span>}
-        {t.editorPick && <span class="badge-editor-pick badge-editor-pick-lg"><Star size={13} strokeWidth={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span>}
-      </div>
-      <p class="detail-tagline">{t.tagline}</p>
-    </div>
-    <div class="detail-cta">
-      <a class="btn-visit" href={t.url || '#'} target="_blank" rel="noopener">Visit {domain} ↗</a>
-    </div>
-  </div>
 
-  <div class="detail-layout">
-    <div>
-      <h2>About {t.name}</h2>
-      <p>{t.desc}</p>
-      <h2 class="spaced">Key features</h2>
-      <div class="features-grid">
-        {t.features.map(f => (
-          <div class="feature-item">
-            <span class="check">✓</span>
-            <span class="text">{f}</span>
+<Base title={title} description={description} jsonld={jsonld}>
+  <main class="page-tool-detail">
+    <section class="tool-landing-hero">
+      <div class="tool-landing-hero-inner">
+        <nav class="breadcrumbs tool-detail-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <a href="/tools/">Tools</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <a href={`/category/${tool.cat}/`}>{category.label}</a>
+          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <span aria-current="page">{tool.name}</span>
+        </nav>
+        <ToolIntro tool={tool} category={category} />
+      </div>
+    </section>
+
+    <div class="tool-detail-body">
+      <div class="directory-detail-shell">
+        <div class="directory-detail-main">
+
+        <section class="tool-description-callout" aria-label={`About ${tool.name}`}>
+          <EditorialAbout name={tool.name} description={tool.desc} />
+        </section>
+
+        <section class="tool-quick-overview" aria-labelledby="quick-overview-title">
+          <div class="tool-quick-heading">
+            <ListChecks size={18} strokeWidth={2} aria-hidden="true" />
+            <h2 id="quick-overview-title">Quick overview</h2>
           </div>
-        ))}
-      </div>
-      <h2 class="spaced">Preview</h2>
-      {hasScreenshot ? (
-        <img
-          class="preview-img"
-          src={`/screenshots/${t.id}.jpg`}
-          alt={`${t.name} homepage — ${t.tagline}`}
-          width="1200"
-          height="675"
-          loading="lazy"
-        />
-      ) : (
-        <div class="preview-box"><span>product screenshot — {t.name}</span></div>
-      )}
-    </div>
-    <aside class="detail-aside">
-      <div class="facts-card">
-        <div class="aside-label">Quick facts</div>
-        <div class="facts-list">
-          <div class="fact-row"><span class="k">Category</span><a class="v" style={`color:${cat.color}`} href={`/category/${t.cat}/`}>{cat.label}</a></div>
-          <div class="fact-row"><span class="k">Pricing</span><span class="v">{t.price}</span></div>
-        </div>
-      </div>
-      <div class="bestfor-card">
-        <div class="title">Best for</div>
-        <p>{t.best}</p>
-      </div>
-      <a class="claim-card" href="/submit/" style="text-decoration:none;display:block">Own this tool? <span class="cta">Suggest an update →</span></a>
-    </aside>
-  </div>
+          <dl>
+            <div><dt>Best for</dt><dd>{tool.best || `${category.label} workflows`}</dd></div>
+            <div><dt>Pricing</dt><dd>{tool.price}</dd></div>
+            <div><dt>Primary use</dt><dd>{category.label}</dd></div>
+          </dl>
+        </section>
 
-  <div class="alternatives">
-    <h2>Alternatives in {cat.label}</h2>
-    <div class="grid-tools">
-      {related.map(r => <ToolCard tool={r} />)}
+        {hasFeatures && <section class="directory-editorial-card" aria-labelledby="base-features-title">
+          <div class="tool-content-heading">
+            <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" />
+            <h2 id="base-features-title">What {tool.name} helps you do</h2>
+          </div>
+          <div class="tool-base-feature-list">
+            {tool.features.map(feature => <span><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" />{feature}</span>)}
+          </div>
+        </section>}
+        </div>
+
+        <aside class="directory-detail-sidebar" aria-label={`${tool.name} listing details`}>
+          <BaseToolFacts tool={tool} category={category} categories={relatedCategories} categoryIcon={ICONS[tool.cat]} />
+
+          <section class="tool-sidebar-card tool-sidebar-alternatives" aria-labelledby="alternatives-title">
+            <h2 id="alternatives-title">{tool.name} alternatives</h2>
+            <div class="tool-sidebar-link-list">
+              {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-monogram" style={`background:${item.color}`}>{item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
+            </div>
+            <a class="tool-sidebar-browse" href={`/category/${tool.cat}/`}>Browse all {category.label}<ArrowRight size={14} strokeWidth={2} aria-hidden="true" /></a>
+          </section>
+        </aside>
+      </div>
+
+      <section class="tool-update-cta" aria-label="Suggest a tool update">
+        <div class="tool-update-copy">
+          <p>Own or operate {tool.name}? Help us keep this listing accurate.</p>
+        </div>
+        <div class="tool-update-action">
+          <a class="hero-action hero-action-secondary" href="/submit/">Suggest an update<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+          <ToolDates listedAt={tool.addedAt} />
+        </div>
+      </section>
     </div>
-  </div>
-</main>
+  </main>
 </Base>

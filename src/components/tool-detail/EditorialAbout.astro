@@ -1,0 +1,7 @@
+---
+const { name, description } = Astro.props;
+---
+
+<section class="tool-about" aria-label={`About ${name}`}>
+  <div class="tool-about-copy"><p>{description}</p></div>
+</section>

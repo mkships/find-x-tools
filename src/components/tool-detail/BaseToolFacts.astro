@@ -1,0 +1,34 @@
+---
+import { Info, Tags } from '@lucide/astro';
+import { PRICE_STYLES } from '../../data/tools.js';
+
+const { tool, category, categories = [], categoryIcon = '' } = Astro.props;
+const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
+const answer = value => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not confirmed';
+---
+
+<div class="tool-base-sidebar-stack">
+  <section class="tool-base-facts-card" aria-labelledby="base-facts-title">
+    <div class="tool-section-heading compact">
+      <span class="tool-section-icon"><Info size={18} strokeWidth={2} aria-hidden="true" /></span>
+      <div><h2 id="base-facts-title">Tool details</h2></div>
+    </div>
+    <dl class="tool-base-facts">
+      <div><dt>Pricing</dt><dd><span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price}</span></dd></div>
+      <div><dt>Primary use</dt><dd>{category.label}</dd></div>
+      <div><dt>Free plan</dt><dd>{answer(tool.freePlan)}</dd></div>
+      <div><dt>Mobile app</dt><dd>{answer(tool.mobileApp)}</dd></div>
+      <div><dt>API</dt><dd>{answer(tool.apiAccess)}</dd></div>
+    </dl>
+  </section>
+
+  <section class="tool-base-categories-card" aria-labelledby="base-categories-title">
+    <div class="tool-section-heading compact">
+      <span class="tool-section-icon"><Tags size={18} strokeWidth={2} aria-hidden="true" /></span>
+      <div><h2 id="base-categories-title">Related categories</h2></div>
+    </div>
+    <div class="tool-base-category-list">
+      {categories.map(item => <a href={`/category/${item.slug}/`}>{item.slug === tool.cat && <span aria-hidden="true">{categoryIcon}</span>}{item.label}</a>)}
+    </div>
+  </section>
+</div>

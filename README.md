@@ -76,10 +76,28 @@ each row `pending review` — your review queue is the sheet itself (add an
 
 ## Adding / editing tools
 
-All listings live in `src/data/tools.js`. Add or edit an entry and redeploy — the
-tool page, category counts, sitemap and structured data all regenerate at build time.
-Tool `id` becomes the URL slug (`/tools/<id>/`), so don't change ids of live pages
-(that breaks indexed URLs; if you must rename, add a redirect).
+Routine catalog maintenance is available at `/admin/`. The password-protected editor
+can add, update, hide or delete listings and edit logos, copy, badges, categories,
+features and tool facts. Saving commits `src/data/tool-admin-data.json` to GitHub;
+Vercel then deploys that commit automatically, so the public directory remains static
+and SEO-friendly.
+
+Add these environment variables to the Vercel project:
+
+- `ADMIN_PASSWORD` — a long, unique password for `/admin/`.
+- `GITHUB_REPO` — repository in `owner/repository` form.
+- `GITHUB_BRANCH` — deployment branch, usually `main`.
+- `GITHUB_TOKEN` — a fine-grained GitHub token limited to this repository with
+  **Contents: Read and write** permission.
+
+Also add `ADMIN_PASSWORD` to `.env` for local editing. In development, saves write
+directly to `src/data/tool-admin-data.json`; no GitHub settings are required. The
+admin password is kept only in the browser tab's session storage and is sent only to
+the site's own serverless endpoint. The GitHub token never reaches the browser.
+
+Original seed listings remain in `src/data/tools.js`; admin changes are non-destructive
+overrides. Git history can restore deleted records. Tool `id` becomes the URL slug
+(`/tools/<id>/`), so don't change ids of live pages without adding a redirect.
 
 ## URL structure
 
