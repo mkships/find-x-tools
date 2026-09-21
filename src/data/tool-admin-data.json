@@ -1,4 +1,38 @@
 {
-  "records": {},
+  "records": {
+    "agorapulse": {
+      "id": "agorapulse",
+      "name": "Agorapulse",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fagorapulse.com&sz=128",
+      "url": "https://agorapulse.com",
+      "tagline": "Social inbox, scheduling and reporting for enterprises and agencies",
+      "desc": "Agorapulse is a social media management platform built for agencies, brands, and social teams that pairs a unified inbox with scheduling, listening and reporting.",
+      "cat": "schedule",
+      "categories": [
+        "schedule",
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Agencies and enterprises managing multiple accounts.",
+      "color": "#7856ff",
+      "features": [
+        "Track and respond to all your social media interactions in one centralized Inbox",
+        "Plan and schedule your social media content across all platforms with an intuitive post scheduler and shared calendars",
+        "Monitor and track mentions of your brand, industry, and competitors by capturing conversations from social networks",
+        "Make better business decisions with actionable social media reports that don’t take all day to create"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "verified": false,
+      "featured": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-20",
+      "lastChecked": "2026-09-21"
+    }
+  },
   "deleted": []
 }
