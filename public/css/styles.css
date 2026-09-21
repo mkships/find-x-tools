@@ -747,7 +747,8 @@ main { animation: xfade .3s ease; }
 .tool-dates time { margin-left: 3px; color: var(--color-text-secondary); font-weight: 500; }
 .pricing-detail-card > .tool-section-heading .tool-section-icon { color: #087A56; background: #E9F8F2; }
 .pricing-tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
-.pricing-tier-card { min-width: 0; padding: 17px; border: 1px solid #E1ECE7; border-radius: 14px; background: linear-gradient(145deg, #FFFFFF 35%, #F6FCF9); }
+.pricing-tier-card { min-width: 0; padding: 17px; border: 1px solid #E1ECE7; border-radius: 14px; background: linear-gradient(145deg, #FFFFFF 35%, #F6FCF9); transition: transform var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion-fast); }
+.pricing-tier-card:hover { transform: translateY(-2px); border-color: #B8DED0; box-shadow: 0 8px 18px rgba(8,122,86,.10); }
 .pricing-tier-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .pricing-tier-head > strong { color: var(--color-ink); font-size: 13px; line-height: 1.4; }
 .pricing-tier-price { flex: none; color: #087A56; font-size: 17px; font-weight: 750; line-height: 1.1; text-align: right; }
