@@ -113,15 +113,15 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fautopublix.com&sz=128",
       "url": "https://autopublix.com",
-      "tagline": "Set up automated DM replies on X in minutes.",
-      "desc": "AutoPubliX makes DM automation beginner-friendly, connect your account and launch auto-reply and welcome flows without a learning curve.",
+      "tagline": "Set up automated DM replies on X in minutes",
+      "desc": "AutoPubliX makes DM automation beginner-friendly, by simply connecting your X account and launching AI enabled auto-reply and welcome flows without any learning curve.",
       "cat": "ai",
       "categories": [
         "ai",
         "schedule"
       ],
       "price": "Freemium",
-      "best": "Creators, marketers and agencies seeking quick DM setup at affordable prices.",
+      "best": "Creators, marketers and agencies seeking quick DM setup at affordable prices",
       "color": "#ffffff",
       "features": [
         "Quick DM automation setup",
@@ -134,7 +134,7 @@
       "sponsored": false,
       "freePlan": "yes",
       "mobileApp": "yes",
-      "apiAccess": "unknown",
+      "apiAccess": "no",
       "addedAt": "2026-09-20",
       "lastChecked": "2026-09-22",
       "detail": {
