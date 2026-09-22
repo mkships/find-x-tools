@@ -1061,6 +1061,53 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "dewey": {
+      "id": "dewey",
+      "name": "Dewey",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fgetdewey.co&sz=128",
+      "url": "https://getdewey.co",
+      "tagline": "Search, organize and back up your X bookmarks",
+      "desc": "Dewey imports all your bookmarks into a searchable, taggable database and keeps a backup — built for X users who bookmark X posts heavily (students, founders, indie-hackers, researchers etc.)",
+      "cat": "comments",
+      "categories": [
+        "comments"
+      ],
+      "price": "Freemium",
+      "best": "X users who bookmark heavily, offering easy search and backup",
+      "color": "#ffffff",
+      "features": [
+        "Bookmark import and backup",
+        "Tags and folders",
+        "Powerful search",
+        "CSV export"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Pro",
+            "price": "$10",
+            "cadence": "per month",
+            "description": "Suited for researchers, founders, regular X users who bookmark heavily",
+            "features": [
+              "Automatic syncing",
+              "Advanced filtering and search",
+              "Tags, folders, AI Assistant, Delete bookmarks"
+            ]
+          }
+        ],
+        "pricingNote": "Lifetime plan (one time payment) exists at 225$",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
