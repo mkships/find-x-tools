@@ -1750,7 +1750,7 @@
       ],
       "price": "Freemium",
       "best": "Creators, influencers and small businesses centralizing content, products and audience touchpoints behind one bio link",
-      "color": "#00BA7C",
+      "color": "#41e55f",
       "features": [
         "Customizable Link in Bio — Create a personalized profile with themes, fonts, layouts and unlimited links",
         "Audience Insights — Track views, clicks and visitor behavior with built-in analytics",
@@ -1820,7 +1820,7 @@
           {
             "name": "Agency / Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "Team access and enterprise support",
             "features": [
               "Team seats",
