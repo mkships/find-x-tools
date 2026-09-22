@@ -346,14 +346,14 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbrand24.com&sz=128",
       "url": "https://brand24.com",
-      "tagline": "Real-time media monitoring and sentiment for your brand.",
+      "tagline": "Real-time media monitoring and sentiment for your brand",
       "desc": "Brand24 tracks every mention of your brand or keywords across X and the web in real time, with sentiment analysis and instant alerts.",
       "cat": "listening",
       "categories": [
         "listening"
       ],
       "price": "Paid",
-      "best": "Agencies and enterprise brands needing reputation and sentiment analysis.",
+      "best": "Agencies and enterprise brands needing reputation and sentiment analysis",
       "color": "#f0fff1",
       "features": [
         "Monitor brands - Gather insights from 25 million online sources, tracked in real-time",
