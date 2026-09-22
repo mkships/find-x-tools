@@ -311,14 +311,14 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbirdy.so&sz=128",
       "url": "https://birdy.so",
-      "tagline": "A/B test your bio and profile to convert more followers for your X profile.",
+      "tagline": "A/B test your bio and profile to convert more followers for your X profile",
       "desc": "Birdy helps creators experiment with bios, pinned posts and profile setups, measuring which variations turn visitors into followers.",
       "cat": "audit",
       "categories": [
         "audit"
       ],
       "price": "Freemium",
-      "best": "Creators A/B testing bio/profile conversions.",
+      "best": "Creators A/B testing bio/profile conversions",
       "color": "#ffffff",
       "features": [
         "Bio A/B testing",
@@ -333,7 +333,7 @@
       "mobileApp": "no",
       "apiAccess": "no",
       "addedAt": "2026-09-21",
-      "lastChecked": "",
+      "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [],
         "pricingNote": "Birdy is now integrated with Typefully and is closed for new users!",
