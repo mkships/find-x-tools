@@ -3448,7 +3448,7 @@
       ],
       "price": "Freemium",
       "best": "Agencies, social media teams and growing brands managing multi-platform publishing, approvals, engagement and reporting from one workspace",
-      "color": "#00BA7C",
+      "color": "#ffffff",
       "features": [
         "Multi-platform Publishing — Draft once, tailor posts by network and schedule content across 12+ social platforms",
         "Content Calendar — Plan campaigns in list, week, month or grid views and share calendars with clients",
@@ -3525,7 +3525,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations requiring tailored integrations, identity controls and support",
             "features": [
               "Dedicated account manager",
