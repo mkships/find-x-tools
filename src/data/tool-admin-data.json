@@ -97,14 +97,14 @@
         "pricingTiers": [
           {
             "name": "Custom Tier",
-            "price": "Custom plans available for enterprises",
+            "price": "Not Applicable",
             "cadence": "per month",
-            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial. Original Twitter Marketing plan for 39$ per month is no longer available",
+            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial.",
             "features": []
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": ""
+        "pricingNote": "Original Twitter Marketing plan for 39$ per month is no longer available",
+        "pricingLastChecked": "2026-09-22"
       }
     },
     "autopublix": {
