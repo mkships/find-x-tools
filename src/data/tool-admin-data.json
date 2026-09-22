@@ -2602,7 +2602,7 @@
         "pricingTiers": [
           {
             "name": "Pro",
-            "price": "$15.99",
+            "price": "$11.99",
             "cadence": "per month",
             "description": "For individual creators building a consistent presence on X",
             "features": [
@@ -2615,7 +2615,7 @@
           },
           {
             "name": "Advanced",
-            "price": "$39.99",
+            "price": "$29",
             "cadence": "per month",
             "description": "For growing creators and teams running higher-volume automated publishing",
             "features": [
@@ -2628,7 +2628,7 @@
           },
           {
             "name": "Agency",
-            "price": "$79.99",
+            "price": "$49",
             "cadence": "per month",
             "description": "For agencies and multi-account teams managing larger X workflows",
             "features": [
