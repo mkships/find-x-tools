@@ -9,6 +9,7 @@ import { CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { normalizeToolDetail } from '../../data/tool-detail-schema.js';
 import { SITE_NAME } from '../../config.js';
 import { ArrowLeftRight, ArrowRight, CheckCircle2, ChevronRight, ListChecks, Sparkles } from '@lucide/astro';
+import '../../styles/tool-detail.css';
 
 export function getStaticPaths() {
   return TOOLS.map(tool => ({ params: { slug: tool.id }, props: { tool } }));
