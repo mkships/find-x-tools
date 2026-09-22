@@ -605,6 +605,64 @@
         "pricingNote": "Fantastic SaaS offering one of the best value for its pricing",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "catchintent": {
+      "id": "catchintent",
+      "name": "CatchIntent",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcatchintent.com&sz=128",
+      "url": "https://catchintent.com",
+      "tagline": "Spot high-intent prospects on X before your competitors do",
+      "desc": "CatchIntent monitors conversations for buying signals and surfaces the prospects worth reaching out to, turning X activity into a pipeline.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "B2B teams, founders and marketers hunting high-intent leads",
+      "color": "#00ba7c",
+      "features": [
+        "Buying-intent detection",
+        "Prospect surfacing",
+        "Keyword and topic tracking",
+        "Outreach lists"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Growth",
+            "price": "$100",
+            "cadence": "per month",
+            "description": "For solo operators getting outbound off the ground",
+            "features": [
+              "Lead generation — 1,000 warm leads / month",
+              "Signals — All 7 intent signals",
+              "Outreach — Drafted openers, Browser extension, CRM push"
+            ]
+          },
+          {
+            "name": "Scale",
+            "price": "$270",
+            "cadence": "per month",
+            "description": "For growing teams running outbound at scale",
+            "features": [
+              "Lead generation — 4,000 warm leads / month",
+              "Signals — All 7 intent signals with 2X daily refresh",
+              "Outreach — Drafted openers, Browser extension, CRM push"
+            ]
+          }
+        ],
+        "pricingNote": "Custom Plans available for enterprises",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
