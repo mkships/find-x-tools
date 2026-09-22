@@ -901,6 +901,71 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "coschedule": {
+      "id": "coschedule",
+      "name": "CoSchedule",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcoschedule.com&sz=128",
+      "url": "https://coschedule.com",
+      "tagline": "A marketing calendar that unifies all your content",
+      "desc": "CoSchedule brings your X posts, blog and campaigns onto one marketing calendar with scheduling and workflow tools for content teams.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Marketers managing content calendars and social media posting",
+      "color": "#ffffff",
+      "features": [
+        "Unified marketing calendar",
+        "Social scheduling",
+        "Workflow and approvals",
+        "Best-time scheduling"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "Best for solo consultants and business owners",
+            "features": [
+              "1 User Seat with 3 Social Profiles",
+              "Drag & Drop Calendar",
+              "Unlimited Social Scheduling & Publishing",
+              "Social Automation (ReQueue)",
+              "Basic Social Analytics & Reports",
+              "AI Social Writer & Campaign Builder"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$49",
+            "cadence": "per month",
+            "description": "Best for power users, small teams and agencies",
+            "features": [
+              "2 User Seats with 5 Social Profiles per seat",
+              "Everything in Starter, plus",
+              "Advanced Inbox (All Networks)",
+              "Inbox Saved Replies & AI Replies",
+              "Advanced Social Analytics & AI Insights",
+              "Custom Reports & Dashboards",
+              "Agency Publishing Tools"
+            ]
+          }
+        ],
+        "pricingNote": "Custom plans available for enterprises",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
