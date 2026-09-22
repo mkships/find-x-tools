@@ -1001,6 +1001,66 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "deviai": {
+      "id": "deviai",
+      "name": "Devi AI",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fddevi.com&sz=128",
+      "url": "https://ddevi.com",
+      "tagline": "Monitor keywords and let AI draft high-intent replies",
+      "desc": "Devi is an AI lead generation assistant, monitoring keywords to find organic leads. Devi watches X and other networks for keywords that signal buying intent, then drafts on-brand replies so you turn conversations into leads.",
+      "cat": "ai",
+      "categories": [
+        "ai"
+      ],
+      "price": "Paid",
+      "best": "Solo founders chasing lead-gen through helpful replies",
+      "color": "#f7ff85",
+      "features": [
+        "Keyword and intent monitoring — Monitor keywords in Facebook groups, LinkedIn, X & Reddit posts to find organic leads",
+        "AI-drafted replies — Monitor comments, detect intent with AI and generate personalised responses",
+        "Reporting — One Dashboard, 11 Platforms, No missed leads",
+        "Specialised Tools — Lead scoring and Outreach scheduling"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Monthly deal",
+            "price": "$10",
+            "cadence": "per month",
+            "description": "Suited for solo founders monitoring high intent influencers mentioning your keywords",
+            "features": [
+              "X: Monitor influencers mentioning your keywords",
+              "Free AI Outreach",
+              "Free AI Visual Content & Scheduling"
+            ]
+          },
+          {
+            "name": "Yearly deal",
+            "price": "100$",
+            "cadence": "per month",
+            "description": "Suited for solo founders monitoring high intent influencers mentioning your keywords",
+            "features": [
+              "All features in monthly plan",
+              "All tools in monthly plan",
+              "All languages keyword monitoring",
+              "All languages content & outreach messages",
+              "Real Human Chat Support"
+            ]
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
