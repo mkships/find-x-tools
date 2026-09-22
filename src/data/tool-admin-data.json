@@ -106,6 +106,64 @@
         "pricingNote": "",
         "pricingLastChecked": ""
       }
+    },
+    "autopublix": {
+      "id": "autopublix",
+      "name": "AutoPubliX",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fautopublix.com&sz=128",
+      "url": "https://autopublix.com",
+      "tagline": "Set up automated DM replies on X in minutes.",
+      "desc": "AutoPubliX makes DM automation beginner-friendly, connect your account and launch auto-reply and welcome flows without a learning curve.",
+      "cat": "ai",
+      "categories": [
+        "ai",
+        "schedule"
+      ],
+      "price": "Freemium",
+      "best": "Creators, marketers and agencies seeking quick DM setup at affordable prices.",
+      "color": "#ffffff",
+      "features": [
+        "Quick DM automation setup",
+        "Auto-reply templates",
+        "Welcome messages",
+        "Simple dashboard"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-20",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "1 X account with 3000 DMs per month",
+            "features": []
+          },
+          {
+            "name": "Creator",
+            "price": "$8.99",
+            "cadence": "per month",
+            "description": "3 X accounts with upto 5000 DMs per month",
+            "features": []
+          },
+          {
+            "name": "Growth Plan",
+            "price": "$14.99",
+            "cadence": "per month",
+            "description": "5 X accounts with unlimited DMs per month",
+            "features": []
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": []
