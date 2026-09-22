@@ -1338,44 +1338,10 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
-    },
-    "followerwonk": {
-      "id": "followerwonk",
-      "name": "Followerwonk",
-      "published": true,
-      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffollowerwonk.com&sz=128",
-      "url": "https://followerwonk.com",
-      "tagline": "Analyze followers, find influencers and compare accounts.",
-      "desc": "Followerwonk digs into follower demographics, active times and account comparisons to help you build target lists and find opportunity.",
-      "cat": "growth",
-      "categories": [
-        "growth"
-      ],
-      "price": "Paid",
-      "best": "Teams doing target-list building and audience research.",
-      "color": "#bdfffb",
-      "features": [
-        "Follower demographic breakdowns",
-        "Active-time analysis",
-        "Account comparison",
-        "Influencer discovery"
-      ],
-      "tested": false,
-      "editorPick": false,
-      "sponsored": false,
-      "freePlan": "unknown",
-      "mobileApp": "unknown",
-      "apiAccess": "unknown",
-      "addedAt": "2026-09-21",
-      "lastChecked": "",
-      "detail": {
-        "pricingTiers": [],
-        "pricingNote": "",
-        "pricingLastChecked": ""
-      }
     }
   },
   "deleted": [
-    "deepclick"
+    "deepclick",
+    "followerwonk"
   ]
 }
