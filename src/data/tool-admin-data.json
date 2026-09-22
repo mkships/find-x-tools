@@ -1572,6 +1572,651 @@
         "pricingNote": "",
         "pricingLastChecked": ""
       }
+    },
+    "krisp": {
+      "id": "krisp",
+      "name": "Krisp",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fkrisp.ai&sz=128",
+      "url": "https://krisp.ai/",
+      "tagline": "AI noise cancellation, meeting notes and clearer speech for every call",
+      "desc": "Krisp is a voice AI platform that removes background noise, records and transcribes meetings, and turns conversations into summaries and action items. It works across major meeting platforms at the audio level without requiring a visible meeting bot.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Paid",
+      "best": "Professionals and teams who need clearer calls and automatic meeting notes across conferencing platforms",
+      "color": "#00BA7C",
+      "features": [
+        "AI Noise Cancellation — Remove background noise, nearby voices and echo from both sides of calls in real time",
+        "Bot-free AI Note Taker — Record, transcribe and summarize meetings without adding a visible bot to the call",
+        "Multilingual Transcription — Create searchable, speaker-aware transcripts across 16+ supported languages",
+        "AI Meeting Notes — Generate summaries, action items, key decisions and next steps automatically",
+        "Accent Conversion — Smooth accents in real time while preserving the speaker’s natural voice",
+        "Cross-platform Meetings — Use Krisp with Zoom, Microsoft Teams, Google Meet, Slack Huddles and other calling apps"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Core",
+            "price": "$16",
+            "cadence": "per user / month",
+            "description": "For individuals and small teams that need bot-free meeting notes and clear calls",
+            "features": [
+              "Unlimited AI note-taking and noise cancellation",
+              "Multilingual transcripts and AI Chat",
+              "Mobile app, integrations and webhooks",
+              "10 GB storage"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$30",
+            "cadence": "per user / month",
+            "description": "For teams needing expanded accent conversion, integrations and administrative controls",
+            "features": [
+              "Everything in Core",
+              "Expanded accent conversion",
+              "Advanced integrations and admin controls",
+              "Manager view and 60 GB storage"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "contact sales",
+            "description": "For organization-wide deployment with security, reporting and custom controls",
+            "features": [
+              "Everything in Advanced",
+              "SSO and SCIM",
+              "Advanced security and usage reporting",
+              "Dedicated account management and unlimited storage"
+            ]
+          }
+        ],
+        "pricingNote": "Core and Advanced monthly rates are $16 and $30 per user. Annual billing lowers their monthly equivalents to $8 and $15; the seven-day trial is not an ongoing free plan.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "later": {
+      "id": "later",
+      "name": "Later",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Flater.com&sz=128",
+      "url": "https://later.com",
+      "tagline": "Manage your entire social media workflow in one place",
+      "desc": "Later brings content planning, approvals, cross-platform publishing, engagement, and performance reporting into one social media workflow. Its visual calendar, AI-assisted creation tools, Social Inbox, analytics, and Link in Bio help teams move from idea to measurable result without juggling separate tools.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Freemium",
+      "best": "Social media managers and growing teams planning, approving, publishing, and measuring content across multiple channels",
+      "color": "#1D9BF0",
+      "features": [
+        "Visual Content Planning — Map content on a shared calendar, generate ideas with AI, and organize the publishing plan before posts go live",
+        "Approval Workflows — Collect internal and external feedback, secure approvals, and keep content moving across the team",
+        "Cross-platform Publishing — Schedule and publish content consistently across major social networks",
+        "Social Inbox — Manage supported comments and direct messages from one workspace",
+        "Social Analytics — Track campaign and channel performance, spot what works, and build actionable reports",
+        "Link in Bio — Build a customizable mini-site that connects social posts to products, content, and measurable clicks"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For creators scheduling a limited number of posts and building a basic Link in Bio",
+            "features": [
+              "Limited post scheduling",
+              "Customizable Link in Bio",
+              "Introductory analytics",
+              "1 Access Group"
+            ]
+          },
+          {
+            "name": "Starter",
+            "price": "$25",
+            "cadence": "per month",
+            "description": "For individuals and small businesses that need essential planning, publishing and analytics",
+            "features": [
+              "1 social set with 8 profiles",
+              "1 user",
+              "30 posts per profile each month",
+              "5 AI credits each month",
+              "Up to 3 months of platform analytics"
+            ]
+          },
+          {
+            "name": "Growth",
+            "price": "$50",
+            "cadence": "per month",
+            "description": "For small teams that need collaboration, approvals and richer analytics",
+            "features": [
+              "2 social sets with 16 profiles",
+              "2 users",
+              "180 posts per profile each month",
+              "Social Inbox and approval workflows",
+              "Up to 1 year of platform analytics"
+            ]
+          },
+          {
+            "name": "Scale",
+            "price": "$110",
+            "cadence": "per month",
+            "description": "For agencies and larger teams managing multiple brands with advanced analytics and listening",
+            "features": [
+              "6 social sets with 48 profiles",
+              "4 users",
+              "Unlimited posts",
+              "Competitive benchmarking and future insights",
+              "Up to 2 years of platform analytics"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing is substantially cheaper at $18.75 for Starter, $37.50 for Growth and $82.50 for Scale per month, billed yearly. Paid plans include a 14-day trial.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "linktree": {
+      "id": "linktree",
+      "name": "Linktree",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Flinktr.ee&sz=128",
+      "url": "https://linktr.ee/",
+      "tagline": "The fast, friendly and powerful link in bio tool",
+      "desc": "Linktree is a customizable link-in-bio page that brings content, profiles, products and ways to earn together behind one shareable URL. Built-in analytics, audience collection and integrations help creators and businesses understand visitors and turn attention into action.",
+      "cat": "bio",
+      "categories": [
+        "bio"
+      ],
+      "price": "Freemium",
+      "best": "Creators, influencers and small businesses centralizing content, products and audience touchpoints behind one bio link",
+      "color": "#00BA7C",
+      "features": [
+        "Customizable Link in Bio — Create a personalized profile with themes, fonts, layouts and unlimited links",
+        "Audience Insights — Track views, clicks and visitor behavior with built-in analytics",
+        "Audience Capture — Collect email addresses and phone numbers directly from your Linktree",
+        "Monetization Tools — Sell digital products and courses, share affiliate offers and pursue brand opportunities",
+        "Platform Integrations — Connect services including Mailchimp, YouTube, Google Analytics, Zapier and Amazon",
+        "Social Media Tools — Schedule social posts and automate Instagram replies on supported paid plans"
+      ],
+      "tested": true,
+      "editorPick": true,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "Core link-in-bio tools for getting started",
+            "features": [
+              "Unlimited basic links",
+              "Sell products and courses",
+              "Access brand earning opportunities"
+            ]
+          },
+          {
+            "name": "Starter",
+            "price": "$8",
+            "cadence": "per month",
+            "description": "More personalization and basic performance insights",
+            "features": [
+              "Everything in Free",
+              "Personalized Linktree",
+              "Basic analytics",
+              "Digital-product selling with 9% fees"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$15",
+            "cadence": "per month",
+            "description": "Advanced branding, analytics and marketing integrations",
+            "features": [
+              "Everything in Starter",
+              "Custom themes, fonts and layouts",
+              "Advanced analytics",
+              "Mailing-list integrations"
+            ]
+          },
+          {
+            "name": "Premium",
+            "price": "$35",
+            "cadence": "per month",
+            "description": "Advanced growth, selling and automation tools",
+            "features": [
+              "Everything in Pro",
+              "Zero-percent digital-product seller fees",
+              "Dynamic links and smart routing",
+              "Analytics data export",
+              "Social scheduling and unlimited Instagram auto-replies"
+            ]
+          },
+          {
+            "name": "Agency / Enterprise",
+            "price": "Custom",
+            "cadence": "contact sales",
+            "description": "Team access and enterprise support",
+            "features": [
+              "Team seats",
+              "Single sign-on",
+              "Dedicated support",
+              "Custom contracts"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing lowers the effective monthly price to $6 for Starter, $12 for Pro and $30 for Premium; displayed currency may vary by visitor location.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "loom": {
+      "id": "loom",
+      "name": "Loom",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Floom.com&sz=128",
+      "url": "https://www.loom.com/",
+      "tagline": "Record and share AI-powered video messages that move work forward",
+      "desc": "Loom makes it easy to record your screen and camera, share an instant link, and collaborate around a video message. Built-in editing, viewer engagement, analytics, and AI-generated notes and documents help teams replace long meetings and written explanations with clear asynchronous video.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Freemium",
+      "best": "Remote and distributed teams replacing meetings and long messages with clear asynchronous video walkthroughs",
+      "color": "#7856FF",
+      "features": [
+        "Screen and Camera Recording — Capture your screen, camera and system audio from desktop, browser or mobile",
+        "Instant Sharing and Collaboration — Share an immediate link and collect comments, emoji reactions and tasks",
+        "Built-in Video Editing — Trim and stitch clips, add backgrounds and annotate key moments",
+        "Loom AI — Generate titles, summaries, chapters, meeting notes and workflow documents automatically",
+        "Video Analytics — See viewer insights and understand how people engage with each recording",
+        "Integrations — Embed and share videos in Slack, Jira, Confluence, GitHub, Gmail and more"
+      ],
+      "tested": true,
+      "editorPick": true,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For individuals getting started with short video communication",
+            "features": [
+              "25 videos per person",
+              "5-minute screen recordings",
+              "Transcriptions in 50+ languages",
+              "Comments and emoji reactions"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$18",
+            "cadence": "per user / month",
+            "description": "For teams that need unlimited videos, recording time and basic editing",
+            "features": [
+              "Unlimited videos and recording time",
+              "Basic waveform editing",
+              "Up to 4K video",
+              "Upload and download videos",
+              "Remove Loom branding"
+            ]
+          },
+          {
+            "name": "Business + AI",
+            "price": "$24",
+            "cadence": "per user / month",
+            "description": "For teams that want recordings automatically enhanced and turned into useful work",
+            "features": [
+              "Everything in Business",
+              "Auto-video enhancement",
+              "Advanced editing",
+              "Video-to-text automation",
+              "Auto-meeting notes and recap emails"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "contact sales",
+            "description": "For organizations that need advanced security, administration and support",
+            "features": [
+              "Everything in Business + AI",
+              "SSO and SCIM",
+              "Salesforce integration",
+              "99.95% uptime SLA",
+              "Downloadable user insights"
+            ]
+          }
+        ],
+        "pricingNote": "Monthly USD rates shown. Annual billing can save up to 17%, and Business + AI includes a 14-day trial.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "loomly": {
+      "id": "loomly",
+      "name": "Loomly",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Floomly.com&sz=128",
+      "url": "https://www.loomly.com/",
+      "tagline": "Stress-free social media management for every channel",
+      "desc": "Loomly is an AI-powered social media management platform for creating, scheduling, approving, and analyzing content across channels. It combines content calendars, team workflows, engagement tools, listening, and actionable analytics so brands can run social from one workspace.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Marketing teams and agencies creating, approving, publishing, and improving social content across multiple brands and channels",
+      "color": "#1D9BF0",
+      "features": [
+        "AI Content Planning — Generate ideas, build a content calendar, and get timing and topic guidance from one AI-assisted workflow",
+        "Cross-channel Publishing — Create, customize, schedule, and directly publish unlimited posts across supported social networks",
+        "Approval Workflows — Assign roles, collect stakeholder feedback, and approve posts through shared team workflows",
+        "Community Management — Bring comments, mentions, and messages into one inbox with saved replies and conversation assignments",
+        "Social Listening — Monitor brand mentions, sentiment, competitors, and emerging topics that can shape the content plan",
+        "AI Analytics — Turn cross-channel performance data into plain-language insights, recommendations, and reports"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$65",
+            "cadence": "per month",
+            "description": "For smaller social teams managing a focused set of channels",
+            "features": [
+              "12 social accounts",
+              "3 users",
+              "Unlimited calendars",
+              "Unlimited scheduling",
+              "AI creation and analytics",
+              "Approval workflows"
+            ]
+          },
+          {
+            "name": "Beyond",
+            "price": "$332",
+            "cadence": "per month",
+            "description": "For larger teams and agencies that need scale, governance and branded workflows",
+            "features": [
+              "60 social accounts",
+              "Unlimited users",
+              "Unlimited calendars",
+              "Custom roles and workflows",
+              "Custom branding",
+              "Scheduled reports"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "contact sales",
+            "description": "For organizations managing more than 60 social accounts with tailored requirements",
+            "features": [
+              "61+ social accounts",
+              "Unlimited users",
+              "Unlimited calendars",
+              "Price tailored to the business"
+            ]
+          }
+        ],
+        "pricingNote": "Monthly USD prices shown. Annual equivalents are $49 per month for Starter and $249 per month for Beyond, advertised as 25% off. Loomly offers a no-card trial rather than a permanent free plan.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "manychat": {
+      "id": "manychat",
+      "name": "Manychat",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmanychat.com&sz=128",
+      "url": "https://manychat.com/",
+      "tagline": "Sell more, engage better and grow with automated social conversations",
+      "desc": "Manychat helps creators and social-first businesses automate comments, direct messages and lead capture across Instagram, WhatsApp, TikTok, Messenger and other messaging channels. Its visual workflows, AI conversations and shared inbox turn social engagement into organized conversations and sales opportunities.",
+      "cat": "ai",
+      "categories": [
+        "ai"
+      ],
+      "price": "Freemium",
+      "best": "Creators, social marketers and growing brands turning comments and DMs into leads, conversations and sales",
+      "color": "#1D9BF0",
+      "features": [
+        "Comment-to-DM Automations — Trigger direct-message conversations automatically when followers comment on posts or reels",
+        "Visual Flow Builder — Build multi-step messaging journeys with drag-and-drop workflows and ready-made templates",
+        "AI-powered Conversations — Train AI on your business and tone to answer questions, reply to comments and guide conversations",
+        "Lead Capture and Segmentation — Collect contact details and organize audiences with tags for targeted follow-up",
+        "Cross-channel Broadcasts — Proactively reach audiences through supported channels including WhatsApp, Messenger and Telegram",
+        "Unified Inbox — Manage conversations from connected channels in one place on desktop or mobile"
+      ],
+      "tested": true,
+      "editorPick": true,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For trying basic social automation with up to 25 active contacts each month",
+            "features": [
+              "Any two eligible channels",
+              "Up to four active automations",
+              "One user and one basic Inbox seat",
+              "Manychat branding"
+            ]
+          },
+          {
+            "name": "Essential",
+            "price": "$17",
+            "cadence": "per month",
+            "description": "For creators and growing brands needing unlimited custom automations",
+            "features": [
+              "250 active contacts per month",
+              "Any two eligible channels",
+              "Unlimited custom automations",
+              "Two users and one Inbox seat"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$39",
+            "cadence": "per month",
+            "description": "For scaling creators and growing businesses using AI and broadcasts",
+            "features": [
+              "2,500 active contacts per month",
+              "Any three eligible channels",
+              "AI-powered conversations and broadcasts",
+              "Three users and two Inbox seats"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$99",
+            "cadence": "per month",
+            "description": "For scaling businesses and high-growth creators managing conversations as a team",
+            "features": [
+              "7,500 active contacts per month",
+              "Unlimited eligible channels",
+              "Shared team Inbox and assignments",
+              "Five users and three Inbox seats"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$199",
+            "cadence": "per month",
+            "description": "For teams and high-volume operators needing greater contact and seat allowances",
+            "features": [
+              "25,000 active contacts per month",
+              "Unlimited eligible channels",
+              "Advanced automation, broadcasts and AI",
+              "Ten users and five Inbox seats"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month prices shown. Annual billing is substantially cheaper at $14 for Essential, $29 for Pro, $69 for Business and $139 for Advanced per month, billed yearly. Taxes and active-contact overages are extra, and availability can vary by billing country.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "meetedgar": {
+      "id": "meetedgar",
+      "name": "MeetEdgar",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmeetedgar.com&sz=128",
+      "url": "https://meetedgar.com/",
+      "tagline": "Social media scheduling on autopilot",
+      "desc": "MeetEdgar automates social publishing with a category-based content library that schedules and recycles evergreen posts across major networks. Its AI writing assistant, bulk imports, analytics, and social inbox help small teams stay consistently active with less daily work.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Freelancers, entrepreneurs, and small social teams automating evergreen publishing to keep multiple channels consistently active",
+      "color": "#00BA7C",
+      "features": [
+        "Evergreen Content Library — Store reusable posts in one unlimited library and organize them into categories for ongoing campaigns",
+        "Automated Weekly Schedules — Assign categories to recurring time slots and let Edgar publish the right content without manual scheduling",
+        "Smart Content Recycling — Automatically reshare proven evergreen posts when fresh updates run out so channels stay active",
+        "AI Writing Assistant — Use Inky to create platform-tailored captions, variations, and hashtag suggestions inside the composer",
+        "Cross-platform Publishing — Schedule text, images, carousels, stories, and video across major social networks from one dashboard",
+        "Analytics and Engagement — Review performance metrics and manage supported audience interactions through the social inbox"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Eddie",
+            "price": "$29.99",
+            "cadence": "per month",
+            "description": "For freelancers and entrepreneurs automating a focused social presence",
+            "features": [
+              "5 social accounts",
+              "Unlimited scheduled posts",
+              "10 weekly automations",
+              "4 content categories",
+              "20 team members",
+              "15 Inky credits every 30 days"
+            ]
+          },
+          {
+            "name": "Edgar",
+            "price": "$49.99",
+            "cadence": "per month",
+            "description": "For small businesses and social teams managing more accounts and higher-volume automation",
+            "features": [
+              "25 social accounts",
+              "Unlimited scheduled posts",
+              "1,000 weekly automations",
+              "Unlimited content categories",
+              "20 team members",
+              "Social Inbox",
+              "50 Inky credits every 30 days"
+            ]
+          }
+        ],
+        "pricingNote": "Prices are USD before tax. Annual billing is $299 for Eddie and $499 for Edgar, saving 17%. MeetEdgar has no permanent free plan; both paid plans include a 30-day trial.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "mention": {
+      "id": "mention",
+      "name": "Mention",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmention.com&sz=128",
+      "url": "https://mention.com/en/",
+      "tagline": "Real-time media monitoring across the web and social",
+      "desc": "Mention monitors conversations across social media, news, blogs, forums, review sites, and the wider web, then turns them into alerts, sentiment insights, competitive reports, and shareable dashboards. As of July 1, 2026, Mention is no longer sold as a standalone product; existing customers retain access while new buyers are directed to Agorapulse Listening.",
+      "cat": "listening",
+      "categories": [
+        "listening"
+      ],
+      "price": "Paid",
+      "best": "PR, brand, and market-intelligence teams tracking reputation, competitors, campaigns, and emerging risks across web and social sources",
+      "color": "#8B5CF6",
+      "features": [
+        "Real-time Monitoring — Track brand, competitor, campaign, and topic mentions across social networks, news, blogs, forums, reviews, and the web",
+        "Advanced Alert Queries — Build Basic, Standard, or Boolean alerts that narrow results by keywords, sources, languages, countries, and exclusions",
+        "Sentiment and Trend Analysis — Measure mention volume, reach, sentiment, emotion, influence, and spikes to understand how conversations are changing",
+        "Competitive Intelligence — Compare brands by share of voice, audience sentiment, sources of influence, and campaign performance",
+        "Reports and Dashboards — Turn monitored conversations into customizable visualizations, scheduled reports, and exportable decision-ready data",
+        "Alerts and Team Workflows — Notify teams about new or unusual mentions, assign items, classify results, and share findings across the workspace"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Company (legacy)",
+            "price": "$599",
+            "cadence": "per month, annual contract",
+            "description": "For existing business customers needing advanced listening, reporting and collaboration",
+            "features": [
+              "5 alerts",
+              "50,000 mentions per month",
+              "Unlimited users",
+              "Advanced and Boolean alerts",
+              "100 reports and scheduled reporting",
+              "API and historical data available as paid add-ons"
+            ]
+          }
+        ],
+        "pricingNote": "Mention is no longer available for new standalone purchases as of July 1, 2026. The $599 Company price is legacy-only and billed annually; new customers are directed to Agorapulse Listening with custom pricing.",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
