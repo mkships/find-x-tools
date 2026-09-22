@@ -782,6 +782,41 @@
         "pricingNote": "Pro plan increases based on your following size",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "clonex": {
+      "id": "clonex",
+      "name": "CloneX",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.blockmm.ai%2Fservices%2Fclonex-follow&sz=128",
+      "url": "https://www.blockmm.ai/services/clonex-follow",
+      "tagline": "Capture a competitor’s audience and turn it into your own.",
+      "desc": "CloneX maps the followers of any competitor account and helps you engage and convert that audience, replicating what already works in your niche. It works as a mini-app, completely managed from Telegram app and as a Chrome extension",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "Crypto teams and influencers running competitor audience-capture strategies",
+      "color": "#ffffff",
+      "features": [
+        "Competitor audience mapping",
+        "Follower overlap analysis",
+        "Targeted engagement lists",
+        "Conversion tracking"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
