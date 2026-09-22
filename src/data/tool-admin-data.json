@@ -1195,6 +1195,42 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "feedhive": {
+      "id": "feedhive",
+      "name": "FeedHive",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffeedhive.com&sz=128",
+      "url": "https://feedhive.com",
+      "tagline": "AI-assisted workflows and automation for scheduling and content creation for social media networks",
+      "desc": "FeedHive is an AI-powered social media management and automation platform designed to help creators, agencies, and marketing teams plan, schedule, and optimize their content at scale. It centralizes your entire publishing workflow across major social networks into a single browser-based dashboard.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Solopreneurs, content creators and social media agencies who want smart automation without complexity",
+      "color": "#ffffff",
+      "features": [
+        "AI-Assisted Creation: FeedHive features an AI writing assistant that generates captions, improves existing drafts, suggests relevant hashtags, and uses image generation to pair copy with visuals",
+        "Visual Scheduling & Cross-Posting: You can compose content once and tailor channel-ready versions for platforms like X (Twitter), LinkedIn, Instagram, TikTok, Facebook, YouTube, and Pinterest simultaneously",
+        "Predictive Analytics & Smart Timing: The platform analyzes your followers' past online behavior to recommend the absolute best posting times",
+        "Conditional Automation & Content Recycling: To eliminate constant manual work, it has a built-in engine that automatically resurfaces and publishes evergreen content from your history",
+        "Advanced Developer Tools: For high-volume teams and engineers, FeedHive supports complex automation through a REST API, CLI tools, custom scripting, and integration with AI coding environments like Claude Code"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
