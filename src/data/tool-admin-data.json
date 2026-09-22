@@ -1587,7 +1587,7 @@
       ],
       "price": "Paid",
       "best": "Professionals and teams who need clearer calls and automatic meeting notes across conferencing platforms",
-      "color": "#00BA7C",
+      "color": "#ffffff",
       "features": [
         "AI Noise Cancellation — Remove background noise, nearby voices and echo from both sides of calls in real time",
         "Bot-free AI Note Taker — Record, transcribe and summarize meetings without adding a visible bot to the call",
@@ -1609,7 +1609,7 @@
           {
             "name": "Core",
             "price": "$16",
-            "cadence": "per user / month",
+            "cadence": "per month",
             "description": "For individuals and small teams that need bot-free meeting notes and clear calls",
             "features": [
               "Unlimited AI note-taking and noise cancellation",
@@ -1621,7 +1621,7 @@
           {
             "name": "Advanced",
             "price": "$30",
-            "cadence": "per user / month",
+            "cadence": "per month",
             "description": "For teams needing expanded accent conversion, integrations and administrative controls",
             "features": [
               "Everything in Core",
@@ -1633,7 +1633,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "For organization-wide deployment with security, reporting and custom controls",
             "features": [
               "Everything in Advanced",
