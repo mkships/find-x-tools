@@ -1537,6 +1537,41 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "keyhole": {
+      "id": "keyhole",
+      "name": "Keyhole",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fkeyhole.co&sz=128",
+      "url": "https://keyhole.co",
+      "tagline": "Real-time hashtag, campaign and influencer analytics",
+      "desc": "Keyhole tracks hashtags, campaigns and influencers in real time, measuring reach and sentiment for agencies and brands.",
+      "cat": "listening",
+      "categories": [
+        "listening"
+      ],
+      "price": "Paid",
+      "best": "Agencies and brands tracking campaigns",
+      "color": "#ff7a00",
+      "features": [
+        "Real-time hashtag tracking",
+        "Campaign dashboards",
+        "Influencer analytics",
+        "Sentiment analysis"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": [
