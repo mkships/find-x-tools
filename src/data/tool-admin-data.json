@@ -2924,7 +2924,7 @@
       ],
       "price": "Freemium",
       "best": "Professionals, job seekers and creators producing polished profile photos and branded avatars without arranging a photoshoot",
-      "color": "#7856FF",
+      "color": "#5956e9",
       "features": [
         "Free Profile Picture Editor — Remove a background, apply new colors or scenes, and add borders and text without credits",
         "AI Headshot Generation — Turn one selfie into realistic professional portraits across hundreds of outfits, poses and backgrounds",
@@ -2946,7 +2946,7 @@
           {
             "name": "PFP Maker Classic",
             "price": "$0",
-            "cadence": "forever",
+            "cadence": "per month",
             "description": "For creating and customizing polished profile pictures without signup or watermarks",
             "features": [
               "Automatic background removal",
@@ -2959,7 +2959,7 @@
           {
             "name": "AI Headshots",
             "price": "From $9",
-            "cadence": "one-time",
+            "cadence": "per month",
             "description": "For generating larger sets of professional AI headshots from a selfie",
             "features": [
               "120+ AI headshots in a full run",
