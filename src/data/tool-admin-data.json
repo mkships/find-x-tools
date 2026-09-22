@@ -3190,7 +3190,7 @@
       ],
       "price": "Paid",
       "best": "Creators and social media marketers choosing relevant, data-backed hashtags for image and text posts",
-      "color": "#7856FF",
+      "color": "#ffffff",
       "features": [
         "Text Hashtag Suggestions — Generate relevant hashtags from selected words or longer text on websites and mobile",
         "Image Hashtag Suggestions — Analyze an image and receive contextual hashtag recommendations for visual posts",
@@ -3212,7 +3212,7 @@
           {
             "name": "RiteTag",
             "price": "$49",
-            "cadence": "per year",
+            "cadence": "per month",
             "description": "An all-inclusive hashtag research and generation subscription",
             "features": [
               "1,000 hashtag suggestion queries per month",
