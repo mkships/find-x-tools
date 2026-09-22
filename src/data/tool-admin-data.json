@@ -70,7 +70,7 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Faudiense.com&sz=128",
       "url": "https://audiense.com",
-      "tagline": "Audience intelligence and segmentation for X marketers.",
+      "tagline": "Audience intelligence and segmentation for X marketers",
       "desc": "Audiense builds rich audience segments from X data by capturing interests, influencers and personas, so brands can understand exactly who follows them and why.",
       "cat": "growth",
       "categories": [
@@ -81,7 +81,7 @@
       "color": "#fff2e5",
       "features": [
         "Advanced Segmentation: Breaks down massive global profiles into distinct, actionable sub-communities based on shared affinities or digital connections",
-        "Psychographic & Personality Insights: Evaluates mindset, values, and personality traits to explain what truly motivates an audience.",
+        "Psychographic & Personality Insights: Evaluates mindset, values, and personality traits to explain what truly motivates an audience",
         "Media & Channel Affinities: Identifies the specific publications, digital channels, and influencers your target consumers follow, optimizing ad placement and budget allocation",
         "Seamless Integrations: Connects directly with CRM systems, advertising channels, and data warehouses to turn insights into immediate targeting actions"
       ],
@@ -99,7 +99,7 @@
             "name": "Custom Tier",
             "price": "Not Applicable",
             "cadence": "per month",
-            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial.",
+            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial",
             "features": []
           }
         ],
