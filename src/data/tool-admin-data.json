@@ -339,6 +339,97 @@
         "pricingNote": "Birdy is now integrated with Typefully and is closed for new users!",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "brand24": {
+      "id": "brand24",
+      "name": "Brand24",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbrand24.com&sz=128",
+      "url": "https://brand24.com",
+      "tagline": "Real-time media monitoring and sentiment for your brand.",
+      "desc": "Brand24 tracks every mention of your brand or keywords across X and the web in real time, with sentiment analysis and instant alerts.",
+      "cat": "listening",
+      "categories": [
+        "listening"
+      ],
+      "price": "Paid",
+      "best": "Agencies and enterprise brands needing reputation and sentiment analysis.",
+      "color": "#ffffff",
+      "features": [
+        "Monitor brands - Gather insights from 25 million online sources, tracked in real-time",
+        "Sentiment analysis - Use advanced sentiment analysis to segment positive, negative, or neutral mentions",
+        "Create reports - Measure and report your PR coverage",
+        "Get to know your customers - Learn what people like or dislike about your company and use customer-insights to drive informed decisions"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Individual",
+            "price": "$249",
+            "cadence": "per month",
+            "description": "Ideal for tracking a small  brand",
+            "features": [
+              "3 keywords & 1 user with 2K mentions / month"
+            ]
+          },
+          {
+            "name": "Team",
+            "price": "$349",
+            "cadence": "per month",
+            "description": "Ideal for startups and small businesses",
+            "features": [
+              "7 keywords & Unlimited users with 10k mentions / month"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$499",
+            "cadence": "per month",
+            "description": "Ideal for growing businesses and small agencies",
+            "features": [
+              "12 keywords & Unlimited users with 40K mentions / month",
+              "Realtime updates & Priority support",
+              "AI Sentiment Analysis",
+              "AI Brand Assistant"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$699",
+            "cadence": "per month",
+            "description": "Ideal for scaling businesses and established agencies",
+            "features": [
+              "25 keywords & Unlimited users with 100K mentions / month",
+              "Realtime updates & Priority support",
+              "AI Sentiment Analysis",
+              "AI Brand Assistant"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$1499",
+            "cadence": "per month",
+            "description": "Ideal for industry leaders and large-scale enterprises",
+            "features": [
+              "Custom keyword count with Custom mentions limit & Unlimited users",
+              "Realtime updates & Priority support",
+              "AI Sentiment Analysis",
+              "AI Events Detection",
+              "AI Brand Assistant"
+            ]
+          }
+        ],
+        "pricingNote": "Suited for enterprises & big agencies based on the high pricing",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
