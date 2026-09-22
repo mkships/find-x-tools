@@ -2406,7 +2406,7 @@
       ],
       "price": "Paid",
       "best": "Social media managers and agencies tracking multi-network performance, competitors and client-ready reporting",
-      "color": "#7856FF",
+      "color": "#2685e5",
       "features": [
         "Multi-network Analytics — Track audience growth, engagement and content performance across six major social networks",
         "Historical and Hourly Data — Explore available account history with hourly refreshes and flexible date ranges",
@@ -2428,7 +2428,7 @@
           {
             "name": "Silver",
             "price": "$9",
-            "cadence": "per profile / month",
+            "cadence": "per month",
             "description": "Core social analytics with email reports and available historical data",
             "features": [
               "Analytics",
@@ -2439,7 +2439,7 @@
           {
             "name": "Gold",
             "price": "$19",
-            "cadence": "per profile / month",
+            "cadence": "per month",
             "description": "Adds exports, collaboration, mentions, hourly updates and AI-assisted analysis",
             "features": [
               "CSV, XLS, PDF and PowerPoint exports",
@@ -2452,7 +2452,7 @@
           {
             "name": "Platinum",
             "price": "$39",
-            "cadence": "per profile / month",
+            "cadence": "per month",
             "description": "Advanced competitive, advertising and campaign analytics with customizable reporting",
             "features": [
               "Ads, hashtag and competitor analytics",
@@ -2465,7 +2465,7 @@
           {
             "name": "Pro 5",
             "price": "$180",
-            "cadence": "per 5 profiles / month",
+            "cadence": "per month",
             "description": "Agency package for five or more profiles with unlimited collaborators and API access",
             "features": [
               "Five profile slots",
