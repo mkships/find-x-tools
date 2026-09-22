@@ -721,6 +721,67 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "circleboom": {
+      "id": "circleboom",
+      "name": "Circleboom",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcircleboom.com&sz=128",
+      "url": "https://circleboom.com",
+      "tagline": "Schedule posts, achieve growth, reach, and control far beyond what X alone can offer for, in one single dashboard",
+      "desc": "Circleboom is the trusted platform for individuals, brands, and enterprises to grow, manage, and gain a competitive edge on X. Circleboom X Manager (previously known as Twitter Management Tool) pairs a full post scheduler with account-hygiene tools to unfollow inactive accounts, remove spam and bots while managing multiple profiles.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "Creators and marketers with large following on X and who post regularly",
+      "color": "#ffffff",
+      "features": [
+        "Followers and Following Management — Sort, filter, and take action on your followers and followings in one place",
+        "Account & Post Analytics — Track your growth and see exactly which posts drive the most engagement",
+        "Smart Account Search — Search bios, tweets, and profiles to find exactly the right accounts",
+        "X Post Planner + AI Writer — Smart schedule your content with AI tools and reach more people through cross posting",
+        "X Monitoring Tool — Track hashtags, search tweets in real time, and uncover the sentiment behind every conversatio"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Limited Plan",
+            "price": "$29.99",
+            "cadence": "per month",
+            "description": "For individual creators and marketers",
+            "features": [
+              "AI Writer for Content Inspiration & Fast Content Creation",
+              "Auto RT, Reshare and Queue Scheduling",
+              "Bulk Schedule Tweets/X Posts",
+              "Cross-Post to Other Platforms"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$35.99",
+            "cadence": "per month",
+            "description": "For creators with very large following and who post regularly",
+            "features": [
+              "Everything in Limited Plan (X Post Planner & AI content assistant)",
+              "Followers and Following Management with advanced Analytics",
+              "Advanced X Account Search (Bio & Profile) & on X posts",
+              "X posts monitoring and benchmarking"
+            ]
+          }
+        ],
+        "pricingNote": "Pro plan increases based on your following size",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
