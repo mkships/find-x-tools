@@ -2492,7 +2492,7 @@
       ],
       "price": "Paid",
       "best": "Social media teams and agencies managing publishing, customer conversations, moderation and reporting across multiple profiles",
-      "color": "#F91880",
+      "color": "#ffffff",
       "features": [
         "Social Inbox — Manage comments, messages, mentions and reviews from multiple networks in one workspace",
         "Auto-Moderation — Build rules that answer common questions, hide or delete spam and classify sentiment",
@@ -2553,7 +2553,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "Tailored plans for organizations needing API access, compliance support and service guarantees",
             "features": [
               "API access",
