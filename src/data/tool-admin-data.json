@@ -2180,7 +2180,7 @@
       ],
       "price": "Paid",
       "best": "PR, brand, and market-intelligence teams tracking reputation, competitors, campaigns, and emerging risks across web and social sources",
-      "color": "#8B5CF6",
+      "color": "#ffffff",
       "features": [
         "Real-time Monitoring — Track brand, competitor, campaign, and topic mentions across social networks, news, blogs, forums, reviews, and the web",
         "Advanced Alert Queries — Build Basic, Standard, or Boolean alerts that narrow results by keywords, sources, languages, countries, and exclusions",
@@ -2202,7 +2202,7 @@
           {
             "name": "Company (legacy)",
             "price": "$599",
-            "cadence": "per month, annual contract",
+            "cadence": "per month",
             "description": "For existing business customers needing advanced listening, reporting and collaboration",
             "features": [
               "5 alerts",
