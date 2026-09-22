@@ -2642,7 +2642,7 @@
             ]
           }
         ],
-        "pricingNote": "A seven-day free trial is available, but there is no ongoing free plan. Annual billing lowers the displayed effective monthly prices to $11.99 for Pro, $29 for Advanced and $49 for Agency. OpenTweet’s homepage currently contains conflicting older pricing copy; its dedicated pricing page was treated as authoritative.",
+        "pricingNote": "Current discounted month-to-month USD prices are shown. A seven-day free trial is available, but there is no ongoing free plan. OpenTweet’s pricing and homepage copy have shown conflicting figures, so the monthly pricing toggle was treated as authoritative.",
         "pricingLastChecked": "2026-09-22"
       }
     },
@@ -2907,6 +2907,715 @@
           }
         ],
         "pricingNote": "Month-to-month USD prices shown. Annual billing is advertised at 20% off. Every plan includes a seven-day free trial, but Postwise does not offer an ongoing free plan.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "pfpmaker": {
+      "id": "pfpmaker",
+      "name": "Profile Pic Maker",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpfpmaker.com&sz=128",
+      "url": "https://pfpmaker.com/",
+      "tagline": "Create polished profile pictures and AI headshots from one selfie",
+      "desc": "Profile Pic Maker turns a selfie into professional headshots, creative profile pictures, and ready-to-use social avatars without design work. Its free classic editor removes and replaces backgrounds, adds borders and text, while paid AI tools generate new outfits, poses, settings, and portrait styles.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Freemium",
+      "best": "Professionals, job seekers and creators producing polished profile photos and branded avatars without arranging a photoshoot",
+      "color": "#7856FF",
+      "features": [
+        "Free Profile Picture Editor — Remove a background, apply new colors or scenes, and add borders and text without credits",
+        "AI Headshot Generation — Turn one selfie into realistic professional portraits across hundreds of outfits, poses and backgrounds",
+        "Lifestyle Photoshoots — Generate creative profile pictures for dating, social media, work and everyday personal branding",
+        "AI Face Editing — Retouch portraits, adjust lighting, change backgrounds and refine facial details with purpose-built tools",
+        "Brand-ready Exports — Download high-resolution images suited to social profiles, resumes, email signatures and team pages",
+        "Browser-based Workflow — Create and download results on desktop, iOS or Android without installing an app"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "PFP Maker Classic",
+            "price": "$0",
+            "cadence": "forever",
+            "description": "For creating and customizing polished profile pictures without signup or watermarks",
+            "features": [
+              "Automatic background removal",
+              "Creative, gradient and solid backgrounds",
+              "Borders, frames and text",
+              "Free downloads",
+              "No signup required"
+            ]
+          },
+          {
+            "name": "AI Headshots",
+            "price": "From $9",
+            "cadence": "one-time",
+            "description": "For generating larger sets of professional AI headshots from a selfie",
+            "features": [
+              "120+ AI headshots in a full run",
+              "Hundreds of outfits, backgrounds and poses",
+              "High-resolution downloads",
+              "Commercial use",
+              "Additional credit packs available"
+            ]
+          }
+        ],
+        "pricingNote": "PFP Maker Classic is free forever. Paid AI headshots start at $9 as a one-time credit purchase; PFPMaker also offers region-specific subscriptions and credit packs whose live prices are shown at checkout, so no unsupported monthly figure is listed here.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "publer": {
+      "id": "publer",
+      "name": "Publer",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpubler.com&sz=128",
+      "url": "https://publer.com/",
+      "tagline": "Create, schedule and analyze social content from one collaborative workspace",
+      "desc": "Publer is an all-in-one social media management platform for planning, publishing, collaboration, and analytics across major networks. Its calendar, bulk scheduling, reusable media, automation, AI assistance, and approval workflows help creators and agencies maintain a consistent multi-channel presence.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Freemium",
+      "best": "Creators, social media teams and agencies scheduling multi-platform content, coordinating approvals and measuring performance",
+      "color": "#7856FF",
+      "features": [
+        "Multi-platform Scheduling — Create, customize and publish posts across major social networks from one visual calendar",
+        "Bulk Scheduling — Upload and schedule large content batches while tailoring timing and formats by destination",
+        "Content Automation — Auto-publish RSS items, recycle evergreen posts and create recurring schedules that keep queues active",
+        "AI Assist — Generate captions, complete text, create images and draft responses inside the publishing workflow",
+        "Analytics and Reporting — Measure post performance, find best publishing times and export client-ready reports",
+        "Team Workspaces — Separate brands, invite collaborators and route posts through role-based internal or client approvals"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For individuals testing basic scheduling across a small set of non-X profiles",
+            "features": [
+              "1 workspace",
+              "3 social accounts excluding X",
+              "10 pending scheduled posts per account",
+              "25 saved drafts",
+              "24 hours of post history",
+              "Link in Bio"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$5",
+            "cadence": "per account / month",
+            "description": "For creators and freelancers needing unlimited scheduling and flexible account capacity",
+            "features": [
+              "Starts with 1 social account",
+              "Unlimited workspaces",
+              "Unlimited scheduling and drafts",
+              "Unlimited media storage",
+              "Bulk scheduling",
+              "RSS automations and Link in Bio"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$10",
+            "cadence": "per account / month",
+            "description": "For agencies and growing teams needing analytics, automation and approvals",
+            "features": [
+              "Everything in Professional",
+              "Unlimited AI prompts",
+              "Advanced analytics and reports",
+              "Best times and competitor analysis",
+              "Post recycling and recurring posts",
+              "Approval workflows and API access"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For larger organizations needing higher limits, dedicated service and flexible procurement",
+            "features": [
+              "Everything in Business",
+              "Volume discounts",
+              "Dedicated onboarding",
+              "Prioritized support",
+              "Unlimited daily posting from Publer",
+              "Purchase order and wire transfer options"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD starting prices shown before added accounts or members. The Free plan is ongoing but excludes X/Twitter. Annual billing is 20% cheaper; Professional includes a seven-day trial and Business includes a 14-day trial.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "replyguy": {
+      "id": "replyguy",
+      "name": "ReplyGuy",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Freplyguy.com&sz=128",
+      "url": "https://replyguy.com",
+      "tagline": "Find high-intent conversations and turn them into helpful product mentions",
+      "desc": "ReplyGuy monitors the web for conversations related to a product and uses AI to select the most relevant opportunities. It drafts useful, contextual replies that can mention the product naturally, with automated publishing available for supported workflows.",
+      "cat": "ai",
+      "categories": [
+        "ai"
+      ],
+      "price": "Paid",
+      "best": "Founders, indie makers and growth teams finding high-intent conversations and turning relevant replies into product discovery",
+      "color": "#00A9C0",
+      "features": [
+        "Keyword Monitoring — Track product-related terms across online conversations without repeatedly searching each network",
+        "AI Post Selection — Prioritize recent and relevant discussions where the product can genuinely help the original poster",
+        "Contextual Reply Generation — Draft useful responses that introduce the product naturally when it fits the conversation",
+        "Twitter Auto-replies — Publish selected Twitter replies automatically or switch the project to a manual approval workflow",
+        "Cross-network Workflow — Discover and prepare responses for Twitter, Reddit and LinkedIn with platform-appropriate publishing controls",
+        "Sentiment and Reporting — Review sentiment, notifications and reports across monitored mentions and reply activity"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Analyst",
+            "price": "$39",
+            "cadence": "per month",
+            "description": "For teams monitoring conversations and sentiment without automated replies",
+            "features": [
+              "20 keywords",
+              "5 projects",
+              "Mention monitoring",
+              "Sentiment analysis",
+              "Notifications and reports",
+              "No auto-replies"
+            ]
+          },
+          {
+            "name": "Small",
+            "price": "$10",
+            "cadence": "per month",
+            "description": "For a small project beginning with automated conversational outreach",
+            "features": [
+              "5 keywords",
+              "20 replies per month",
+              "1 project",
+              "Auto-replies",
+              "Sentiment analysis",
+              "Notifications and reports"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$49",
+            "cadence": "per month",
+            "description": "For a single project running a higher-volume reply workflow",
+            "features": [
+              "5 keywords",
+              "100 replies per month",
+              "1 project",
+              "Auto-replies",
+              "Sentiment analysis",
+              "Notifications and reports"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$99",
+            "cadence": "per month",
+            "description": "For growing businesses promoting several products or campaigns",
+            "features": [
+              "25 keywords",
+              "300 replies per month",
+              "5 projects",
+              "Auto-replies",
+              "Sentiment analysis",
+              "Notifications and reports"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$199",
+            "cadence": "per month",
+            "description": "For organizations operating large-scale conversational outreach",
+            "features": [
+              "100 keywords",
+              "1,000 replies per month",
+              "Unlimited projects",
+              "Auto-replies",
+              "Sentiment analysis",
+              "Notifications and reports"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices from ReplyGuy’s dedicated pricing page are shown. Annual billing is substantially cheaper at $199 for Analyst, $59 for Small, $249 for Pro, $499 for Business and $999 for Enterprise per year. Every plan includes a three-day trial; there is no ongoing free plan. The homepage currently shows conflicting plan limits, so the dedicated pricing page was treated as authoritative.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "ritetag": {
+      "id": "ritetag",
+      "name": "RiteTag",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fritetag.com&sz=128",
+      "url": "https://ritetag.com",
+      "tagline": "Get real-time hashtag suggestions from any text or image",
+      "desc": "RiteTag provides contextual hashtag suggestions for text and images through its website, browser extension and mobile apps. It uses current engagement data to grade recommendations and helps users research, compare and save reusable hashtag sets.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Creators and social media marketers choosing relevant, data-backed hashtags for image and text posts",
+      "color": "#7856FF",
+      "features": [
+        "Text Hashtag Suggestions — Generate relevant hashtags from selected words or longer text on websites and mobile",
+        "Image Hashtag Suggestions — Analyze an image and receive contextual hashtag recommendations for visual posts",
+        "Real-time Engagement Grading — Compare hashtags using current engagement signals instead of generic popularity lists",
+        "Hashtag Sets — Save related hashtags in reusable groups and compare their performance as the data changes",
+        "Browser Extension — Access hashtag suggestions while working in social networks and publishing tools across the web",
+        "Mobile Hashtag Generation — Create hashtags for text and images through included Android and iOS apps"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "RiteTag",
+            "price": "$49",
+            "cadence": "per year",
+            "description": "An all-inclusive hashtag research and generation subscription",
+            "features": [
+              "1,000 hashtag suggestion queries per month",
+              "Suggestions from text and images",
+              "Browser extension access",
+              "Android and iOS apps",
+              "Researchable and reusable Hashtag Sets"
+            ]
+          }
+        ],
+        "pricingNote": "RiteTag publishes an annual-only price of $49 per year and offers a seven-day free trial; no month-to-month or ongoing free plan is listed. Hashtag reports and RiteKit API access are sold separately rather than included in the RiteTag subscription.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "sendible": {
+      "id": "sendible",
+      "name": "Sendible",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsendible.com&sz=128",
+      "url": "https://sendible.com",
+      "tagline": "Manage every brand, client and social channel without per-seat fees",
+      "desc": "Sendible is an all-in-one social media management platform for planning, publishing, engagement, and reporting across multiple brands. It gives agencies and growing teams shared workspaces, approval workflows, content tools, and unlimited users on every plan.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Agencies, multi-location brands and social teams managing publishing, approvals, engagement and reporting across many client accounts",
+      "color": "#00BA7C",
+      "features": [
+        "Multi-network Scheduling — Plan, tailor and publish posts across major social networks from one visual calendar",
+        "Priority Inbox — Monitor comments and conversations, reply centrally and assign responses to teammates",
+        "Team Workspaces — Organize each client, brand or location with its own profiles, content, calendar and reports",
+        "Approvals and Collaboration — Route posts through internal or client approval workflows without charging for additional users",
+        "Analytics and Reporting — Analyze cross-network performance and automate delivery of standard or branded reports",
+        "AI and Content Tools — Generate captions, bulk-schedule campaigns and store reusable assets in shared content libraries"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Core",
+            "price": "$35",
+            "cadence": "per month",
+            "description": "For individuals or small teams managing one or two brands",
+            "features": [
+              "1 workspace",
+              "6 social profiles",
+              "Unlimited users and scheduling",
+              "Unlimited AI credits",
+              "Monitoring and standard reports"
+            ]
+          },
+          {
+            "name": "Plus",
+            "price": "$99",
+            "cadence": "per month",
+            "description": "For growing brands that need structured collaboration",
+            "features": [
+              "3 workspaces",
+              "18 social profiles",
+              "Unlimited users",
+              "Assignments and approvals",
+              "Everything in Core"
+            ]
+          },
+          {
+            "name": "Premium",
+            "price": "$199",
+            "cadence": "per month",
+            "description": "For scaling agencies and brands managing more clients and campaigns",
+            "features": [
+              "7 workspaces",
+              "42 social profiles",
+              "Content libraries",
+              "Custom branded reports",
+              "Campaigns and dedicated onboarding"
+            ]
+          },
+          {
+            "name": "Elite",
+            "price": "$299",
+            "cadence": "per month",
+            "description": "For growing agencies and multi-location organizations with advanced publishing needs",
+            "features": [
+              "15 workspaces",
+              "90 social profiles",
+              "Bulk posting with dynamic fields",
+              "Advanced user permissions",
+              "Optional white-label add-on"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$750",
+            "cadence": "per month",
+            "description": "For large organizations requiring extensive capacity, security and account support",
+            "features": [
+              "50 workspaces",
+              "300 social profiles",
+              "Access to all features",
+              "SSO",
+              "Dedicated account manager"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing is 15% cheaper. Every plan includes a 14-day free trial with no card required, but Sendible does not offer an ongoing free plan.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "socialblade": {
+      "id": "socialblade",
+      "name": "Social Blade",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsocialblade.com&sz=128",
+      "url": "https://socialblade.com",
+      "tagline": "Track creator growth, rankings and public social statistics across platforms",
+      "desc": "Social Blade tracks daily audience and performance statistics for creators across YouTube, TikTok, Twitch, Facebook, and Instagram. It combines historical charts, rankings, projections, creator comparisons, reports, and a Business API for deeper analysis.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Freemium",
+      "best": "Creators, marketers and talent teams benchmarking account growth, researching competitors and identifying influential profiles across social platforms",
+      "color": "#FF7A00",
+      "features": [
+        "Cross-platform Statistics — Track public audience and performance data across YouTube, TikTok, Twitch, Facebook and Instagram",
+        "Growth History — Review daily, weekly and monthly changes with longer historical tables and charts on paid plans",
+        "Creator Rankings — Explore platform, country and category top lists using subscriber, follower and Social Blade rankings",
+        "Future Projections — Model likely audience and view growth from each creator’s tracked performance history",
+        "Creator Reports — Generate downloadable YouTube report cards and build filtered reports for creator research",
+        "Business API — Access public profile statistics, historical data and top charts through a documented REST API"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "forever",
+            "description": "For casual users checking public creator statistics and rankings",
+            "features": [
+              "5 favorites per platform",
+              "Top 100 lists",
+              "Creator summary pages",
+              "Future projections and live counts",
+              "Limited historical data"
+            ]
+          },
+          {
+            "name": "Bronze",
+            "price": "$5.99",
+            "cadence": "per month",
+            "description": "For individual creators who want an ad-free experience and expanded tracking",
+            "features": [
+              "No ads",
+              "15 favorites per platform",
+              "Top 250 lists",
+              "1 YouTube report card per month",
+              "Up to 30 days of table data"
+            ]
+          },
+          {
+            "name": "Silver",
+            "price": "$14.99",
+            "cadence": "per month",
+            "description": "For active creators and marketers who need more history and reporting",
+            "features": [
+              "25 favorites per platform",
+              "Top 500 lists",
+              "10 YouTube report cards per month",
+              "Up to 60 days of table data",
+              "Weekly and daily charts",
+              "5 Business API credits per month"
+            ]
+          },
+          {
+            "name": "Gold",
+            "price": "$59.99",
+            "cadence": "per month",
+            "description": "For professionals researching and reporting on larger creator sets",
+            "features": [
+              "100 favorites per platform",
+              "Top 1,000 lists",
+              "50 YouTube report cards per month",
+              "Up to 180 days of table data",
+              "20 Business API credits per month"
+            ]
+          },
+          {
+            "name": "Platinum",
+            "price": "$149.99",
+            "cadence": "per month",
+            "description": "For agencies and data teams needing the largest personal-plan limits",
+            "features": [
+              "500 favorites per platform",
+              "Top 5,000 lists",
+              "100 YouTube report cards per month",
+              "Up to 365 days of table data with extended history",
+              "50 Business API credits per month"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing costs $59.99 for Bronze, $149.99 for Silver, $599.99 for Gold and $1,439.99 for Platinum, saving 17%–20%. Business API credits can also be purchased separately.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "socialchamp": {
+      "id": "socialchamp",
+      "name": "Social Champ",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.socialchamp.com&sz=128",
+      "url": "https://www.socialchamp.com/",
+      "tagline": "Post once and show up everywhere from one social media workspace",
+      "desc": "Social Champ brings publishing, analytics, engagement, listening, collaboration, and AI tools into one workspace for managing multiple social channels. Agencies and teams can plan campaigns, coordinate approvals, answer conversations, and report on performance across 12+ platforms.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Freemium",
+      "best": "Agencies, social media teams and growing brands managing multi-platform publishing, approvals, engagement and reporting from one workspace",
+      "color": "#00BA7C",
+      "features": [
+        "Multi-platform Publishing — Draft once, tailor posts by network and schedule content across 12+ social platforms",
+        "Content Calendar — Plan campaigns in list, week, month or grid views and share calendars with clients",
+        "Teams and Approvals — Separate brands into workspaces and route content through structured multi-level approval workflows",
+        "Analytics and Reporting — Compare cross-platform performance and export client-ready PDF and presentation reports",
+        "Unified Social Inbox — Manage comments, direct messages and reviews from a shared team queue",
+        "Champ AI Suite — Generate captions, images and hashtags that follow the brand’s voice"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For an individual managing one social account",
+            "features": [
+              "1 social account",
+              "1 user and 1 workspace",
+              "Unlimited post scheduling",
+              "Analytics and reporting",
+              "Social inbox"
+            ]
+          },
+          {
+            "name": "Standard",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "For creators and small teams managing a focused set of profiles",
+            "features": [
+              "6 social accounts",
+              "2 users",
+              "Unlimited post scheduling",
+              "Bulk upload",
+              "Analytics and reporting",
+              "Basic approval workflow"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$59",
+            "cadence": "per month",
+            "description": "For growing teams coordinating clients and more advanced workflows",
+            "features": [
+              "12 social accounts",
+              "5 users and 3 workspaces",
+              "Advanced analytics and reporting",
+              "Multi-layer approval workflow",
+              "Client management",
+              "Competitor analysis and automation rules"
+            ]
+          },
+          {
+            "name": "Agency",
+            "price": "$149",
+            "cadence": "per month",
+            "description": "For agencies operating many accounts, users and client workspaces",
+            "features": [
+              "30 social accounts",
+              "Unlimited users and workspaces",
+              "White-label reports",
+              "REST API access",
+              "Social listening",
+              "Priority support"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For organizations requiring tailored integrations, identity controls and support",
+            "features": [
+              "Dedicated account manager",
+              "Single sign-on",
+              "Salesforce and HubSpot integrations",
+              "API access",
+              "Custom integrations"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD bundled-plan prices shown. Social Champ also offers a free-forever entry plan for one social account, and annual billing saves up to 20%.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "socialbee": {
+      "id": "socialbee",
+      "name": "SocialBee",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsocialbee.com&sz=128",
+      "url": "https://socialbee.com/",
+      "tagline": "Create, schedule and improve a month of social content from one workspace",
+      "desc": "SocialBee is an all-in-one social media management platform for creating, scheduling, analyzing, and engaging across multiple networks. Its category-based calendar, evergreen recycling, AI creation, collaboration, and reporting tools help teams keep a balanced publishing rhythm without juggling separate apps.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Freelancers, small businesses and agencies creating, scheduling and measuring a consistent multi-platform content mix",
+      "color": "#FF7A00",
+      "features": [
+        "AI Content Creation — Generate on-brand captions and visuals, then customize each post for the destination network",
+        "Category-based Scheduling — Organize posts into content categories and automatically publish a balanced mix from one calendar",
+        "Evergreen Recycling — Requeue high-performing posts, add variations and expire time-sensitive content automatically",
+        "Social Media Analytics — Track reach, engagement, growth and top content, then generate shareable PDF reports",
+        "Unified Engagement — Reply to comments, mentions and direct messages from supported networks in one inbox",
+        "Team Collaboration — Separate clients into workspaces, assign roles and manage feedback and approvals beside each post"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Bootstrap",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "For freelancers and solopreneurs building a consistent social presence",
+            "features": [
+              "5 social profiles",
+              "1 user and 1 workspace",
+              "10 content categories",
+              "Unlimited AI content generation",
+              "3 months of analytics data"
+            ]
+          },
+          {
+            "name": "Accelerate",
+            "price": "$49",
+            "cadence": "per month",
+            "description": "For small businesses expanding their publishing and measurement workflow",
+            "features": [
+              "10 social profiles",
+              "50 content categories",
+              "Unlimited AI content generation",
+              "Advanced analytics with 2 years of data",
+              "Bulk editor and CSV uploads",
+              "Post approval system"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$99",
+            "cadence": "per month",
+            "description": "For social media managers, teams and agencies collaborating across brands",
+            "features": [
+              "25 social profiles",
+              "3 users per workspace",
+              "5 workspaces",
+              "Unlimited categories and content sources",
+              "Exportable analytics reports",
+              "Post approvals and internal notes"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing is advertised at 16% off. Every plan includes a 14-day trial, but SocialBee does not offer an ongoing free plan.",
         "pricingLastChecked": "2026-09-22"
       }
     }
