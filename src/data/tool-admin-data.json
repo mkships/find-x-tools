@@ -221,6 +221,41 @@
         "pricingNote": "Fantastic value for the features it offers (link-in-bio, analytics, commerce)",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "beautifythis": {
+      "id": "beautifythis",
+      "name": "Beautify This",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweets.beauty&sz=128",
+      "url": "https://tweets.beauty",
+      "tagline": "Make your posts look stunning with one-click styling.",
+      "desc": "Beautify This transforms plain Twitter posts (tweets) into eye-catching, shareable graphics with templates and backgrounds without any design skills needed.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Free",
+      "best": "Content creators who want quick, good-looking visuals.",
+      "color": "#ffffff",
+      "features": [
+        "One-click beautify for all your twitter posts",
+        "Customization options while editing",
+        "Background and gradient library",
+        "Completely free tool with bot feature"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-20",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": []
