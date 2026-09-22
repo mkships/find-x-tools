@@ -1848,7 +1848,7 @@
       ],
       "price": "Freemium",
       "best": "Remote and distributed teams replacing meetings and long messages with clear asynchronous video walkthroughs",
-      "color": "#7856FF",
+      "color": "#ffffff",
       "features": [
         "Screen and Camera Recording — Capture your screen, camera and system audio from desktop, browser or mobile",
         "Instant Sharing and Collaboration — Share an immediate link and collect comments, emoji reactions and tasks",
@@ -1882,7 +1882,7 @@
           {
             "name": "Business",
             "price": "$18",
-            "cadence": "per user / month",
+            "cadence": "per month",
             "description": "For teams that need unlimited videos, recording time and basic editing",
             "features": [
               "Unlimited videos and recording time",
@@ -1895,7 +1895,7 @@
           {
             "name": "Business + AI",
             "price": "$24",
-            "cadence": "per user / month",
+            "cadence": "per month",
             "description": "For teams that want recordings automatically enhanced and turned into useful work",
             "features": [
               "Everything in Business",
@@ -1908,7 +1908,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "For organizations that need advanced security, administration and support",
             "features": [
               "Everything in Business + AI",
