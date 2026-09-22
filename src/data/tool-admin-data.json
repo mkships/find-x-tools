@@ -1160,6 +1160,42 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "fedica": {
+      "id": "fedica",
+      "name": "Fedica",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffedica.com&sz=128",
+      "url": "https://fedica.com",
+      "tagline": "Analytics, publishing and audience insights in one suite",
+      "desc": "Fedica offers deep analytics, smart scheduling based on when your audience is active, and audience segmentation for data-minded managers. Publish, analyze, and grow across 15 social platforms, see who's actually engaging. Visualize and listen with smarter scheduling, management & analytics in one social media dashboard. Fedica helps you to publish, analyze, listen and engage - all in one single suite.",
+      "cat": "schedule",
+      "categories": [
+        "schedule",
+        "analytics"
+      ],
+      "price": "Freemium",
+      "best": "Global brands and enterprise marketing teams managing their entire social suite",
+      "color": "#ffffff",
+      "features": [
+        "Predictive best-time posting with Intelligent Publisher + Content Calendar",
+        "Grow your reach and build get more interactions by engaging with top topics in your entire community with X Trending Topics",
+        "Followers mapping, analysis and segmentation, Hashtags & Keyword Analysis specifically built for X",
+        "Engage with top influencers who have the most connections with your followers using Real Influencers feature for X"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
