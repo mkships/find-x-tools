@@ -695,9 +695,31 @@
       "addedAt": "2026-09-21",
       "lastChecked": "2026-09-22",
       "detail": {
-        "pricingTiers": [],
+        "pricingTiers": [
+          {
+            "name": "Plus",
+            "price": "$6",
+            "cadence": "per month",
+            "description": "For solo creators posting a lot of long form content as threads",
+            "features": []
+          },
+          {
+            "name": "Pro",
+            "price": "$15",
+            "cadence": "per month",
+            "description": "For agencies managing multiple creator accounts",
+            "features": []
+          },
+          {
+            "name": "Team",
+            "price": "$49",
+            "cadence": "per month",
+            "description": "For brands and large agencies managing many content creators",
+            "features": []
+          }
+        ],
         "pricingNote": "",
-        "pricingLastChecked": ""
+        "pricingLastChecked": "2026-09-22"
       }
     }
   },
