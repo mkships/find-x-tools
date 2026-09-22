@@ -2754,7 +2754,7 @@
       ],
       "price": "Paid",
       "best": "Creators, marketers and learning teams turning written or long-form content into polished videos without a production crew",
-      "color": "#F91880",
+      "color": "#ffffff",
       "features": [
         "Script and URL to Video — Convert scripts, articles, presentations and other source material into structured videos with AI-selected scenes",
         "Text-based Video Editing — Edit recordings through the transcript, remove unwanted sections and generate concise highlights",
@@ -2819,7 +2819,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations needing tailored volume, security and support",
             "features": [
               "Custom usage allowances",
