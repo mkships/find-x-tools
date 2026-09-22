@@ -1937,7 +1937,7 @@
       ],
       "price": "Paid",
       "best": "Marketing teams and agencies creating, approving, publishing, and improving social content across multiple brands and channels",
-      "color": "#1D9BF0",
+      "color": "#ffffff",
       "features": [
         "AI Content Planning — Generate ideas, build a content calendar, and get timing and topic guidance from one AI-assisted workflow",
         "Cross-channel Publishing — Create, customize, schedule, and directly publish unlimited posts across supported social networks",
@@ -1987,7 +1987,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "For organizations managing more than 60 social accounts with tailored requirements",
             "features": [
               "61+ social accounts",
