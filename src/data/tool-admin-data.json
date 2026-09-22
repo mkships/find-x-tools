@@ -1431,6 +1431,69 @@
         "pricingNote": "Custom Plans available for enterprises",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "hypefury": {
+      "id": "hypefury",
+      "name": "Hypefury",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhypefury.com&sz=128",
+      "url": "https://hypefury.com",
+      "tagline": "Automate your growth and influence by building and monetising your audience",
+      "desc": "Hypefury is a social media scheduling and automation platform designed to help content creators, entrepreneurs, and businesses grow and monetize their audience. Hypefury queues content, recycles your best posts, auto-plugs threads once they take off, and turns engagement into subscribers and sales.",
+      "cat": "schedule",
+      "categories": [
+        "schedule",
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "Solo creators, SaaS founders and agencies automating growth",
+      "color": "#ffffff",
+      "features": [
+        "Content Scheduling — Plan and queue posts, multi-post threads, and updates days or weeks in advance across platforms like X (Twitter), LinkedIn, Instagram, and Threads",
+        "Cross-Platform Repurposing — Automatically turn text posts into images (tweetshots), or convert X threads into LinkedIn carousels and Instagram posts with one click",
+        "Evergreen & Recurrent Posts — Mark your best-performing posts as \"evergreen\" so the platform automatically recycles and reposts them to maximize reach over time",
+        "Auto-Plugs & Lead Generation — Automatically add a follow-up promotional plug or a call-to-action (like sharing your email list or a Gumroad product link) under your posts once they reach a specific engagement milestone",
+        "Auto-DMs — Automatically send a direct message (DM) to users who comment on or engage with your posts to capture leads or deliver free resources",
+        "Content Inspiration — Provide a gallery of templates, prompts, and top-performing posts from various niches to help you brainstorm ideas and avoid writer's block"
+      ],
+      "tested": true,
+      "editorPick": true,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Flexible",
+            "price": "$6",
+            "cadence": "per month",
+            "description": "Best suited for solo creators, solo founders and D2C entrepreneurs",
+            "features": [
+              "Connect 1 social media platform",
+              "Unlimited scheduling",
+              "2 Tweetshots per day",
+              "Autoplugs",
+              "AutoDMs (for Instagram)"
+            ]
+          },
+          {
+            "name": "Full",
+            "price": "$19",
+            "cadence": "per month",
+            "description": "Best suited for solo creators, solo founders and D2C entrepreneurs operating at a large scale",
+            "features": [
+              "Everything in Flexible, plus:",
+              "Connect to all social media platforms",
+              "5 Tweetshots per day"
+            ]
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
