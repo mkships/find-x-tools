@@ -4312,6 +4312,482 @@
         "pricingNote": "Current discounted prices from Tweet Hunter's Monthly pricing view are shown in USD. Its page advertises larger savings on yearly billing and a seven-day trial for every plan; there is no ongoing free plan. Some older homepage and comparison copy displays different pricing.",
         "pricingLastChecked": "2026-09-23"
       }
+    },
+    "tweetpik": {
+      "id": "tweetpik",
+      "name": "TweetPik",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweethunter.io%2Ftweetpik&sz=128",
+      "url": "https://tweethunter.io/tweetpik",
+      "tagline": "Turn X posts into polished, shareable screenshots",
+      "desc": "TweetPik is a Tweet Hunter tool for turning X posts into polished images that can be shared across other channels. Its web screenshot tool remains available, while the former TweetPik Pro plan is no longer maintained.",
+      "cat": "design",
+      "categories": ["design"],
+      "price": "Free",
+      "best": "Creators and social media managers repurposing X posts as visual content for other channels",
+      "color": "#F91880",
+      "features": [
+        "Post Screenshots — Capture an X post as a clean image for cross-platform sharing",
+        "Screenshot API — Generate post images programmatically through the linked API offering",
+        "Media Downloader — Save video and image media from X posts",
+        "Quote Maker — Turn post text into shareable quote graphics"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "Web screenshot tool", "price": "$0", "cadence": "free tool", "description": "For creators making individual post screenshots", "features": ["Browser-based post screenshot tool", "Shareable image output"]}],
+        "pricingNote": "TweetPik says its former Pro plan is no longer maintained and points users to Tweet Hunter. The linked screenshot API is a separate offering; current API pricing is not stated on this page.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "tweetsmash": {
+      "id": "tweetsmash",
+      "name": "Tweetsmash",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweetsmash.com&sz=128",
+      "url": "https://www.tweetsmash.com/",
+      "tagline": "Turn your X bookmarks into a searchable knowledge library",
+      "desc": "Tweetsmash imports and organizes X bookmarks so saved ideas are easy to search, revisit and reuse. Paid options add AI chat, reading digests, exports to other tools and access for AI agents.",
+      "cat": "comments",
+      "categories": ["comments"],
+      "price": "Freemium",
+      "best": "Creators, researchers and knowledge workers organizing saved X posts for reading and reuse",
+      "color": "#7856FF",
+      "features": [
+        "Bookmark Import — Bring in saved X posts through the browser extension or official X connection",
+        "Smart Organization — Sort bookmarks with labels, folders, AI categories and topic detection",
+        "Search and AI Chat — Find saved posts by text or ask questions across your bookmark library",
+        "Reading Digests — Rediscover useful bookmarks in daily or weekly emails",
+        "Exports and Integrations — Send bookmarks to Notion, Google Sheets or Zotero on eligible plans",
+        "API and MCP Access — Connect bookmark data to external applications and AI agents on Yearly Pass"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Free import", "price": "$0", "cadence": "free access", "description": "For importing and previewing an X bookmark library", "features": ["Full browser-extension import", "Recent bookmarks via X connection", "AI categories and mini digest preview"]},
+          {"name": "Reader Pass", "price": "$14", "cadence": "per month", "description": "For readers who want searchable bookmarks, AI chat and digests", "features": ["AI chat and full-text search", "Daily or weekly email digests", "Labels, folders and PDF search exports", "1 X account"]},
+          {"name": "Yearly Pass", "price": "$99", "cadence": "per year", "description": "For researchers exporting and connecting bookmarks to other tools", "features": ["Everything in Reader Pass", "Notion, Google Sheets and Zotero exports", "REST API, webhooks and MCP server", "Up to 3 X accounts"]},
+          {"name": "Exports Pass", "price": "$49", "cadence": "one time", "description": "For safeguarding and exporting a bookmark archive", "features": ["Export bookmark folders", "Notion, Sheets and Zotero destinations", "Auto-export for 365 days"]}
+        ],
+        "pricingNote": "Reader Pass is $14 when billed monthly; its advertised $7 per month is billed as $84 yearly. Yearly Pass is annual-only, and a separate $198 lifetime option is also available.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "twitonomy": {
+      "id": "twitonomy",
+      "name": "Twitonomy",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftwitonomy.com&sz=128",
+      "url": "https://www.twitonomy.com/",
+      "tagline": "Explore X followers, lists and account activity in detail",
+      "desc": "Twitonomy provides visual account and audience analytics for X, including follower growth, following relationships and lists. Its Premium tier adds deeper audience reports, map views, exports and daily stats tracking.",
+      "cat": "analytics",
+      "categories": ["analytics"],
+      "price": "Freemium",
+      "best": "Social media analysts and marketers examining X audiences and cleaning up following lists",
+      "color": "#1D9BF0",
+      "features": [
+        "Account Analytics — Review posting activity and audience trends in visual reports",
+        "Follower Insights — Browse, search and assess followers by interests and influence",
+        "Following Analysis — Find relationships and accounts to unfollow or engage",
+        "List Research — Explore members and subscribers of X lists",
+        "Audience Exports — Download follower, following and list data on Premium",
+        "Daily Stats Tracking — Monitor follower, following and post counts after upgrading"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Basic", "price": "$0", "cadence": "free access", "description": "For exploring core X account analytics", "features": ["Basic account insights", "Follower and following browsing", "List exploration"]},
+          {"name": "Premium", "price": "$19", "cadence": "per month", "description": "For deeper audience research and exports", "features": ["Follower and following reports", "Excel and PDF exports", "Audience map views", "Daily stats tracking"]}
+        ],
+        "pricingNote": "Twitonomy publishes $19 per month for Premium with cancel-anytime monthly billing. Its interface and copy still use Twitter terminology.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "twitteraudit": {
+      "id": "twitteraudit",
+      "name": "Twitter Audit",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftwitteraudit.com&sz=128",
+      "url": "https://twitteraudit.com/",
+      "tagline": "Check how many of your X followers are real",
+      "desc": "Twitter Audit, now part of Fedica, estimates the share of real, fake, bot and inactive followers on an X account. A first audit is free; Fedica's paid research tools add repeated audits, higher limits and deeper audience analysis.",
+      "cat": "audit",
+      "categories": ["audit"],
+      "price": "Paid",
+      "best": "Creators, brands and researchers checking X audience authenticity before campaigns or partnerships",
+      "color": "#00BA7C",
+      "features": [
+        "Follower Quality Audit — Estimate real, fake, bot and inactive followers on a public X account",
+        "Twitter Score — Summarize the real-follower share as a simple account score",
+        "Public Account Checks — Audit accounts beyond your own after signing in",
+        "Follower Tracking — Monitor changes in followers and unfollowers through Fedica",
+        "Audience Research — Explore demographics, engagement and account quality on paid Fedica plans"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "First audit", "price": "$0", "cadence": "one time", "description": "For trying an X follower-quality check", "features": ["One free audit after sign-in", "Real-versus-fake follower score"]},
+          {"name": "Fedica Research", "price": "$129", "cadence": "per month", "description": "For ongoing audience research and repeated audits", "features": ["Research and analytics features", "Higher account-analysis limits", "Up to 2 million combined followers"]},
+          {"name": "Enterprise", "price": "Custom", "cadence": "contact sales", "description": "For larger audit and research programs", "features": ["Customizable follower limits", "Research and analytics support"]}
+        ],
+        "pricingNote": "Twitter Audit offers one free first audit, not an ongoing free audit plan. Its current paid capabilities are sold through Fedica; Research is $129 billed monthly or $79 per month on annual billing. Fedica's general free publishing plan is separate from repeated audits.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "twitterbiogen": {
+      "id": "twitterbiogen",
+      "name": "Twitter Bio Generator",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpallyy.com&sz=128",
+      "url": "https://pallyy.com/tools/twitter-bio-generator",
+      "tagline": "Generate sharper X bio ideas in seconds",
+      "desc": "Pallyy's free X bio generator turns a short description into bio ideas tailored to a person or business. It offers tone choices to help creators and brands explain why they are worth following in X's short profile space.",
+      "cat": "bio",
+      "categories": ["bio"],
+      "price": "Free",
+      "best": "Creators, founders and small businesses refining an X profile to attract relevant followers",
+      "color": "#E8A400",
+      "features": [
+        "AI Bio Ideas — Generate short X profile copy from a written description",
+        "Person or Business Mode — Tailor suggestions to an individual or brand account",
+        "Tone Controls — Choose a voice such as serious, funny or informative",
+        "Free Web Tool — Try the generator without a separate paid bio-tool plan"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "Bio generator", "price": "$0", "cadence": "free tool", "description": "For generating X bio ideas", "features": ["Person and business prompts", "Selectable tone", "AI-generated bio suggestions"]}],
+        "pricingNote": "This is a free Pallyy web tool. Pallyy's separate social media management subscriptions are not required to describe the bio generator's pricing.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "typeshare": {
+      "id": "typeshare",
+      "name": "Typeshare",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftypeshare.co&sz=128",
+      "url": "https://typeshare.co/",
+      "tagline": "Write, publish everywhere and see what resonates",
+      "desc": "Typeshare gives writers one place to draft, publish and improve their work across social channels. Its free plan supports writing and publishing, while paid plans add a large template library, scheduling, editor tools and performance feedback.",
+      "cat": "content",
+      "categories": ["content"],
+      "price": "Freemium",
+      "best": "Independent writers and creators building a consistent publishing habit and growing an audience",
+      "color": "#FF7A00",
+      "features": [
+        "Writing Workspace — Draft and organize pieces in one publishing environment",
+        "Template Library — Start from hundreds of proven writing formats on Pro",
+        "Social Publishing — Publish and schedule writing to supported social platforms on Pro",
+        "Editor Tools — Generate ideas, outlines and headlines while drafting",
+        "Performance Scores — See feedback on published posts to improve future writing",
+        "Streak Tracker — Build consistency with a visible writing habit"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Free", "price": "$0", "cadence": "per month", "description": "For starting a writing and publishing habit", "features": ["Write and publish on Typeshare", "Streak tracker", "Community follows and comments"]},
+          {"name": "Pro", "price": "$20", "cadence": "per month", "description": "For writers using templates, social scheduling and editor tools", "features": ["500-plus templates", "Social publishing and scheduling", "Performance scores", "Unlimited collections and editor tools"]},
+          {"name": "Creator", "price": "$200", "cadence": "per year", "description": "For writers wanting Creator-only strategy and template benefits", "features": ["Everything in Pro", "Exclusive template packs", "Unlimited content strategies"]}
+        ],
+        "pricingNote": "Typeshare's help center lists Pro at $20 billed monthly and Creator at $200 yearly. Pro also has a 30-day trial; the Free plan is ongoing.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "untweeps": {
+      "id": "untweeps",
+      "name": "Untweeps",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Funtweeps.com&sz=128",
+      "url": "https://untweeps.com/",
+      "tagline": "Legacy unfollow tool now continued through Circleboom",
+      "desc": "Untweeps was a tool for identifying inactive X accounts and cleaning up a following list. Its site now says it has been acquired by Circleboom and directs visitors to Circleboom's unfollower and inactive-account tools rather than an active Untweeps app.",
+      "cat": "audit",
+      "categories": ["audit"],
+      "price": "Paid",
+      "best": "X account managers checking inactive follows and cleaning up their following list through Circleboom",
+      "color": "#7856FF",
+      "features": [
+        "Inactive Account Discovery — Find inactive or ghost accounts through the linked Circleboom tool",
+        "Unfollower Review — See accounts that stopped following you through Circleboom",
+        "Bulk Unfollow — Remove selected unfollowers using Circleboom's current workflow",
+        "Unfollower Alerts — Get notified when an account unfollows you with Circleboom"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "unknown",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "Legacy Untweeps", "price": "Unavailable", "cadence": "no current plan", "description": "Untweeps now refers visitors to Circleboom", "features": ["No current standalone Untweeps pricing", "Circleboom offers the successor workflows"]}],
+        "pricingNote": "Untweeps announced its acquisition by Circleboom in April 2026. No current standalone Untweeps pricing or app is offered on the site. This listing is retained for editorial review and may be better hidden or redirected to Circleboom.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "viewmetrics": {
+      "id": "viewmetrics",
+      "name": "ViewMetrics",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fviewmetrics.com&sz=128",
+      "url": "https://www.viewmetrics.com/",
+      "tagline": "Bring client marketing data together for reporting and AI analysis",
+      "desc": "ViewMetrics connects marketing data across client accounts into reusable dashboards and reports. Consultants and agencies can embed charts in Google Workspace and let AI assistants query connected performance data without copying figures between tools.",
+      "cat": "analytics",
+      "categories": ["analytics"],
+      "price": "Freemium",
+      "best": "Solo consultants and small agencies consolidating client marketing data for repeatable reports",
+      "color": "#FF7A00",
+      "features": [
+        "Connected Analytics — Bring marketing sources and client accounts into one reporting workspace",
+        "AI-Readable Data — Let supported AI assistants answer questions using connected metrics",
+        "Embedded Charts — Sync charts into Google Workspace reports and presentations",
+        "Reusable Dashboards — Apply reporting templates across multiple client workspaces",
+        "Scheduled Data Sync — Refresh connected reports on a daily, weekly or monthly cadence",
+        "Team Collaboration — Invite users to shared workspaces on higher plans"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Free", "price": "$0", "cadence": "per month", "description": "For trying basic connected reporting", "features": ["1 account, workspace and user", "Analytics dashboard", "Google add-on and reporting"]},
+          {"name": "Starter", "price": "$29.99", "cadence": "per month", "description": "For a solo consultant with several client accounts", "features": ["5 accounts", "2 workspaces", "1 user", "Reporting and Google add-on"]},
+          {"name": "Professional", "price": "$49", "cadence": "per month", "description": "For an agency collaborating across client reports", "features": ["50 accounts", "5 workspaces", "5 users", "Reporting and Google add-on"]},
+          {"name": "Team", "price": "$119", "cadence": "per month", "description": "For larger reporting teams", "features": ["Unlimited accounts", "20 workspaces", "20 users", "Reporting and Google add-on"]}
+        ],
+        "pricingNote": "Monthly-selector prices are shown. The pricing page also advertises yearly billing savings; its static scrape defaults to yearly and can show inconsistent labels, so the monthly toggle was checked directly.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "vistasocial": {
+      "id": "vistasocial",
+      "name": "Vista Social",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fvistasocial.com&sz=128",
+      "url": "https://vistasocial.com/",
+      "tagline": "Plan, engage and report across every social channel",
+      "desc": "Vista Social combines social publishing, a unified inbox, listening and analytics in one workspace for teams and agencies. Collaboration tools, review management and optional advocacy features support larger social media operations.",
+      "cat": "schedule",
+      "categories": ["schedule"],
+      "price": "Paid",
+      "best": "Social media teams and agencies managing content, engagement and reporting across multiple client profiles",
+      "color": "#1D9BF0",
+      "features": [
+        "Content Planning — Schedule, preview and publish posts across social channels",
+        "Unified Inbox — Handle comments and messages from connected profiles in one place",
+        "Team Workflows — Assign roles and coordinate review and approval of posts",
+        "Analytics and Reports — Measure performance and prepare client-facing reports",
+        "Social Listening — Monitor brand and competitor conversations with optional expanded coverage",
+        "Review and Advocacy Tools — Manage reviews and activate employee sharing where enabled"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Professional", "price": "$79", "cadence": "per month", "description": "For professionals and small teams coordinating social publishing", "features": ["15 social profiles", "2 users", "Publishing, inbox and reporting"]},
+          {"name": "Advanced", "price": "$149", "cadence": "per month", "description": "For growing teams with more advanced planning and workflows", "features": ["Professional features", "Advanced planning and workflows", "Expanded collaboration"]},
+          {"name": "Scale", "price": "$349", "cadence": "per month", "description": "For larger organizations scaling their social operations", "features": ["Advanced features", "Larger team and profile capacity", "Expanded management tools"]},
+          {"name": "Enterprise", "price": "Custom", "cadence": "contact sales", "description": "For custom social management requirements", "features": ["Custom plan and limits", "Enterprise support options"]}
+        ],
+        "pricingNote": "These are the month-to-month prices in Vista Social's comparison table, not the annual-equivalent amounts shown in its main plan cards. Annual billing saves about 20%. A 14-day trial is offered, but there is no ongoing free plan.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "volumn": {
+      "id": "volumn",
+      "name": "Volumn.ai",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fvolumn.ai&sz=128",
+      "url": "https://www.volumn.ai/",
+      "tagline": "Use AI agents to find leads and grow on X",
+      "desc": "Volumn.ai combines AI-assisted X posting, replies, lead discovery and outreach in one growth workspace. Its agents help founders and sales teams find relevant conversations, engage prospects and track how activity contributes to pipeline.",
+      "cat": "ai",
+      "categories": ["ai"],
+      "price": "Paid",
+      "best": "Founders and B2B growth teams using X conversations to find prospects and build a sales pipeline",
+      "color": "#F91880",
+      "features": [
+        "GhostWriter — Draft and schedule X posts aligned with a creator's voice",
+        "ReplyAgent — Identify relevant posts and suggest replies worth sending",
+        "SalesLeads Agent — Find prospects from posts and competitor engagement",
+        "Outreach Agent — Personalize direct messages and follow-up conversations",
+        "Email Alerts — Follow selected entrepreneurs and receive updates without scanning X",
+        "Growth Reporting — Track automated actions, lead signals and campaign performance"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {"name": "Hobby", "price": "$19", "cadence": "per month", "description": "For solo creators trying light X growth workflows", "features": ["2 X accounts", "240 monthly credits", "Basic replies, lead research and DMs"]},
+          {"name": "Professional", "price": "$200", "cadence": "per month", "description": "For creators running daily growth and outreach", "features": ["20 X accounts", "2,000 monthly credits", "Up to 3 reply or sales bots", "2 included seats"]},
+          {"name": "Business", "price": "$599", "cadence": "per month", "description": "For teams coordinating larger growth programs", "features": ["7,200 monthly credits", "Up to 10 reply or sales bots", "5 included seats", "Unlimited X keyword limit"]}
+        ],
+        "pricingNote": "Current monthly-selector prices are shown from Volumn.ai's pricing page. Its homepage still mentions a different Hobby price; the dedicated pricing page takes precedence. Annual billing is cheaper, and a three-day trial is offered rather than an ongoing free plan.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "xpro": {
+      "id": "xpro",
+      "name": "X Pro (TweetDeck)",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fx.com&sz=128",
+      "url": "https://pro.x.com/",
+      "tagline": "Monitor multiple live X timelines in one dashboard",
+      "desc": "X Pro, formerly TweetDeck, is X's multi-column workspace for following timelines, searches and conversations at once. Access is now included with X Premium+ rather than sold as a standalone X Pro subscription.",
+      "cat": "listening",
+      "categories": ["listening"],
+      "price": "Paid",
+      "best": "Journalists, community managers and power users monitoring multiple X conversations in real time",
+      "color": "#1D9BF0",
+      "features": [
+        "Custom Columns — View several configurable timelines side by side",
+        "Real-Time Monitoring — Keep track of fast-moving posts and conversations",
+        "Advanced Search — Build focused monitoring views around queries and topics",
+        "Account Collaboration — Add contributors and admins where supported by X Pro"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "X Premium+", "price": "From $40", "cadence": "per month on web", "description": "Required subscription tier for X Pro access", "features": ["X Pro multi-column dashboard", "Premium+ features", "Regional pricing may vary"]}],
+        "pricingNote": "X's current Help Center lists X Pro as a Premium+-only feature. Premium+ starts at $40 per month on the web in supported regions, or $395 per year; taxes, payment method and local prices may vary. X Pro has no separate public price.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "xautopilot": {
+      "id": "xautopilot",
+      "name": "X-Autopilot",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fxautopilot.app&sz=128",
+      "url": "https://xautopilot.app/",
+      "tagline": "Run an AI X engagement agent locally on your Mac",
+      "desc": "X-Autopilot runs an AI-assisted X posting and engagement workflow through a local Chrome session on macOS. It can draft replies in a trained voice, suggest engagement actions and show which activity contributes to audience growth; users supply their own AI provider key.",
+      "cat": "ai",
+      "categories": ["ai"],
+      "price": "Paid",
+      "best": "Mac-based founders and creators managing X replies and outreach while keeping browser sessions local",
+      "color": "#F91880",
+      "features": [
+        "Local Browser Agent — Run actions through Chrome on the user's own Mac",
+        "Voice Training — Draft replies using patterns learned from the account's posts",
+        "Reply Review — Score and tune suggested replies before higher-autonomy use",
+        "Engagement Automation — Queue replies, likes, follows and other supported actions",
+        "Attribution Dashboard — See which engagement activity appears to bring followers",
+        "Bring Your Own Model Key — Connect a supported AI provider rather than paying a bundled token plan"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "Lifetime", "price": "$199", "cadence": "one time", "description": "For Mac users who want the local agent and future updates", "features": ["Unlimited local actions", "Voice-profile training and reply styles", "Attribution dashboard", "Future product updates"]}],
+        "pricingNote": "The official site states there is no subscription or trial: $199 is a one-time license. A separate AI provider key is required and provider usage is paid directly by the user. The site offers a 14-day refund window.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "zlappo": {
+      "id": "zlappo",
+      "name": "Zlappo",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fzlappo.com&sz=128",
+      "url": "https://zlappo.com/",
+      "tagline": "Schedule X threads and automate creator growth",
+      "desc": "Zlappo helps creators schedule posts and threads, reuse strong ideas and automate selected X engagement. It also offers cross-posting, direct-message flows and analytics to connect content activity with growth and sales.",
+      "cat": "schedule",
+      "categories": ["schedule"],
+      "price": "Paid",
+      "best": "Solo X creators and small creator teams batching content and automating publishing and follow-up",
+      "color": "#1D9BF0",
+      "features": [
+        "Thread Scheduling — Draft and queue X threads with controlled reply intervals",
+        "Live Post Preview — Check the look of scheduled posts before publishing",
+        "Evergreen Recycling — Reuse categorized content through recurrent posting queues",
+        "Auto-DMs — Send configured messages after supported post engagement",
+        "Cross-Posting — Send eligible content to LinkedIn and Instagram",
+        "Performance Insights — Review post engagement and timing to refine content"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [{"name": "Subscription plans", "price": "See checkout", "cadence": "monthly billing", "description": "For solo creators through multi-account teams", "features": ["Real G: 1 X account", "Hustler: up to 10 X accounts", "Tycoon: unlimited X accounts"]}],
+        "pricingNote": "The public page shows annual-billing equivalents only: Real G $12.49, Hustler $24.99 and Tycoon $83.33 per month when billed annually. It says monthly billing is available but does not publish the billed-monthly amounts. A seven-day trial is offered; no ongoing free plan is stated. A separate $199.99 one-time lifetime option is mentioned in the FAQ.",
+        "pricingLastChecked": "2026-09-23"
+      }
     }
   },
   "deleted": [
