@@ -1227,7 +1227,48 @@
       "addedAt": "2026-09-22",
       "lastChecked": "2026-09-22",
       "detail": {
-        "pricingTiers": [],
+        "pricingTiers": [
+          {
+            "name": "Creator",
+            "price": "€19",
+            "cadence": "per month",
+            "description": "Best for individual content creators and solopreneurs",
+            "features": [
+              "4 social accounts",
+              "All supported platforms",
+              "5K AI credits per month",
+              "500 automation runs / month",
+              "14-day future scheduling"
+            ]
+          },
+          {
+            "name": "Brand",
+            "price": "€29",
+            "cadence": "per month",
+            "description": "Best for small startups and upcoming brands",
+            "features": [
+              "10 social accounts",
+              "5 workspaces",
+              "20K AI credits per month",
+              "2K automation runs / month",
+              "60-day future scheduling"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "€99",
+            "cadence": "per month",
+            "description": "Best for businesses, growth startups, and organizations",
+            "features": [
+              "100 social accounts",
+              "50 workspaces",
+              "50K AI credits per month",
+              "100K AI credits per month",
+              "10K automation runs / month",
+              "Unlimited future scheduling"
+            ]
+          }
+        ],
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
