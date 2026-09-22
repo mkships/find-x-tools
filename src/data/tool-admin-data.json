@@ -2988,7 +2988,7 @@
       ],
       "price": "Freemium",
       "best": "Creators, social media teams and agencies scheduling multi-platform content, coordinating approvals and measuring performance",
-      "color": "#7856FF",
+      "color": "#ffffff",
       "features": [
         "Multi-platform Scheduling — Create, customize and publish posts across major social networks from one visual calendar",
         "Bulk Scheduling — Upload and schedule large content batches while tailoring timing and formats by destination",
@@ -3024,7 +3024,7 @@
           {
             "name": "Professional",
             "price": "$5",
-            "cadence": "per account / month",
+            "cadence": "per month",
             "description": "For creators and freelancers needing unlimited scheduling and flexible account capacity",
             "features": [
               "Starts with 1 social account",
@@ -3038,7 +3038,7 @@
           {
             "name": "Business",
             "price": "$10",
-            "cadence": "per account / month",
+            "cadence": "per month",
             "description": "For agencies and growing teams needing analytics, automation and approvals",
             "features": [
               "Everything in Professional",
@@ -3052,7 +3052,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For larger organizations needing higher limits, dedicated service and flexible procurement",
             "features": [
               "Everything in Business",
