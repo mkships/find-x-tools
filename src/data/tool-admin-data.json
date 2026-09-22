@@ -1212,11 +1212,11 @@
       "best": "Solopreneurs, content creators and social media agencies who want smart automation without complexity",
       "color": "#ffffff",
       "features": [
-        "AI-Assisted Creation: FeedHive features an AI writing assistant that generates captions, improves existing drafts, suggests relevant hashtags, and uses image generation to pair copy with visuals",
-        "Visual Scheduling & Cross-Posting: You can compose content once and tailor channel-ready versions for platforms like X (Twitter), LinkedIn, Instagram, TikTok, Facebook, YouTube, and Pinterest simultaneously",
-        "Predictive Analytics & Smart Timing: The platform analyzes your followers' past online behavior to recommend the absolute best posting times",
-        "Conditional Automation & Content Recycling: To eliminate constant manual work, it has a built-in engine that automatically resurfaces and publishes evergreen content from your history",
-        "Advanced Developer Tools: For high-volume teams and engineers, FeedHive supports complex automation through a REST API, CLI tools, custom scripting, and integration with AI coding environments like Claude Code"
+        "AI-Assisted Creation — FeedHive features an AI writing assistant that generates captions, improves existing drafts, suggests relevant hashtags, and uses image generation to pair copy with visuals",
+        "Visual Scheduling & Cross-Posting — You can compose content once and tailor channel-ready versions for platforms like X (Twitter), LinkedIn, Instagram, TikTok, Facebook, YouTube, and Pinterest simultaneously",
+        "Predictive Analytics & Smart Timing — The platform analyzes your followers' past online behavior to recommend the absolute best posting times",
+        "Conditional Automation & Content Recycling — To eliminate constant manual work, it has a built-in engine that automatically resurfaces and publishes evergreen content from your history",
+        "Advanced Developer Tools — For high-volume teams and engineers, FeedHive supports complex automation through a REST API, CLI tools, custom scripting, and integration with AI coding environments like Claude Code"
       ],
       "tested": false,
       "editorPick": false,
