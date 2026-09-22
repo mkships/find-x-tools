@@ -2217,6 +2217,698 @@
         "pricingNote": "Mention is no longer available for new standalone purchases as of July 1, 2026. The $599 Company price is legacy-only and billed annually; new customers are directed to Agorapulse Listening with custom pricing.",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "metricool": {
+      "id": "metricool",
+      "name": "Metricool",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmetricool.com&sz=128",
+      "url": "https://metricool.com/",
+      "tagline": "Plan, measure, and manage all your social media in one place",
+      "desc": "Metricool brings social publishing, analytics, reporting, inbox management, and ad campaigns into one dashboard. It helps creators, marketers, and agencies plan content, understand performance, and manage conversations without juggling separate tools.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Freemium",
+      "best": "Creators, social media managers, and agencies planning multi-channel content and turning performance data into clearer decisions",
+      "color": "#00BA7C",
+      "features": [
+        "Visual Planner — Drag and drop content into a calendar, preview each platform, find recommended times, and schedule across networks",
+        "Social Analytics — Track channel performance, measure progress over time, and compare competitors from one dashboard",
+        "Automated Reporting — Generate reports, AI analysis, campaign dashboards, and Looker Studio outputs without manual spreadsheets",
+        "Unified Inbox — Bring supported messages and comments into one place so teams can respond without switching platforms",
+        "DM Automation — Turn post interactions into automated social messages that guide people to a catalog, sign-up page, or conversation",
+        "Ads Campaign Management — Create, analyze, and optimize Google, Facebook, and TikTok campaigns from one workspace"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For one brand getting started with basic planning and analytics",
+            "features": [
+              "1 brand",
+              "20 scheduled posts per month",
+              "30 days of analytics history",
+              "Basic inbox and analytics",
+              "5 AI credits per month"
+            ]
+          },
+          {
+            "name": "Starter",
+            "price": "$25",
+            "cadence": "per month",
+            "description": "For individuals and small teams managing multiple brands or clients",
+            "features": [
+              "Starts at 5 brands",
+              "Unlimited scheduling subject to fair use",
+              "Unlimited analytics history",
+              "PDF and PowerPoint reports",
+              "SmartLinks",
+              "Canva and Google Drive integrations"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$67",
+            "cadence": "per month",
+            "description": "For agencies and teams needing collaboration, approvals, and advanced reporting",
+            "features": [
+              "Everything in Starter",
+              "Starts at 15 brands",
+              "Team and client access",
+              "Approval workflows",
+              "Custom report templates",
+              "Looker Studio, Zapier, and API access"
+            ]
+          },
+          {
+            "name": "Custom",
+            "price": "Contact sales",
+            "cadence": "custom",
+            "description": "For organizations managing more than 50 brands or needing tailored capabilities",
+            "features": [
+              "50+ brands",
+              "Everything in Advanced",
+              "White-label options",
+              "API and custom integrations",
+              "Personalized onboarding and support"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month prices shown in USD. Annual billing gives two months free compared with monthly billing. Connecting X/Twitter is a $10 monthly add-on per connected Premium account; Advanced Analytics is a separate add-on.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "microposter": {
+      "id": "microposter",
+      "name": "MicroPoster",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmicroposter.so&sz=128",
+      "url": "https://microposter.so/",
+      "tagline": "Post where you already post and show up everywhere else",
+      "desc": "MicroPoster automatically crossposts new posts and natively reposts recent updates across X, Threads, Bluesky, and Mastodon. Creators can keep publishing in their usual social app while background automations distribute supported content to chosen accounts.",
+      "cat": "content",
+      "categories": [
+        "content"
+      ],
+      "price": "Paid",
+      "best": "Founders, writers, and small social teams keeping several text-first networks active without repeating the same publishing work",
+      "color": "#FF7A00",
+      "features": [
+        "Automatic Crossposting — Detect new posts in a chosen source account and publish them to selected X, Threads, Bluesky, or Mastodon destinations",
+        "Crossposting Rules — Configure separate source-to-destination routes so every automation follows the distribution path you choose",
+        "Native Auto Repost — Reshare eligible recent posts at chosen intervals without publishing a duplicate copy",
+        "Content Adaptation — Carry supported images, videos, links, and threads across networks while adapting to destination formats and limits",
+        "Per-post Skip Controls — Add #nocrosspost or #keephere to prevent a specific post or thread from being distributed",
+        "Drafting and Scheduling — Prepare posts with scheduling tools and an AI co-writer included across paid plans"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Creator",
+            "price": "$12",
+            "cadence": "per month",
+            "description": "For creators automating a small group of social profiles",
+            "features": [
+              "4 connected accounts",
+              "3 automations",
+              "200 automatic crossposts per month",
+              "100 reposts per month",
+              "50 AI credits per month",
+              "30-minute sync"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "For active creators and small teams running more workflows",
+            "features": [
+              "8 connected accounts",
+              "10 automations",
+              "1,500 automatic crossposts per month",
+              "1,000 reposts per month",
+              "1,000 AI credits per month",
+              "10-minute sync",
+              "Priority support"
+            ]
+          },
+          {
+            "name": "Power",
+            "price": "$59",
+            "cadence": "per month",
+            "description": "For higher-volume teams managing more accounts and automations",
+            "features": [
+              "12 connected accounts",
+              "50 automations",
+              "5,000 automatic crossposts per month",
+              "5,000 reposts per month",
+              "5,000 AI credits per month",
+              "10-minute sync",
+              "Priority support"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. New accounts receive a seven-day Creator trial with no credit card, but there is no permanent free plan. Yearly billing is available and charged for a full year; the current official pricing page does not expose annual totals clearly enough to quantify the saving.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "minterio": {
+      "id": "minterio",
+      "name": "Minter.io",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fminter.io&sz=128",
+      "url": "https://minter.io/",
+      "tagline": "Advanced social analytics, historical data and multi-account tracking",
+      "desc": "Minter.io tracks audience growth, content performance and engagement across Instagram, TikTok, Threads, X, Facebook and LinkedIn. Hourly data, competitor and hashtag analysis, AI guidance and exportable reports help brands and agencies understand what is working.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Social media managers and agencies tracking multi-network performance, competitors and client-ready reporting",
+      "color": "#7856FF",
+      "features": [
+        "Multi-network Analytics — Track audience growth, engagement and content performance across six major social networks",
+        "Historical and Hourly Data — Explore available account history with hourly refreshes and flexible date ranges",
+        "AI Analyst — Ask questions about account data and receive performance insights, comparisons and recommendations",
+        "Competitor and Hashtag Tracking — Benchmark rival accounts and measure Instagram and X hashtag campaigns",
+        "Automated Reporting — Export and schedule reports in CSV, XLS, PDF and PowerPoint formats",
+        "Benchmarks — Compare growth, engagement and publishing metrics against similar-sized accounts and chosen competitors"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Silver",
+            "price": "$9",
+            "cadence": "per profile / month",
+            "description": "Core social analytics with email reports and available historical data",
+            "features": [
+              "Analytics",
+              "Email reports",
+              "Historical data"
+            ]
+          },
+          {
+            "name": "Gold",
+            "price": "$19",
+            "cadence": "per profile / month",
+            "description": "Adds exports, collaboration, mentions, hourly updates and AI-assisted analysis",
+            "features": [
+              "CSV, XLS, PDF and PowerPoint exports",
+              "Team members and mentions",
+              "Hourly and early-post performance data",
+              "20 AI Analyst messages per profile",
+              "MCP server access"
+            ]
+          },
+          {
+            "name": "Platinum",
+            "price": "$39",
+            "cadence": "per profile / month",
+            "description": "Advanced competitive, advertising and campaign analytics with customizable reporting",
+            "features": [
+              "Ads, hashtag and competitor analytics",
+              "100 AI Analyst messages per profile",
+              "Scheduled, customizable and branded exports",
+              "Slack reports and data integrations",
+              "Benchmarks"
+            ]
+          },
+          {
+            "name": "Pro 5",
+            "price": "$180",
+            "cadence": "per 5 profiles / month",
+            "description": "Agency package for five or more profiles with unlimited collaborators and API access",
+            "features": [
+              "Five profile slots",
+              "Unlimited team members",
+              "API access"
+            ]
+          }
+        ],
+        "pricingNote": "A 14-day trial is available without a credit card; it is not an ongoing free plan. Annual billing lowers Silver to $8.25, Gold to $16.58 and Platinum to $33.25 per profile per month, while Pro 5 starts at a $150 monthly equivalent. Prices are in USD and exclude tax.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "napoleoncat": {
+      "id": "napoleoncat",
+      "name": "NapoleonCat",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fnapoleoncat.com&sz=128",
+      "url": "https://napoleoncat.com/",
+      "tagline": "Publish, moderate and analyze every social conversation in one place",
+      "desc": "NapoleonCat brings publishing, customer conversations, automated moderation, analytics and reporting into one social media workspace. Teams can manage multiple profiles, collaborate on responses and automate repetitive engagement across major networks.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Social media teams and agencies managing publishing, customer conversations, moderation and reporting across multiple profiles",
+      "color": "#F91880",
+      "features": [
+        "Social Inbox — Manage comments, messages, mentions and reviews from multiple networks in one workspace",
+        "Auto-Moderation — Build rules that answer common questions, hide or delete spam and classify sentiment",
+        "Multi-platform Publisher — Create, schedule and coordinate content across Facebook, Instagram, TikTok, LinkedIn, X and Google Business Profile",
+        "Analytics and Reports — Measure owned and competitor performance and automate multi-network reports",
+        "Team Collaboration — Assign work, control access and coordinate content and customer-care workflows",
+        "Social CRM — Keep conversation history, contact context, internal notes and user details together"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Standard",
+            "price": "$89",
+            "cadence": "per month",
+            "description": "Publishing and analytics for teams building a coordinated social presence",
+            "features": [
+              "2 users and 5 profile slots at the starting configuration",
+              "Unlimited post scheduling",
+              "Team collaboration",
+              "Owned-profile and competitor analytics",
+              "Automated reporting"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$109",
+            "cadence": "per month",
+            "description": "Adds manual engagement management and team support workflows",
+            "features": [
+              "Everything in Standard",
+              "All-in-one Social Inbox",
+              "AI reply suggestions and saved responses",
+              "Team performance reports",
+              "iOS and Android apps"
+            ]
+          },
+          {
+            "name": "Expert",
+            "price": "$139",
+            "cadence": "per month",
+            "description": "Adds automated moderation for teams handling larger conversation volumes",
+            "features": [
+              "Everything in Pro",
+              "Automatic replies for common questions",
+              "Automatic comment hiding and deletion",
+              "Automatic sentiment analysis",
+              "Advanced inbox search"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "Tailored plans for organizations needing API access, compliance support and service guarantees",
+            "features": [
+              "API access",
+              "Custom reporting and compliance options",
+              "Custom agreements and payment terms",
+              "Service Level Agreement"
+            ]
+          }
+        ],
+        "pricingNote": "NapoleonCat has a 14-day no-card trial based on the Expert plan; it is not an ongoing free plan. Pricing scales with users, profile slots and Inbox capacity. Annual billing gives two months free, while month-to-month starting prices are shown above. VAT may apply.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "opentweet": {
+      "id": "opentweet",
+      "name": "OpenTweet",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fopentweet.io&sz=128",
+      "url": "https://opentweet.io/",
+      "tagline": "Schedule, automate and analyze X posts from your calendar or AI agents",
+      "desc": "OpenTweet is an X-focused scheduler for planning posts, threads and evergreen campaigns from a visual calendar. Its hosted REST API, MCP server, connectors and AI tools let agents and external workflows publish content and query account analytics without managing the X API directly.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Creators, indie founders, developers and social teams scheduling and automating X content from calendars, integrations or AI agents",
+      "color": "#00A9C0",
+      "features": [
+        "Visual Content Calendar — Plan and schedule X posts and threads through a drag-and-drop publishing workflow",
+        "Agent-ready Publishing — Give Claude or another MCP client 43 tools to create, schedule and manage X content",
+        "REST API and CLI — Publish posts, batch-schedule content and retrieve account data through hosted endpoints",
+        "X Analytics — Track engagement, top posts, best posting times and follower growth for connected accounts",
+        "Evergreen Queue — Automatically recycle approved content on recurring schedules",
+        "Smart Connectors — Trigger X content from RSS, APIs, GitHub, Stripe and thousands of external apps"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Pro",
+            "price": "$15.99",
+            "cadence": "per month",
+            "description": "For individual creators building a consistent presence on X",
+            "features": [
+              "20 posts per day",
+              "5 smart connectors",
+              "10 AI generations per day",
+              "3 API keys",
+              "Chrome extension"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$39.99",
+            "cadence": "per month",
+            "description": "For growing creators and teams running higher-volume automated publishing",
+            "features": [
+              "100 posts per day",
+              "Unlimited connectors",
+              "10 API keys",
+              "Unlimited Evergreen Queue with 10 posts per day",
+              "X Analytics dashboard"
+            ]
+          },
+          {
+            "name": "Agency",
+            "price": "$79.99",
+            "cadence": "per month",
+            "description": "For agencies and multi-account teams managing larger X workflows",
+            "features": [
+              "300 posts per day",
+              "Unlimited connectors",
+              "25 API keys",
+              "Unlimited Evergreen Queue with 30 posts per day",
+              "X Analytics dashboard",
+              "Priority support",
+              "Everything in Advanced"
+            ]
+          }
+        ],
+        "pricingNote": "A seven-day free trial is available, but there is no ongoing free plan. Annual billing lowers the displayed effective monthly prices to $11.99 for Pro, $29 for Advanced and $49 for Agency. OpenTweet’s homepage currently contains conflicting older pricing copy; its dedicated pricing page was treated as authoritative.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "phantombuster": {
+      "id": "phantombuster",
+      "name": "PhantomBuster",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fphantombuster.com&sz=128",
+      "url": "https://phantombuster.com/",
+      "tagline": "Automate lead generation, enrichment and outreach without code",
+      "desc": "PhantomBuster is a no-code, cloud-based sales prospecting platform that extracts public data, enriches contacts and automates outreach across LinkedIn and more than 15 platforms. Ready-made Phantoms and chained workflows run in the cloud and can sync results to CRMs and thousands of connected apps.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Freemium",
+      "best": "Sales, growth and recruiting teams building, enriching and engaging targeted prospect lists at scale",
+      "color": "#0F1419",
+      "features": [
+        "Lead Data Extraction — Build targeted lists from public profiles, searches and audiences across more than 15 platforms",
+        "Contact Enrichment — Find professional emails and enrich, clean or segment prospect data with AI",
+        "Outreach Automation — Automate connection requests, messages and other repeatable prospecting actions",
+        "Ready-made Workflows — Chain individual Phantoms into proven lead-generation and enrichment sequences",
+        "Scheduled Cloud Runs — Refresh data and run automations on a schedule without keeping a browser open",
+        "CRM and App Integrations — Sync data to CRMs and connect workflows through Zapier, Make, n8n, API or MCP"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For testing lightweight automations after the introductory trial",
+            "features": [
+              "1 Phantom slot",
+              "30 minutes of execution time per month",
+              "50 MB storage",
+              "Access to all Phantoms and Workflows within plan limits",
+              "Result downloads limited to 10 rows",
+              "API access with a 10-row result cap"
+            ]
+          },
+          {
+            "name": "Start",
+            "price": "$69",
+            "cadence": "per month",
+            "description": "For individuals and small teams running lightweight prospecting workflows",
+            "features": [
+              "5 automation slots",
+              "20 execution hours per month",
+              "500 email credits per month",
+              "10,000 AI credits per month",
+              "1,000 URL Finder credits per month",
+              "Unlimited exports"
+            ]
+          },
+          {
+            "name": "Grow",
+            "price": "$159",
+            "cadence": "per month",
+            "description": "For teams operating several outbound workflows concurrently",
+            "features": [
+              "15 automation slots",
+              "80 execution hours per month",
+              "2,500 email credits per month",
+              "30,000 AI credits per month",
+              "10,000 URL Finder credits per month",
+              "Unlimited exports"
+            ]
+          },
+          {
+            "name": "Scale",
+            "price": "$439",
+            "cadence": "per month",
+            "description": "For larger teams running continuous, high-volume automation",
+            "features": [
+              "50 automation slots",
+              "300 execution hours per month",
+              "10,000 email credits per month",
+              "90,000 AI credits per month",
+              "20,000 URL Finder credits per month",
+              "Unlimited exports"
+            ]
+          }
+        ],
+        "pricingNote": "New accounts receive a 14-day free trial with broader allowances, then automatically move to the ongoing Free plan unless upgraded. Annual billing is approximately 20% cheaper, lowering the effective monthly prices to $56 for Start, $128 for Grow and $352 for Scale.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "pictory": {
+      "id": "pictory",
+      "name": "Pictory",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpictory.ai&sz=128",
+      "url": "https://pictory.ai/",
+      "tagline": "Turn scripts, URLs and ideas into professional videos with AI",
+      "desc": "Pictory is an AI video creation platform that turns scripts, articles, presentations, and existing recordings into polished videos without traditional editing. It combines automatic scene building, stock media, captions, AI voices, avatars, and text-based editing to help teams repurpose content quickly.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Paid",
+      "best": "Creators, marketers and learning teams turning written or long-form content into polished videos without a production crew",
+      "color": "#F91880",
+      "features": [
+        "Script and URL to Video — Convert scripts, articles, presentations and other source material into structured videos with AI-selected scenes",
+        "Text-based Video Editing — Edit recordings through the transcript, remove unwanted sections and generate concise highlights",
+        "Automatic Captions — Transcribe speech and add synchronized captions that make videos accessible and easier to follow",
+        "AI Voices and Avatars — Add natural multilingual voiceovers, voice cloning and AI presenters without recording talent",
+        "Stock Media Library — Build scenes with millions of licensed videos, images and music tracks from integrated libraries",
+        "Multi-format Repurposing — Resize and optimize finished videos for landscape, portrait and square social formats"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "For individual creators beginning an AI-assisted video workflow",
+            "features": [
+              "200 video minutes",
+              "5 GB storage",
+              "1 brand kit",
+              "60 minutes of ElevenLabs voices",
+              "100 AI credits per month"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$59",
+            "cadence": "per month",
+            "description": "For creators and marketers producing and repurposing video at higher volume",
+            "features": [
+              "600 video minutes",
+              "20 GB storage",
+              "5 brand kits",
+              "Unlimited standard voices",
+              "120 minutes of ElevenLabs voices",
+              "500 AI credits per month",
+              "Custom avatars and voice cloning"
+            ]
+          },
+          {
+            "name": "Team",
+            "price": "$199",
+            "cadence": "per month",
+            "description": "For teams collaborating on shared, high-volume video production",
+            "features": [
+              "3 or more users",
+              "1,800 video minutes",
+              "100 GB storage",
+              "10 brand kits",
+              "240 minutes of ElevenLabs voices",
+              "2,400 AI credits per month",
+              "Shared workspace and onboarding"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For organizations needing tailored volume, security and support",
+            "features": [
+              "Custom usage allowances",
+              "Enterprise security and governance",
+              "Dedicated onboarding and support",
+              "Custom API and workflow options"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing is substantially cheaper at $25 for Starter, $35 for Professional and $119 for Team per month, billed yearly. All paid plans include a 14-day free trial.",
+        "pricingLastChecked": "2026-09-22"
+      }
+    },
+    "postwise": {
+      "id": "postwise",
+      "name": "Postwise",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpostwise.ai&sz=128",
+      "url": "https://postwise.ai/",
+      "tagline": "Your AI ghostwriter for posts that sound like you and grow your audience",
+      "desc": "Postwise helps creators write, schedule, and improve social content for X, LinkedIn, and Threads from one workspace. Its AI GhostWriter learns a creator’s voice, while scheduling, growth automations, inspiration, and analytics turn ideas into a consistent publishing system.",
+      "cat": "content",
+      "categories": [
+        "content"
+      ],
+      "price": "Paid",
+      "best": "Creators, founders and personal-brand builders writing and scheduling high-engagement posts across X, LinkedIn and Threads",
+      "color": "#00BA7C",
+      "features": [
+        "AI GhostWriter — Train a custom AI voice from your profile or instructions to generate posts that match your style",
+        "Post and Thread Generation — Turn an idea into platform-ready posts and multi-part threads in seconds",
+        "Smart Scheduling — Queue content across X, LinkedIn and Threads and publish it at planned times",
+        "Growth Tools — Automate plugs, direct messages and selected promotion workflows that turn engagement into traffic",
+        "Viral Inspiration — Explore high-performing posts and repurpose proven formats without starting from a blank page",
+        "Performance Analytics — Track engagement and identify which posts, formats and publishing patterns work best"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Basic",
+            "price": "$37",
+            "cadence": "per month",
+            "description": "For creators starting an AI-assisted publishing workflow",
+            "features": [
+              "3 social accounts",
+              "500 AI posts per month",
+              "3 months of scheduling",
+              "3 custom AI voices",
+              "GhostWriter"
+            ]
+          },
+          {
+            "name": "Boss",
+            "price": "$59",
+            "cadence": "per month",
+            "description": "For growing creators publishing more frequently across multiple accounts",
+            "features": [
+              "5 social accounts",
+              "1,000 AI posts per month",
+              "12 months of scheduling",
+              "Advanced analytics",
+              "Everything in Basic"
+            ]
+          },
+          {
+            "name": "Unlimited",
+            "price": "$97",
+            "cadence": "per month",
+            "description": "For high-volume creators and teams that do not want account or generation limits",
+            "features": [
+              "Unlimited social accounts",
+              "Unlimited AI posts",
+              "Unlimited scheduling",
+              "Custom AI training",
+              "Priority support"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing is advertised at 20% off. Every plan includes a seven-day free trial, but Postwise does not offer an ongoing free plan.",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
