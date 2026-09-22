@@ -2232,7 +2232,7 @@
       ],
       "price": "Freemium",
       "best": "Creators, social media managers, and agencies planning multi-channel content and turning performance data into clearer decisions",
-      "color": "#00BA7C",
+      "color": "#e7ff56",
       "features": [
         "Visual Planner — Drag and drop content into a calendar, preview each platform, find recommended times, and schedule across networks",
         "Social Analytics — Track channel performance, measure progress over time, and compare competitors from one dashboard",
@@ -2295,7 +2295,7 @@
           {
             "name": "Custom",
             "price": "Contact sales",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations managing more than 50 brands or needing tailored capabilities",
             "features": [
               "50+ brands",
