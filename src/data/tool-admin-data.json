@@ -1373,6 +1373,64 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "hootsuite": {
+      "id": "hootsuite",
+      "name": "Hootsuite",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhootsuite.com&sz=128",
+      "url": "https://hootsuite.com",
+      "tagline": "Hootsuite is an all-in-one social media management platform that lets you handle multiple social networks from a single dashboard",
+      "desc": "Hootsuite is a comprehensive social media management platform designed for large organizations and enterprises. It empowers teams to efficiently schedule, publish, and analyze their X (Twitter) content at scale. Brands leverage Hootsuite to streamline complex X workflows, ensuring consistent messaging across multiple accounts.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Small-to-medium teams and enterprises managing many social media networks",
+      "color": "#ffffff",
+      "features": [
+        "Scheduling and Publishing — Create, preview, and schedule posts across platforms like Instagram, Facebook, LinkedIn, TikTok, X (Twitter), YouTube, and Pinterest",
+        "Content Creation — Use built-in AI tools to draft posts, brainstorm ideas, and adapt content lengths for different networks",
+        "Social Listening and Monitoring — Track brand mentions, watch trending keywords, and analyze audience sentiment",
+        "Engagement and Inboxes — Manage comments, direct messages, and customer conversations in one unified stream",
+        "Analytics and Reporting — Measure performance, track ROI, and benchmark against competitors with exportable reports"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Standard",
+            "price": "$20",
+            "cadence": "per month",
+            "description": "Manage up to 10 social media accounts from one calendar",
+            "features": []
+          },
+          {
+            "name": "Professional",
+            "price": "$40",
+            "cadence": "per month",
+            "description": "Manage unlimited social accounts and automate repetitive work",
+            "features": []
+          },
+          {
+            "name": "Advanced",
+            "price": "$80",
+            "cadence": "per month",
+            "description": "Streamline approvals and co-work across teams",
+            "features": []
+          }
+        ],
+        "pricingNote": "Custom Plans available for enterprises",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
