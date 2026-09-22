@@ -3344,7 +3344,7 @@
       ],
       "price": "Freemium",
       "best": "Creators, marketers and talent teams benchmarking account growth, researching competitors and identifying influential profiles across social platforms",
-      "color": "#FF7A00",
+      "color": "#b4372b",
       "features": [
         "Cross-platform Statistics — Track public audience and performance data across YouTube, TikTok, Twitch, Facebook and Instagram",
         "Growth History — Review daily, weekly and monthly changes with longer historical tables and charts on paid plans",
@@ -3366,7 +3366,7 @@
           {
             "name": "Free",
             "price": "$0",
-            "cadence": "forever",
+            "cadence": "per month",
             "description": "For casual users checking public creator statistics and rankings",
             "features": [
               "5 favorites per platform",
