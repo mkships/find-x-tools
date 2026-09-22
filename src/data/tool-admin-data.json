@@ -1108,6 +1108,58 @@
         "pricingNote": "Lifetime plan (one time payment) exists at 225$",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "dmdad": {
+      "id": "dmdad",
+      "name": "DM Dad",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fdmdad.com&sz=128",
+      "url": "https://dmdad.com",
+      "tagline": "Automate X (Twitter) DMs to book more conversations, land more deals",
+      "desc": "DM Dad helps growth marketers, sales engineers and solo founders run personalised outbound DM campaigns on X, turning cold profiles into booked conversations, scaling their pipeline and close more deals. DM Dad can be used directly from your browser or with a chrome extension with Reply and Message Tracking.",
+      "cat": "ai",
+      "categories": [
+        "ai"
+      ],
+      "price": "Paid",
+      "best": "Salespeople, marketers and founders doing DM outreach on X",
+      "color": "#ffffff",
+      "features": [
+        "Bulk personalized DMs — Capture engaged audiences instantly. DM every commenter on viral X (Twitter) posts in your niche",
+        "Reply tracking — Track the response rates automatically to find the best performing message. Also no duplicate DMs, never message the same person twice with automatic tracking",
+        "Outreach tracking & Prospect lists"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Pro",
+            "price": "$59",
+            "cadence": "per month",
+            "description": "For solopreneurs and small teams serious about lead gen and sales",
+            "features": [
+              "Up to 500 DMs / day",
+              "Auto-Follow Ups",
+              "Send DMs faster",
+              "API access",
+              "Auto-like posts",
+              "AI Personalization",
+              "Track up to 10 accounts",
+              "Upload unlimited leads to queue",
+              "Analytics dashboard (replies + CRM)"
+            ]
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
