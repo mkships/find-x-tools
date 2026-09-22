@@ -2324,7 +2324,7 @@
       ],
       "price": "Paid",
       "best": "Founders, writers, and small social teams keeping several text-first networks active without repeating the same publishing work",
-      "color": "#FF7A00",
+      "color": "#e65100",
       "features": [
         "Automatic Crossposting — Detect new posts in a chosen source account and publish them to selected X, Threads, Bluesky, or Mastodon destinations",
         "Crossposting Rules — Configure separate source-to-destination routes so every automation follows the distribution path you choose",
