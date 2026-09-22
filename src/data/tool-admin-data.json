@@ -1272,6 +1272,72 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "followeraudit": {
+      "id": "followeraudit",
+      "name": "FollowerAudit",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffolloweraudit.com&sz=128",
+      "url": "https://followeraudit.com",
+      "tagline": "Detect fake and spam followers on any X account",
+      "desc": "FollowerAudit scans an account and flags fake, inactive and spam followers, giving creators and brands a clear picture of real audience quality.",
+      "cat": "audit",
+      "categories": [
+        "audit"
+      ],
+      "price": "Freemium",
+      "best": "Brands and solo creators checking for fake or spam followers",
+      "color": "#ffffff",
+      "features": [
+        "Fake-follower detection",
+        "Audience quality score",
+        "Detailed audit reports",
+        "Multi-account audits"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Basic",
+            "price": "$39.99",
+            "cadence": "per month",
+            "description": "Best suited for micro-influencers and solo creators",
+            "features": [
+              "25,000 Followers (Limit)",
+              "5 Audit per day"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$69.99",
+            "cadence": "per month",
+            "description": "Best suited for large influencers and content creators",
+            "features": [
+              "500,000 Followers (Limit)",
+              "7 Audit per day"
+            ]
+          },
+          {
+            "name": "Corporate",
+            "price": "$129.99",
+            "cadence": "per month",
+            "description": "Best suited for global influencers with massive following",
+            "features": [
+              "3,000,000 Followers",
+              "10 Audit per day"
+            ]
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
