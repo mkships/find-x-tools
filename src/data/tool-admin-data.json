@@ -1494,6 +1494,49 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "ilo": {
+      "id": "ilo",
+      "name": "Ilo.so",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Filo.so&sz=128",
+      "url": "https://ilo.so",
+      "tagline": "The complete 𝕏 performance research tool to grow your audience",
+      "desc": "ilo tracks the performance of any 𝕏 user and tells you what works, how they grow, and what to publish next. Add a public profile and ilo builds a useful history. Open the report to see new views, follower changes, strong posts, and patterns worth testing again. ilo is a chrome extension for your X/Twitter analytics.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Creators and individuals tracking their X growth and follower milestones",
+      "color": "#c285ff",
+      "features": [
+        "Follower-conversion per post",
+        "Best-time-to-post heatmaps",
+        "Growth trend dashboards",
+        "Weekly performance digests"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free tool",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "ilo is a downloadable chrome extension and is free to use!",
+            "features": []
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
