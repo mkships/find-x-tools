@@ -256,6 +256,54 @@
         "pricingNote": "",
         "pricingLastChecked": ""
       }
+    },
+    "biolink": {
+      "id": "biolink",
+      "name": "Bio.link",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbio.link&sz=128",
+      "url": "https://bio.link",
+      "tagline": "A fast, simple hosted bio-link page.",
+      "desc": "Bio.link offers a clean, quick-to-set-up bio page to add your links, share posts, send emails, and let AI greet and guide your visitors",
+      "cat": "bio",
+      "categories": [
+        "bio"
+      ],
+      "price": "Paid",
+      "best": "Creators and brands wanting simple, no-fuss bio hosting.",
+      "color": "#ffffff",
+      "features": [
+        "Quick bio page setup",
+        "Unlimited links",
+        "Basic analytics",
+        "Free trial plan"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "no",
+      "addedAt": "2026-09-20",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Pro Plan",
+            "price": "$14.99",
+            "cadence": "per month",
+            "description": "Single premium pro plan with a free trial of 7 days. No free plans at all.",
+            "features": [
+              "Unlimited sites & Unlimited visitors",
+              "AI Chat doubles engagement by visitors",
+              "Use your own custom domain, with zero branding",
+              "Publish posts and build email list"
+            ]
+          }
+        ],
+        "pricingNote": "Annual billing offers substantial discount",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
