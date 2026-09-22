@@ -663,6 +663,42 @@
         "pricingNote": "Custom Plans available for enterprises",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "chirrapp": {
+      "id": "chirrapp",
+      "name": "Chirr App",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fgetchirrapp.com&sz=128",
+      "url": "https://getchirrapp.com",
+      "tagline": "Turn long writing into perfectly-split X threads in one click",
+      "desc": "Chirr App auto-splits any long text into a clean numbered thread. Preview each post, adjust the splits, add media and schedule straight to X.",
+      "cat": "content",
+      "categories": [
+        "content"
+      ],
+      "price": "Freemium",
+      "best": "Creators repurposing long-form writing into threads",
+      "color": "#ffffff",
+      "features": [
+        "Auto-split long form text into tweet threads",
+        "Live thread preview and ability to save as drafts",
+        "Direct scheduling with numbering and media support",
+        "View your X posting history at a glance",
+        "Track the performance of your posts, audience growth"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": []
