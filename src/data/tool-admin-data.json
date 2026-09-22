@@ -538,8 +538,7 @@
       "cat": "schedule",
       "categories": [
         "schedule",
-        "content",
-        "analytics"
+        "content"
       ],
       "price": "Freemium",
       "best": "Solo users and small marketing teams scheduling across channels",
