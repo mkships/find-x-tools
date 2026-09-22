@@ -3618,6 +3618,700 @@
         "pricingNote": "Month-to-month USD prices shown. Annual billing is advertised at 16% off. Every plan includes a 14-day trial, but SocialBee does not offer an ongoing free plan.",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "socialdog": {
+      "id": "socialdog",
+      "name": "SocialDog",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsocial-dog.net&sz=128",
+      "url": "https://social-dog.net/en/",
+      "tagline": "Plan posts, grow followers and measure social performance in one place",
+      "desc": "SocialDog brings social publishing, follower management, listening and analytics into one workspace for X and other major networks. Teams can schedule posts, monitor keywords and engagement, analyze growth, and coordinate accounts without switching tools.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Freemium",
+      "best": "Creators, small businesses and social teams planning posts, managing followers and measuring growth across social accounts",
+      "color": "#00BA7C",
+      "features": [
+        "Post Scheduling — Plan and publish posts across supported networks, including bulk imports and threaded X posts",
+        "Follower Management — Filter and organize followers to find valuable conversations and track account changes",
+        "Keyword Monitoring — Collect X posts that mention selected keywords to discover and respond to relevant conversations",
+        "Account Analytics — Track post engagement, follower acquisition and historical trends across connected profiles",
+        "Competitor Analysis — Compare social performance with competing accounts to identify gaps and opportunities",
+        "Team Management — Coordinate account access, approvals and reporting across teammates"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "For basic publishing and analytics across two profiles",
+            "features": [
+              "2 social profiles",
+              "10 scheduled posts",
+              "2 weeks of analytics"
+            ]
+          },
+          {
+            "name": "Personal",
+            "price": "$14",
+            "cadence": "per month",
+            "description": "For creators building a consistent publishing routine",
+            "features": [
+              "2 social profiles",
+              "30 scheduled posts",
+              "1 year of analytics",
+              "AI writing"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$64",
+            "cadence": "per month",
+            "description": "For growing accounts needing monitoring and deeper exports",
+            "features": [
+              "3 social profiles",
+              "Unlimited scheduled posts",
+              "Keyword monitoring",
+              "2 years of analytics",
+              "CSV exports"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": "$199",
+            "cadence": "per month",
+            "description": "For teams coordinating growth and reporting across brands",
+            "features": [
+              "5 social profiles",
+              "Advanced post and competitor analytics",
+              "PowerPoint reports",
+              "Contests",
+              "5 users and approval workflows"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$399",
+            "cadence": "per month",
+            "description": "For larger teams managing extensive social operations",
+            "features": [
+              "10 social profiles",
+              "Full post engagement insights",
+              "Up to 20 users",
+              "Advanced collaboration"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing lowers the effective monthly prices to $9 for Personal, $49 for Professional, $149 for Business and $299 for Enterprise. Paid plans offer a seven-day trial.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "socialinsider": {
+      "id": "socialinsider",
+      "name": "Socialinsider",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsocialinsider.io&sz=128",
+      "url": "https://www.socialinsider.io/",
+      "tagline": "Understand your social performance and outpace competitors with data",
+      "desc": "Socialinsider brings cross-channel analytics, competitor benchmarking and content analysis into one dashboard. It helps marketing teams see what works, report results quickly and turn performance patterns into clearer social strategy.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Marketing managers and agencies benchmarking competitors, proving campaign impact and building social performance reports",
+      "color": "#F91880",
+      "features": [
+        "Cross-network Analytics — Compare reach, engagement and audience trends across social channels in one dashboard",
+        "Competitor Benchmarking — Track rival accounts and compare their performance with your own profiles",
+        "Content Pillar Analysis — Identify the topics and formats that generate the strongest audience response",
+        "Automated Reports — Export recurring stakeholder-ready reports without rebuilding dashboards",
+        "AI Insights — Ask questions about performance and uncover actionable patterns faster",
+        "Social Media API — Feed analytics into internal dashboards and reporting systems through an optional API"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Adapt",
+            "price": "$99",
+            "cadence": "per month",
+            "description": "For marketers analyzing a focused set of social profiles",
+            "features": [
+              "20 profiles",
+              "3 months of historical data",
+              "1 seat",
+              "10 profile replacements",
+              "Cross-network reports"
+            ]
+          },
+          {
+            "name": "Optimize",
+            "price": "$149",
+            "cadence": "per month",
+            "description": "For teams expanding competitor and content analysis",
+            "features": [
+              "30 profiles",
+              "6 months of historical data",
+              "2 seats",
+              "15 profile replacements",
+              "Automated reports"
+            ]
+          },
+          {
+            "name": "Predict",
+            "price": "$239",
+            "cadence": "per month",
+            "description": "For teams needing broader coverage and deeper history",
+            "features": [
+              "40 profiles",
+              "12 months of historical data",
+              "5 seats",
+              "20 profile replacements",
+              "Advanced analytics"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For organizations needing tailored profile capacity and data access",
+            "features": [
+              "Custom profile and seat limits",
+              "Tailored onboarding",
+              "API and advanced integrations",
+              "Custom support"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown. Annual billing gives about two months off, with effective monthly rates of $82, $124 and $199. A 14-day trial is available; there is no ongoing free plan. API access is an optional $100 monthly add-on or part of a custom Enterprise agreement.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "socialpilot": {
+      "id": "socialpilot",
+      "name": "SocialPilot",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsocialpilot.co&sz=128",
+      "url": "https://www.socialpilot.co/",
+      "tagline": "Plan, publish and grow your social media from one place",
+      "desc": "SocialPilot brings social publishing, engagement, analytics, reviews and collaboration into one workspace for brands and agencies. Teams can plan content, schedule at scale, manage conversations and report on performance across major networks.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Agencies, small marketing teams and multi-location brands planning and publishing social content across many accounts",
+      "color": "#FF7A00",
+      "features": [
+        "Content Calendar — Plan, organize and schedule posts across networks in a shared visual calendar",
+        "Bulk Scheduling — Upload and schedule large batches of posts to keep multiple accounts active",
+        "AI Pilot — Generate and refine social post copy when the content calendar needs fresh ideas",
+        "Social Inbox — Respond to comments and messages from connected accounts in one workspace",
+        "Analytics and Reports — Track post performance and create branded reports for teams and clients",
+        "Approval Workflows — Route posts to managers or clients for feedback before publishing"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Essentials",
+            "price": "$30",
+            "cadence": "per month",
+            "description": "For individuals managing several social profiles",
+            "features": [
+              "7 social accounts",
+              "1 user",
+              "500 AI credits",
+              "Content library"
+            ]
+          },
+          {
+            "name": "Standard",
+            "price": "$50",
+            "cadence": "per month",
+            "description": "For small teams coordinating publishing and engagement",
+            "features": [
+              "15 social accounts",
+              "3 users",
+              "1,000 AI credits",
+              "Social inbox and analytics",
+              "Team collaboration"
+            ]
+          },
+          {
+            "name": "Premium",
+            "price": "$100",
+            "cadence": "per month",
+            "description": "For agencies managing more accounts and client approvals",
+            "features": [
+              "25 social accounts",
+              "6 users",
+              "5,000 AI credits",
+              "Bulk scheduling and advanced analytics",
+              "Client approval and white-label reports"
+            ]
+          },
+          {
+            "name": "Ultimate",
+            "price": "$200",
+            "cadence": "per month",
+            "description": "For larger teams managing social operations at scale",
+            "features": [
+              "50 social accounts",
+              "Unlimited users and AI credits",
+              "Advanced white-label options",
+              "Security controls",
+              "Dedicated account manager"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For organizations needing tailored capacity and integrations",
+            "features": [
+              "Custom account limits",
+              "Unlimited users",
+              "API access",
+              "Single sign-on"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices shown from SocialPilot's current plans page. Annual billing saves 15%, with effective monthly prices of $25.50, $42.50, $85 and $170. A 14-day trial is available; there is no ongoing free plan. An older pricing page displays conflicting plan sizes and rates.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "sproutsocial": {
+      "id": "sproutsocial",
+      "name": "Sprout Social",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsproutsocial.com&sz=128",
+      "url": "https://sproutsocial.com/",
+      "tagline": "Plan, engage and measure every social media touchpoint",
+      "desc": "Sprout Social is an all-in-one social media management platform for publishing, customer engagement and performance reporting. It helps teams coordinate content across channels, respond to audiences from a shared inbox and turn social data into actionable insights.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Social and customer care teams coordinating content, conversations and reporting across multiple networks",
+      "color": "#7856FF",
+      "features": [
+        "Collaborative Content Calendar — Plan and manage posts across profiles, networks and campaigns in one shared view",
+        "Smart Inbox — Bring messages and comments from connected networks into one place for team responses",
+        "Optimal Send Times — Use ViralPost recommendations to schedule content when audiences are most active",
+        "Social Analytics — Track profile, post and engagement performance with reports for stakeholders",
+        "Brand Monitoring — Follow keywords, hashtags and locations to catch relevant conversations",
+        "AI Assist — Draft or improve social posts and replies with plan-dependent AI tools"
+      ],
+      "tested": true,
+      "editorPick": true,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Essentials",
+            "price": "$99",
+            "cadence": "per seat / month",
+            "description": "For teams starting with publishing and core performance reporting",
+            "features": [
+              "5 social profiles",
+              "Scheduler and calendar",
+              "Optimal send times",
+              "Profile and post reports"
+            ]
+          },
+          {
+            "name": "Standard",
+            "price": "$249",
+            "cadence": "per seat / month",
+            "description": "For teams handling social publishing and conversations together",
+            "features": [
+              "5 social profiles",
+              "Shared inbox",
+              "Brand monitoring",
+              "Review management"
+            ]
+          },
+          {
+            "name": "Professional",
+            "price": "$399",
+            "cadence": "per seat / month",
+            "description": "For teams needing deeper analysis across many profiles",
+            "features": [
+              "Unlimited social profiles",
+              "Message tagging",
+              "Competitor and paid insights",
+              "AI post assistance"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$499",
+            "cadence": "per seat / month",
+            "description": "For customer care teams needing automation and integrations",
+            "features": [
+              "AI reply assistance",
+              "Sentiment analysis",
+              "Helpdesk integrations",
+              "Customer care reports",
+              "Sprout API"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For large organizations needing tailored governance and support",
+            "features": [
+              "Tailored setup",
+              "Single sign-on assistance",
+              "Priority support",
+              "Custom service options"
+            ]
+          }
+        ],
+        "pricingNote": "Month-to-month USD prices are per seat. Annual billing lowers the effective monthly rate to $79, $199, $299 and $399 per seat, respectively. A 30-day trial is available; there is no ongoing free plan.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "statusbrew": {
+      "id": "statusbrew",
+      "name": "Statusbrew",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fstatusbrew.com&sz=128",
+      "url": "https://statusbrew.com/",
+      "tagline": "Manage social publishing, conversations and reporting across every client",
+      "desc": "Statusbrew brings publishing, engagement, listening, approvals, automation and reports into one workspace for social teams and agencies. Separate Spaces keep clients or brands organized while a unified inbox and rules reduce repetitive work.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Agencies and in-house social teams coordinating many accounts, client approvals, conversations and reports",
+      "color": "#00A9C0",
+      "features": [
+        "Social Publishing — Plan, tailor and schedule posts across connected profiles",
+        "Engage Inbox — Respond to comments, direct messages, reviews and mentions from one queue",
+        "Workflow Automation — Route, moderate and tag conversations with rules",
+        "Client Approvals — Let reviewers comment on and approve content before publication",
+        "Custom Reporting — Build dashboards with hundreds of metrics and share scheduled reports",
+        "Social Listening — Track brand and competitor mentions across networks and the web"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Lite",
+            "price": "$89",
+            "cadence": "per month",
+            "description": "For one person managing core publishing and conversations",
+            "features": [
+              "1 user",
+              "5 social profiles",
+              "Unlimited publishing",
+              "Best Time queue and bulk scheduling",
+              "All-in-one social inbox"
+            ]
+          },
+          {
+            "name": "Standard",
+            "price": "$179",
+            "cadence": "per month",
+            "description": "For marketing and support teams adding automation and reports",
+            "features": [
+              "3 users",
+              "10 social profiles",
+              "Social reports with history",
+              "Rule Engine for comment management",
+              "Google Business Profile integration"
+            ]
+          },
+          {
+            "name": "Premium",
+            "price": "$299",
+            "cadence": "per month",
+            "description": "For growing teams coordinating approvals and deeper insights",
+            "features": [
+              "6 users",
+              "15 social profiles",
+              "AI sentiment analysis",
+              "Assignment and approval workflows",
+              "Competitor benchmarking and social listening"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Custom",
+            "cadence": "custom",
+            "description": "For organizations needing unlimited capacity and integrations",
+            "features": [
+              "Unlimited users and profiles",
+              "Dedicated account manager",
+              "CRM integrations",
+              "Insights API and MCP support",
+              "Single sign-on"
+            ]
+          }
+        ],
+        "pricingNote": "Current month-to-month USD prices shown from the Monthly selector. Annual billing lowers the effective monthly rates to $69, $129 and $229 for Lite, Standard and Premium. A trial is available, but there is no ongoing free plan. Insights API is included with Enterprise and offered as a Premium add-on.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "supabird": {
+      "id": "supabird",
+      "name": "SupaBird",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fsupabird.io&sz=128",
+      "url": "https://supabird.io/",
+      "tagline": "Create better posts and grow your X audience with an AI coach",
+      "desc": "SupaBird helps creators generate ideas, write and improve posts, find relevant conversations and keep a consistent schedule. It also cross-posts to Threads, LinkedIn and Bluesky and turns YouTube videos into social posts.",
+      "cat": "content",
+      "categories": [
+        "content"
+      ],
+      "price": "Paid",
+      "best": "X-focused creators and founders writing engaging posts and building a consistent audience growth routine",
+      "color": "#00BA7C",
+      "features": [
+        "Ideas Lab — Generate post ideas based on your interests and favorite creators",
+        "X-GPT — Rewrite drafts into proven high-engagement formats",
+        "X Coach — Review post performance and get daily growth guidance",
+        "Engage — Find relevant posts and people to reply to",
+        "Calendar — Schedule posts for active times and keep a publishing streak",
+        "Cross-posting — Publish across X, Threads, LinkedIn and Bluesky"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "SupaBird",
+            "price": "$16",
+            "cadence": "per month",
+            "description": "For creators using AI guidance to write, schedule and distribute posts",
+            "features": [
+              "Up to 1,000 post ideas monthly",
+              "X Coach growth guidance",
+              "YouTube video to social posts",
+              "Publishing across four platforms",
+              "MCP connections"
+            ]
+          }
+        ],
+        "pricingNote": "Current discounted month-to-month USD price shown on the Monthly selector; the regular monthly price is displayed as $39. Annual billing is substantially cheaper. A low-cost introductory trial and seven-day money-back guarantee are offered, but there is no ongoing free plan.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "tweetbinder": {
+      "id": "tweetbinder",
+      "name": "Tweet Binder",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhome.tweetbinder.com&sz=128",
+      "url": "https://home.tweetbinder.com/",
+      "tagline": "Measure the reach and impact of X hashtags, campaigns and conversations",
+      "desc": "Tweet Binder analyzes hashtags, keywords, accounts and events on X with real-time and historical reports. It combines reach, engagement, sentiment, contributor rankings and exports so agencies and marketers can show the impact of campaigns.",
+      "cat": "analytics",
+      "categories": [
+        "analytics"
+      ],
+      "price": "Freemium",
+      "best": "Agencies, event teams and marketers measuring X campaign impact, conversations and influential contributors",
+      "color": "#1D9BF0",
+      "features": [
+        "Hashtag and Keyword Reports — Measure conversations around campaigns, topics and account mentions",
+        "Real-time Tracking — Follow posts and contributors as a campaign or event unfolds",
+        "Historical Search — Analyze X conversations across past date ranges, including data back to 2006",
+        "Reach and Sentiment Metrics — Review potential impressions, engagement, sentiment and estimated campaign value",
+        "Contributor Analysis — Identify the most active and influential accounts driving a conversation",
+        "Report Exports — Share client-ready reports and export paid-plan data to PDF or CSV"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "unknown",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free Report",
+            "price": "$0",
+            "cadence": "per report",
+            "description": "For a quick snapshot of a recent X conversation",
+            "features": [
+              "Up to 200 posts from the last 7 days",
+              "Hashtag, keyword or account search",
+              "Basic report with no signup or card"
+            ]
+          },
+          {
+            "name": "Starter",
+            "price": "Contact sales",
+            "cadence": "custom",
+            "description": "For community managers creating ongoing X reports",
+            "features": [
+              "50,000-post monthly balance",
+              "Unlimited reports until balance ends",
+              "5 seven-day summary reports",
+              "2 historical summary reports",
+              "Audiense Connect access"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "Contact sales",
+            "cadence": "custom",
+            "description": "For agencies running larger reporting programs",
+            "features": [
+              "500,000-post monthly balance",
+              "50 seven-day summary reports",
+              "20 historical summary reports",
+              "Audiense Connect access"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "Contact sales",
+            "cadence": "custom",
+            "description": "For organizations with large-scale X analysis needs",
+            "features": [
+              "10 million-post monthly balance",
+              "1,000 seven-day summary reports",
+              "400 historical summary reports",
+              "Audiense Connect access"
+            ]
+          }
+        ],
+        "pricingNote": "The current site offers a recurring free 200-post report and directs paid buyers to sales for pricing. Older public pricing pages show plan limits but do not display reliable current amounts. API access is sold separately from the web-dashboard plans.",
+        "pricingLastChecked": "2026-09-23"
+      }
+    },
+    "tweethunter": {
+      "id": "tweethunter",
+      "name": "Tweet Hunter",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweethunter.io&sz=128",
+      "url": "https://tweethunter.io/",
+      "tagline": "Write, schedule and grow on X with AI and proven post ideas",
+      "desc": "Tweet Hunter combines a searchable library of high-performing X posts with writing assistance, scheduling, automations, analytics and a lightweight relationship manager. It helps creators publish consistently, engage relevant people and turn audience growth into business results.",
+      "cat": "schedule",
+      "categories": [
+        "schedule"
+      ],
+      "price": "Paid",
+      "best": "Creators, founders and ghostwriters writing consistent X content and turning audience engagement into leads",
+      "color": "#1D9BF0",
+      "features": [
+        "Viral Post Library — Search millions of high-performing X posts for topic and format inspiration",
+        "AI Writing Tools — Draft, rewrite and finish posts or threads in a voice that fits your account",
+        "Tweet and Thread Scheduling — Queue posts, find useful publishing times and recycle evergreen content",
+        "Growth Automations — Send interaction-based direct messages and add product links to strong posts",
+        "X CRM — Organize account lists and revisit people who engaged through posts or messages",
+        "Complete X Analytics — Track content performance and audience growth to improve what you publish"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-23",
+      "lastChecked": "2026-09-23",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Discover",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "For individual creators researching and scheduling X content",
+            "features": [
+              "1 X account",
+              "12 million-plus post inspiration library",
+              "Tweet and thread scheduling",
+              "Evergreen posts",
+              "3,000 automated direct messages monthly",
+              "X analytics"
+            ]
+          },
+          {
+            "name": "Grow",
+            "price": "$49",
+            "cadence": "per month",
+            "description": "For creators adding AI writing and relationship management",
+            "features": [
+              "5 X accounts",
+              "Everything in Discover",
+              "7,500 automated direct messages monthly",
+              "AI writing and thread ideas",
+              "X CRM lists"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$200",
+            "cadence": "per month",
+            "description": "For professional teams running larger X growth programs",
+            "features": [
+              "Unlimited X accounts",
+              "Everything in Grow",
+              "15,000 automated direct messages monthly",
+              "Ghostwriting mode",
+              "Custom-trained AI and smart replies",
+              "Priority support"
+            ]
+          }
+        ],
+        "pricingNote": "Current discounted prices from Tweet Hunter's Monthly pricing view are shown in USD. Its page advertises larger savings on yearly billing and a seven-day trial for every plan; there is no ongoing free plan. Some older homepage and comparison copy displays different pricing.",
+        "pricingLastChecked": "2026-09-23"
+      }
     }
   },
   "deleted": [
