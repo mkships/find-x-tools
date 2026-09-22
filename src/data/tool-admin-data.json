@@ -1003,5 +1003,7 @@
       }
     }
   },
-  "deleted": []
+  "deleted": [
+    "deepclick"
+  ]
 }
