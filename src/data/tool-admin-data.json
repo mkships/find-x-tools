@@ -1338,6 +1338,41 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "geniusx": {
+      "id": "geniusx",
+      "name": "GeniusX",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.blockmm.ai%2Fservices%2Fgenius-follow&sz=128",
+      "url": "https://www.blockmm.ai/services/genius-follow",
+      "tagline": "Find and target the niche followers most likely to engage",
+      "desc": "GeniusX analyzes accounts and audiences to surface the niche followers worth targeting, so you grow with the right people instead of vanity numbers.",
+      "cat": "growth",
+      "categories": [
+        "growth"
+      ],
+      "price": "Paid",
+      "best": "Accounts targeting niche followers for higher-quality growth",
+      "color": "#ffffff",
+      "features": [
+        "Niche audience targeting",
+        "Follower quality scoring",
+        "Engagement prediction",
+        "Growth campaign tools"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": [
