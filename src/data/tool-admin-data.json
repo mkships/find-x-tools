@@ -966,6 +966,41 @@
         "pricingNote": "Custom plans available for enterprises",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "daily140": {
+      "id": "daily140",
+      "name": "Daily140",
+      "published": false,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fdaily140.com&sz=128",
+      "url": "https://daily140.com",
+      "tagline": "A daily email digest of what competitors posted on X.",
+      "desc": "Daily140 emails you a concise daily digest of the posts from accounts you track, so you can stay on top of competitors without scrolling.",
+      "cat": "listening",
+      "categories": [
+        "listening"
+      ],
+      "price": "Free",
+      "best": "Users wanting daily competitor digests.",
+      "color": "#00ba7c",
+      "features": [
+        "Daily email digests",
+        "Track any accounts",
+        "Concise summaries",
+        "Free to use"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "unknown",
+      "mobileApp": "unknown",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-22",
+      "lastChecked": "",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": ""
+      }
     }
   },
   "deleted": []
