@@ -228,14 +228,14 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweets.beauty&sz=128",
       "url": "https://tweets.beauty",
-      "tagline": "Make your posts look stunning with one-click styling.",
+      "tagline": "Make your posts look stunning with one-click styling",
       "desc": "Beautify This transforms plain Twitter posts (tweets) into eye-catching, shareable graphics with templates and backgrounds without any design skills needed.",
       "cat": "design",
       "categories": [
         "design"
       ],
       "price": "Free",
-      "best": "Content creators who want quick, good-looking visuals.",
+      "best": "Content creators who want quick, good-looking visuals for their tweets",
       "color": "#ffffff",
       "features": [
         "One-click beautify for all your twitter posts",
@@ -254,7 +254,7 @@
       "detail": {
         "pricingTiers": [],
         "pricingNote": "",
-        "pricingLastChecked": ""
+        "pricingLastChecked": "2026-09-22"
       }
     },
     "biolink": {
