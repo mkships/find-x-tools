@@ -490,6 +490,42 @@
         "pricingNote": "A lifetime deal exists for $179 (one time payment) to unlock everything",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "brandwatch": {
+      "id": "brandwatch",
+      "name": "Brandwatch",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbrandwatch.com&sz=128",
+      "url": "https://brandwatch.com",
+      "tagline": "Consumer intelligence and social listening at enterprise scale",
+      "desc": "Brandwatch tracks millions of conversations to surface trends, sentiment and consumer insight for enterprises and large agencies. It is a sophisticated social suite leveraging AI and the deepest analytics on the market to make better decisions for your business with complimentary tools for consumer intelligence, social media management and influencer marketing.",
+      "cat": "listening",
+      "categories": [
+        "listening",
+        "analytics"
+      ],
+      "price": "Paid",
+      "best": "Enterprises and large agencies needing deep listening and audience intelligence",
+      "color": "#ffffff",
+      "features": [
+        "Sentiment and Trend Analysis — Access the world’s largest archive of consumer opinion and leverage advanced proprietary and generative AI to discover new trends before anyone else and make smarter decisions",
+        "Data-driven collaboration — Manage channels, teams, workflows, approvals, and campaigns and ensure brand alignment and stellar quality in one collaborative content calendar",
+        "Large-scale listening — Monitor emerging threats across over 100m sources and set up smart, real-time alerts to respond with speed and confidence before problems develop",
+        "Specialised tools — AI-powered insights, custom Dashboards, unified inbox to engage with your customers"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "no",
+      "apiAccess": "unknown",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
