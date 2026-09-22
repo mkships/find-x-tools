@@ -430,6 +430,66 @@
         "pricingNote": "Suited for enterprises & big agencies based on the high pricing",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "brandbird": {
+      "id": "brandbird",
+      "name": "BrandBird",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbrandbird.app&sz=128",
+      "url": "https://brandbird.app",
+      "tagline": "Turn screenshots and X posts into polished branded graphics.",
+      "desc": "BrandBird helps creators beautify screenshots, mockups and social graphics with backgrounds, devices and brand kits in seconds.",
+      "cat": "design",
+      "categories": [
+        "design"
+      ],
+      "price": "Freemium",
+      "best": "Creators and brand builders making beautiful screenshots and polished mockups.",
+      "color": "#ffffff",
+      "features": [
+        "Brand Kits — Save your brand identity in one place",
+        "Turn Tweets to Screenshots — Turn any tweet or X post into a beautiful screenshot. Import by URL and repost to socials",
+        "Mockups & Frames — Wrap screenshots in realistic device mockups for any mobile device",
+        "Capture any webpage as a screenshot — choose mobile or desktop view, then import and customize in BrandBird"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "Free plan comes with watermark and limits",
+            "features": [
+              "Unlimited Exports",
+              "Upload Limit",
+              "Access Free Tools"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$15",
+            "cadence": "per month",
+            "description": "Pro plan for creators scaling their brand/product",
+            "features": [
+              "All Free Features",
+              "Access Premium Tools",
+              "Unlimited Exports",
+              "Remove Watermark",
+              "AI Tools and Premium Mockups"
+            ]
+          }
+        ],
+        "pricingNote": "A lifetime deal exists for $179 (one time payment) to unlock everything",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
