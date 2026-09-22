@@ -71,7 +71,7 @@
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Faudiense.com&sz=128",
       "url": "https://audiense.com",
       "tagline": "Audience intelligence and segmentation for X marketers.",
-      "desc": "Audiense builds rich audience segments from X data — interests, influencers and personas — so brands understand exactly who follows them and why.",
+      "desc": "Audiense builds rich audience segments from X data by capturing interests, influencers and personas, so brands can understand exactly who follows them and why.",
       "cat": "growth",
       "categories": [
         "growth"
@@ -80,21 +80,29 @@
       "best": "Marketers, researchers and agencies doing audience research.",
       "color": "#fff2e5",
       "features": [
-        "AI audience segmentation",
-        "Persona and interest reports",
-        "Influencer identification",
-        "Competitor audience insight"
+        "Advanced Segmentation: Breaks down massive global profiles into distinct, actionable sub-communities based on shared affinities or digital connections",
+        "Psychographic & Personality Insights: Evaluates mindset, values, and personality traits to explain what truly motivates an audience.",
+        "Media & Channel Affinities: Identifies the specific publications, digital channels, and influencers your target consumers follow, optimizing ad placement and budget allocation",
+        "Seamless Integrations: Connects directly with CRM systems, advertising channels, and data warehouses to turn insights into immediate targeting actions"
       ],
       "tested": false,
       "editorPick": false,
       "sponsored": false,
-      "freePlan": "unknown",
-      "mobileApp": "unknown",
-      "apiAccess": "unknown",
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "yes",
       "addedAt": "2026-09-20",
-      "lastChecked": "",
+      "lastChecked": "2026-09-22",
       "detail": {
-        "pricingTiers": [],
+        "pricingTiers": [
+          {
+            "name": "Custom Tier",
+            "price": "Custom plans available for enterprises",
+            "cadence": "per month",
+            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial. Original Twitter Marketing plan for 39$ per month is no longer available",
+            "features": []
+          }
+        ],
         "pricingNote": "",
         "pricingLastChecked": ""
       }
