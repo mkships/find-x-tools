@@ -526,6 +526,85 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "buffer": {
+      "id": "buffer",
+      "name": "Buffer",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbuffer.com&sz=128",
+      "url": "https://buffer.com",
+      "tagline": "Simple, reliable scheduling across X and every other social media channel",
+      "desc": "Buffer is a straightforward and trusted social media scheduling tool designed to simplify content planning and publishing. Buffer has now introduced more tools in its suite for content ideation and creation (Create), to engage and reply to your followers (Community) along with offering Analytics for in-depth reporting for your socials.",
+      "cat": "schedule",
+      "categories": [
+        "schedule",
+        "content",
+        "analytics"
+      ],
+      "price": "Freemium",
+      "best": "Solo users and small marketing teams scheduling across channels",
+      "color": "#ffffff",
+      "features": [
+        "Publish — Plan and schedule your content across social media platforms",
+        "Create — Build your own library of content ideas",
+        "Insights — Understand your performance and what to post next",
+        "Community — Easily engage with your community with replies",
+        "Specialised Tools — Link-in-bio, API, AI Assistant for content creation"
+      ],
+      "tested": true,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-21",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "A forever free plan where user can connect upto 3 channels",
+            "features": [
+              "10 scheduled posts per channel",
+              "100 ideas",
+              "1 user account",
+              "AI Assistant"
+            ]
+          },
+          {
+            "name": "Essentials",
+            "price": "$6",
+            "cadence": "per month",
+            "description": "Generous paid plan offering full suite features per 1 channel, suited for solo creators",
+            "features": [
+              "Unlimited scheduled posts per channel",
+              "Unlimited ideas",
+              "1 user account",
+              "AI Assistant",
+              "Advanced analytics",
+              "API access"
+            ]
+          },
+          {
+            "name": "Team",
+            "price": "$12",
+            "cadence": "per month",
+            "description": "Best suited for small agencies managing multiple influencer/creator accounts",
+            "features": [
+              "Unlimited scheduled posts per channel",
+              "Unlimited ideas",
+              "Unlimited team members",
+              "AI Assistant",
+              "Advanced analytics",
+              "API access"
+            ]
+          }
+        ],
+        "pricingNote": "Fantastic SaaS offering one of the best value for its pricing",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
