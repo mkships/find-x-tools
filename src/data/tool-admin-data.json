@@ -304,6 +304,41 @@
         "pricingNote": "Annual billing offers substantial discount",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "birdy": {
+      "id": "birdy",
+      "name": "Birdy.so",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbirdy.so&sz=128",
+      "url": "https://birdy.so",
+      "tagline": "A/B test your bio and profile to convert more followers for your X profile.",
+      "desc": "Birdy helps creators experiment with bios, pinned posts and profile setups, measuring which variations turn visitors into followers.",
+      "cat": "audit",
+      "categories": [
+        "audit"
+      ],
+      "price": "Freemium",
+      "best": "Creators A/B testing bio/profile conversions.",
+      "color": "#ffffff",
+      "features": [
+        "Bio A/B testing",
+        "Profile conversion tracking",
+        "Pinned-post experiments",
+        "Visitor insights"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "yes",
+      "mobileApp": "no",
+      "apiAccess": "no",
+      "addedAt": "2026-09-21",
+      "lastChecked": "",
+      "detail": {
+        "pricingTiers": [],
+        "pricingNote": "Birdy is now integrated with Typefully and is closed for new users!",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
