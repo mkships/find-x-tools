@@ -117,7 +117,7 @@ const jsonld = [
               <div><h2 id="alternatives-title">{tool.name} alternatives</h2></div>
             </div>
             <div class="tool-sidebar-link-list">
-              {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-monogram" style={`background:${item.color}`}>{item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
+              {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-logo" style={`background:${item.color}`} aria-hidden="true">{item.icon ? <img src={item.icon} alt="" loading="lazy" /> : item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
             </div>
             <a class="tool-sidebar-browse" href={`/category/${tool.cat}/`}>Browse all {category.label}<ArrowRight size={14} strokeWidth={2} aria-hidden="true" /></a>
           </section>
