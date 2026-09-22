@@ -994,12 +994,12 @@
       "freePlan": "unknown",
       "mobileApp": "unknown",
       "apiAccess": "unknown",
-      "addedAt": "2026-09-22",
-      "lastChecked": "",
+      "addedAt": "2026-09-20",
+      "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [],
         "pricingNote": "",
-        "pricingLastChecked": ""
+        "pricingLastChecked": "2026-09-22"
       }
     }
   },
