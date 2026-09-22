@@ -817,6 +817,90 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       }
+    },
+    "contentstudio": {
+      "id": "contentstudio",
+      "name": "ContentStudio",
+      "published": true,
+      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcontentstudio.io&sz=128",
+      "url": "https://contentstudio.io",
+      "tagline": "A powerful range of products for your social media management offering content discovery, planning and scheduling, all in one hub",
+      "desc": "ContentStudio pairs trending-content discovery with scheduling, AI writing and analytics to keep agencies and creators consistently posting quality. ContentStudio knows your brand, audience, and goals, then plans and creates on-brand content, publishes across your channels, and learns from performance. Review anything before it goes live, or let AI run fully on autopilot.",
+      "cat": "schedule",
+      "categories": [
+        "schedule",
+        "content"
+      ],
+      "price": "Paid",
+      "best": "Creators and Agencies who plan and post around trending content.",
+      "color": "#ffffff",
+      "features": [
+        "AI Studio — Accelerate your content creation with our AI",
+        "Publish —  Unified content calendar for your social media management",
+        "Analyze — Start growing by tracking your performance & your competitors",
+        "Engage — Never miss a Direct Message (DM) or comment again",
+        "Discover — Never miss top content with auto-feeds and easy sharing"
+      ],
+      "tested": false,
+      "editorPick": false,
+      "sponsored": false,
+      "freePlan": "no",
+      "mobileApp": "yes",
+      "apiAccess": "yes",
+      "addedAt": "2026-09-22",
+      "lastChecked": "2026-09-22",
+      "detail": {
+        "pricingTiers": [
+          {
+            "name": "Standard",
+            "price": "$29",
+            "cadence": "per month",
+            "description": "Suited for solo creators looking to grow their accounts",
+            "features": [
+              "5 social accounts",
+              "1 workspace",
+              "1 user",
+              "25,000 AI text credits",
+              "25 AI image credits",
+              "100 AI video credits",
+              "100 AI video clipping credits"
+            ]
+          },
+          {
+            "name": "Advanced",
+            "price": "$69",
+            "cadence": "per month",
+            "description": "Suited for small agencies managing their clients' accounts",
+            "features": [
+              "10 social accounts",
+              "2 workspaces",
+              "2 users",
+              "50,000 AI text credits",
+              "50 AI image credits",
+              "200 AI video credits",
+              "100 AI auto replies",
+              "200 AI video clipping credits"
+            ]
+          },
+          {
+            "name": "Agency Unlimited",
+            "price": "$139",
+            "cadence": "per month",
+            "description": "Suited for agencies managing a team of top influencers and creators",
+            "features": [
+              "Unlimited workspaces",
+              "Unlimited users",
+              "125,000 AI text credits",
+              "125 AI image credits",
+              "500 AI video credits",
+              "250 AI auto replies",
+              "500 AI video clipping credits"
+            ]
+          }
+        ],
+        "pricingNote": "",
+        "pricingLastChecked": "2026-09-22"
+      }
     }
   },
   "deleted": []
