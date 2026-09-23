@@ -3922,7 +3922,7 @@
       ],
       "price": "Paid",
       "best": "Social and customer care teams coordinating content, conversations and reporting across multiple networks",
-      "color": "#7856FF",
+      "color": "#ebf9eb",
       "features": [
         "Collaborative Content Calendar — Plan and manage posts across profiles, networks and campaigns in one shared view",
         "Smart Inbox — Bring messages and comments from connected networks into one place for team responses",
@@ -3944,7 +3944,7 @@
           {
             "name": "Essentials",
             "price": "$99",
-            "cadence": "per seat / month",
+            "cadence": "per month",
             "description": "For teams starting with publishing and core performance reporting",
             "features": [
               "5 social profiles",
@@ -3956,7 +3956,7 @@
           {
             "name": "Standard",
             "price": "$249",
-            "cadence": "per seat / month",
+            "cadence": "per month",
             "description": "For teams handling social publishing and conversations together",
             "features": [
               "5 social profiles",
@@ -3968,7 +3968,7 @@
           {
             "name": "Professional",
             "price": "$399",
-            "cadence": "per seat / month",
+            "cadence": "per month",
             "description": "For teams needing deeper analysis across many profiles",
             "features": [
               "Unlimited social profiles",
@@ -3980,7 +3980,7 @@
           {
             "name": "Advanced",
             "price": "$499",
-            "cadence": "per seat / month",
+            "cadence": "per month",
             "description": "For customer care teams needing automation and integrations",
             "features": [
               "AI reply assistance",
@@ -3993,7 +3993,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For large organizations needing tailored governance and support",
             "features": [
               "Tailored setup",
