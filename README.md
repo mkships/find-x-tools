@@ -78,7 +78,9 @@ each row `pending review` — your review queue is the sheet itself (add an
 
 Routine catalog maintenance is available at `/admin/`. The password-protected editor
 can add, update, hide or delete listings and edit logos, copy, badges, categories,
-features and tool facts. Saving commits `src/data/tool-admin-data.json` to GitHub;
+features, popularity scores and tool facts. Saving writes every changed data file to
+a single GitHub commit, including `src/data/tool-admin-data.json` and
+`src/data/popularity-scores.json`;
 Vercel then deploys that commit automatically, so the public directory remains static
 and SEO-friendly.
 
@@ -91,7 +93,7 @@ Add these environment variables to the Vercel project:
   **Contents: Read and write** permission.
 
 Also add `ADMIN_PASSWORD` to `.env` for local editing. In development, saves write
-directly to `src/data/tool-admin-data.json`; no GitHub settings are required. The
+directly to the two data files; no GitHub settings are required. The
 admin password is kept only in the browser tab's session storage and is sent only to
 the site's own serverless endpoint. The GitHub token never reaches the browser.
 

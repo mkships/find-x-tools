@@ -2,8 +2,8 @@
 import adminData from './tool-admin-data.json';
 import popularityScores from './popularity-scores.json';
 
-function getPopularityScore(id) {
-  const score = popularityScores[id];
+function getPopularityScore(id, scores = popularityScores) {
+  const score = scores[id];
   if (!Number.isFinite(score)) {
     throw new Error(`Missing popularity score for tool: ${id}`);
   }
@@ -164,7 +164,7 @@ export const BASE_TOOLS = TOOL_DATA.map(tool => ({
   published: tool.published ?? true
 }));
 
-export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, includeUnpublished = false) {
+export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, includeUnpublished = false, scores = popularityScores) {
   const records = overrides?.records || {};
   const deleted = new Set(overrides?.deleted || []);
   const seen = new Set();
@@ -177,7 +177,7 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       detail: { ...(base.detail || {}), ...(override.detail || {}) },
       categories: override.categories?.length ? override.categories : (base.categories || [base.cat]),
       published: override.published ?? base.published ?? true,
-      popularityScore: getPopularityScore(base.id)
+      popularityScore: getPopularityScore(base.id, scores)
     };
   });
 
@@ -192,7 +192,7 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       addedAt: new Date().toISOString().slice(0, 10),
       published: true,
       ...record,
-      popularityScore: getPopularityScore(record.id)
+      popularityScore: getPopularityScore(record.id, scores)
     });
   });
 

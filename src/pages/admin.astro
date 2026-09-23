@@ -57,10 +57,11 @@ import Base from '../layouts/Base.astro';
 
           <div class="admin-section">
             <h2>Quick overview</h2>
-            <div class="admin-grid three">
+            <div class="admin-grid two">
               <label>Best for<input name="best" /></label>
               <label>Pricing<select name="price"><option>Free</option><option>Freemium</option><option>Paid</option></select></label>
               <label>Primary use<select name="cat" id="primaryCategory"></select></label>
+              <label>Popularity score<input name="popularityScore" type="number" min="0" step="1" required /><small>Used for directory ordering and displayed on tool cards.</small></label>
             </div>
           </div>
 
@@ -200,7 +201,8 @@ import Base from '../layouts/Base.astro';
       const name = document.createElement('strong');
       name.textContent = tool.name;
       const meta = document.createElement('small');
-      meta.textContent = tool.published === false ? 'Hidden' : categories[tool.cat]?.label || tool.cat;
+      const status = tool.published === false ? 'Hidden' : categories[tool.cat]?.label || tool.cat;
+      meta.textContent = `${status} · Score ${Number(tool.popularityScore).toLocaleString('en-US')}`;
       copy.append(name, meta);
       button.append(icon, copy);
       button.addEventListener('click', () => selectTool(tool.id));
@@ -240,7 +242,7 @@ import Base from '../layouts/Base.astro';
     const tool = tools.find(item => item.id === id);
     if (!tool) return;
     selectedId = id;
-    ['id','name','url','icon','color','addedAt','tagline','desc','best','price','cat','freePlan','mobileApp','apiAccess','lastChecked'].forEach(name => {
+    ['id','name','url','icon','color','addedAt','tagline','desc','best','price','cat','popularityScore','freePlan','mobileApp','apiAccess','lastChecked'].forEach(name => {
       const fallback = name === 'color' ? '#1D9BF0' : ['freePlan','mobileApp','apiAccess'].includes(name) ? 'unknown' : '';
       toolForm.elements[name].value = tool[name] ?? fallback;
     });
@@ -260,6 +262,7 @@ import Base from '../layouts/Base.astro';
     toolForm.reset();
     toolForm.elements.published.checked = true;
     toolForm.elements.color.value = '#1D9BF0';
+    toolForm.elements.popularityScore.value = '0';
     toolForm.elements.addedAt.value = new Date().toISOString().slice(0, 10);
     renderPricingTiers([]);
     showIcon('');
