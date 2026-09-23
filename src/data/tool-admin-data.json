@@ -4990,7 +4990,7 @@
       ],
       "price": "Paid",
       "best": "Journalists, community managers and power users monitoring multiple X conversations in real time",
-      "color": "#1D9BF0",
+      "color": "#000000",
       "features": [
         "Custom Columns — View several configurable timelines side by side",
         "Real-Time Monitoring — Keep track of fast-moving posts and conversations",
@@ -5010,7 +5010,7 @@
           {
             "name": "X Premium+",
             "price": "From $40",
-            "cadence": "per month on web",
+            "cadence": "per month",
             "description": "Required subscription tier for X Pro access",
             "features": [
               "X Pro multi-column dashboard",
