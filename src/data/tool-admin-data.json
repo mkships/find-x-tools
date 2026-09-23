@@ -4740,7 +4740,7 @@
     "viewmetrics": {
       "id": "viewmetrics",
       "name": "ViewMetrics",
-      "published": true,
+      "published": false,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fviewmetrics.com&sz=128",
       "url": "https://www.viewmetrics.com/",
       "tagline": "Bring client marketing data together for reporting and AI analysis",
