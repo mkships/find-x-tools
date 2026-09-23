@@ -4518,7 +4518,7 @@
       ],
       "price": "Paid",
       "best": "Creators, brands and researchers checking X audience authenticity before campaigns or partnerships",
-      "color": "#00BA7C",
+      "color": "#ffffff",
       "features": [
         "Follower Quality Audit — Estimate real, fake, bot and inactive followers on a public X account",
         "Twitter Score — Summarize the real-follower share as a simple account score",
@@ -4539,7 +4539,7 @@
           {
             "name": "First audit",
             "price": "$0",
-            "cadence": "one time",
+            "cadence": "per month",
             "description": "For trying an X follower-quality check",
             "features": [
               "One free audit after sign-in",
@@ -4560,7 +4560,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "For larger audit and research programs",
             "features": [
               "Customizable follower limits",
