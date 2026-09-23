@@ -4457,7 +4457,7 @@
       ],
       "price": "Freemium",
       "best": "Social media analysts and marketers examining X audiences and cleaning up following lists",
-      "color": "#1D9BF0",
+      "color": "#ffffff",
       "features": [
         "Account Analytics — Review posting activity and audience trends in visual reports",
         "Follower Insights — Browse, search and assess followers by interests and influence",
@@ -4479,7 +4479,7 @@
           {
             "name": "Basic",
             "price": "$0",
-            "cadence": "free access",
+            "cadence": "per month",
             "description": "For exploring core X account analytics",
             "features": [
               "Basic account insights",
