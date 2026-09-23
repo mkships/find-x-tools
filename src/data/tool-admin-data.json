@@ -4152,8 +4152,8 @@
       "id": "tweetbinder",
       "name": "Tweet Binder",
       "published": true,
-      "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhome.tweetbinder.com&sz=128",
-      "url": "https://home.tweetbinder.com/",
+      "icon": "",
+      "url": "https://www.tweetbinder.com/",
       "tagline": "Measure the reach and impact of X hashtags, campaigns and conversations",
       "desc": "Tweet Binder analyzes hashtags, keywords, accounts and events on X with real-time and historical reports. It combines reach, engagement, sentiment, contributor rankings and exports so agencies and marketers can show the impact of campaigns.",
       "cat": "analytics",
@@ -4162,7 +4162,7 @@
       ],
       "price": "Freemium",
       "best": "Agencies, event teams and marketers measuring X campaign impact, conversations and influential contributors",
-      "color": "#1D9BF0",
+      "color": "#1d9bf0",
       "features": [
         "Hashtag and Keyword Reports — Measure conversations around campaigns, topics and account mentions",
         "Real-time Tracking — Follow posts and contributors as a campaign or event unfolds",
@@ -4184,7 +4184,7 @@
           {
             "name": "Free Report",
             "price": "$0",
-            "cadence": "per report",
+            "cadence": "per month",
             "description": "For a quick snapshot of a recent X conversation",
             "features": [
               "Up to 200 posts from the last 7 days",
@@ -4195,7 +4195,7 @@
           {
             "name": "Starter",
             "price": "Contact sales",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For community managers creating ongoing X reports",
             "features": [
               "50,000-post monthly balance",
@@ -4208,7 +4208,7 @@
           {
             "name": "Advanced",
             "price": "Contact sales",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For agencies running larger reporting programs",
             "features": [
               "500,000-post monthly balance",
@@ -4220,7 +4220,7 @@
           {
             "name": "Enterprise",
             "price": "Contact sales",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations with large-scale X analysis needs",
             "features": [
               "10 million-post monthly balance",
