@@ -4705,7 +4705,7 @@
       ],
       "price": "Paid",
       "best": "X account managers checking inactive follows and cleaning up their following list through Circleboom",
-      "color": "#7856FF",
+      "color": "#ffffff",
       "features": [
         "Inactive Account Discovery — Find inactive or ghost accounts through the linked Circleboom tool",
         "Unfollower Review — See accounts that stopped following you through Circleboom",
@@ -4725,7 +4725,7 @@
           {
             "name": "Legacy Untweeps",
             "price": "Unavailable",
-            "cadence": "no current plan",
+            "cadence": "per month",
             "description": "Untweeps now refers visitors to Circleboom",
             "features": [
               "No current standalone Untweeps pricing",
