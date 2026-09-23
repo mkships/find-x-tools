@@ -4021,7 +4021,7 @@
       ],
       "price": "Paid",
       "best": "Agencies and in-house social teams coordinating many accounts, client approvals, conversations and reports",
-      "color": "#00A9C0",
+      "color": "#000000",
       "features": [
         "Social Publishing — Plan, tailor and schedule posts across connected profiles",
         "Engage Inbox — Respond to comments, direct messages, reviews and mentions from one queue",
@@ -4082,7 +4082,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations needing unlimited capacity and integrations",
             "features": [
               "Unlimited users and profiles",
