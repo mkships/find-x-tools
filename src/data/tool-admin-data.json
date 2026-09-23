@@ -5087,7 +5087,7 @@
       ],
       "price": "Paid",
       "best": "Solo X creators and small creator teams batching content and automating publishing and follow-up",
-      "color": "#1D9BF0",
+      "color": "#7ed321",
       "features": [
         "Thread Scheduling — Draft and queue X threads with controlled reply intervals",
         "Live Post Preview — Check the look of scheduled posts before publishing",
@@ -5109,7 +5109,7 @@
           {
             "name": "Subscription plans",
             "price": "See checkout",
-            "cadence": "monthly billing",
+            "cadence": "per month",
             "description": "For solo creators through multi-account teams",
             "features": [
               "Real G: 1 X account",
