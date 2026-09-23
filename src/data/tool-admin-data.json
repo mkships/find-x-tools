@@ -4633,7 +4633,7 @@
       ],
       "price": "Freemium",
       "best": "Independent writers and creators building a consistent publishing habit and growing an audience",
-      "color": "#FF7A00",
+      "color": "#ffffff",
       "features": [
         "Writing Workspace — Draft and organize pieces in one publishing environment",
         "Template Library — Start from hundreds of proven writing formats on Pro",
@@ -4678,7 +4678,7 @@
           {
             "name": "Creator",
             "price": "$200",
-            "cadence": "per year",
+            "cadence": "per month",
             "description": "For writers wanting Creator-only strategy and template benefits",
             "features": [
               "Everything in Pro",
