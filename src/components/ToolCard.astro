@@ -6,7 +6,7 @@ const { tool: t } = Astro.props;
 const cat = CATS[t.cat] || {};
 const p = PRICE_STYLES[t.price] || PRICE_STYLES.Freemium;
 const initial = (t.name || '?').trim().charAt(0).toUpperCase();
-const popularity = Number(t.popularityScore || 0).toLocaleString('en-US');
+const popularity = Number(t.popularityScore).toLocaleString('en-US');
 const categories = (t.categories || [t.cat])
   .map(key => CATS[key])
   .filter(Boolean);
@@ -48,7 +48,7 @@ const categories = (t.categories || [t.cat])
     <div class="category-chips">
       {categories.map(category => <span class="cat-chip">{category.label}</span>)}
     </div>
-    <span class="popularity-chip" title="Temporary popularity score based on placeholder Reddit and X mention data">
+    <span class="popularity-chip" title="Popularity score">
       <TrendingUp size={13} strokeWidth={1.9} aria-hidden="true" />
       {popularity}
     </span>

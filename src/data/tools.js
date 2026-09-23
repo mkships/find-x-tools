@@ -1,23 +1,13 @@
 // Canonical tool data for X Tools Directory.
 import adminData from './tool-admin-data.json';
+import popularityScores from './popularity-scores.json';
 
-// Temporary seed data for the future Reddit + X mention pipeline. Keep this
-// separate from the tool records so it can be replaced by an importer later.
-const POPULARITY_MENTION_OVERRIDES = Object.freeze({
-  linktree: 12480,
-  typefully: 11720,
-  hypefury: 10360,
-  tweethunter: 9840,
-  buffer: 8920,
-  hootsuite: 8250,
-  sproutsocial: 7720,
-  manychat: 7310,
-  loom: 6840
-});
-
-function fallbackPopularityScore(id) {
-  const seed = [...id].reduce((total, char, index) => total + char.charCodeAt(0) * (index + 7), 0);
-  return 400 + (seed % 3600);
+function getPopularityScore(id) {
+  const score = popularityScores[id];
+  if (!Number.isFinite(score)) {
+    throw new Error(`Missing popularity score for tool: ${id}`);
+  }
+  return score;
 }
 
 export const CATS = {
@@ -168,7 +158,7 @@ const TOOL_DATA = [
 export const BASE_TOOLS = TOOL_DATA.map(tool => ({
   ...tool,
   categories: tool.categories ?? [tool.cat],
-  popularityScore: POPULARITY_MENTION_OVERRIDES[tool.id] ?? fallbackPopularityScore(tool.id),
+  popularityScore: getPopularityScore(tool.id),
   // Reserved for the Recently Added view once ingestion dates are available.
   addedAt: tool.addedAt ?? null,
   published: tool.published ?? true
@@ -186,7 +176,8 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       ...override,
       detail: { ...(base.detail || {}), ...(override.detail || {}) },
       categories: override.categories?.length ? override.categories : (base.categories || [base.cat]),
-      published: override.published ?? base.published ?? true
+      published: override.published ?? base.published ?? true,
+      popularityScore: getPopularityScore(base.id)
     };
   });
 
@@ -198,10 +189,10 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       editorPick: false,
       features: [],
       categories: record.cat ? [record.cat] : [],
-      popularityScore: fallbackPopularityScore(record.id),
       addedAt: new Date().toISOString().slice(0, 10),
       published: true,
-      ...record
+      ...record,
+      popularityScore: getPopularityScore(record.id)
     });
   });
 
