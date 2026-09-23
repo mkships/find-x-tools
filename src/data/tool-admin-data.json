@@ -3821,7 +3821,7 @@
       ],
       "price": "Paid",
       "best": "Agencies, small marketing teams and multi-location brands planning and publishing social content across many accounts",
-      "color": "#FF7A00",
+      "color": "#ffffff",
       "features": [
         "Content Calendar — Plan, organize and schedule posts across networks in a shared visual calendar",
         "Bulk Scheduling — Upload and schedule large batches of posts to keep multiple accounts active",
@@ -3894,7 +3894,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "custom",
+            "cadence": "per month",
             "description": "For organizations needing tailored capacity and integrations",
             "features": [
               "Custom account limits",
