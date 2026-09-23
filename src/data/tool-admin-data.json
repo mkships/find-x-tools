@@ -4836,7 +4836,7 @@
       ],
       "price": "Paid",
       "best": "Social media teams and agencies managing content, engagement and reporting across multiple client profiles",
-      "color": "#1D9BF0",
+      "color": "#ffffff",
       "features": [
         "Content Planning — Schedule, preview and publish posts across social channels",
         "Unified Inbox — Handle comments and messages from connected profiles in one place",
@@ -4891,7 +4891,7 @@
           {
             "name": "Enterprise",
             "price": "Custom",
-            "cadence": "contact sales",
+            "cadence": "per month",
             "description": "For custom social management requirements",
             "features": [
               "Custom plan and limits",
