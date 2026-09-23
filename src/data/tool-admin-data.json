@@ -4327,7 +4327,7 @@
       ],
       "price": "Free",
       "best": "Creators and social media managers repurposing X posts as visual content for other channels",
-      "color": "#F91880",
+      "color": "#ffffff",
       "features": [
         "Post Screenshots — Capture an X post as a clean image for cross-platform sharing",
         "Screenshot API — Generate post images programmatically through the linked API offering",
@@ -4347,7 +4347,7 @@
           {
             "name": "Web screenshot tool",
             "price": "$0",
-            "cadence": "free tool",
+            "cadence": "per month",
             "description": "For creators making individual post screenshots",
             "features": [
               "Browser-based post screenshot tool",
