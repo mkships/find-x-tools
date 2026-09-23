@@ -4373,7 +4373,7 @@
       ],
       "price": "Freemium",
       "best": "Creators, researchers and knowledge workers organizing saved X posts for reading and reuse",
-      "color": "#7856FF",
+      "color": "#efebff",
       "features": [
         "Bookmark Import — Bring in saved X posts through the browser extension or official X connection",
         "Smart Organization — Sort bookmarks with labels, folders, AI categories and topic detection",
@@ -4395,7 +4395,7 @@
           {
             "name": "Free import",
             "price": "$0",
-            "cadence": "free access",
+            "cadence": "per month",
             "description": "For importing and previewing an X bookmark library",
             "features": [
               "Full browser-extension import",
@@ -4418,7 +4418,7 @@
           {
             "name": "Yearly Pass",
             "price": "$99",
-            "cadence": "per year",
+            "cadence": "per month",
             "description": "For researchers exporting and connecting bookmarks to other tools",
             "features": [
               "Everything in Reader Pass",
@@ -4430,7 +4430,7 @@
           {
             "name": "Exports Pass",
             "price": "$49",
-            "cadence": "one time",
+            "cadence": "per month",
             "description": "For safeguarding and exporting a bookmark archive",
             "features": [
               "Export bookmark folders",
