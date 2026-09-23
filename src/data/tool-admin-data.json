@@ -5037,7 +5037,7 @@
       ],
       "price": "Paid",
       "best": "Mac-based founders and creators managing X replies and outreach while keeping browser sessions local",
-      "color": "#F91880",
+      "color": "#01ff79",
       "features": [
         "Local Browser Agent — Run actions through Chrome on the user's own Mac",
         "Voice Training — Draft replies using patterns learned from the account's posts",
@@ -5059,7 +5059,7 @@
           {
             "name": "Lifetime",
             "price": "$199",
-            "cadence": "one time",
+            "cadence": "per month",
             "description": "For Mac users who want the local agent and future updates",
             "features": [
               "Unlimited local actions",
