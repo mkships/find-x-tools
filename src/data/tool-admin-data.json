@@ -4586,7 +4586,7 @@
       ],
       "price": "Free",
       "best": "Creators, founders and small businesses refining an X profile to attract relevant followers",
-      "color": "#E8A400",
+      "color": "#000000",
       "features": [
         "AI Bio Ideas — Generate short X profile copy from a written description",
         "Person or Business Mode — Tailor suggestions to an individual or brand account",
@@ -4606,7 +4606,7 @@
           {
             "name": "Bio generator",
             "price": "$0",
-            "cadence": "free tool",
+            "cadence": "per month",
             "description": "For generating X bio ideas",
             "features": [
               "Person and business prompts",
