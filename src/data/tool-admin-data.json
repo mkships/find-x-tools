@@ -7,7 +7,7 @@
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fagorapulse.com&sz=128",
       "url": "https://agorapulse.com",
       "tagline": "Social inbox, scheduling and reporting for enterprises and agencies",
-      "desc": "Agorapulse is a social media management platform built for agencies, brands, and social teams that pairs a unified inbox with scheduling, listening and reporting for your social media. It is an all in one platform, that helps measure and drive real business impact from your social campaigns.",
+      "desc": "Agorapulse is an all-in-one social media management platform for agencies, brands and social teams. It combines a unified inbox with publishing, listening and reporting tools designed to connect social activity with business results.",
       "cat": "schedule",
       "categories": [
         "schedule",
@@ -60,8 +60,8 @@
             ]
           }
         ],
-        "pricingNote": "Annual billing offers substantial discount",
-        "pricingLastChecked": "2026-09-21"
+        "pricingNote": "Prices shown are per user, per month when billed annually. Month-to-month rates are $99 for Standard, $149 for Professional and $199 for Advanced; a 30-day free trial is available.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "audiense": {
@@ -96,15 +96,18 @@
       "detail": {
         "pricingTiers": [
           {
-            "name": "Custom Tier",
-            "price": "Not Applicable",
-            "cadence": "per month",
-            "description": "Audience Insights and Connect (the original X Marketing plan) features are now retired and are available under Audience Discover with enterprise plans and a free trial",
-            "features": []
+            "name": "Audience Discover",
+            "price": "Contact sales",
+            "description": "Custom audience-intelligence plans with a free-trial request option.",
+            "features": [
+              "Audience segmentation and discovery",
+              "Psychographic and affinity insights",
+              "Campaign-planning and activation tools"
+            ]
           }
         ],
-        "pricingNote": "Original Twitter Marketing plan for 39$ per month is no longer available",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Audiense no longer publishes the former $39-per-month Twitter Marketing plan; current packages are quoted by sales.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "autopublix": {
@@ -113,21 +116,21 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fautopublix.com&sz=128",
       "url": "https://autopublix.com",
-      "tagline": "Set up automated DM replies on X in minutes",
-      "desc": "AutoPubliX makes DM automation beginner-friendly, by simply connecting your X account and launching AI enabled auto-reply and welcome flows without any learning curve.",
+      "tagline": "Automate replies, DMs and social publishing from one dashboard",
+      "desc": "AutoPubliX combines comment-triggered DMs, automated replies, AI-assisted content creation and cross-platform publishing for X, Instagram, Facebook and LinkedIn.",
       "cat": "ai",
       "categories": [
         "ai",
         "schedule"
       ],
       "price": "Freemium",
-      "best": "Creators, marketers and agencies seeking quick DM setup at affordable prices",
+      "best": "Creators, marketers and small agencies automating replies, DMs and social publishing",
       "color": "#ffffff",
       "features": [
-        "Quick DM automation setup",
-        "Auto-reply templates",
-        "Welcome messages",
-        "Simple dashboard"
+        "Comment-triggered DMs and automated replies",
+        "AI-assisted content creation",
+        "Cross-platform post scheduling",
+        "Forms, link-in-bio pages and analytics"
       ],
       "tested": false,
       "editorPick": false,
@@ -143,26 +146,38 @@
             "name": "Free",
             "price": "$0",
             "cadence": "per month",
-            "description": "1 X account with 3000 DMs per month",
-            "features": []
+            "description": "For creators getting started with social automation.",
+            "features": [
+              "1 X account",
+              "3,000 DMs per month",
+              "Limited AI access and 1 GB media storage"
+            ]
           },
           {
             "name": "Creator",
             "price": "$8.99",
             "cadence": "per month",
-            "description": "3 X accounts with upto 5000 DMs per month",
-            "features": []
+            "description": "For growing creators, marketers and small businesses.",
+            "features": [
+              "3 X accounts",
+              "50,000 DMs per month",
+              "Full AI access and 5 GB media storage"
+            ]
           },
           {
             "name": "Growth Plan",
             "price": "$14.99",
             "cadence": "per month",
-            "description": "5 X accounts with unlimited DMs per month",
-            "features": []
+            "description": "For agencies and brands with higher-volume automation needs.",
+            "features": [
+              "5 X accounts",
+              "Unlimited DMs",
+              "Full AI access and 10 GB media storage"
+            ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": ""
+        "pricingNote": "A 14-day trial is advertised for eligible new subscribers; annual billing includes two months free.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "beacons": {
@@ -182,7 +197,7 @@
       "color": "#ffffff",
       "features": [
         "Build your presence — Create a link in bio page so distinctly yours that every follower and brand partner finds exactly what they need, in seconds",
-        "Monetize your work — Sell merch, digital products,   and courses directly from your Beacons link in bio page",
+        "Monetize your work — Sell merch, digital products and courses directly from your Beacons page",
         "Land your dream partnership — Get discovered by brands by pitching with an auto-updating media kit",
         "Own your audience — Send newsletters to your community, automate your DMs, and track exactly what’s working"
       ],
@@ -197,29 +212,52 @@
       "detail": {
         "pricingTiers": [
           {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "Build a customizable link-in-bio page and start selling with platform fees.",
+            "features": [
+              "Customizable link-in-bio page",
+              "50 email sends per month",
+              "9% seller fee"
+            ]
+          },
+          {
             "name": "Creator",
             "price": "$10",
             "cadence": "per month",
-            "description": "Claim your brand with a custom domain & website, 0 transaction fees when you sell, advanced analytics & enhanced customizations",
-            "features": []
+            "description": "Claim your brand with a custom domain and expanded marketing tools.",
+            "features": [
+              "All Free features",
+              "Free custom domain",
+              "500 email sends per month"
+            ]
           },
           {
             "name": "Creator Plus",
             "price": "$30",
             "cadence": "per month",
-            "description": "Drive big sales and partnerships by having priority support, team access, advanced integrations + All Creator features",
-            "features": []
+            "description": "Add stronger selling, partnership and audience tools.",
+            "features": [
+              "All Creator features",
+              "0% seller fees",
+              "Unlimited email sends and memberships"
+            ]
           },
           {
             "name": "Creator Max",
             "price": "$100",
             "cadence": "per month",
-            "description": "Grow unlimited as a creator & influencer - sell unlimited courses, sessions, priority access to Beacons IRL events",
-            "features": []
+            "description": "Beacons' highest self-serve tier for established creator businesses.",
+            "features": [
+              "All Creator Plus features",
+              "White-glove onboarding",
+              "Google Workspace"
+            ]
           }
         ],
-        "pricingNote": "Fantastic value for the features it offers (link-in-bio, analytics, commerce)",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Annual billing reduces the effective monthly prices to $8.33, $25 and $83.30 for the paid tiers.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "beautifythis": {
@@ -228,8 +266,8 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ftweets.beauty&sz=128",
       "url": "https://tweets.beauty",
-      "tagline": "Make your posts look stunning with one-click styling",
-      "desc": "Beautify This transforms plain Twitter posts (tweets) into eye-catching, shareable graphics with templates and backgrounds without any design skills needed.",
+      "tagline": "Turn X posts into polished, shareable images",
+      "desc": "Beautify This converts an X post URL into a customizable image with backgrounds and layout controls, with no design software required.",
       "cat": "design",
       "categories": [
         "design"
@@ -238,10 +276,10 @@
       "best": "Content creators who want quick, good-looking visuals for their tweets",
       "color": "#ffffff",
       "features": [
-        "One-click beautify for all your X/twitter posts",
-        "Customization options while editing",
-        "Background and gradient library",
-        "Completely free tool with bot feature"
+        "Generate an image from an X post URL",
+        "Customize the layout before export",
+        "Choose from backgrounds and gradients",
+        "Use the companion X bot"
       ],
       "tested": true,
       "editorPick": false,
@@ -254,7 +292,7 @@
       "detail": {
         "pricingTiers": [],
         "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "biolink": {
@@ -290,9 +328,9 @@
         "pricingTiers": [
           {
             "name": "Pro Plan",
-            "price": "$14.99",
+            "price": "$7.49",
             "cadence": "per month",
-            "description": "Single premium pro plan with a free trial of 7 days. No free plans at all.",
+            "description": "One premium plan with a 7-day free trial; the displayed price is the annual-billing equivalent.",
             "features": [
               "Unlimited sites & Unlimited visitors",
               "AI Chat doubles engagement by visitors",
@@ -301,8 +339,8 @@
             ]
           }
         ],
-        "pricingNote": "Annual billing offers substantial discount!",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "The $7.49 monthly equivalent requires annual billing; the monthly option is $14.99.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "birdy": {
@@ -336,8 +374,8 @@
       "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [],
-        "pricingNote": "Birdy is now integrated with Typefully and is closed for new users!",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Birdy's public site and app signup remain available, but no current plan prices are published on the landing page.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "brand24": {
@@ -427,8 +465,8 @@
             ]
           }
         ],
-        "pricingNote": "Suited for enterprises & big agencies based on the high pricing",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Lower effective rates are available with annual billing; every plan includes a 14-day trial without a credit card.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "brandbird": {
@@ -437,8 +475,8 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fbrandbird.app&sz=128",
       "url": "https://brandbird.app",
-      "tagline": "Turn screenshots and X posts into polished branded graphics",
-      "desc": "BrandBird helps creators beautify screenshots, mockups and social graphics with backgrounds, devices and brand kits in seconds.",
+      "tagline": "Turn screenshots and X posts into polished, branded graphics",
+      "desc": "BrandBird is a streamlined screenshot editor for creating social graphics, device mockups and branded visuals with reusable backgrounds, watermarks and brand kits.",
       "cat": "design",
       "categories": [
         "design"
@@ -487,8 +525,8 @@
             ]
           }
         ],
-        "pricingNote": "A lifetime deal exists for $179 (one time payment) to unlock everything",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "A $179 one-time lifetime option is also available; the regular monthly Pro plan is $15.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "brandwatch": {
@@ -523,8 +561,8 @@
       "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Brandwatch publishes solution-based plans but does not list self-serve prices; prospective customers must request a demo or quote.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "buffer": {
@@ -574,7 +612,7 @@
           },
           {
             "name": "Essentials",
-            "price": "$6",
+            "price": "$5",
             "cadence": "per month",
             "description": "Generous paid plan offering full suite features per 1 channel, suited for solo creators",
             "features": [
@@ -588,7 +626,7 @@
           },
           {
             "name": "Team",
-            "price": "$12",
+            "price": "$10",
             "cadence": "per month",
             "description": "Best suited for small agencies managing multiple influencer/creator accounts",
             "features": [
@@ -601,8 +639,8 @@
             ]
           }
         ],
-        "pricingNote": "Fantastic SaaS offering one of the best value for its pricing",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Paid prices shown are per channel, per month with annual billing; month-to-month billing is higher.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "catchintent": {
@@ -654,13 +692,13 @@
             "description": "For growing teams running outbound at scale",
             "features": [
               "Lead generation — 4,000 warm leads / month",
-              "Signals — All 7 intent signals with 2X daily refresh",
+              "Signals — All 7 intent signals with 4× daily refresh",
               "Outreach — Drafted openers, Browser extension, CRM push"
             ]
           }
         ],
         "pricingNote": "Custom Plans available for enterprises",
-        "pricingLastChecked": "2026-09-22"
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "chirrapp": {
@@ -717,8 +755,8 @@
             "features": []
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "The public landing page promotes a free tryout but does not expose the current paid-plan comparison.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "circleboom": {
@@ -727,21 +765,21 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcircleboom.com&sz=128",
       "url": "https://circleboom.com",
-      "tagline": "Schedule posts, achieve growth, reach, and control far beyond what X alone can offer for, in one single dashboard",
-      "desc": "Circleboom is the trusted platform for individuals, brands, and enterprises to grow, manage, and gain a competitive edge on X. Circleboom X Manager (previously known as Twitter Management Tool) pairs a full post scheduler with account-hygiene tools to unfollow inactive accounts, remove spam and bots while managing multiple profiles.",
+      "tagline": "Schedule posts and manage your X audience from one dashboard",
+      "desc": "Circleboom X Manager combines publishing and account-management tools for scheduling posts, analyzing followers, finding inactive or spam accounts and managing multiple profiles.",
       "cat": "growth",
       "categories": [
         "growth"
       ],
       "price": "Paid",
-      "best": "Creators and marketers with large following on X and who post regularly",
+      "best": "Creators and marketers who publish regularly and actively manage a large X audience",
       "color": "#ffffff",
       "features": [
         "Followers and Following Management — Sort, filter, and take action on your followers and followings in one place",
         "Account & Post Analytics — Track your growth and see exactly which posts drive the most engagement",
         "Smart Account Search — Search bios, tweets, and profiles to find exactly the right accounts",
         "X Post Planner + AI Writer — Smart schedule your content with AI tools and reach more people through cross posting",
-        "X Monitoring Tool — Track hashtags, search tweets in real time, and uncover the sentiment behind every conversatio"
+        "X Monitoring Tool — Track hashtags, search posts in real time and review conversation sentiment"
       ],
       "tested": false,
       "editorPick": false,
@@ -778,8 +816,8 @@
             ]
           }
         ],
-        "pricingNote": "Pro plan increases based on your following size",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Pro pricing can increase with follower count; Circleboom's public pricing route was unavailable during this check.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "clonex": {
@@ -788,8 +826,8 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.blockmm.ai%2Fservices%2Fclonex-follow&sz=128",
       "url": "https://www.blockmm.ai/services/clonex-follow",
-      "tagline": "Capture a competitor’s audience and turn it into your own.",
-      "desc": "CloneX maps the followers of any competitor account and helps you engage and convert that audience, replicating what already works in your niche. It works as a mini-app, completely managed from Telegram app and as a Chrome extension",
+      "tagline": "Reach the active followers and engagers of competing X accounts",
+      "desc": "CloneX Follow identifies people actively engaging with up to five competing or adjacent X accounts, follows them at human-paced intervals and automatically unfollows them after several days. Setup and controls run through BlockAI's Telegram mini-app and browser extension.",
       "cat": "growth",
       "categories": [
         "growth"
@@ -798,10 +836,10 @@
       "best": "Crypto teams and influencers running competitor audience-capture strategies",
       "color": "#ffffff",
       "features": [
-        "Competitor audience mapping",
-        "Follower overlap analysis",
-        "Targeted engagement lists",
-        "Conversion tracking"
+        "Target up to five competitor or niche accounts",
+        "Harvest recent engagers and active followers",
+        "Human-paced automated follows",
+        "Automatic unfollowing after three to seven days"
       ],
       "tested": false,
       "editorPick": false,
@@ -810,11 +848,23 @@
       "mobileApp": "no",
       "apiAccess": "no",
       "addedAt": "2026-09-22",
-      "lastChecked": "",
+      "lastChecked": "2026-09-23",
       "detail": {
-        "pricingTiers": [],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingTiers": [
+          {
+            "name": "Starter",
+            "price": "$20",
+            "cadence": "per month",
+            "description": "Entry plan for cloning the engaged audiences of up to five accounts.",
+            "features": [
+              "Up to 48 follows per day",
+              "Engager or active-follower targeting",
+              "Automatic unfollowing"
+            ]
+          }
+        ],
+        "pricingNote": "Six volume-based tiers are available, with multi-month discounts of up to 25%.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "contentstudio": {
@@ -823,15 +873,15 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcontentstudio.io&sz=128",
       "url": "https://contentstudio.io",
-      "tagline": "A powerful range of products for your social media management offering content discovery, planning and scheduling, all in one hub",
-      "desc": "ContentStudio pairs trending-content discovery with scheduling, AI writing and analytics to keep agencies and creators consistently posting quality. ContentStudio knows your brand, audience, and goals, then plans and creates on-brand content, publishes across your channels, and learns from performance. Review anything before it goes live, or let AI run fully on autopilot.",
+      "tagline": "AI-assisted content creation, planning and publishing in one hub",
+      "desc": "ContentStudio combines content discovery, AI-assisted creation, publishing, analytics and a social inbox. Teams can review drafts before they go live or automate parts of the workflow across multiple channels.",
       "cat": "schedule",
       "categories": [
         "schedule",
         "content"
       ],
       "price": "Paid",
-      "best": "Creators and Agencies who plan and post around trending content.",
+      "best": "Creators and agencies planning, reviewing and publishing content across channels",
       "color": "#ffffff",
       "features": [
         "AI Studio — Accelerate your content creation with our AI",
@@ -852,7 +902,7 @@
         "pricingTiers": [
           {
             "name": "Standard",
-            "price": "$29",
+            "price": "$19",
             "cadence": "per month",
             "description": "Suited for solo creators looking to grow their accounts",
             "features": [
@@ -867,7 +917,7 @@
           },
           {
             "name": "Advanced",
-            "price": "$69",
+            "price": "$49",
             "cadence": "per month",
             "description": "Suited for small agencies managing their clients' accounts",
             "features": [
@@ -883,7 +933,7 @@
           },
           {
             "name": "Agency Unlimited",
-            "price": "$139",
+            "price": "$99",
             "cadence": "per month",
             "description": "Suited for agencies managing a team of top influencers and creators",
             "features": [
@@ -897,8 +947,8 @@
             ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Prices shown are monthly equivalents with annual billing. A 7-day free trial is available without a credit card.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "coschedule": {
@@ -962,8 +1012,8 @@
             ]
           }
         ],
-        "pricingNote": "Custom plans available for enterprises",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Prices shown require annual billing. Month-to-month rates are $39 and $59; X profiles cost an additional $16 per profile each month.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "daily140": {
@@ -972,25 +1022,25 @@
       "published": false,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fdaily140.com&sz=128",
       "url": "https://daily140.com",
-      "tagline": "A daily email digest of what competitors posted on X.",
-      "desc": "Daily140 emails you a concise daily digest of the posts from accounts you track, so you can stay on top of competitors without scrolling.",
+      "tagline": "A daily email digest of the follows and likes of selected X accounts",
+      "desc": "Daily140 emails a daily summary of the accounts followed and posts liked by the X users you track, helping you monitor their activity without continually checking their profiles.",
       "cat": "listening",
       "categories": [
         "listening"
       ],
       "price": "Free",
-      "best": "Users wanting daily competitor digests.",
+      "best": "Users monitoring the follows and likes of selected X accounts",
       "color": "#00ba7c",
       "features": [
-        "Daily email digests",
-        "Track any accounts",
-        "Concise summaries",
-        "Free to use"
+        "Daily email summaries",
+        "Track selected public accounts",
+        "See newly followed accounts",
+        "Review recently liked posts"
       ],
       "tested": false,
       "editorPick": false,
       "sponsored": false,
-      "freePlan": "unknown",
+      "freePlan": "yes",
       "mobileApp": "unknown",
       "apiAccess": "unknown",
       "addedAt": "2026-09-20",
@@ -998,7 +1048,7 @@
       "detail": {
         "pricingTiers": [],
         "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "deviai": {
@@ -1033,10 +1083,10 @@
       "detail": {
         "pricingTiers": [
           {
-            "name": "Monthly deal",
-            "price": "$10",
+            "name": "X Monitoring",
+            "price": "$9",
             "cadence": "per month",
-            "description": "Suited for solo founders monitoring high intent influencers mentioning your keywords",
+            "description": "Single-channel monitoring for founders tracking high-intent X conversations.",
             "features": [
               "X: Monitor influencers mentioning your keywords",
               "Free AI Outreach",
@@ -1044,10 +1094,10 @@
             ]
           },
           {
-            "name": "Yearly deal",
-            "price": "100$",
-            "cadence": "per month",
-            "description": "Suited for solo founders monitoring high intent influencers mentioning your keywords",
+            "name": "X Monitoring Annual",
+            "price": "$90",
+            "cadence": "per year",
+            "description": "Annual X monitoring with two months free compared with monthly billing.",
             "features": [
               "All features in monthly plan",
               "All tools in monthly plan",
@@ -1057,8 +1107,8 @@
             ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Each additional monitored platform is priced separately; Facebook Groups monitoring starts at $49 per month.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "dewey": {
@@ -1068,13 +1118,13 @@
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fgetdewey.co&sz=128",
       "url": "https://getdewey.co",
       "tagline": "Search, organize and back up your X bookmarks",
-      "desc": "Dewey imports all your bookmarks into a searchable, taggable database and keeps a backup — built for X users (students, founders, indie-hackers, researchers etc.) who bookmark X posts heavily.",
+      "desc": "Dewey syncs X and Bluesky bookmarks into a searchable library with tags, folders, exports and optional AI-assisted bulk tagging.",
       "cat": "comments",
       "categories": [
         "comments"
       ],
       "price": "Freemium",
-      "best": "X users who bookmark heavily, offering easy search and backup",
+      "best": "Researchers, founders and other heavy bookmark users who need search, organization and export",
       "color": "#ffffff",
       "features": [
         "Bookmark import and backup",
@@ -1104,8 +1154,8 @@
             ]
           }
         ],
-        "pricingNote": "Lifetime plan (one time payment) exists at 225$",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "A $225 one-time lifetime option is also advertised.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "dmdad": {
@@ -1115,12 +1165,12 @@
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fdmdad.com&sz=128",
       "url": "https://dmdad.com",
       "tagline": "Automate X (Twitter) DMs to book more conversations, land more deals",
-      "desc": "DM Dad helps growth marketers, sales engineers and solo founders run personalised outbound DM campaigns on X, turning cold profiles into booked conversations, scaling their pipeline and close more deals. DM Dad can be used directly from your browser or with a chrome extension with Reply and Message Tracking.",
+      "desc": "DM Dad runs browser-based outreach workflows for X and Reddit, helping salespeople and founders source prospects, send personalized messages, avoid duplicates and track replies while keeping account activity on their own device.",
       "cat": "ai",
       "categories": [
         "ai"
       ],
-      "price": "Paid",
+      "price": "Freemium",
       "best": "Salespeople, marketers and founders doing DM outreach on X",
       "color": "#ffffff",
       "features": [
@@ -1133,11 +1183,22 @@
       "sponsored": false,
       "freePlan": "yes",
       "mobileApp": "no",
-      "apiAccess": "no",
+      "apiAccess": "yes",
       "addedAt": "2026-09-22",
       "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "cadence": "per month",
+            "description": "A forever-free plan for light browser-based outreach.",
+            "features": [
+              "Up to 25 DMs per day",
+              "Works with X and Reddit",
+              "Queue up to 100 leads"
+            ]
+          },
           {
             "name": "Pro",
             "price": "$59",
@@ -1154,10 +1215,22 @@
               "Upload unlimited leads to queue",
               "Analytics dashboard (replies + CRM)"
             ]
+          },
+          {
+            "name": "Scale",
+            "price": "$149",
+            "cadence": "per month",
+            "description": "For teams that need higher outreach volume and collaboration.",
+            "features": [
+              "Up to 5,000 DMs per day",
+              "Track up to 100 accounts",
+              "Unlimited team members",
+              "Cross-account analytics"
+            ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Annual billing discounts are available; platform-level messaging limits still apply.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "fedica": {
@@ -1167,19 +1240,19 @@
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffedica.com&sz=128",
       "url": "https://fedica.com",
       "tagline": "Analytics, publishing and audience insights in one suite",
-      "desc": "Fedica offers deep analytics, smart scheduling based on when your audience is active, and audience segmentation for data-minded managers. Publish, analyze, and grow across 15 social platforms, see who's actually engaging. Visualize and listen with smarter scheduling, management & analytics in one social media dashboard. Fedica helps you to publish, analyze, listen and engage - all in one single suite.",
+      "desc": "Fedica combines publishing, audience analytics, social listening and engagement tools across 15 networks. Its X-specific features include thread and poll scheduling, follower mapping, hashtag analysis and audience-based posting recommendations.",
       "cat": "schedule",
       "categories": [
         "schedule",
         "analytics"
       ],
       "price": "Freemium",
-      "best": "Global brands and enterprise marketing teams managing their entire social suite",
+      "best": "Data-minded creators, brands and marketing teams managing several social networks",
       "color": "#ffffff",
       "features": [
         "Predictive best-time posting with Intelligent Publisher + Content Calendar",
-        "Grow your reach and build get more interactions by engaging with top topics in your entire community with X Trending Topics",
-        "Followers mapping, analysis and segmentation, Hashtags & Keyword Analysis specifically built for X",
+        "Find relevant community conversations with X Trending Topics",
+        "Map, analyze and segment followers, hashtags and keywords on X",
         "Engage with top influencers who have the most connections with your followers using Real Influencers feature for X"
       ],
       "tested": false,
@@ -1192,8 +1265,8 @@
       "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Fedica offers a free entry point, but its current landing page does not publish a plan comparison.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "feedhive": {
@@ -1202,7 +1275,7 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Ffeedhive.com&sz=128",
       "url": "https://feedhive.com",
-      "tagline": "AI-assisted workflows and automation for scheduling and content creation for social media networks",
+      "tagline": "AI-assisted creation, scheduling and social automation",
       "desc": "FeedHive is an AI-powered social media management and automation platform designed to help creators, agencies, and marketing teams plan, schedule, and optimize their content at scale. It centralizes your entire publishing workflow across major social networks into a single browser-based dashboard.",
       "cat": "schedule",
       "categories": [
@@ -1223,14 +1296,14 @@
       "sponsored": false,
       "freePlan": "no",
       "mobileApp": "no",
-      "apiAccess": "no",
+      "apiAccess": "yes",
       "addedAt": "2026-09-22",
       "lastChecked": "2026-09-22",
       "detail": {
         "pricingTiers": [
           {
             "name": "Creator",
-            "price": "€19",
+            "price": "$15",
             "cadence": "per month",
             "description": "Best for individual content creators and solopreneurs",
             "features": [
@@ -1243,7 +1316,7 @@
           },
           {
             "name": "Brand",
-            "price": "€29",
+            "price": "$22",
             "cadence": "per month",
             "description": "Best for small startups and upcoming brands",
             "features": [
@@ -1256,21 +1329,20 @@
           },
           {
             "name": "Business",
-            "price": "€99",
+            "price": "$69",
             "cadence": "per month",
             "description": "Best for businesses, growth startups, and organizations",
             "features": [
               "100 social accounts",
               "50 workspaces",
-              "50K AI credits per month",
               "100K AI credits per month",
               "10K automation runs / month",
               "Unlimited future scheduling"
             ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Prices shown are monthly equivalents billed annually; FeedHive includes a 7-day free trial.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "followeraudit": {
@@ -1310,8 +1382,8 @@
             "cadence": "per month",
             "description": "Best suited for micro-influencers and solo creators",
             "features": [
-              "25,000 Followers (Limit)",
-              "5 Audit per day"
+              "Audit accounts with up to 25,000 followers",
+              "5 audits per day"
             ]
           },
           {
@@ -1320,8 +1392,8 @@
             "cadence": "per month",
             "description": "Best suited for large influencers and content creators",
             "features": [
-              "500,000 Followers (Limit)",
-              "7 Audit per day"
+              "Audit accounts with up to 500,000 followers",
+              "7 audits per day"
             ]
           },
           {
@@ -1330,13 +1402,13 @@
             "cadence": "per month",
             "description": "Best suited for global influencers with massive following",
             "features": [
-              "3,000,000 Followers",
-              "10 Audit per day"
+              "Audit accounts with up to 3,000,000 followers",
+              "10 audits per day"
             ]
           }
         ],
-        "pricingNote": "",
-        "pricingLastChecked": "2026-09-22"
+        "pricingNote": "Free audits are available; paid tiers increase account-size and daily-audit limits.",
+        "pricingLastChecked": "2026-09-23"
       }
     },
     "geniusx": {
