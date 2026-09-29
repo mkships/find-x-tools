@@ -39,6 +39,12 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
     <div class="tool-card-body">
       <div class="tool-card-title">
         <span class="name">{tool.name}</span>
+        {tool.founderBuilt && (
+          <span class="badge-founder-built" title="Run by its original maker or a small founding team">
+            <Wrench size={12} stroke-width={2.2} aria-hidden="true" />
+            Founder-built
+          </span>
+        )}
         {tool.editorPick && tool.xFit === 'high' && tool.status === 'live' && (
           <span class="badge-editor-pick" title="Recommended by the X Tools Directory editorial team">
             <Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" />
@@ -54,7 +60,7 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
       title={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label} — ${X_FIT[tool.xFit]?.description || X_FIT.unknown.description}`}
       aria-label={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label}`}
       role="img"
-    ></span>
+    ><span aria-hidden="true">X-fit</span></span>
   </div>
   <div class="tool-card-foot">
     <div class="tool-card-category-row">
@@ -63,13 +69,12 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
       </div>
       <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price || 'Freemium'}</span>
     </div>
-    <div class="tool-card-trust-row">
+    {(tool.xFit === 'high' || tool.apiStatus === 'official' || tool.openSource || tool.status !== 'live') && <div class="tool-card-trust-row">
       {tool.xFit === 'high' && <span class="badge-x-native" title="Built primarily for X">X-native</span>}
       {tool.apiStatus === 'official' && <span class="badge-official-api" title={API_STATUS.official.label}><CodeXml size={12} stroke-width={2.2} aria-hidden="true" />Official API</span>}
-      {tool.founderBuilt && <span class="badge-founder-built" title="Run by its original maker or a small founding team"><Wrench size={12} stroke-width={2.2} aria-hidden="true" />Founder-built</span>}
       {tool.openSource && <span class="badge-open-source" title="Source code is publicly available under an open-source license"><GitFork size={12} stroke-width={2.2} aria-hidden="true" />Open source</span>}
       {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
-    </div>
+    </div>}
     <div class="tool-card-status-row">
       <div class={`tool-network-marquee${movingNetworks ? ' is-moving' : ''}`} title={`Supported networks: ${networkText}`}>
         <div class="tool-network-track">
