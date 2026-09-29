@@ -489,7 +489,7 @@ main { animation: xfade .3s ease; }
   transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
 }
 .tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,20,25,.09); border-color: rgba(29,155,240,.48); }
-.tool-card-top { display: flex; gap: 10px; align-items: flex-start; min-width: 0; padding-right: 50px; }
+.tool-card-top { display: flex; gap: 10px; align-items: flex-start; min-width: 0; padding-right: 36px; }
 .tile {
   width: 40px; height: 40px; border-radius: 10px; flex: none;
   display: flex; align-items: center; justify-content: center;
@@ -503,19 +503,19 @@ main { animation: xfade .3s ease; }
 .tool-card:hover .tool-card-title .name { color: var(--color-accent-hover); }
 .x-fit-indicator {
   --fit-color: #94A3B8;
-  position: absolute; top: 12px; right: 12px; width: 46px; height: 46px;
-  display: grid; place-items: center; padding: 5px; border-radius: 50%;
+  position: absolute; top: 13px; right: 13px; width: 32px; height: 32px;
+  display: grid; place-items: center; padding: 3px; border-radius: 50%;
   background: conic-gradient(var(--fit-color) var(--x-fit-fill), #E8EDF2 0);
-  box-shadow: 0 1px 5px rgba(15,20,25,.12);
+  box-shadow: 0 1px 3px rgba(15,20,25,.08);
 }
 .x-fit-indicator > span {
   width: 100%; height: 100%; display: grid; place-items: center;
   color: var(--color-ink); background: var(--color-white); border: 1px solid rgba(15,20,25,.12);
-  border-radius: 50%; font: 700 9px/1 var(--font-mono); letter-spacing: -.04em;
+  border-radius: 50%; font: 700 7px/1 var(--font-mono); letter-spacing: -.06em;
 }
-.x-fit-indicator-high { --fit-color: #00A86B; }
-.x-fit-indicator-medium { --fit-color: #E8A400; }
-.x-fit-indicator-low { --fit-color: #F97316; }
+.x-fit-indicator-high { --fit-color: #23956F; }
+.x-fit-indicator-medium { --fit-color: #C59625; }
+.x-fit-indicator-low { --fit-color: #D77842; }
 .badge-tested, .badge-editor-pick, .badge-x-native, .badge-official-api, .badge-founder-built, .badge-open-source {
   display: inline-flex; align-items: center; gap: 4px;
   padding: 2px 6px; border-radius: 8px;
