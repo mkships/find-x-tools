@@ -4,7 +4,14 @@ import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
 import { compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, BadgeCheck, CalendarPlus, Compass, ExternalLink, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, MessageCircle, PenLine, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
+
+const JOB_STACKS = [
+  { label: 'Create & publish', icon: PenLine, jobs: ['write', 'schedule', 'visuals', 'agents'] },
+  { label: 'Engage', icon: MessageCircle, jobs: ['engage', 'dms'] },
+  { label: 'Understand', icon: ChartNoAxesCombined, jobs: ['analytics', 'listen'] },
+  { label: 'Organize', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
+] as const;
 
 const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')
   .sort((a, b) => (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999) || compareTools(a, b))
@@ -58,21 +65,26 @@ const jsonld = {
   <nav class="home-discovery-panel" aria-label="Filter the X tools catalog">
     <div class="home-discovery-intro">
       <span>Explore the directory</span>
-      <strong>Start with what you want to do.</strong>
-      <p>Then narrow by price or proof.</p>
+      <h2>Find the right tool for the job.</h2>
+      <p>Start with a workflow, then refine by budget or proof.</p>
     </div>
-    <div class="home-discovery-grid">
-      <div class="home-discovery-group home-discovery-jobs">
-        <div class="home-discovery-heading"><span><Compass size={15} aria-hidden="true" /></span><div><small>01</small><b>Choose a job</b></div></div>
-        <div class="home-discovery-links">{Object.entries(JOBS).map(([slug, job]) => <a href={`/tools/?job=${slug}`}>{job.label}</a>)}</div>
+    <div class="home-workflow-grid">
+      {JOB_STACKS.map(stack => {
+        const StackIcon = stack.icon;
+        return <div class="home-workflow-card">
+          <div class="home-discovery-heading"><span><StackIcon size={15} aria-hidden="true" /></span><b>{stack.label}</b></div>
+          <div class="home-discovery-links">{stack.jobs.map((slug: keyof typeof JOBS) => <a href={`/tools/?job=${slug}`}>{JOBS[slug].label}</a>)}</div>
+        </div>;
+      })}
+    </div>
+    <div class="home-discovery-refinements">
+      <div class="home-refinement-card home-refinement-budget">
+        <div class="home-discovery-heading"><span><WalletCards size={15} aria-hidden="true" /></span><b>Budget</b></div>
+        <div class="home-refinement-links"><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div>
       </div>
-      <div class="home-discovery-group">
-        <div class="home-discovery-heading"><span><WalletCards size={15} aria-hidden="true" /></span><div><small>02</small><b>Set a budget</b></div></div>
-        <div class="home-discovery-links"><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div>
-      </div>
-      <div class="home-discovery-group">
-        <div class="home-discovery-heading"><span><ShieldCheck size={15} aria-hidden="true" /></span><div><small>03</small><b>Look for proof</b></div></div>
-        <div class="home-discovery-links"><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a><a href="/tools/?filter=open-source">Open source</a></div>
+      <div class="home-refinement-card home-refinement-proof">
+        <div class="home-discovery-heading"><span><ShieldCheck size={15} aria-hidden="true" /></span><b>Proof</b></div>
+        <div class="home-refinement-links"><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a><a href="/tools/?filter=open-source">Open source</a></div>
       </div>
     </div>
   </nav>
