@@ -85,6 +85,7 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
       {checkedLabel && (
         <span class={`verified-date-chip${tool.tested ? ' is-tested' : ''}`} title={`${tool.tested ? 'Personally tested' : 'Listing updated'} ${tool.lastChecked}`} aria-label={`${tool.tested ? 'Tested' : 'Updated'} ${checkedLabel}`}>
           {tool.tested ? <BadgeCheck size={14} stroke-width={2.2} aria-hidden="true" /> : <CalendarCheck size={14} stroke-width={2} aria-hidden="true" />}
+          <span>{tool.tested ? 'Tested' : 'Updated'}</span>
           <time datetime={tool.lastChecked}>{checkedLabel}</time>
         </span>
       )}
