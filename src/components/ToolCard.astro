@@ -12,8 +12,11 @@ const categories = (tool.categories || [tool.cat])
 const checkedLabel = tool.lastChecked
   ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(`${tool.lastChecked}T00:00:00Z`))
   : '';
-const networkNames = (tool.networks || ['x']).map((network: keyof typeof NETWORKS) => NETWORKS[network] || network);
-const networkText = networkNames.join(' · ') || 'Adjacent';
+const toolNetworks = tool.networks || ['x'];
+const networkNames = toolNetworks.map((network: keyof typeof NETWORKS) => NETWORKS[network] || network);
+const isXOnly = toolNetworks.length === 1 && toolNetworks[0] === 'x';
+const networkText = isXOnly ? 'Built just for X' : networkNames.join(' · ') || 'Adjacent';
+const networkTitle = isXOnly ? 'Supported network: X' : `Supported networks: ${networkNames.join(', ')}`;
 const movingNetworks = networkNames.length > 4;
 const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12;
 ---
@@ -39,16 +42,16 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
     <div class="tool-card-body">
       <div class="tool-card-title">
         <span class="name">{tool.name}</span>
-        {tool.founderBuilt && (
-          <span class="badge-founder-built" title="Run by its original maker or a small founding team">
-            <Rocket size={12} stroke-width={2.2} aria-hidden="true" />
-            Founder-built
-          </span>
-        )}
         {tool.editorPick && tool.xFit === 'high' && tool.status === 'live' && (
           <span class="badge-editor-pick" title="Recommended by the X Tools Directory editorial team">
             <Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" />
             Editor's Pick
+          </span>
+        )}
+        {tool.founderBuilt && (
+          <span class="badge-founder-built" title="Run by its original maker or a small founding team">
+            <Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" />
+            Founder-built
           </span>
         )}
       </div>
@@ -76,7 +79,7 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
       {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
     </div>}
     <div class="tool-card-status-row">
-      <div class={`tool-network-marquee${movingNetworks ? ' is-moving' : ''}`} title={`Supported networks: ${networkText}`}>
+      <div class={`tool-network-marquee${movingNetworks ? ' is-moving' : ''}`} title={networkTitle}>
         <div class="tool-network-track">
           <span>{networkText}</span>
           {movingNetworks && <span aria-hidden="true">{networkText}</span>}
