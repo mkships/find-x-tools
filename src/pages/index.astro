@@ -83,7 +83,12 @@ const jsonld = {
     <div class="shipped-grid">
       {shipped.map(tool => <article class="shipped-card">
         {tool.demoImage && <img src={tool.demoImage} alt="" loading="lazy" />}
-        <div><p class="shipped-meta">{tool.founderHandle ? `@${tool.founderHandle}` : tool.name} · {formatDate(tool.launchedAt)}</p><h3>{tool.name}</h3><p>{tool.demoSummary || tool.tagline}</p></div>
+        <div class="shipped-card-head">
+          <span class="shipped-card-icon" style={`background:${tool.color}`}><img src={tool.icon} alt="" loading="lazy" /></span>
+          <div class="shipped-card-identity"><p class="shipped-meta">{tool.founderHandle ? `@${tool.founderHandle}` : tool.name}</p><h3>{tool.name}</h3></div>
+          <time class="shipped-date" datetime={tool.launchedAt}>{formatDate(tool.launchedAt)}</time>
+        </div>
+        <p class="shipped-summary">{tool.demoSummary || tool.tagline}</p>
         <div class="shipped-actions"><a href={`/tools/${tool.id}/`}>View listing</a><a href={tool.demoPostUrl} target="_blank" rel="noopener">View post<ExternalLink size={13} /></a></div>
       </article>)}
     </div>

@@ -375,7 +375,7 @@ main { animation: xfade .3s ease; }
 
 /* ============ Sections / layout ============ */
 .section-home-main {
-  max-width: var(--directory-max-width); margin: 0 auto;
+  max-width: var(--directory-max-width); margin: 32px auto 0;
   padding: 36px var(--directory-padding-inline) 72px;
   background: var(--color-directory-surface);
   box-shadow: 0 0 0 100vmax var(--color-directory-surface);
@@ -472,12 +472,20 @@ main { animation: xfade .3s ease; }
 .home-section-heading span { color: var(--color-category-active-text); font: 600 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .home-section-heading h2 { margin: 5px 0 0; font-size: 26px; line-height: 1.2; letter-spacing: -.02em; }
 .home-section-heading p { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 14px; }
-.shipped-grid, .stack-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 14px; }
+.shipped-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 14px; }
 .shipped-card, .stack-card { overflow: hidden; padding: 18px; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 14px; }
+.shipped-card { display: flex; min-height: 192px; flex-direction: column; box-shadow: 0 3px 11px rgba(15,20,25,.035); }
 .shipped-card > img { width: calc(100% + 36px); height: 150px; margin: -18px -18px 16px; object-fit: cover; border-bottom: 1px solid var(--color-border); }
-.shipped-meta { margin: 0 0 5px; color: var(--color-text-muted); font: 500 10px/1.4 var(--font-mono); }
-.shipped-card h3, .stack-card h3 { margin: 0; font-size: 16px; }
-.shipped-card > div > p:last-child, .stack-card > p { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; }
+.shipped-card-head { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; gap: 11px; align-items: center; }
+.shipped-card-icon { width: 42px; height: 42px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(15,20,25,.07); border-radius: 11px; box-shadow: 0 3px 8px rgba(15,20,25,.08); }
+.shipped-card-icon img { width: 72%; height: 72%; object-fit: contain; }
+.shipped-card-identity { min-width: 0; }
+.shipped-meta { margin: 0 0 2px; overflow: hidden; color: var(--color-text-muted); font: 550 10px/1.35 var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
+.shipped-date { align-self: start; padding: 4px 7px; color: var(--color-category-active-text); background: rgba(120,86,255,.08); border: 1px solid rgba(120,86,255,.1); border-radius: var(--radius-pill); font: 600 9px/1.3 var(--font-mono); white-space: nowrap; }
+.shipped-card h3, .stack-card h3 { margin: 0; color: var(--color-ink); font-size: 17px; line-height: 1.25; letter-spacing: -.01em; }
+.shipped-summary, .stack-card > p { margin: 12px 0 0; color: var(--color-text-secondary); font-size: 13px; line-height: 1.55; }
+.shipped-summary { flex: 1; }
 .shipped-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--color-border); }
 .shipped-actions a { display: inline-flex; align-items: center; gap: 4px; color: var(--color-category-hover-text); font-size: 12px; font-weight: 650; }
 .home-stacks-section { padding-bottom: 64px; }
@@ -1025,8 +1033,10 @@ main { animation: xfade .3s ease; }
 @media (max-width: 720px) {
   .grid-tools { grid-template-columns: minmax(0, 1fr); }
   .home-workflow-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .shipped-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
+  .section-home-main { margin-top: 22px; }
   .hero-workflow-nav { margin-top: 36px; padding-top: 20px; }
   .hero-search input { padding-left: 10px; padding-right: 8px; font-size: 14px; }
   .hero-search button { padding: 0 18px; font-size: 14px; }
@@ -1073,7 +1083,7 @@ a.btn-submit-header, a.btn-submit-header:hover { color: var(--color-white); }
 
 @media (max-width: 900px) {
   .about-method-grid { grid-template-columns: 1fr; }
-  .shipped-grid, .stack-grid { grid-template-columns: 1fr; }
+  .stack-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {

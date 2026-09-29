@@ -577,6 +577,54 @@
   background: var(--gradient-category-active);
 }
 
+.page-tool-detail .tool-jobs-card {
+  border-color: rgba(120, 86, 255, .16);
+  background: linear-gradient(135deg, rgba(120, 86, 255, .065), rgba(29, 155, 240, .035));
+  box-shadow: 0 3px 10px rgba(62, 43, 128, .025);
+}
+
+.page-tool-detail .tool-jobs-card .tool-section-icon {
+  color: var(--color-accent-violet);
+  background: rgba(120, 86, 255, .10);
+}
+
+.page-tool-detail .tool-job-list {
+  display: grid;
+  gap: 8px;
+}
+
+.page-tool-detail .tool-job-list a {
+  display: flex;
+  min-height: 40px;
+  padding: 9px 11px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(120, 86, 255, .09);
+  border-radius: 10px;
+  color: var(--color-text-body);
+  background: rgba(255, 255, 255, .76);
+  font-size: var(--tool-type-small);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.page-tool-detail .tool-job-list a svg {
+  flex: none;
+  color: var(--color-category-active-text);
+  transition: transform var(--motion-fast);
+}
+
+.page-tool-detail .tool-job-list a:hover {
+  color: var(--color-category-active-text);
+  background: rgba(255, 255, 255, .96);
+  border-color: rgba(120, 86, 255, .2);
+}
+
+.page-tool-detail .tool-job-list a:hover svg {
+  transform: translateX(2px);
+}
+
 .page-tool-detail .tool-sidebar-link-list {
   display: flex;
   flex-direction: column;

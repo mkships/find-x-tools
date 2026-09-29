@@ -1,10 +1,16 @@
 ---
-import { Info, Tags } from '@lucide/astro';
+import { ArrowRight, Info, Tags } from '@lucide/astro';
 import { API_STATUS, JOBS, NETWORKS, PRICE_STYLES, THREAD_SUPPORT, TOOL_STATUS, X_FIT } from '../../data/tools.js';
 
 const { tool, category, categories = [], categoryIcon = '' } = Astro.props;
 const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
 const answer = (value: string) => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not confirmed';
+const formatDate = (value: string) => new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC'
+}).format(new Date(`${value}T00:00:00Z`));
 ---
 
 <div class="tool-base-sidebar-stack">
@@ -17,7 +23,7 @@ const answer = (value: string) => value === 'yes' ? 'Yes' : value === 'no' ? 'No
       <div><dt>Pricing</dt><dd><span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price}</span></dd></div>
       <div><dt>X-fit</dt><dd>{X_FIT[tool.xFit]?.label || X_FIT.unknown.label}</dd></div>
       <div><dt>Status</dt><dd>{TOOL_STATUS[tool.status]?.label || 'Live'}</dd></div>
-      <div><dt>Last checked</dt><dd>{tool.lastChecked || 'Not yet verified'}</dd></div>
+      <div><dt>Last checked</dt><dd>{tool.lastChecked ? <time datetime={tool.lastChecked}>{formatDate(tool.lastChecked)}</time> : 'Not yet verified'}</dd></div>
       <div><dt>Starting price</dt><dd>{tool.startingPrice || tool.price}</dd></div>
       {tool.threadSupport && <div><dt>Thread support</dt><dd><strong>{THREAD_SUPPORT[tool.threadSupport]?.label}</strong> — {THREAD_SUPPORT[tool.threadSupport]?.description}</dd></div>}
       <div><dt>X access</dt><dd>{API_STATUS[tool.apiStatus]?.label || API_STATUS.unclear.label}</dd></div>
@@ -30,13 +36,13 @@ const answer = (value: string) => value === 'yes' ? 'Yes' : value === 'no' ? 'No
     </dl>
   </section>
 
-  {tool.jobs?.length > 0 && <section class="tool-base-categories-card" aria-labelledby="tool-jobs-title">
+  {tool.jobs?.length > 0 && <section class="tool-base-categories-card tool-jobs-card" aria-labelledby="tool-jobs-title">
     <div class="tool-section-heading compact">
       <span class="tool-section-icon"><Tags size={18} stroke-width={2} aria-hidden="true" /></span>
       <div><h2 id="tool-jobs-title">Jobs on X</h2></div>
     </div>
-    <div class="tool-base-category-list">
-      {tool.jobs.map((job: keyof typeof JOBS) => <span>{JOBS[job]?.label || job}</span>)}
+    <div class="tool-job-list">
+      {tool.jobs.map((job: keyof typeof JOBS) => <a href={`/tools/?job=${job}`}><span>{JOBS[job]?.label || job}</span><ArrowRight size={14} stroke-width={2} aria-hidden="true" /></a>)}
     </div>
   </section>}
 
