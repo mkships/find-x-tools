@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE_NAME } from '../config.js';
-import { BadgeCheck, ChevronRight, CircleCheckBig, CodeXml, RefreshCw, Scale } from '@lucide/astro';
+import { BadgeCheck, ChevronRight, CodeXml, Compass, GitFork, RefreshCw, Rocket, Scale, Star } from '@lucide/astro';
 
 const title = `How We Verify X Tools | ${SITE_NAME}`;
 const description = 'The public methodology behind X-fit, tool status, last-checked dates, API labels, testing and editorial recommendations.';
@@ -31,10 +31,19 @@ const description = 'The public methodology behind X-fit, tool status, last-chec
 
       <section class="about-section" aria-labelledby="x-fit-title">
         <div class="about-section-heading"><span>01 · X-fit</span><h2 id="x-fit-title">How central is X to the product?</h2></div>
-        <div class="about-method-grid">
-          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>High</h3><p>X is the product or its core job: threads, replies, bookmarks, X analytics, account hygiene, or direct X API workflows.</p></article>
-          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>Medium</h3><p>The product supports several networks, but X remains first-class with a real composer, analytics, listening, or publishing workflow.</p></article>
-          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>Low</h3><p>X is incidental, lightly supported, or mainly a distribution checkbox for a product built around another job or network.</p></article>
+        <div class="about-method-grid methodology-fit-grid">
+          <article class="about-method-card methodology-fit-card">
+            <div class="methodology-fit-label fit-high"><span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span><h3>High</h3></div>
+            <p>X is the product or its core job: threads, replies, bookmarks, X analytics, account hygiene, or direct X API workflows.</p>
+          </article>
+          <article class="about-method-card methodology-fit-card">
+            <div class="methodology-fit-label fit-medium"><span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span><h3>Medium</h3></div>
+            <p>The product supports several networks, but X remains first-class with a real composer, analytics, listening, or publishing workflow.</p>
+          </article>
+          <article class="about-method-card methodology-fit-card">
+            <div class="methodology-fit-label fit-low"><span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span><h3>Low</h3></div>
+            <p>X is incidental, lightly supported, or mainly a distribution checkbox for a product built around another job or network.</p>
+          </article>
         </div>
       </section>
 
@@ -69,22 +78,25 @@ const description = 'The public methodology behind X-fit, tool status, last-chec
 
       <section class="about-section" aria-labelledby="badges-title">
         <div class="about-section-heading"><span>05 · Editorial labels</span><h2 id="badges-title">What the other badges mean</h2></div>
-        <div class="methodology-definition-list">
-          <div><strong><BadgeCheck size={16} /> Tested</strong><span>We personally used and checked the product, beyond reviewing its public information.</span></div>
-          <div><strong>Editor's Pick</strong><span>A currently Live, High-X-fit tool we would put on a serious shortlist for its job.</span></div>
-          <div><strong>X-native</strong><span>A filterable display of High X-fit—not a second independent score.</span></div>
-          <div><strong>Founder-built</strong><span>The original maker or a small founding team still operates the product.</span></div>
-          <div><strong>Open source</strong><span>The product publishes its source code under an open-source license. A public repository alone does not imply that the hosted service is free.</span></div>
+        <div class="methodology-definition-list methodology-badge-list">
+          <div><strong><span class="badge-tested"><BadgeCheck size={13} stroke-width={2.2} aria-hidden="true" /> Tested</span></strong><span>We personally used and checked the product, beyond reviewing its public information.</span></div>
+          <div><strong><span class="badge-editor-pick"><Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span></strong><span>A Live, High-X-fit tool we would put on a serious shortlist for its job.</span></div>
+          <div><strong><span class="badge-x-native">X-native</span></strong><span>A filterable display of High X-fit—not a second independent score.</span></div>
+          <div><strong><span class="badge-founder-built"><Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" /> Founder-built</span></strong><span>The original maker or a small founding team still operates the product.</span></div>
+          <div><strong><span class="badge-open-source"><GitFork size={12} stroke-width={2.2} aria-hidden="true" /> Open source</span></strong><span>The product publishes its source code under an open-source license. A public repository alone does not imply that the hosted service is free.</span></div>
         </div>
       </section>
 
       <section class="about-section" aria-labelledby="sources-title">
         <div class="about-section-heading"><span>06 · Discovery</span><h2 id="sources-title">Where new tools come from</h2></div>
-        <p>We review maker launch posts, product documentation, open-source repositories and the official <a href="https://developer.x.com/exhibit" target="_blank" rel="noopener noreferrer">X Developer Exhibit</a>. Discovery is not verification: every candidate still needs a working first-party product page and enough evidence to describe its current X workflow accurately.</p>
+        <div class="methodology-source-note">
+          <span class="methodology-source-icon" aria-hidden="true"><Compass size={21} stroke-width={1.9} /></span>
+          <p>We review maker launch posts, product documentation, open-source repositories and the official <a href="https://developer.x.com/exhibit" target="_blank" rel="noopener noreferrer">X Developer Exhibit</a>. Discovery is not verification: every candidate still needs a working first-party product page and enough evidence to describe its current X workflow accurately.</p>
+        </div>
       </section>
 
       <section class="about-submit-cta">
-        <div><p class="about-submit-eyebrow">Corrections stay open</p><h2>Product facts change</h2><p>A Last checked date records our latest review, not a permanent guarantee. Makers and readers can submit corrections; we verify them before publishing.</p></div>
+        <div><p class="about-submit-eyebrow">Corrections stay open</p><h2>Product facts change</h2><p>A last checked date records our latest review, not a permanent guarantee. Makers and readers can submit corrections; we verify them before publishing.</p></div>
         <a class="hero-action hero-action-primary" href="/submit/">Suggest an update<RefreshCw size={16} /></a>
       </section>
     </div>

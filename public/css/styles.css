@@ -924,11 +924,43 @@ main { animation: xfade .3s ease; }
 .about-method-number { position: absolute; top: 25px; right: 23px; margin: 0; color: var(--color-text-muted); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
 .about-method-card h3 { margin: 18px 0 0; font-size: 16px; line-height: 1.3; letter-spacing: -.01em; }
 .about-method-card > p:last-child { margin: 8px 0 0; color: var(--color-text-secondary); font-size: 13px; line-height: 1.6; }
+.methodology-fit-card { padding: 20px; }
+.methodology-fit-label {
+  --fit-color: #94A3B8;
+  display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  min-height: 30px; padding: 6px 10px; color: var(--color-text-secondary);
+  background: #F7F9FA; border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+}
+.methodology-fit-label h3 { margin: 0; font-size: 13px; line-height: 1; letter-spacing: 0; }
+.methodology-fit-label .x-fit-meter { height: 12px; }
+.methodology-fit-label .x-fit-meter i { width: 3px; }
+.methodology-fit-label.fit-high { --fit-color: #58A98D; color: #276B58; background: #F0F9F6; border-color: rgba(88,169,141,.24); }
+.methodology-fit-label.fit-medium { --fit-color: #C29B3E; color: #7A5B00; background: #FFF9E8; border-color: rgba(194,155,62,.25); }
+.methodology-fit-label.fit-low { --fit-color: #C97756; color: #9A3412; background: #FFF5F0; border-color: rgba(201,119,86,.24); }
+.methodology-fit-label.fit-high .x-fit-meter i,
+.methodology-fit-label.fit-medium .x-fit-meter i:nth-child(-n+2),
+.methodology-fit-label.fit-low .x-fit-meter i:first-child { background: var(--fit-color); }
+.methodology-fit-card > p:last-child { margin-top: 13px; }
 .methodology-definition-list { margin-top: 20px; overflow: hidden; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 16px; }
-.methodology-definition-list > div { display: grid; grid-template-columns: minmax(160px,.35fr) minmax(0,1fr); gap: 22px; padding: 17px 20px; }
+.methodology-definition-list > div { display: grid; grid-template-columns: minmax(140px,190px) minmax(0,1fr); gap: 16px; padding: 17px 20px; }
 .methodology-definition-list > div + div { border-top: 1px solid var(--color-border); }
 .methodology-definition-list strong { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
 .methodology-definition-list span { color: var(--color-text-secondary); font-size: 13px; line-height: 1.55; }
+.methodology-badge-list > div { align-items: center; }
+.methodology-badge-list strong { min-height: 22px; }
+.methodology-badge-list strong > span { color: inherit; line-height: 1; }
+.methodology-source-note {
+  display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 15px; align-items: start;
+  margin-top: 20px; padding: 20px 22px; background: var(--color-white);
+  border: 1px solid var(--color-border); border-radius: 16px;
+  box-shadow: 0 3px 11px rgba(15,20,25,.025);
+}
+.methodology-source-icon {
+  width: 38px; height: 38px; display: grid; place-items: center;
+  color: var(--color-category-active-text); background: var(--gradient-category-hover); border-radius: 11px;
+}
+.methodology-source-note p { margin: 1px 0 0; color: var(--color-text-secondary); font-size: 14px; line-height: 1.65; }
+.methodology-source-note a { font-weight: 600; }
 .about-category-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
 .about-category-card {
   display: grid; grid-template-columns: 36px minmax(0,1fr) auto 16px; gap: 11px; align-items: center;
@@ -950,11 +982,16 @@ main { animation: xfade .3s ease; }
   margin-top: 58px; padding: 30px 32px; color: var(--color-ink);
   background: var(--gradient-hero); border: 1px solid rgba(120,86,255,.14);
   border-radius: 18px; box-shadow: 0 10px 24px rgba(53,64,87,.06); overflow: hidden;
+  transition: transform var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion-fast);
+}
+.about-submit-cta:hover {
+  transform: translateY(-2px); border-color: rgba(29,155,240,.34);
+  box-shadow: 0 14px 30px rgba(53,64,87,.1);
 }
 .about-submit-cta > div { min-width: 0; }
 .about-submit-cta h2 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -.02em; }
 .about-submit-cta > div > p:last-child { max-width: 620px; margin: 8px 0 0; color: var(--color-text-secondary); font-size: 14px; line-height: 1.55; }
-.about-submit-cta .hero-action { flex: none; min-height: 44px; }
+.about-submit-cta .hero-action { flex: none; gap: 8px; min-height: 44px; box-shadow: 0 7px 20px rgba(69,113,249,.2); }
 
 /* ============ Footer ============ */
 .footer { margin-top: auto; background: var(--color-ink); color: var(--color-white); }
