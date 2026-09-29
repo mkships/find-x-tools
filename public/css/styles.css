@@ -587,8 +587,6 @@ main { animation: xfade .3s ease; }
   color: var(--color-text-muted); background: var(--color-white); border-left: 1px solid var(--color-border);
   font: 600 10px/1 var(--font-mono); white-space: nowrap;
 }
-.verified-date-chip > span { color: currentColor; font-family: var(--font-sans); font-weight: 650; }
-.verified-date-chip.is-tested { color: #1677C8; }
 @keyframes tool-network-scroll { to { transform: translateX(calc(-50% - 12px)); } }
 .catalog-select-filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .catalog-select-filters select {

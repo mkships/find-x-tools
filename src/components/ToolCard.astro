@@ -1,6 +1,6 @@
 ---
 import { API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
-import { BadgeCheck, CalendarCheck, CodeXml, GitFork, Star, Wrench } from '@lucide/astro';
+import { BadgeCheck, CodeXml, GitFork, Star, Wrench } from '@lucide/astro';
 
 const { tool } = Astro.props;
 const primaryCategory = CATS[tool.cat] || {};
@@ -83,9 +83,8 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
         </div>
       </div>
       {checkedLabel && (
-        <span class={`verified-date-chip${tool.tested ? ' is-tested' : ''}`} title={`${tool.tested ? 'Personally tested' : 'Listing updated'} ${tool.lastChecked}`} aria-label={`${tool.tested ? 'Tested' : 'Updated'} ${checkedLabel}`}>
-          {tool.tested ? <BadgeCheck size={14} stroke-width={2.2} aria-hidden="true" /> : <CalendarCheck size={14} stroke-width={2} aria-hidden="true" />}
-          <span>{tool.tested ? 'Tested' : 'Updated'}</span>
+        <span class="verified-date-chip" title={`Last checked ${tool.lastChecked}`} aria-label={`Last checked ${checkedLabel}`}>
+          <BadgeCheck size={14} stroke-width={2} aria-hidden="true" />
           <time datetime={tool.lastChecked}>{checkedLabel}</time>
         </span>
       )}
