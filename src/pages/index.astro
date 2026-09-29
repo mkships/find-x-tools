@@ -7,10 +7,10 @@ import { SITE_NAME } from '../config.js';
 import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, MessageCircle, PenLine, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
 
 const JOB_STACKS = [
-  { label: 'Create & publish', icon: PenLine, jobs: ['write', 'schedule', 'visuals', 'agents'] },
-  { label: 'Engage', icon: MessageCircle, jobs: ['engage', 'dms'] },
-  { label: 'Understand', icon: ChartNoAxesCombined, jobs: ['analytics', 'listen'] },
-  { label: 'Organize', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
+  { label: 'Create & publish content', icon: PenLine, jobs: ['write', 'schedule', 'visuals', 'agents'] },
+  { label: 'Engage your network', icon: MessageCircle, jobs: ['engage', 'dms'] },
+  { label: 'Analyze your growth', icon: ChartNoAxesCombined, jobs: ['analytics', 'listen'] },
+  { label: 'Organize posts & saves', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
 ] as const;
 
 const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')

@@ -449,7 +449,8 @@ main { animation: xfade .3s ease; }
 .home-workflow-card, .home-refinement-card { min-width: 0; padding: 12px; background: rgba(255,255,255,.76); border: 1px solid rgba(15,20,25,.07); border-radius: 13px; }
 .home-discovery-heading { display: flex; align-items: center; gap: 8px; }
 .home-discovery-heading > span { width: 28px; height: 28px; display: grid; place-items: center; flex: none; color: var(--color-category-active-text); background: linear-gradient(145deg,#E5F4FF,#EEEBFF); border-radius: 8px; }
-.home-discovery-heading b { color: var(--color-ink); font-size: 12px; white-space: nowrap; }
+.home-discovery-heading b { color: var(--color-ink); font-size: 12px; line-height: 1.25; }
+.home-workflow-card .home-discovery-heading { min-height: 32px; }
 .home-discovery-links { display: grid; gap: 3px; margin-top: 10px; }
 .home-discovery-links a { min-width: 0; padding: 6px 8px; color: var(--color-text-secondary); border-radius: 7px; font-size: 11px; font-weight: 600; line-height: 1.25; }
 .home-discovery-links a::after { content: '\203A'; float: right; color: var(--color-text-muted); transition: transform var(--motion-fast), color var(--motion-fast); }
