@@ -61,17 +61,200 @@ const categoryContent = {
   }
 };
 
+const categoryFaqs = {
+  content: [
+    {
+      question: 'What makes a writing tool useful specifically for X?',
+      answer: 'Look for an editor that understands short posts, connected threads, previews, media, and X-native publishing. A generic AI writer can help with a first draft, but it may not support thread structure, character limits, or the final publishing workflow.'
+    },
+    {
+      question: 'Should I choose a drafting tool or an all-in-one publishing tool?',
+      answer: 'Choose a focused drafting tool if you mainly need better ideas, hooks, and rewrites. Choose an all-in-one tool if you also need scheduling, approvals, analytics, or a shared content calendar. The best option is the smallest workflow you will use consistently.'
+    },
+    {
+      question: 'Can an AI writing tool preserve my voice?',
+      answer: 'It can get closer when you can provide examples, save style guidance, and edit every draft before publishing. Treat generated copy as a starting point: original observations, specific details, and a final human pass are what keep the result recognizably yours.'
+    },
+    {
+      question: 'What should I test before paying for an X writing tool?',
+      answer: 'Draft a real post and a multi-post thread, then check the preview, media handling, autosave, export, and publishing flow. If you work with a team, also test comments, approvals, permissions, and how easily drafts move between collaborators.'
+    }
+  ],
+  growth: [
+    {
+      question: 'What should an X growth tool help me improve?',
+      answer: 'A useful growth tool should help you find relevant people, understand which posts attract them, and turn that insight into repeatable engagement. Prioritize audience quality, profile visits, meaningful replies, and conversions over follower count alone.'
+    },
+    {
+      question: 'Are automated growth tools safe to use on X?',
+      answer: 'Automation carries risk when it imitates people at scale through follows, likes, replies, or direct messages. Prefer tools that support research, planning, and human-approved actions, and confirm the provider’s current approach against X’s rules before connecting your account.'
+    },
+    {
+      question: 'Which metrics show that my audience is improving?',
+      answer: 'Track relevant follower growth alongside profile visits, reply quality, repeat engagers, link clicks, and conversions. A smaller audience that consistently responds or buys is usually more valuable than a larger audience built from low-intent follows.'
+    },
+    {
+      question: 'How do I compare X audience tools?',
+      answer: 'Compare the accounts and history included, discovery filters, export options, team features, and the actions the tool takes on your behalf. Test it with one concrete goal—such as finding prospective customers or analyzing new followers—before expanding the workflow.'
+    }
+  ],
+  schedule: [
+    {
+      question: 'When is a third-party X scheduler worth using?',
+      answer: 'A scheduler becomes useful when you plan more than a few posts ahead, publish threads, manage several accounts, or need approvals and a shared calendar. X’s native scheduler may be enough for a simple, single-account queue.'
+    },
+    {
+      question: 'What should I test in an X scheduling tool?',
+      answer: 'Test a post with media, a thread, a reschedule, and a failed or disconnected account. Check time-zone handling, previews, notifications, and whether the tool clearly reports publishing errors instead of silently dropping a post.'
+    },
+    {
+      question: 'Can scheduling hurt engagement on X?',
+      answer: 'Scheduling itself is not the problem; publishing without being available to respond can be. Use the queue for consistency, then leave room for timely posts and real conversation when your audience starts replying.'
+    },
+    {
+      question: 'How much automation should I use?',
+      answer: 'Automate predictable work such as queues, approvals, reminders, and evergreen resurfacing. Keep replies, sensitive announcements, and context-dependent posts under human review, and regularly remove recycled content that no longer feels current.'
+    }
+  ],
+  analytics: [
+    {
+      question: 'What can an X analytics tool show beyond native analytics?',
+      answer: 'Third-party tools can add longer history, searchable post archives, cleaner comparisons, custom date ranges, exports, and reporting across accounts. The exact benefit depends on how much history the tool can access and retain after you connect it.'
+    },
+    {
+      question: 'Which X metrics are most useful?',
+      answer: 'Start with impressions, engagement rate, profile visits, follower growth, link clicks, and the outcomes tied to your goal. Review them by content type and over time rather than judging a strategy from one unusually strong or weak post.'
+    },
+    {
+      question: 'How much historical data will I get?',
+      answer: 'History varies by provider, plan, and X data access. Some tools begin collecting only after connection, while others can import earlier posts. Confirm the lookback window, retention period, and export limits before choosing a plan.'
+    },
+    {
+      question: 'What should teams look for in an analytics tool?',
+      answer: 'Look for shared dashboards, consistent metric definitions, account-level permissions, scheduled reports, annotations, and exports. A good team tool should make it easy to explain what changed and connect performance to campaigns or publishing decisions.'
+    }
+  ],
+  ai: [
+    {
+      question: 'How should AI support replies without making them generic?',
+      answer: 'Use AI to surface relevant conversations, summarize context, and propose a starting point. Add your own opinion, experience, or question before posting; a fast reply that contributes nothing is unlikely to build a useful relationship.'
+    },
+    {
+      question: 'Should an AI engagement tool post automatically?',
+      answer: 'Human approval is the safer default, especially for replies and direct messages. If a tool offers automatic posting, check its controls, rate limits, exclusions, audit trail, and how it handles sensitive or ambiguous conversations.'
+    },
+    {
+      question: 'What is a good first use case for an AI engagement tool?',
+      answer: 'Start with a narrow workflow such as monitoring a small account list, triaging mentions, or drafting replies to inbound questions. Measure time saved and conversation quality before widening the audience or increasing automation.'
+    },
+    {
+      question: 'How do I evaluate the quality of AI-generated replies?',
+      answer: 'Check whether the reply understands the original post, adds a specific point, matches your tone, and would still be worth reading without the surrounding automation. Reject repetitive praise, invented facts, and replies designed only to attract attention.'
+    }
+  ],
+  design: [
+    {
+      question: 'What makes a design tool a good fit for X?',
+      answer: 'It should make common X formats quick to produce: image posts, quote cards, screenshots, short video, and reusable branded templates. Useful tools also preview crops clearly and export sharp files without adding unnecessary production steps.'
+    },
+    {
+      question: 'Do I need X-specific templates?',
+      answer: 'Templates help with speed and sizing, but they should be easy to adapt to your own visual system. Prioritize flexible layouts, readable typography, and consistent brand controls over a large library of designs that look like everyone else’s.'
+    },
+    {
+      question: 'What should I check before exporting a visual?',
+      answer: 'Check mobile legibility, crop safety, contrast, file size, and whether text remains readable in the timeline. Also confirm the exported format and resolution suit the type of post you plan to publish.'
+    },
+    {
+      question: 'When is a dedicated media tool better than a general design app?',
+      answer: 'Choose a dedicated tool when one repeated task—such as beautifying screenshots, turning posts into cards, or captioning clips—takes too long in a general editor. Keep the general app when you need broader layout control or complex brand systems.'
+    }
+  ],
+  audit: [
+    {
+      question: 'What does an X profile audit usually check?',
+      answer: 'Depending on the tool, an audit may review profile clarity, posting patterns, engagement, follower quality, inactive connections, or suspicious accounts. Check whether the result is based on live account data, public signals, or a simple checklist.'
+    },
+    {
+      question: 'Can a profile audit tool remove followers or old posts?',
+      answer: 'Some tools only report issues; others can take actions after you connect your account. Review permissions carefully, prefer a preview before bulk changes, and export or back up anything important before removing followers, follows, or posts.'
+    },
+    {
+      question: 'How often should I audit my X account?',
+      answer: 'A quarterly review is enough for many creators. Audit sooner after a large growth campaign, a change in positioning, unusual follower activity, or when profile visits rise without a corresponding increase in relevant follows or conversions.'
+    },
+    {
+      question: 'What should I do with an audit score?',
+      answer: 'Use the score as a prompt, not a verdict. Focus on the underlying evidence, fix the few issues most likely to affect trust or conversion, and compare results over time rather than optimizing for a proprietary number.'
+    }
+  ],
+  comments: [
+    {
+      question: 'Why use a bookmark tool instead of X bookmarks alone?',
+      answer: 'A dedicated tool can add full-text search, tags, folders, notes, exports, and resurfacing. It is most valuable when saved posts are part of a real research, writing, or customer-insight workflow rather than a list you rarely revisit.'
+    },
+    {
+      question: 'Can these tools import my existing X bookmarks?',
+      answer: 'Import support varies and may depend on X data access, a browser extension, or a manual export. Confirm whether the tool imports older bookmarks, preserves media and threads, and keeps syncing after the first import.'
+    },
+    {
+      question: 'How should I organize saved posts?',
+      answer: 'Start with a small set of action-oriented groups such as ideas to develop, examples to reference, people to contact, and research to read. Add notes when you save something so your future self knows why it mattered.'
+    },
+    {
+      question: 'What should I check for privacy and portability?',
+      answer: 'Review what account access the tool requests, whether saved content is private by default, and how to delete your data. Prefer a tool that can export links, notes, and tags in a useful format if you decide to leave.'
+    }
+  ],
+  bio: [
+    {
+      question: 'When does an X profile need a bio-link page?',
+      answer: 'Use one when a single profile URL needs to serve several destinations—such as a product, newsletter, booking page, portfolio, or lead magnet. If you have one clear conversion goal, linking directly to that page may be simpler and stronger.'
+    },
+    {
+      question: 'What should a good bio-link tool include?',
+      answer: 'Prioritize fast mobile loading, clear hierarchy, custom branding, link scheduling, basic analytics, and an easy way to update the page. Commerce, email capture, and embeds matter only if they support the action you want visitors to take.'
+    },
+    {
+      question: 'Do custom domains matter for a bio-link page?',
+      answer: 'A custom domain can strengthen trust, brand recall, and portability, but it is not essential for a simple page. Check whether the plan supports your domain, analytics setup, redirects, and removing the provider’s branding.'
+    },
+    {
+      question: 'How should I measure a bio-link page?',
+      answer: 'Track profile-link visits, click-through rate, and the downstream action that matters—such as a signup, purchase, or booking. Use those results to simplify the page; more links do not necessarily create more value.'
+    }
+  ],
+  listening: [
+    {
+      question: 'How is social listening different from checking X mentions?',
+      answer: 'Mentions show posts that tag your account. Social listening can also track untagged brand names, product terms, competitors, customer problems, and topic keywords, giving you a broader view of conversations you might otherwise miss.'
+    },
+    {
+      question: 'What should I monitor first?',
+      answer: 'Begin with your brand and product names, common misspellings, a few high-intent problem phrases, and key competitors. Keep the query set narrow until you understand the noise, then add exclusions and new terms deliberately.'
+    },
+    {
+      question: 'Are X listening results real time?',
+      answer: 'Speed depends on the provider, plan, query volume, and its access to X data. If rapid response matters, test the delay with a known post and confirm alert channels, refresh frequency, historical coverage, and any result caps.'
+    },
+    {
+      question: 'How do I choose between listening tools?',
+      answer: 'Compare query flexibility, source coverage, alert speed, sentiment quality, history, exports, and collaboration features. Evaluate the tool with your own keywords because a clean demo query may not reflect the noise in your market.'
+    }
+  ]
+};
+
 const { slug } = Astro.params;
 const cat = CATS[slug];
 const content = categoryContent[slug];
 const tools = TOOLS.filter(tool => tool.categories.includes(slug))
   .sort(compareTools);
+const categoryToolsLabel = /\btools$/i.test(cat.label) ? cat.label : `${cat.label} Tools`;
 const otherCategories = Object.entries(CATS)
   .filter(([key]) => key !== slug)
   .sort(([, a], [, b]) => a.label.localeCompare(b.label));
 const freePlanCount = tools.filter(tool => tool.price === 'Free' || tool.price === 'Freemium').length;
 const testedCount = tools.filter(tool => tool.tested).length;
-const categoryArticle = /^[aeiou]/i.test(cat.label) ? 'an' : 'a';
 
 const filters = [
   { value: 'All', label: 'All Tools', Icon: LayoutGrid },
@@ -81,27 +264,10 @@ const filters = [
   { value: 'Editor', label: "Editor's Pick", Icon: Star }
 ];
 
-const faqs = [
-  {
-    question: `What should I look for in ${categoryArticle} ${cat.label} tool?`,
-    answer: `Start with the workflow you need to improve, then compare pricing, supported features, setup effort, and whether the tool fits your publishing volume. Test the core workflow before committing to a paid plan.`
-  },
-  {
-    question: `Are there free ${cat.label} tools for X?`,
-    answer: `${freePlanCount} ${freePlanCount === 1 ? 'tool in this category has' : 'tools in this category have'} a free or freemium option. Free plans commonly limit accounts, scheduled posts, history, exports, or advanced analytics, so check the current limits on the tool's website.`
-  },
-  {
-    question: 'How does X Tools Directory select these tools?',
-    answer: 'Listings are selected for their relevance to X workflows and reviewed for clear product information, a working website, and practical value. Tested tools and editor picks are labelled separately; product details should still be confirmed with the provider before purchase.'
-  },
-  {
-    question: `Which ${cat.label} tool is best for my workflow?`,
-    answer: `The best choice depends on your team size, budget, and required workflow. Use the filters and tool pages to build a shortlist, then compare each provider's current features and limits in a trial or free plan where available.`
-  }
-];
+const faqs: Array<{ question: string; answer: string }> = categoryFaqs[slug];
 
-const title = `Best ${cat.label} Tools for X (${tools.length}) | ${SITE_NAME}`;
-const description = `Compare the ${tools.length} best ${cat.label.toLowerCase()} tools for X — ${tools.slice(0, 3).map(tool => tool.name).join(', ')} and more. Pricing and key features, hand-curated.`;
+const title = `Best ${categoryToolsLabel} for X (${tools.length}) | ${SITE_NAME}`;
+const description = `Compare the ${tools.length} best ${categoryToolsLabel.toLowerCase()} for X — ${tools.slice(0, 3).map(tool => tool.name).join(', ')} and more. Pricing and key features, hand-curated.`;
 const jsonld = [
   {
     '@context': 'https://schema.org',
@@ -123,6 +289,18 @@ const jsonld = [
       { '@type': 'ListItem', position: 2, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
       { '@type': 'ListItem', position: 3, name: cat.label, item: new URL(`/category/${slug}/`, Astro.site).toString() }
     ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
   }
 ];
 ---
@@ -141,7 +319,7 @@ const jsonld = [
         <div class="category-hero-content">
           <div class="category-hero-icon" aria-hidden="true">{ICONS[slug]}</div>
           <div>
-            <h1>Best {cat.label} Tools for X</h1>
+            <h1>Best {categoryToolsLabel} for X</h1>
             <p>{content.description}</p>
             <div class="category-hero-stats" aria-label="Category statistics">
               <span>🛠️ {tools.length} tool{tools.length === 1 ? '' : 's'}</span>
@@ -160,7 +338,7 @@ const jsonld = [
 
       <section class="category-tools" aria-labelledby="category-tools-title">
         <div class="category-section-heading">
-          <h2 id="category-tools-title">Explore {cat.label} Tools</h2>
+          <h2 id="category-tools-title">Explore {categoryToolsLabel}</h2>
         </div>
         <div class="toolbar category-filter-toolbar">
           <div class="seg category-filter-seg" id="categoryFilters" aria-label="Filter category tools">
@@ -195,7 +373,7 @@ const jsonld = [
       </section>
 
       <section class="category-faq" aria-labelledby="category-faq-title">
-        <h2 id="category-faq-title">Frequently Asked Questions</h2>
+        <h2 id="category-faq-title">Questions about {categoryToolsLabel}</h2>
         <div class="faq-list">
           {faqs.map((faq, index) => (
             <details class="faq-item" open={index === 0}>
