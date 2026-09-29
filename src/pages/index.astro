@@ -13,9 +13,10 @@ const JOB_STACKS = [
   { label: 'Organize posts & saves', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
 ] as const;
 
-const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')
-  .sort((a, b) => (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999) || compareTools(a, b))
-  .slice(0, 9);
+const xNativeTools = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit === 'high')
+  .sort((a, b) => Number(Boolean(b.editorPick)) - Number(Boolean(a.editorPick))
+    || (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999)
+    || compareTools(a, b));
 const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low');
 const bestFit = [...orderableTools].sort(compareTools).slice(0, 9);
 const recent = [...orderableTools]
@@ -87,9 +88,9 @@ const jsonld = {
     </div>
   </section>}
 
-  {picks.length > 0 && <section class="home-curated-section">
-    <div class="home-section-heading"><div><span>High X-fit only</span><h2>Editor’s Picks</h2><p>Live, X-native tools we would put on a serious shortlist.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
-    <div class="grid-tools">{picks.map(tool => <ToolCard tool={tool} />)}</div>
+  {xNativeTools.length > 0 && <section class="home-curated-section">
+    <div class="home-section-heading"><div><span>Built for X</span><h2>X-native tools</h2><p>Every live tool in the directory with X at the core of the product.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
+    <div class="grid-tools">{xNativeTools.map(tool => <ToolCard tool={tool} />)}</div>
   </section>}
 
   <section class="section-home-main">
