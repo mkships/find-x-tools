@@ -4,7 +4,7 @@ import { API_STATUS, JOBS, NETWORKS, PRICE_STYLES, THREAD_SUPPORT, TOOL_STATUS, 
 
 const { tool, category, categories = [], categoryIcon = '' } = Astro.props;
 const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
-const answer = value => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not confirmed';
+const answer = (value: string) => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not confirmed';
 ---
 
 <div class="tool-base-sidebar-stack">
@@ -21,7 +21,8 @@ const answer = value => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not c
       <div><dt>Starting price</dt><dd>{tool.startingPrice || tool.price}</dd></div>
       {tool.threadSupport && <div><dt>Thread support</dt><dd><strong>{THREAD_SUPPORT[tool.threadSupport]?.label}</strong> — {THREAD_SUPPORT[tool.threadSupport]?.description}</dd></div>}
       <div><dt>X access</dt><dd>{API_STATUS[tool.apiStatus]?.label || API_STATUS.unclear.label}</dd></div>
-      <div><dt>Networks</dt><dd>{(tool.networks || ['x']).map(network => NETWORKS[network] || network).join(' · ')}</dd></div>
+      <div><dt>Open source</dt><dd>{tool.openSource ? 'Yes' : 'No'}</dd></div>
+      <div><dt>Networks</dt><dd>{(tool.networks || ['x']).map((network: keyof typeof NETWORKS) => NETWORKS[network] || network).join(' · ')}</dd></div>
       <div><dt>Primary use</dt><dd>{category.label}</dd></div>
       <div><dt>Free plan</dt><dd>{answer(tool.freePlan)}</dd></div>
       <div><dt>Mobile app</dt><dd>{answer(tool.mobileApp)}</dd></div>
@@ -35,7 +36,7 @@ const answer = value => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not c
       <div><h2 id="tool-jobs-title">Jobs on X</h2></div>
     </div>
     <div class="tool-base-category-list">
-      {tool.jobs.map(job => <span>{JOBS[job]?.label || job}</span>)}
+      {tool.jobs.map((job: keyof typeof JOBS) => <span>{JOBS[job]?.label || job}</span>)}
     </div>
   </section>}
 
@@ -45,7 +46,7 @@ const answer = value => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not c
       <div><h2 id="base-categories-title">Related categories</h2></div>
     </div>
     <div class="tool-base-category-list">
-      {categories.map(item => <a href={`/category/${item.slug}/`}>{item.slug === tool.cat && <span aria-hidden="true">{categoryIcon}</span>}{item.label}</a>)}
+      {categories.map((item: { slug: string; label: string }) => <a href={`/category/${item.slug}/`}>{item.slug === tool.cat && <span aria-hidden="true">{categoryIcon}</span>}{item.label}</a>)}
     </div>
   </section>
 </div>

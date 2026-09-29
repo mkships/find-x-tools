@@ -3,7 +3,7 @@ import { BadgePercent, Check, CircleDollarSign, ExternalLink } from '@lucide/ast
 
 const { tiers = [], pricingModel, note = '', checkedAt = '', url = '' } = Astro.props;
 const formatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
-const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00Z`)) : '';
+const formatDate = (value: string) => value ? formatter.format(new Date(`${value}T00:00:00Z`)) : '';
 ---
 
 <section class="pricing-detail-card" aria-labelledby="pricing-title">
@@ -13,14 +13,14 @@ const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00
   </div>
   {tiers.length ? (
     <div class="pricing-tier-grid">
-      {tiers.map(tier => (
+      {tiers.map((tier: { name: string; price: string; cadence?: string; description?: string; features?: string[] }) => (
         <article class="pricing-tier-card">
           <div class="pricing-tier-head">
             <strong>{tier.name}</strong>
             <span class="pricing-tier-price">{tier.price}{tier.cadence && <small>{tier.cadence}</small>}</span>
           </div>
           {tier.description && <p>{tier.description}</p>}
-          {tier.features?.length > 0 && <ul>{tier.features.map(feature => <li><Check size={13} stroke-width={2.5} aria-hidden="true" /><span>{feature}</span></li>)}</ul>}
+          {tier.features?.length > 0 && <ul>{tier.features.map((feature: string) => <li><Check size={13} stroke-width={2.5} aria-hidden="true" /><span>{feature}</span></li>)}</ul>}
         </article>
       ))}
     </div>

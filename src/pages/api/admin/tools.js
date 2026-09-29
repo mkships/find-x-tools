@@ -178,6 +178,7 @@ function normalizeTool(input) {
     status,
     apiStatus,
     founderBuilt: Boolean(input.founderBuilt),
+    openSource: Boolean(input.openSource),
     jobs,
     networks,
     threadSupport,

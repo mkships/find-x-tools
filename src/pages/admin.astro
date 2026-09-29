@@ -74,6 +74,7 @@ import Base from '../layouts/Base.astro';
               <label><input name="tested" type="checkbox" /> Tested</label>
               <label><input name="editorPick" type="checkbox" /> Editor’s Pick</label>
               <label><input name="founderBuilt" type="checkbox" /> Founder-built</label>
+              <label><input name="openSource" type="checkbox" /> Open source</label>
             </div>
           </div>
 
@@ -301,7 +302,7 @@ import Base from '../layouts/Base.astro';
     });
     toolForm.elements.features.value = (tool.features || []).join('\n');
     toolForm.elements.verificationSources.value = (tool.verificationSources || []).join('\n');
-    ['published','tested','editorPick','founderBuilt'].forEach(name => setCheckbox(name, tool[name]));
+    ['published','tested','editorPick','founderBuilt','openSource'].forEach(name => setCheckbox(name, tool[name]));
     toolForm.elements.pricingNote.value = tool.detail?.pricingNote || '';
     toolForm.elements.pricingLastChecked.value = tool.detail?.pricingLastChecked || '';
     renderPricingTiers(tool.detail?.pricingTiers || []);
@@ -375,7 +376,7 @@ import Base from '../layouts/Base.astro';
     const data = new FormData(toolForm);
     const tool = Object.fromEntries(data.entries());
     tool.published = data.has('published');
-    ['tested','editorPick','founderBuilt'].forEach(name => tool[name] = data.has(name));
+    ['tested','editorPick','founderBuilt','openSource'].forEach(name => tool[name] = data.has(name));
     tool.features = String(data.get('features') || '').split('\n').map(item => item.trim()).filter(Boolean);
     tool.categories = data.getAll('categories');
     tool.jobs = data.getAll('jobs');

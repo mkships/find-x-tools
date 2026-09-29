@@ -17,7 +17,7 @@ ninetyDaysAgo.setUTCDate(ninetyDaysAgo.getUTCDate() - 90);
 const shipped = TOOLS.filter(tool => tool.status === 'live' && tool.demoPostUrl && tool.launchedAt && new Date(`${tool.launchedAt}T00:00:00Z`) >= ninetyDaysAgo)
   .sort((a, b) => (a.shippedOnXOrder ?? 999) - (b.shippedOnXOrder ?? 999) || String(b.launchedAt).localeCompare(String(a.launchedAt)))
   .slice(0, 8);
-const formatDate = date => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+const formatDate = (date: string) => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 
 const title = `${SITE_NAME} — Grow, engage and monetise your audience on X`;
 const description = `Discover, compare and pick the best tools for content writing, growth, scheduling, analytics and engagement on X. Hand-curated directory of X-native tools.`;
@@ -58,7 +58,7 @@ const jsonld = {
   <nav class="home-filter-strip" aria-label="Filter the X tools catalog">
     <div class="home-filter-group"><span>Job</span><div>{Object.entries(JOBS).map(([slug, job]) => <a href={`/tools/?job=${slug}`}>{job.label}</a>)}</div></div>
     <div class="home-filter-group"><span>Pricing</span><div><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div></div>
-    <div class="home-filter-group"><span>Verified fit</span><div><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a></div></div>
+    <div class="home-filter-group"><span>Verified fit</span><div><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a><a href="/tools/?filter=open-source">Open source</a></div></div>
   </nav>
 
   {shipped.length > 0 && <section class="home-curated-section">

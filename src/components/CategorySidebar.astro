@@ -2,9 +2,9 @@
 import { CATS, ICONS, TOOLS } from '../data/tools.js';
 
 const { active = 'all' } = Astro.props;
-const counts = {};
+const counts: Record<string, number> = {};
 TOOLS.forEach(tool => {
-  (tool.categories || [tool.cat]).forEach(category => {
+  (tool.categories || [tool.cat]).forEach((category: string) => {
     counts[category] = (counts[category] || 0) + 1;
   });
 });

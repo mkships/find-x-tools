@@ -1,13 +1,13 @@
 ---
 import { API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
-import { BadgeCheck, CalendarCheck, CodeXml, Star, Wrench } from '@lucide/astro';
+import { BadgeCheck, CalendarCheck, CodeXml, GitFork, Star, Wrench } from '@lucide/astro';
 
 const { tool } = Astro.props;
 const primaryCategory = CATS[tool.cat] || {};
 const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
 const initial = (tool.name || '?').trim().charAt(0).toUpperCase();
 const categories = (tool.categories || [tool.cat])
-  .map(key => CATS[key])
+  .map((key: keyof typeof CATS) => CATS[key])
   .filter(Boolean);
 const checkedLabel = tool.lastChecked
   ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(`${tool.lastChecked}T00:00:00Z`))
@@ -23,6 +23,7 @@ const checkedLabel = tool.lastChecked
   data-x-fit={tool.xFit}
   data-api-status={tool.apiStatus}
   data-founder-built={String(Boolean(tool.founderBuilt))}
+  data-open-source={String(Boolean(tool.openSource))}
   data-status={tool.status}
   data-editor-pick={String(Boolean(tool.editorPick && tool.xFit === 'high' && tool.status === 'live'))}
   data-network-scope={!tool.networks?.includes('x') ? 'adjacent' : tool.networks.length === 1 ? 'x-only' : 'multi'}
@@ -61,13 +62,19 @@ const checkedLabel = tool.lastChecked
             Founder-built
           </span>
         )}
+        {tool.openSource && (
+          <span class="badge-open-source" title="Source code is publicly available under an open-source license">
+            <GitFork size={12} stroke-width={2.2} aria-hidden="true" />
+            Open source
+          </span>
+        )}
       </div>
       <p class="tool-card-tagline">{tool.tagline}</p>
     </div>
   </div>
   <div class="tool-card-foot">
     <div class="category-chips">
-      {categories.map(category => <span class="cat-chip">{category.label}</span>)}
+      {categories.map((category: { label: string }) => <span class="cat-chip">{category.label}</span>)}
     </div>
     <div class="tool-card-facts">
       <span class={`x-fit-chip x-fit-${tool.xFit}`} title={X_FIT[tool.xFit]?.description || X_FIT.unknown.description}>
@@ -77,6 +84,6 @@ const checkedLabel = tool.lastChecked
       {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
       <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price || 'Freemium'}</span>
     </div>
-    <span class="tool-network-line" title="Supported networks">{(tool.networks || ['x']).map(network => NETWORKS[network] || network).join(' · ') || 'Adjacent'}</span>
+    <span class="tool-network-line" title="Supported networks">{(tool.networks || ['x']).map((network: keyof typeof NETWORKS) => NETWORKS[network] || network).join(' · ') || 'Adjacent'}</span>
   </div>
 </a>
