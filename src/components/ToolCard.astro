@@ -18,6 +18,7 @@ const isXOnly = toolNetworks.length === 1 && toolNetworks[0] === 'x';
 const networkText = isXOnly ? 'Built just for X' : networkNames.join(' · ') || 'Adjacent';
 const networkTitle = isXOnly ? 'Supported network: X' : `Supported networks: ${networkNames.join(', ')}`;
 const movingNetworks = networkNames.length > 4;
+const xFitLabel = X_FIT[tool.xFit]?.label || X_FIT.unknown.label;
 ---
 <a
   class="tool-card"
@@ -58,12 +59,13 @@ const movingNetworks = networkNames.length > 4;
     </div>
     <span
       class={`x-fit-indicator x-fit-indicator-${tool.xFit}`}
-      title={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label} — ${X_FIT[tool.xFit]?.description || X_FIT.unknown.description}`}
-      aria-label={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label}`}
+      title={`X-fit: ${xFitLabel} — ${X_FIT[tool.xFit]?.description || X_FIT.unknown.description}`}
+      aria-label={`X-fit: ${xFitLabel}`}
       role="img"
     >
-      <span aria-hidden="true">X-fit</span>
       <span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="x-fit-context" aria-hidden="true">X-fit</span>
+      <strong class="x-fit-grade" aria-hidden="true">{xFitLabel}</strong>
     </span>
   </div>
   <div class="tool-card-foot">

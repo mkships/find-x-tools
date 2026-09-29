@@ -501,7 +501,7 @@ main { animation: xfade .3s ease; }
   transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
 }
 .tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,20,25,.09); border-color: rgba(29,155,240,.48); }
-.tool-card-top { display: flex; gap: 10px; align-items: flex-start; min-width: 0; padding-right: 64px; }
+.tool-card-top { display: flex; gap: 10px; align-items: flex-start; min-width: 0; padding-right: 102px; }
 .tile {
   width: 40px; height: 40px; border-radius: 10px; flex: none;
   display: flex; align-items: center; justify-content: center;
@@ -516,22 +516,21 @@ main { animation: xfade .3s ease; }
 .x-fit-indicator {
   --fit-color: #94A3B8;
   position: absolute; top: 14px; right: 13px;
-  display: inline-flex; align-items: center; gap: 5px; min-height: 22px; padding: 5px 7px;
-  color: var(--color-text-secondary); background: rgba(255,255,255,.92);
-  border: 1px solid rgba(15,20,25,.09); border-radius: var(--radius-pill);
+  display: inline-flex; align-items: center; gap: 4px; min-height: 24px; padding: 5px 8px;
+  color: var(--color-text-secondary); background: #F7F9FA;
+  border: 1px solid var(--color-border); border-radius: var(--radius-pill);
   box-shadow: 0 1px 3px rgba(15,20,25,.045);
 }
-.x-fit-indicator > span {
-  font: 650 7px/1 var(--font-mono); letter-spacing: -.03em;
-}
+.x-fit-context { opacity: .72; font: 650 7px/1 var(--font-mono); letter-spacing: -.03em; }
+.x-fit-grade { font: 650 9px/1 var(--font-sans); letter-spacing: -.01em; }
 .x-fit-meter { height: 10px; display: inline-flex; align-items: flex-end; gap: 2px; }
 .x-fit-meter i { width: 2.5px; background: #DCE3E8; border-radius: 2px; }
 .x-fit-meter i:nth-child(1) { height: 4px; }
 .x-fit-meter i:nth-child(2) { height: 7px; }
 .x-fit-meter i:nth-child(3) { height: 10px; }
-.x-fit-indicator-high { --fit-color: #58A98D; }
-.x-fit-indicator-medium { --fit-color: #C29B3E; }
-.x-fit-indicator-low { --fit-color: #C97756; }
+.x-fit-indicator-high { --fit-color: #58A98D; color: #276B58; background: #F0F9F6; border-color: rgba(88,169,141,.24); }
+.x-fit-indicator-medium { --fit-color: #C29B3E; color: #7A5B00; background: #FFF9E8; border-color: rgba(194,155,62,.25); }
+.x-fit-indicator-low { --fit-color: #C97756; color: #9A3412; background: #FFF5F0; border-color: rgba(201,119,86,.24); }
 .x-fit-indicator-high .x-fit-meter i,
 .x-fit-indicator-medium .x-fit-meter i:nth-child(-n+2),
 .x-fit-indicator-low .x-fit-meter i:first-child { background: var(--fit-color); }
