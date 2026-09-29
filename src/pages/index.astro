@@ -17,6 +17,7 @@ const xNativeTools = [...TOOLS].filter(tool => tool.status === 'live' && tool.xF
   .sort((a, b) => Number(Boolean(b.editorPick)) - Number(Boolean(a.editorPick))
     || (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999)
     || compareTools(a, b));
+const xNativePreview = xNativeTools.slice(0, 6);
 const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low');
 const bestFit = [...orderableTools].sort(compareTools).slice(0, 9);
 const recent = [...orderableTools]
@@ -88,9 +89,15 @@ const jsonld = {
     </div>
   </section>}
 
-  {xNativeTools.length > 0 && <section class="home-curated-section">
-    <div class="home-section-heading"><div><span>Built for X</span><h2>X-native tools</h2><p>Every live tool in the directory with X at the core of the product.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
-    <div class="grid-tools">{xNativeTools.map(tool => <ToolCard tool={tool} />)}</div>
+  {xNativePreview.length > 0 && <section class="home-curated-section">
+    <div class="home-section-heading"><div><span>Built for X</span><h2>X-native highlights</h2><p>A focused selection from {xNativeTools.length} live tools with X at the core of the product.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
+    <div class="grid-tools">{xNativePreview.map(tool => <ToolCard tool={tool} />)}</div>
+    <div class="view-all-wrap">
+      <a class="btn-view-all btn-view-all-link" href="/tools/?filter=x-native">
+        View all {xNativeTools.length} X-native tools
+        <ArrowRight size={16} stroke-width={2} aria-hidden="true" />
+      </a>
+    </div>
   </section>}
 
   <section class="section-home-main">
