@@ -536,7 +536,10 @@ main { animation: xfade .3s ease; }
 .badge-editor-pick { color: var(--color-editor-pick-text); background: var(--color-editor-pick-surface); }
 .badge-x-native { color: #075985; background: #E0F2FE; }
 .badge-official-api { color: #087A54; background: #E3F7EF; }
-.badge-founder-built { color: #6332C7; background: linear-gradient(135deg,#F0EBFF,#FAF8FF); box-shadow: inset 0 0 0 1px rgba(99,50,199,.14), 0 1px 2px rgba(99,50,199,.08); }
+.badge-founder-built {
+  color: #B83A18; background: #FFF0EA;
+  box-shadow: inset 0 0 0 1px rgba(184,58,24,.15);
+}
 .badge-open-source { color: #334155; background: #E2E8F0; }
 .tool-card-tagline {
   min-height: calc(2 * 1.35em); margin: 3px 0 0; font-size: 12px; line-height: 1.35; color: var(--color-text-secondary);
