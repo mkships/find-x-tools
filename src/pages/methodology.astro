@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME } from '../config.js';
+import { BadgeCheck, ChevronRight, CircleCheckBig, CodeXml, RefreshCw, Scale } from '@lucide/astro';
+
+const title = `How We Verify X Tools | ${SITE_NAME}`;
+const description = 'The public methodology behind X-fit, tool status, last-checked dates, API labels, testing and editorial recommendations.';
+---
+<Base title={title} description={description}>
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <nav class="breadcrumbs about-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
+          <span aria-current="page">Methodology</span>
+        </nav>
+        <div class="about-hero-content">
+          <div class="about-hero-icon" aria-hidden="true"><Scale size={36} stroke-width={1.7} /></div>
+          <div>
+            <h1>Facts first, with a date</h1>
+            <p>Our labels answer a practical question: does this product still do a meaningful job on X today? Here is exactly how we decide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="about-body methodology-body">
+      <section class="about-overview">
+        <p>We do not rank tools with an invented popularity number. We record observable product facts, make the editorial judgment behind X-fit explicit, and show when each listing was last checked.</p>
+      </section>
+
+      <section class="about-section" aria-labelledby="x-fit-title">
+        <div class="about-section-heading"><span>01 · X-fit</span><h2 id="x-fit-title">How central is X to the product?</h2></div>
+        <div class="about-method-grid">
+          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>High</h3><p>X is the product or its core job: threads, replies, bookmarks, X analytics, account hygiene, or direct X API workflows.</p></article>
+          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>Medium</h3><p>The product supports several networks, but X remains first-class with a real composer, analytics, listening, or publishing workflow.</p></article>
+          <article class="about-method-card"><span class="about-method-icon"><CircleCheckBig size={21} /></span><h3>Low</h3><p>X is incidental, lightly supported, or mainly a distribution checkbox for a product built around another job or network.</p></article>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="status-title">
+        <div class="about-section-heading"><span>02 · Freshness</span><h2 id="status-title">Operational status is separate from visibility</h2><p>We retain useful historical pages so an old recommendation does not silently become a broken link.</p></div>
+        <div class="methodology-definition-list">
+          <div><strong>Live</strong><span>The product is operating and any X workflow described in its listing is currently available. Adjacent tools can be live without being X-native.</span></div>
+          <div><strong>Degraded</strong><span>The tool works, but an important X feature is limited, unreliable, or materially changed.</span></div>
+          <div><strong>Dropped X</strong><span>The product remains active but no longer supports its former X workflow.</span></div>
+          <div><strong>Shut down</strong><span>The product is no longer operating. Its page remains as a clearly marked historical reference.</span></div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="api-title">
+        <div class="about-section-heading"><span>03 · API honesty</span><h2 id="api-title">A green badge requires verification</h2></div>
+        <div class="about-method-grid">
+          <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>Official API</h3><p>The main X job publishes or reads through X's official API. This is the only classification that receives the public green badge.</p></article>
+          <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>Official API + other data</h3><p>At least part of the workflow uses the official API, while extensions, scraping, imported data, or other sources are also involved.</p></article>
+          <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>No API or unclear</h3><p>Extensions and local tools can still be excellent. When we cannot verify the access method, we say so rather than awarding a badge.</p></article>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="threads-title">
+        <div class="about-section-heading"><span>04 · Thread support</span><h2 id="threads-title">A connected reply chain is not a posting queue</h2><p>We use this field only when threads are relevant to the product. Blank is intentional for analytics, bookmarks, listening, and other unrelated jobs.</p></div>
+        <div class="methodology-definition-list">
+          <div><strong>Native</strong><span>Write, split, preview, and publish the draft as one ordered reply chain.</span></div>
+          <div><strong>Split only</strong><span>Turns a long draft into X-sized chunks, but you post the connected thread manually.</span></div>
+          <div><strong>Queue only</strong><span>Schedules multiple standalone posts; they are not linked as replies.</span></div>
+          <div><strong>None</strong><span>The product handles writing or publishing but offers no connected-thread workflow.</span></div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="badges-title">
+        <div class="about-section-heading"><span>05 · Editorial labels</span><h2 id="badges-title">What the other badges mean</h2></div>
+        <div class="methodology-definition-list">
+          <div><strong><BadgeCheck size={16} /> Tested</strong><span>We personally used and checked the product, beyond reviewing its public information.</span></div>
+          <div><strong>Editor's Pick</strong><span>A currently Live, High-X-fit tool we would put on a serious shortlist for its job.</span></div>
+          <div><strong>X-native</strong><span>A filterable display of High X-fit—not a second independent score.</span></div>
+          <div><strong>Founder-built</strong><span>The original maker or a small founding team still operates the product.</span></div>
+        </div>
+      </section>
+
+      <section class="about-submit-cta">
+        <div><p class="about-submit-eyebrow">Corrections stay open</p><h2>Product facts change</h2><p>A Last checked date records our latest review, not a permanent guarantee. Makers and readers can submit corrections; we verify them before publishing.</p></div>
+        <a class="hero-action hero-action-primary" href="/submit/">Suggest an update<RefreshCw size={16} /></a>
+      </section>
+    </div>
+  </main>
+</Base>

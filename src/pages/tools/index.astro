@@ -1,17 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
 import BrowseView from '../../components/BrowseView.astro';
-import { TOOLS } from '../../data/tools.js';
+import { compareTools, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
 
 const title = `Browse All ${TOOLS.length} X Tools | ${SITE_NAME}`;
-const description = `Browse and filter all ${TOOLS.length} hand-curated tools for growing on X — search by category, pricing model and popularity.`;
+const description = `Browse and filter all ${TOOLS.length} hand-curated tools for growing on X — search by job, pricing, X-fit and verified API access.`;
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: `All X tools on ${SITE_NAME}`,
   numberOfItems: TOOLS.length,
-  itemListElement: [...TOOLS].sort((a, b) => b.popularityScore - a.popularityScore).map((t, i) => ({
+  itemListElement: [...TOOLS].sort(compareTools).map((t, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: t.name,

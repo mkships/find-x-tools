@@ -5,10 +5,9 @@ import EditorialAbout from '../../components/tool-detail/EditorialAbout.astro';
 import ToolDates from '../../components/tool-detail/ToolDates.astro';
 import BaseToolFacts from '../../components/tool-detail/BaseToolFacts.astro';
 import PricingCard from '../../components/tool-detail/PricingCard.astro';
-import { CATS, ICONS, TOOLS } from '../../data/tools.js';
-import { normalizeToolDetail } from '../../data/tool-detail-schema.js';
+import { compareTools, CATS, ICONS, TOOL_STATUS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
-import { ArrowLeftRight, ArrowRight, CheckCircle2, ChevronRight, ListChecks, Sparkles } from '@lucide/astro';
+import { ArrowLeftRight, ArrowRight, CircleCheckBig, ChevronRight, ListChecks, Sparkles } from '@lucide/astro';
 import '../../styles/tool-detail.css';
 
 export function getStaticPaths() {
@@ -18,12 +17,16 @@ export function getStaticPaths() {
 const { tool } = Astro.props;
 const category = CATS[tool.cat];
 const hasFeatures = tool.features.length > 0;
-const detail = normalizeToolDetail(tool);
-const pricingTiers = detail.isDemo ? [] : detail.pricingTiers;
+const detail = tool.detail || {};
+const isDemo = detail.status === 'demo';
+const pricingTiers = isDemo || !Array.isArray(detail.pricingTiers) ? [] : detail.pricingTiers;
 const relatedCategories = tool.categories.map(slug => ({ slug, ...CATS[slug] })).filter(item => item.label);
 
-const related = TOOLS.filter(candidate => candidate.categories.includes(tool.cat) && candidate.id !== tool.id)
-  .sort((a, b) => b.popularityScore - a.popularityScore)
+const related = TOOLS.filter(candidate => candidate.id !== tool.id
+    && candidate.status !== 'shut-down'
+    && candidate.status !== 'dropped-x'
+    && (candidate.jobs?.some(job => tool.jobs?.includes(job)) || candidate.categories.includes(tool.cat)))
+  .sort(compareTools)
   .slice(0, 3);
 
 const title = `${tool.name} — ${category.label} Tool for X | ${SITE_NAME}`;
@@ -37,7 +40,7 @@ const jsonld = [
     url: tool.url,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: tool.price === 'Free' ? '0' : undefined, description: `${tool.price} pricing` }
+    ...(tool.price === 'Free' ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } } : {})
   },
   {
     '@context': 'https://schema.org',
@@ -58,11 +61,11 @@ const jsonld = [
       <div class="tool-landing-hero-inner">
         <nav class="breadcrumbs tool-detail-breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <a href="/tools/">Tools</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <a href={`/category/${tool.cat}/`}>{category.label}</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <span aria-current="page">{tool.name}</span>
         </nav>
         <ToolIntro tool={tool} category={category} />
@@ -70,6 +73,10 @@ const jsonld = [
     </section>
 
     <div class="tool-detail-body">
+      {tool.status !== 'live' && <section class={`tool-status-notice status-${tool.status}`} role="status">
+        <strong>{TOOL_STATUS[tool.status]?.label}</strong>
+        <span>{tool.status === 'degraded' ? 'Some X features may be limited or unreliable. Check the current product status before subscribing.' : tool.status === 'dropped-x' ? 'This product no longer offers its previous X workflow. This page is retained as a historical reference.' : 'This product has shut down. This page is retained so older recommendations do not become misleading.'}</span>
+      </section>}
       <div class="directory-detail-shell">
         <div class="directory-detail-main">
 
@@ -79,11 +86,12 @@ const jsonld = [
 
         <section class="tool-quick-overview" aria-labelledby="quick-overview-title">
           <div class="tool-quick-heading">
-            <ListChecks size={18} strokeWidth={2} aria-hidden="true" />
+            <ListChecks size={18} stroke-width={2} aria-hidden="true" />
             <h2 id="quick-overview-title">Quick overview</h2>
           </div>
           <dl>
             <div><dt>Best for</dt><dd>{tool.best || `${category.label} workflows`}</dd></div>
+            <div><dt>Not for</dt><dd>{tool.notFor || 'Not yet independently assessed'}</dd></div>
             <div><dt>Pricing</dt><dd>{tool.price}</dd></div>
             <div><dt>Primary use</dt><dd>{category.label}</dd></div>
           </dl>
@@ -91,19 +99,19 @@ const jsonld = [
 
         {hasFeatures && <section class="directory-editorial-card" aria-labelledby="base-features-title">
           <div class="tool-content-heading">
-            <span class="tool-content-icon"><Sparkles size={19} strokeWidth={2} aria-hidden="true" /></span>
+            <span class="tool-content-icon"><Sparkles size={19} stroke-width={2} aria-hidden="true" /></span>
             <h2 id="base-features-title">What {tool.name} helps you do</h2>
           </div>
           <div class="tool-base-feature-list">
-            {tool.features.map(feature => <span><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" />{feature}</span>)}
+            {tool.features.map(feature => <span><CircleCheckBig size={16} stroke-width={2} aria-hidden="true" />{feature}</span>)}
           </div>
         </section>}
 
         <PricingCard
           tiers={pricingTiers}
           pricingModel={tool.price}
-          note={detail.isDemo ? '' : detail.pricingNote}
-          checkedAt={detail.isDemo ? '' : detail.pricingLastChecked}
+          note={isDemo ? '' : detail.pricingNote}
+          checkedAt={isDemo ? '' : detail.pricingLastChecked}
           url={tool.url}
         />
         </div>
@@ -113,13 +121,13 @@ const jsonld = [
 
           <section class="tool-sidebar-card tool-sidebar-alternatives" aria-labelledby="alternatives-title">
             <div class="tool-section-heading compact">
-              <span class="tool-section-icon"><ArrowLeftRight size={18} strokeWidth={2} aria-hidden="true" /></span>
+              <span class="tool-section-icon"><ArrowLeftRight size={18} stroke-width={2} aria-hidden="true" /></span>
               <div><h2 id="alternatives-title">{tool.name} alternatives</h2></div>
             </div>
             <div class="tool-sidebar-link-list">
-              {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-logo" style={`background:${item.color}`} aria-hidden="true">{item.icon ? <img src={item.icon} alt="" loading="lazy" /> : item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
+              {related.map(item => <a href={`/tools/${item.id}/`}><span class="tool-sidebar-logo" style={`background:${item.color}`} aria-hidden="true">{item.icon ? <img src={item.icon} alt="" loading="lazy" /> : item.name.charAt(0)}</span><span>{item.name}</span><ChevronRight size={15} stroke-width={1.8} aria-hidden="true" /></a>)}
             </div>
-            <a class="tool-sidebar-browse" href={`/category/${tool.cat}/`}>Browse all {category.label}<ArrowRight size={14} strokeWidth={2} aria-hidden="true" /></a>
+            <a class="tool-sidebar-browse" href={`/category/${tool.cat}/`}>Browse all {category.label}<ArrowRight size={14} stroke-width={2} aria-hidden="true" /></a>
           </section>
         </aside>
       </div>
@@ -128,7 +136,7 @@ const jsonld = [
         <div class="tool-update-copy">
           <p>Own or operate {tool.name}? Help us keep this listing accurate.</p>
         </div>
-        <a class="hero-action hero-action-secondary" href="/submit/">Suggest an update<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+        <a class="hero-action hero-action-secondary" href="/submit/">Suggest an update<ArrowRight size={16} stroke-width={2} aria-hidden="true" /></a>
         <div class="tool-update-meta">
           <ToolDates listedAt={tool.addedAt} />
         </div>

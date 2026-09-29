@@ -1,13 +1,70 @@
 // Canonical tool data for X Tools Directory.
 import adminData from './tool-admin-data.json';
-import popularityScores from './popularity-scores.json';
+import { CATALOG_CURATION, CATEGORY_JOBS } from './catalog-curation.js';
 
-function getPopularityScore(id, scores = popularityScores) {
-  const score = scores[id];
-  if (!Number.isFinite(score)) {
-    throw new Error(`Missing popularity score for tool: ${id}`);
-  }
-  return score;
+export const JOBS = {
+  write: { label: 'Write posts & threads' },
+  schedule: { label: 'Schedule & publish' },
+  engage: { label: 'Reply & engage' },
+  analytics: { label: 'Analyze performance' },
+  bookmarks: { label: 'Organize bookmarks' },
+  listen: { label: 'Listen & monitor' },
+  clean: { label: 'Clean your account' },
+  agents: { label: 'Post from an agent' },
+  dms: { label: 'Manage DMs' },
+  visuals: { label: 'Create X visuals' }
+};
+
+export const NETWORKS = {
+  x: 'X',
+  linkedin: 'LinkedIn',
+  bluesky: 'Bluesky',
+  instagram: 'Instagram',
+  facebook: 'Facebook',
+  threads: 'Threads',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+  pinterest: 'Pinterest',
+  mastodon: 'Mastodon',
+  reddit: 'Reddit'
+};
+
+export const X_FIT = {
+  high: { label: 'High', description: 'X is the product or the core job.' },
+  medium: { label: 'Medium', description: 'Multi-network, with a meaningful first-class X workflow.' },
+  low: { label: 'Low', description: 'X is incidental or a limited part of the product.' },
+  unknown: { label: 'Not rated', description: 'X fit has not been independently verified yet.' }
+};
+
+export const TOOL_STATUS = {
+  live: { label: 'Live' },
+  degraded: { label: 'Degraded' },
+  'dropped-x': { label: 'Dropped X' },
+  'shut-down': { label: 'Shut down' }
+};
+
+export const API_STATUS = {
+  official: { label: 'Official API' },
+  'official-plus-other': { label: 'Official API + other data' },
+  'no-api': { label: 'No API (extension / local)' },
+  unclear: { label: 'Unclear' }
+};
+
+export const THREAD_SUPPORT = {
+  native: { label: 'Native', description: 'Write, preview, and publish a connected reply chain.' },
+  'split-only': { label: 'Split only', description: 'Splits a long draft into X-sized chunks for manual posting.' },
+  'queue-only': { label: 'Queue only', description: 'Schedules several standalone posts rather than a connected thread.' },
+  none: { label: 'None', description: 'Does not provide a connected-thread composer.' }
+};
+
+const STATUS_ORDER = { live: 0, degraded: 1, 'dropped-x': 2, 'shut-down': 3 };
+const X_FIT_ORDER = { high: 0, medium: 1, low: 2, unknown: 3 };
+
+export function compareTools(a, b) {
+  return (STATUS_ORDER[a.status] ?? 4) - (STATUS_ORDER[b.status] ?? 4)
+    || (X_FIT_ORDER[a.xFit] ?? 4) - (X_FIT_ORDER[b.xFit] ?? 4)
+    || Number(Boolean(b.editorPick)) - Number(Boolean(a.editorPick))
+    || a.name.localeCompare(b.name);
 }
 
 export const CATS = {
@@ -38,43 +95,7 @@ const TOOL_DATA = [
     tagline:'Write, schedule and analyze X threads in a clean, focused editor.',
     desc:'Typefully is a distraction-free writing studio for X. Draft threads with live preview, get AI hooks and rewrites, schedule at the best times, and track exactly what performs.',
     best:'Solo creators, content teams and agencies who want a calm space to draft and ship.',
-    features:['Clean thread composer with live preview','AI hooks, rewrites and ideas','Schedule and auto-retweet','Per-thread engagement analytics'],
-    detail:{
-      status:'demo',
-      listedAt:'2026-07-14',
-      lastChecked:'2026-09-21',
-      useCases:[
-        {title:'Shape long-form ideas',description:'Turn a rough idea into a structured post or thread without losing the flow between updates.',icon:'write'},
-        {title:'Plan a consistent week',description:'Draft in batches and place finished posts onto a visual publishing schedule.',icon:'calendar'},
-        {title:'Improve the first draft',description:'Use writing prompts and rewrite assistance when a hook or transition needs another pass.',icon:'sparkles'},
-        {title:'Learn what resonates',description:'Review post-level performance and reuse the formats that consistently earn attention.',icon:'analytics'}
-      ],
-      bestFor:[
-        'Solo creators publishing thoughtful posts and threads several times a week',
-        'Small content teams that want a calm drafting and approval workflow'
-      ],
-      watchOuts:[
-        'Not designed to replace enterprise social listening or customer-support inboxes',
-        'Advanced collaboration and analytics may require a higher paid tier'
-      ],
-      pricingTiers:[
-        {name:'Free',price:'$0',description:'Basic writing and publishing workflow with limited usage.'},
-        {name:'Creator',price:'Starts at a sample price',cadence:'per month',description:'Scheduling, writing assistance and post-performance insights.'},
-        {name:'Team',price:'Starts at a sample price',cadence:'per month',description:'Shared workspaces, approvals, team access and expanded analytics.'}
-      ],
-      pricingNote:'Prototype tier content for design review. Verify current names, prices and limits before publication.',
-      pricingLastChecked:'2026-09-21',
-      mentions:[
-        {source:'x',kind:'workflow',author:'Sample creator',handle:'@creator',context:'My weekly thread-writing workflow',text:'Sample mention: the focused composer makes it easier to move from a rough thread idea to a scheduled draft.',url:'https://x.com/typefully',publishedAt:'2026-08-18',lastChecked:'2026-09-21',engagement:18,demo:true},
-        {source:'youtube',kind:'demo',author:'Sample reviewer',handle:'@reviewer',context:'A complete Typefully walkthrough',text:'Sample video note: a walkthrough of the drafting, scheduling and analytics workflow for regular X publishing.',url:'https://www.youtube.com/results?search_query=typefully+review',publishedAt:'2026-07-09',lastChecked:'2026-09-21',engagement:42,demo:true},
-        {source:'producthunt',kind:'review',author:'Sample Product Hunt user',handle:'@maker',context:'Why it stayed in my publishing stack',text:'Sample review: the clean writing experience is the main reason this tool stays in the publishing stack.',url:'https://www.producthunt.com/products/typefully',publishedAt:'2026-06-24',lastChecked:'2026-09-21',engagement:11,demo:true},
-        {source:'linkedin',kind:'experience',author:'Sample content lead',handle:'@contentlead',context:'Reviewing a week of content with a team',text:'Sample experience: shared drafts make it easier for a small team to review a week of content before it goes live.',url:'https://www.linkedin.com/company/typefully/',publishedAt:'2026-05-30',lastChecked:'2026-09-21',engagement:27,demo:true},
-        {source:'x',kind:'criticism',author:'Sample power user',handle:'@poweruser',context:'Where the workflow stops working for me',text:'Sample critical mention: the writing experience is excellent, but I still need a separate platform for broader social listening.',url:'https://x.com/typefully',publishedAt:'2026-05-12',lastChecked:'2026-09-21',engagement:9,demo:true},
-        {source:'youtube',kind:'demo',author:'Sample educator',handle:'@educator',context:'From blank page to scheduled thread',text:'Sample demo note: the most useful part is seeing the complete thread while drafting instead of composing one post at a time.',url:'https://www.youtube.com/results?search_query=typefully+tutorial',publishedAt:'2026-04-21',lastChecked:'2026-09-21',engagement:63,demo:true},
-        {source:'g2',kind:'review',author:'Sample reviewer',context:'A calm alternative to crowded dashboards',text:'Sample review: it keeps writing and scheduling focused without surrounding the workflow with enterprise features I do not use.',url:'https://www.g2.com/search?query=typefully',publishedAt:'2026-03-18',lastChecked:'2026-09-21',engagement:6,demo:true},
-        {source:'other',kind:'experience',author:'Sample newsletter author',context:'Tools behind a consistent publishing habit',text:'Sample mention: batching drafts first and choosing publishing times later made the weekly content routine easier to maintain.',url:'https://typefully.com',publishedAt:'2026-02-11',lastChecked:'2026-09-21',engagement:14,demo:true}
-      ]
-    }
+    features:['Clean thread composer with live preview','AI hooks, rewrites and ideas','Schedule and auto-retweet','Per-thread engagement analytics']
   },
   {id:'chirrapp',name:'Chirr App',cat:'content',price:'Freemium',url:'https://getchirrapp.com',tested:false,editorPick:false,color:'#F91880',tagline:'Turn long writing into perfectly-split X threads in one click.',desc:'Chirr App auto-splits any long text into a clean numbered thread. Preview each post, adjust the splits, add media and schedule straight to X.',best:'Remote teams and creators repurposing long-form writing into threads.',features:['Auto-split text into tweets','Live thread preview','Numbering and media support','Direct scheduling']},
   {id:'supabird',name:'SupaBird',cat:'content',price:'Freemium',url:'https://supabird.io',tested:false,editorPick:false,color:'#00BA7C',tagline:'An all-in-one writing and scheduling workspace for X creators.',desc:'SupaBird bundles a thread composer, content calendar, AI assistance and analytics into one affordable workspace built for growing on X.',best:'Freelancers and creators worldwide who want an affordable all-in-one.',features:['Thread and post composer','Content calendar','AI writing assistance','Basic analytics']},
@@ -129,8 +150,38 @@ const TOOL_DATA = [
   {id:'agorapulse',name:'Agorapulse',cat:'schedule',price:'Paid',url:'https://agorapulse.com',tested:true,editorPick:false,color:'#7856FF',tagline:'Social inbox, scheduling and reporting for busy teams.',desc:'Agorapulse pairs a unified inbox with scheduling, listening and clear reports, built for agencies managing multiple X accounts.',best:'Agencies and teams managing multiple accounts.',features:['Unified social inbox','Scheduling and queues','Team collaboration','ROI reporting']},
   {id:'zlappo',name:'Zlappo',cat:'schedule',price:'Paid',url:'https://zlappo.com',tested:false,editorPick:false,color:'#1D9BF0',tagline:'All-in-one thread scheduling and automation for solo creators.',desc:'Zlappo offers thread scheduling, auto-retweets, evergreen recycling and analytics in one affordable tool for independent X creators.',best:'Solo X creators automating their output.',features:['Thread scheduling','Auto-retweets','Evergreen recycling','Analytics']},
   {id:'feedhive',name:'FeedHive',cat:'schedule',price:'Paid',url:'https://feedhive.com',tested:false,editorPick:false,color:'#7856FF',tagline:'AI-assisted scheduling with recycling and conditional actions.',desc:'FeedHive combines scheduling, AI writing help and clever automation — like auto-plugging a link once a post takes off — in a modern interface.',best:'Solo creators who want smart automation without complexity.',features:['AI content assistant','Conditional auto-plug actions','Evergreen recycling','Best-time predictions']},
-  {id:'socialpilot',name:'SocialPilot',cat:'schedule',price:'Paid',url:'https://socialpilot.co',tested:true,editorPick:false,color:'#FF7A00',tagline:'Affordable scheduling and analytics for agencies.',desc:'SocialPilot delivers bulk scheduling, client management and white-label reports at an agency-friendly price.',best:'Budget-conscious agencies.',features:['Bulk scheduling','Client management','White-label reports','Content calendar']},
-  {id:'publer',name:'Publer',cat:'schedule',price:'Freemium',url:'https://publer.io',tested:true,editorPick:false,color:'#7856FF',tagline:'Bulk-schedule, recycle and collaborate affordably.',desc:'Publer offers powerful scheduling at a friendly price — bulk upload, recycle evergreen posts, preview your feed and work with a team.',best:'Budget-conscious creators who want pro features.',features:['Bulk CSV scheduling','Auto-recycle evergreen content','Feed preview and first comment','Affordable team plans']},
+  {
+    id:'cogsend',name:'CogSend',cat:'schedule',price:'Free',url:'https://cogsend.com',tested:false,editorPick:false,color:'#0F1419',addedAt:'2026-09-29',lastChecked:'2026-09-29',
+    tagline:'Self-host an open-source scheduler for X and other social networks.',
+    desc:'CogSend is an open-source social media scheduler that runs on your own Cloudflare account. It supports publishing workflows for X alongside Mastodon, Bluesky, LinkedIn and Threads.',
+    best:'Technical creators and small teams who want to own their scheduling infrastructure.',
+    features:['Self-hosted on Cloudflare','Open-source codebase','Multi-network scheduling','Designed for low-cost deployment'],
+    demoPostUrl:'https://x.com/DeepakNesss/status/2103816517955776703/photo/1',
+    demoSummary:'An open-source scheduler for X and other networks that you can self-host on a Cloudflare account.',
+    founderHandle:'DeepakNesss',launchedAt:'2026-09-26',shippedOnXOrder:1
+  },
+  {
+    id:'schedpilot',name:'SchedPilot',cat:'schedule',price:'Paid',url:'https://schedpilot.com',tested:false,editorPick:false,color:'#1D9BF0',addedAt:'2026-09-29',lastChecked:'2026-09-29',
+    tagline:'Let AI agents draft and schedule social posts through an API and MCP server.',
+    desc:'SchedPilot connects assistants such as Claude, ChatGPT and Cursor to social publishing workflows through its API and MCP server, including scheduling for X and eight other networks.',
+    best:'Builders and agencies that want agents to operate their multi-network publishing queue.',
+    features:['MCP server for AI agents','Publishing API','Nine supported social networks','Multi-account scheduling'],
+    demoPostUrl:'https://x.com/asaio87/status/2086090605738803498',
+    demoSummary:'Claude creates and schedules posts through SchedPilot’s MCP connection without opening a scheduling dashboard.',
+    founderHandle:'asaio87',launchedAt:'2026-08-08',shippedOnXOrder:2
+  },
+  {
+    id:'socialpilot',name:'SocialPilot',cat:'schedule',price:'Paid',url:'https://socialpilot.co',tested:true,editorPick:false,color:'#FF7A00',tagline:'Affordable scheduling and analytics for agencies.',desc:'SocialPilot delivers bulk scheduling, client management and white-label reports at an agency-friendly price.',best:'Budget-conscious agencies.',features:['Bulk scheduling','Client management','White-label reports','Content calendar'],
+    demoPostUrl:'https://x.com/socialpilot_co/status/2098767352070295634',
+    demoSummary:'A Claude-to-SocialPilot MCP workflow for researching, drafting and scheduling social content.',
+    launchedAt:'2026-09-12',shippedOnXOrder:3
+  },
+  {
+    id:'publer',name:'Publer',cat:'schedule',price:'Freemium',url:'https://publer.io',tested:true,editorPick:false,color:'#7856FF',tagline:'Bulk-schedule, recycle and collaborate affordably.',desc:'Publer offers powerful scheduling at a friendly price — bulk upload, recycle evergreen posts, preview your feed and work with a team.',best:'Budget-conscious creators who want pro features.',features:['Bulk CSV scheduling','Auto-recycle evergreen content','Feed preview and first comment','Affordable team plans'],
+    demoPostUrl:'https://x.com/publer/status/2073014191301017930',
+    demoSummary:'Connect Publer to ChatGPT or Claude through its MCP server and manage publishing with prompts.',
+    launchedAt:'2026-07-03',shippedOnXOrder:4
+  },
   {id:'sendible',name:'Sendible',cat:'schedule',price:'Paid',url:'https://sendible.com',tested:true,editorPick:false,color:'#00BA7C',tagline:'Agency-focused social management and scheduling.',desc:'Sendible centralizes scheduling, a priority inbox and client reporting for agencies handling many brands on X and beyond.',best:'Agencies managing client accounts.',features:['Scheduling and queues','Priority inbox','Client reports','Content suggestions']},
   {id:'loomly',name:'Loomly',cat:'schedule',price:'Paid',url:'https://loomly.com',tested:false,editorPick:false,color:'#1D9BF0',tagline:'A brand-success platform for planning and approving posts.',desc:'Loomly guides small teams through planning, approval workflows and publishing, with post ideas and optimization tips along the way.',best:'Small teams needing approval workflows.',features:['Post ideas and tips','Approval workflows','Content calendar','Analytics']},
   {id:'meetedgar',name:'MeetEdgar',cat:'schedule',price:'Paid',url:'https://meetedgar.com',tested:false,editorPick:false,color:'#00BA7C',tagline:'Category-based evergreen scheduling that recycles for you.',desc:'MeetEdgar organizes posts into categories and automatically recycles evergreen content so your X feed never goes quiet.',best:'Creators wanting hands-off evergreen posting.',features:['Category-based library','Automatic recycling','Best-time posting','Variations to avoid repeats']},
@@ -157,14 +208,31 @@ const TOOL_DATA = [
 
 export const BASE_TOOLS = TOOL_DATA.map(tool => ({
   ...tool,
+  ...(CATALOG_CURATION[tool.id] || {}),
   categories: tool.categories ?? [tool.cat],
-  popularityScore: getPopularityScore(tool.id),
-  // Reserved for the Recently Added view once ingestion dates are available.
   addedAt: tool.addedAt ?? null,
-  published: tool.published ?? true
+  published: tool.published ?? true,
+  xFit: CATALOG_CURATION[tool.id]?.xFit ?? tool.xFit ?? 'unknown',
+  status: CATALOG_CURATION[tool.id]?.status ?? tool.status ?? 'live',
+  apiStatus: CATALOG_CURATION[tool.id]?.apiStatus ?? tool.apiStatus ?? 'unclear',
+  founderBuilt: CATALOG_CURATION[tool.id]?.founderBuilt ?? tool.founderBuilt ?? false,
+  jobs: CATALOG_CURATION[tool.id]?.jobs ?? tool.jobs ?? CATEGORY_JOBS[tool.cat] ?? [],
+  networks: CATALOG_CURATION[tool.id]?.networks ?? tool.networks ?? ['x'],
+  threadSupport: CATALOG_CURATION[tool.id]?.threadSupport ?? tool.threadSupport ?? '',
+  notFor: CATALOG_CURATION[tool.id]?.notFor ?? tool.notFor ?? '',
+  startingPrice: CATALOG_CURATION[tool.id]?.startingPrice ?? tool.startingPrice ?? '',
+  editorPickOrder: tool.editorPickOrder ?? null,
+  demoPostUrl: tool.demoPostUrl ?? '',
+  demoSummary: tool.demoSummary ?? '',
+  founderHandle: tool.founderHandle ?? '',
+  launchedAt: tool.launchedAt ?? null,
+  demoImage: tool.demoImage ?? '',
+  shippedOnXOrder: tool.shippedOnXOrder ?? null,
+  verificationNotes: CATALOG_CURATION[tool.id]?.verificationNotes ?? tool.verificationNotes ?? '',
+  verificationSources: CATALOG_CURATION[tool.id]?.verificationSources ?? tool.verificationSources ?? []
 }));
 
-export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, includeUnpublished = false, scores = popularityScores) {
+export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, includeUnpublished = false) {
   const records = overrides?.records || {};
   const deleted = new Set(overrides?.deleted || []);
   const seen = new Set();
@@ -176,8 +244,7 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       ...override,
       detail: { ...(base.detail || {}), ...(override.detail || {}) },
       categories: override.categories?.length ? override.categories : (base.categories || [base.cat]),
-      published: override.published ?? base.published ?? true,
-      popularityScore: getPopularityScore(base.id, scores)
+      published: override.published ?? base.published ?? true
     };
   });
 
@@ -191,8 +258,25 @@ export function mergeAdminTools(baseTools = BASE_TOOLS, overrides = adminData, i
       categories: record.cat ? [record.cat] : [],
       addedAt: new Date().toISOString().slice(0, 10),
       published: true,
+      xFit: 'unknown',
+      status: 'live',
+      apiStatus: 'unclear',
+      founderBuilt: false,
+      jobs: [],
+      networks: ['x'],
+      threadSupport: '',
+      notFor: '',
+      startingPrice: '',
+      editorPickOrder: null,
+      demoPostUrl: '',
+      demoSummary: '',
+      founderHandle: '',
+      launchedAt: null,
+      demoImage: '',
+      shippedOnXOrder: null,
+      verificationNotes: '',
+      verificationSources: [],
       ...record,
-      popularityScore: getPopularityScore(record.id, scores)
     });
   });
 

@@ -1,10 +1,4 @@
-/*
- * Tool detail page
- *
- * This is the only stylesheet allowed to define tool-detail layout and type.
- * Shared directory primitives (breadcrumbs, badges, chips and buttons) retain
- * their catalog defaults and are adjusted here only inside .page-tool-detail.
- */
+/* Tool detail page */
 
 .page-tool-detail {
   --tool-type-display: 38px;
@@ -89,8 +83,7 @@
 }
 
 .page-tool-detail .tool-intro-title-row .badge-tested,
-.page-tool-detail .tool-intro-title-row .badge-editor-pick,
-.page-tool-detail .tool-intro-title-row .badge-sponsored {
+.page-tool-detail .tool-intro-title-row .badge-editor-pick {
   font-size: var(--tool-type-meta);
 }
 
@@ -260,7 +253,7 @@
   font-weight: 650;
 }
 
-/* Reusable section heading within this page */
+/* Section headings */
 .page-tool-detail .tool-section-heading {
   display: flex;
   align-items: center;
@@ -653,7 +646,7 @@
   background: var(--gradient-category-active);
 }
 
-/* Card motion is shared consistently across the page. */
+/* Card motion */
 .page-tool-detail .tool-quick-overview,
 .page-tool-detail .directory-editorial-card,
 .page-tool-detail .tool-base-facts-card,
@@ -851,3 +844,9 @@
     text-align: left;
   }
 }
+.tool-status-notice {
+  display: flex; align-items: baseline; gap: 10px; max-width: var(--directory-max-width); margin: 0 auto 22px;
+  padding: 13px 16px; border: 1px solid rgba(122,91,0,.18); border-radius: 12px; color: #6B5300; background: #FFF8DE;
+  font-size: 13px; line-height: 1.5;
+}
+.tool-status-notice.status-dropped-x, .tool-status-notice.status-shut-down { color: #8A1C13; background: #FFF1F0; border-color: rgba(180,35,24,.18); }

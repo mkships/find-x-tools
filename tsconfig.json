@@ -1,0 +1,8 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "strict": false,
+    "checkJs": false
+  }
+}

@@ -2,11 +2,22 @@
 import Base from '../layouts/Base.astro';
 import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
-import { TOOLS } from '../data/tools.js';
+import { compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, Clock3, TrendingUp } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ExternalLink, Rocket } from '@lucide/astro';
 
-const picks = [...TOOLS].sort((a, b) => b.popularityScore - a.popularityScore).slice(0, 18);
+const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')
+  .sort((a, b) => (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999) || compareTools(a, b))
+  .slice(0, 9);
+const recent = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit !== 'low')
+  .sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')) || compareTools(a, b))
+  .slice(0, 9);
+const ninetyDaysAgo = new Date();
+ninetyDaysAgo.setUTCDate(ninetyDaysAgo.getUTCDate() - 90);
+const shipped = TOOLS.filter(tool => tool.status === 'live' && tool.demoPostUrl && tool.launchedAt && new Date(`${tool.launchedAt}T00:00:00Z`) >= ninetyDaysAgo)
+  .sort((a, b) => (a.shippedOnXOrder ?? 999) - (b.shippedOnXOrder ?? 999) || String(b.launchedAt).localeCompare(String(a.launchedAt)))
+  .slice(0, 8);
+const formatDate = date => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 
 const title = `${SITE_NAME} — Grow, engage and monetise your audience on X`;
 const description = `Discover, compare and pick the best tools for content writing, growth, scheduling, analytics and engagement on X. Hand-curated directory of X-native tools.`;
@@ -27,22 +38,44 @@ const jsonld = {
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-inner">
-      <div class="hero-badge">🚀 100+ tools, hand-curated</div>
+      <div class="hero-badge">🚀 {TOOLS.length} tools, hand-curated</div>
       <h1>
         <span class="hero-title-line">Every tool to grow and monetise</span>
         <span class="hero-title-line">your audience on <span class="grad-text">X, in one place.</span></span>
       </h1>
       <p>Discover, compare and pick the best X tools for content writing, growth, scheduling and analytics.</p>
-      <div class="hero-search">
-        <input id="heroSearch" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
-        <button id="heroSearchBtn">Search</button>
-      </div>
+      <form class="hero-search" action="/tools/" method="get" role="search">
+        <input name="q" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
+        <button type="submit">Search</button>
+      </form>
       <div class="hero-actions">
         <a class="hero-action hero-action-primary" href="/tools/">Browse Tools</a>
         <a class="hero-action hero-action-secondary" href="/submit/">Submit a Tool</a>
       </div>
     </div>
   </section>
+
+  <nav class="home-filter-strip" aria-label="Filter the X tools catalog">
+    <div class="home-filter-group"><span>Job</span><div>{Object.entries(JOBS).map(([slug, job]) => <a href={`/tools/?job=${slug}`}>{job.label}</a>)}</div></div>
+    <div class="home-filter-group"><span>Pricing</span><div><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div></div>
+    <div class="home-filter-group"><span>Verified fit</span><div><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a></div></div>
+  </nav>
+
+  {shipped.length > 0 && <section class="home-curated-section">
+    <div class="home-section-heading"><div><span>Fresh demos</span><h2>Shipped on X</h2><p>Recent launches and product demos, manually selected from X.</p></div><Rocket size={22} aria-hidden="true" /></div>
+    <div class="shipped-grid">
+      {shipped.map(tool => <article class="shipped-card">
+        {tool.demoImage && <img src={tool.demoImage} alt="" loading="lazy" />}
+        <div><p class="shipped-meta">{tool.founderHandle ? `@${tool.founderHandle}` : tool.name} · {formatDate(tool.launchedAt)}</p><h3>{tool.name}</h3><p>{tool.demoSummary || tool.tagline}</p></div>
+        <div class="shipped-actions"><a href={`/tools/${tool.id}/`}>View listing</a><a href={tool.demoPostUrl} target="_blank" rel="noopener">View post<ExternalLink size={13} /></a></div>
+      </article>)}
+    </div>
+  </section>}
+
+  {picks.length > 0 && <section class="home-curated-section">
+    <div class="home-section-heading"><div><span>High X-fit only</span><h2>Editor’s Picks</h2><p>Live, X-native tools we would put on a serious shortlist.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
+    <div class="grid-tools">{picks.map(tool => <ToolCard tool={tool} />)}</div>
+  </section>}
 
   <section class="section-home-main">
     <div class="layout-sidebar">
@@ -51,38 +84,25 @@ const jsonld = {
         <div class="toolbar">
           <div class="seg" aria-label="Tool ordering">
             <button class="seg-btn active" type="button" aria-pressed="true">
-              <TrendingUp size={16} strokeWidth={2} aria-hidden="true" />
-              Popular Tools
-            </button>
-            <button class="seg-btn" type="button" disabled title="Recently Added is coming soon">
-              <Clock3 size={16} strokeWidth={2} aria-hidden="true" />
-              Recently Added
+              <CalendarPlus size={16} stroke-width={2} aria-hidden="true" />
+              Recently added
             </button>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
         <div class="grid-tools">
-          {picks.map(t => <ToolCard tool={t} />)}
+          {recent.map(t => <ToolCard tool={t} />)}
         </div>
-        <div style="margin-top:28px;text-align:center">
+        <div class="view-all-wrap">
           <a class="btn-view-all btn-view-all-link" href="/tools/">
             View All Tools
-            <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+            <ArrowRight size={16} stroke-width={2} aria-hidden="true" />
           </a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
-<script>
-  const heroInput = document.getElementById('heroSearch') as HTMLInputElement;
-  const go = () => {
-    const q = heroInput.value.trim();
-    location.href = q ? '/tools/?q=' + encodeURIComponent(q) : '/tools/';
-  };
-  document.getElementById('heroSearchBtn')!.addEventListener('click', go);
-  heroInput.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-
-</script>
 </Base>

@@ -1,0 +1,67 @@
+// Editorial scope metadata. API values stay `unclear` unless the access method has
+// been independently verified from first-party documentation.
+export const CATEGORY_JOBS = {
+  content: ['write'], growth: ['engage'], schedule: ['schedule'], analytics: ['analytics'],
+  ai: ['engage'], design: ['visuals'], audit: ['clean'], comments: ['bookmarks'], bio: [], listening: ['listen']
+};
+
+const MULTI_SOCIAL = ['x', 'linkedin', 'instagram', 'facebook'];
+const BROAD_SOCIAL = [...MULTI_SOCIAL, 'threads', 'tiktok'];
+
+export const CATALOG_CURATION = {
+  typefully: { xFit: 'high', jobs: ['write', 'schedule', 'analytics', 'agents'], networks: ['x', 'linkedin', 'bluesky', 'threads'], apiStatus: 'official', founderBuilt: true, threadSupport: 'native', startingPrice: 'Free', verificationSources: ['https://docs.x.com/success-stories/typefully', 'https://support.typefully.com/en/articles/8718287-typefully-api'] },
+  chirrapp: { xFit: 'high', jobs: ['write', 'schedule'], founderBuilt: true, threadSupport: 'split-only' },
+  supabird: { xFit: 'high', jobs: ['write', 'schedule', 'analytics'], founderBuilt: true, threadSupport: 'native' },
+  microposter: { xFit: 'high', jobs: ['write', 'schedule'], founderBuilt: true },
+  postwise: { xFit: 'high', jobs: ['write', 'schedule'], networks: ['x', 'linkedin'], threadSupport: 'native' },
+  typeshare: { xFit: 'medium', jobs: ['write', 'schedule'], networks: ['x', 'linkedin'], founderBuilt: true },
+  tweethunter: { xFit: 'high', jobs: ['write', 'schedule', 'analytics'], threadSupport: 'native' },
+  hypefury: { xFit: 'high', jobs: ['write', 'schedule', 'analytics'], networks: ['x', 'linkedin', 'instagram'], threadSupport: 'native' },
+  opentweet: { xFit: 'high', jobs: ['schedule', 'agents'], founderBuilt: true, threadSupport: 'native' },
+  zlappo: { xFit: 'high', jobs: ['write', 'schedule'], founderBuilt: true, threadSupport: 'native' },
+  fedica: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: ['x', 'linkedin', 'bluesky', 'instagram', 'facebook', 'threads', 'mastodon'] },
+  buffer: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: ['x', 'linkedin', 'bluesky', 'instagram', 'facebook', 'threads', 'tiktok', 'pinterest', 'mastodon'], threadSupport: 'native' },
+  hootsuite: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  agorapulse: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  feedhive: { xFit: 'medium', jobs: ['write', 'schedule', 'analytics'], networks: BROAD_SOCIAL, founderBuilt: true },
+  cogsend: { xFit: 'medium', jobs: ['schedule'], networks: ['x', 'linkedin', 'bluesky', 'threads', 'mastodon'], founderBuilt: true, startingPrice: 'Free', verificationSources: ['https://deepakness.com/blog/cogsend-intro/', 'https://x.com/DeepakNesss/status/2103816517955776703/photo/1'] },
+  schedpilot: { xFit: 'medium', jobs: ['schedule', 'agents'], networks: ['x', 'linkedin', 'bluesky', 'instagram', 'facebook', 'threads', 'tiktok', 'youtube', 'pinterest'], founderBuilt: true, startingPrice: '$15/month', verificationSources: ['https://schedpilot.com/', 'https://x.com/asaio87/status/2086090605738803498'] },
+  socialpilot: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: BROAD_SOCIAL },
+  publer: { xFit: 'medium', jobs: ['schedule'], networks: BROAD_SOCIAL },
+  sendible: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  loomly: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: BROAD_SOCIAL },
+  meetedgar: { xFit: 'medium', jobs: ['schedule'], networks: MULTI_SOCIAL },
+  socialbee: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: BROAD_SOCIAL },
+  contentstudio: { xFit: 'medium', jobs: ['write', 'schedule', 'analytics'], networks: BROAD_SOCIAL },
+  vistasocial: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  napoleoncat: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  statusbrew: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  coschedule: { xFit: 'low', jobs: ['schedule'], networks: MULTI_SOCIAL },
+  socialchamp: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: BROAD_SOCIAL },
+  later: { xFit: 'low', jobs: ['schedule'], networks: BROAD_SOCIAL },
+  ritetag: { xFit: 'low', jobs: ['write'], networks: BROAD_SOCIAL },
+  sproutsocial: { xFit: 'medium', jobs: ['schedule', 'analytics', 'listen'], networks: BROAD_SOCIAL },
+  brandwatch: { xFit: 'medium', jobs: ['analytics', 'listen'], networks: BROAD_SOCIAL },
+  metricool: { xFit: 'medium', jobs: ['schedule', 'analytics'], networks: BROAD_SOCIAL },
+  socialinsider: { xFit: 'medium', jobs: ['analytics'], networks: BROAD_SOCIAL },
+  ilo: { xFit: 'high', jobs: ['analytics'], founderBuilt: true },
+  twitonomy: { xFit: 'high', jobs: ['analytics'] }, tweetbinder: { xFit: 'high', jobs: ['analytics', 'listen'] },
+  viewmetrics: { xFit: 'high', jobs: ['analytics'], founderBuilt: true },
+  minterio: { xFit: 'medium', jobs: ['analytics'], networks: ['x', 'instagram', 'facebook', 'tiktok'] },
+  socialblade: { xFit: 'low', jobs: ['analytics'], networks: ['x', 'instagram', 'youtube', 'tiktok'] },
+  xpro: { xFit: 'high', jobs: ['write', 'schedule', 'listen'], networks: ['x'], threadSupport: 'native' },
+  brand24: { xFit: 'medium', jobs: ['listen', 'analytics'], networks: BROAD_SOCIAL }, mention: { xFit: 'medium', jobs: ['listen'], networks: BROAD_SOCIAL }, keyhole: { xFit: 'medium', jobs: ['listen', 'analytics'], networks: BROAD_SOCIAL },
+  daily140: { xFit: 'high', jobs: ['listen'], founderBuilt: true }, glance: { xFit: 'high', jobs: ['listen'], founderBuilt: true },
+  audiense: { xFit: 'high', jobs: ['analytics', 'listen'], networks: ['x'] }, catchintent: { xFit: 'high', jobs: ['listen', 'engage'], founderBuilt: true },
+  socialdog: { xFit: 'high', jobs: ['schedule', 'analytics', 'clean', 'listen'] }, circleboom: { xFit: 'high', jobs: ['schedule', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook', 'pinterest'] },
+  phantombuster: { xFit: 'medium', jobs: ['engage', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook'] }, geniusx: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, clonex: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
+  volumn: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, autopublix: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, dmdad: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, xautopilot: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
+  deviai: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true }, replyguy: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true },
+  manychat: { xFit: 'low', jobs: ['dms'], networks: ['instagram', 'facebook', 'tiktok'], notFor: 'X-first direct-message automation' },
+  birdy: { xFit: 'high', jobs: ['clean'], founderBuilt: true }, followeraudit: { xFit: 'high', jobs: ['clean'] }, twitteraudit: { xFit: 'high', jobs: ['clean'] }, untweeps: { xFit: 'high', jobs: ['clean'] },
+  tweetsmash: { xFit: 'high', jobs: ['bookmarks'], founderBuilt: true }, dewey: { xFit: 'high', jobs: ['bookmarks'], founderBuilt: true }, twitterbiogen: { xFit: 'high', jobs: ['write'], founderBuilt: true },
+  brandbird: { xFit: 'medium', jobs: ['visuals'], networks: BROAD_SOCIAL, founderBuilt: true }, tweetpik: { xFit: 'high', jobs: ['visuals', 'agents'], founderBuilt: true }, beautifythis: { xFit: 'medium', jobs: ['visuals'], networks: BROAD_SOCIAL, founderBuilt: true },
+  pfpmaker: { xFit: 'low', jobs: ['visuals'], networks: BROAD_SOCIAL }, pictory: { xFit: 'low', jobs: ['visuals'], networks: BROAD_SOCIAL },
+  loom: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, krisp: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' },
+  linktree: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, beacons: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, biolink: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }
+};

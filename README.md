@@ -32,7 +32,7 @@ Everything else is identical.
 ## Submissions → Google Sheets (one-time setup, ~5 minutes)
 
 1. Create a Google Sheet with a tab named exactly `Submissions` (case-sensitive) and this header row:
-   `Submitted at | Name | Email | URL | Tagline | Description | Category | Pricing | Plan | Status`
+   `Submitted at | Name | Email | URL | Tagline | Description | Category | Pricing | Launch/Demo Post | X Primary | X Access | Networks | Team Size | X Jobs | Status`
    If `getSheetByName('Submissions')` returns null, `appendRow` throws and the web app
    returns an HTML error page instead of `{ ok: true }`.
 2. In the Sheet: **Extensions → Apps Script**, paste:
@@ -41,7 +41,8 @@ Everything else is identical.
    function doPost(e) {
      const d = JSON.parse(e.postData.contents);
      SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Submissions').appendRow([
-       d.submittedAt, d.name, d.email, d.url, d.tagline, d.desc, d.category, d.pricing, d.plan, d.status
+       d.submittedAt, d.name, d.email, d.url, d.tagline, d.desc, d.category, d.pricing,
+       d.demoPostUrl, d.xPrimary, d.apiStatus, d.networks, d.teamSize, d.xJobs, d.status
      ]);
      return ContentService.createTextOutput(JSON.stringify({ ok: true }))
        .setMimeType(ContentService.MimeType.JSON);
@@ -61,26 +62,12 @@ best-effort on serverless), drops bot submissions via a honeypot field, and stam
 each row `pending review` — your review queue is the sheet itself (add an
 "approved/rejected" value in the Status column as you process them).
 
-## Free vs. paid submissions
-
-`src/config.js` → `PAID_SUBMISSIONS`:
-
-- `false` (current, launch mode): the wizard is Tool details → Category & pricing →
-  Review. No plan selection; the API always records plan `free` even if a client
-  sends another value.
-- `true`: enables the designed paid plans step (Free / Featured $49 / Premium $99/mo)
-  and allows those plan ids through to the sheet. The screens are already built —
-  flipping the flag restores the UI. Note that actually charging requires adding a
-  payment step (e.g. Stripe Payment Links) — the flag only restores plan selection
-  and records the chosen plan; it does not charge anyone.
-
 ## Adding / editing tools
 
 Routine catalog maintenance is available at `/admin/`. The password-protected editor
 can add, update, hide or delete listings and edit logos, copy, badges, categories,
-features, popularity scores and tool facts. Saving writes every changed data file to
-a single GitHub commit, including `src/data/tool-admin-data.json` and
-`src/data/popularity-scores.json`;
+jobs, X-fit, operational status, API classification and other verified tool facts.
+Saving writes `src/data/tool-admin-data.json` to a GitHub commit;
 Vercel then deploys that commit automatically, so the public directory remains static
 and SEO-friendly.
 
@@ -134,9 +121,6 @@ manually from a logged-in browser and save as `public/screenshots/xpro.jpg`.
   is an internal curation weight that drives the "Recommended" ordering and the
   Editorial Picks section — it is never displayed. Reorder recommendations by
   editing those weights.
-- Tool "Visit" links are plain external URLs with `rel="noopener"` (no affiliate /
-  sponsored markup yet). Swap in real affiliate URLs per tool when you have them
-  (add an `affiliateUrl` field).
 - Footer Contact is a non-link placeholder; Privacy Policy / Terms pages are not
   shipped yet.
 - Removed after the 2026-07 screenshot audit: `blackmagic` (shut down 2026-07-01),
