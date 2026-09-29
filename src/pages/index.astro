@@ -4,7 +4,7 @@ import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
 import { compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Gauge, MessageCircle, PenLine, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Gauge, MessageCircle, PenLine, Rocket } from '@lucide/astro';
 
 const JOB_STACKS = [
   { label: 'Create & publish content', icon: PenLine, jobs: ['write', 'schedule', 'visuals'] },
@@ -61,41 +61,20 @@ const jsonld = {
         <a class="hero-action hero-action-primary" href="/tools/">Browse Tools</a>
         <a class="hero-action hero-action-secondary" href="/submit/">Submit a Tool</a>
       </div>
+      <nav class="hero-workflow-nav" aria-label="Browse X tools by workflow">
+        <p class="hero-workflow-label">Browse by workflow</p>
+        <div class="home-workflow-grid">
+          {JOB_STACKS.map(stack => {
+            const StackIcon = stack.icon;
+            return <div class="home-workflow-card">
+              <div class="home-discovery-heading"><span><StackIcon size={15} aria-hidden="true" /></span><b>{stack.label}</b></div>
+              <div class="home-discovery-links">{stack.jobs.map((slug: keyof typeof JOBS) => <a href={`/tools/?job=${slug}`}>{JOBS[slug].label}</a>)}</div>
+            </div>;
+          })}
+        </div>
+      </nav>
     </div>
   </section>
-
-  <nav class="home-discovery-panel" aria-label="Filter the X tools catalog">
-    <div class="home-discovery-intro">
-      <span>Explore the directory</span>
-      <h2>Find the right tool for the job.</h2>
-      <p>Start with a workflow, then refine by budget or proof.</p>
-    </div>
-    <div class="home-discovery-section">
-      <p class="home-discovery-section-label">Browse by workflow</p>
-      <div class="home-workflow-grid">
-        {JOB_STACKS.map(stack => {
-          const StackIcon = stack.icon;
-          return <div class="home-workflow-card">
-            <div class="home-discovery-heading"><span><StackIcon size={15} aria-hidden="true" /></span><b>{stack.label}</b></div>
-            <div class="home-discovery-links">{stack.jobs.map((slug: keyof typeof JOBS) => <a href={`/tools/?job=${slug}`}>{JOBS[slug].label}</a>)}</div>
-          </div>;
-        })}
-      </div>
-    </div>
-    <div class="home-discovery-section home-refine-section">
-      <p class="home-discovery-section-label">Refine results</p>
-      <div class="home-discovery-refinements">
-        <div class="home-refinement-card home-refinement-budget">
-          <div class="home-discovery-heading"><span><WalletCards size={15} aria-hidden="true" /></span><b>Budget</b></div>
-          <div class="home-refinement-links"><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div>
-        </div>
-        <div class="home-refinement-card home-refinement-proof">
-          <div class="home-discovery-heading"><span><ShieldCheck size={15} aria-hidden="true" /></span><b>Proof</b></div>
-          <div class="home-refinement-links"><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a><a href="/tools/?filter=open-source">Open source</a></div>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   {shipped.length > 0 && <section class="home-curated-section">
     <div class="home-section-heading"><div><span>Fresh demos</span><h2>Shipped on X</h2><p>Recent launches and product demos, manually selected from X.</p></div><Rocket size={22} aria-hidden="true" /></div>
