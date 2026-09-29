@@ -4,7 +4,7 @@ import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
 import { compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, MessageCircle, PenLine, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Gauge, MessageCircle, PenLine, Rocket, ShieldCheck, WalletCards } from '@lucide/astro';
 
 const JOB_STACKS = [
   { label: 'Create & publish content', icon: PenLine, jobs: ['write', 'schedule', 'visuals'] },
@@ -16,7 +16,9 @@ const JOB_STACKS = [
 const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')
   .sort((a, b) => (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999) || compareTools(a, b))
   .slice(0, 9);
-const recent = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit !== 'low')
+const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low');
+const bestFit = [...orderableTools].sort(compareTools).slice(0, 9);
+const recent = [...orderableTools]
   .sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')) || compareTools(a, b))
   .slice(0, 9);
 const ninetyDaysAgo = new Date();
@@ -114,17 +116,26 @@ const jsonld = {
   <section class="section-home-main">
     <div class="layout-sidebar">
       <CategorySidebar active="all" />
-      <div>
+      <div class="home-order-region">
         <div class="toolbar">
-          <div class="seg" aria-label="Tool ordering">
-            <button class="seg-btn active" type="button" aria-pressed="true">
+          <div class="seg" role="radiogroup" aria-label="Tool ordering">
+            <input class="home-order-radio" id="homeOrderBest" type="radio" name="home-order" checked />
+            <label class="seg-btn" for="homeOrderBest">
+              <Gauge size={16} stroke-width={2} aria-hidden="true" />
+              Best fit for X
+            </label>
+            <input class="home-order-radio" id="homeOrderRecent" type="radio" name="home-order" />
+            <label class="seg-btn" for="homeOrderRecent">
               <CalendarPlus size={16} stroke-width={2} aria-hidden="true" />
               Recently added
-            </button>
+            </label>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
-        <div class="grid-tools">
+        <div class="grid-tools home-order-panel-best">
+          {bestFit.map(t => <ToolCard tool={t} />)}
+        </div>
+        <div class="grid-tools home-order-panel-recent">
           {recent.map(t => <ToolCard tool={t} />)}
         </div>
         <div class="view-all-wrap">
