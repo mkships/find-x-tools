@@ -48,6 +48,7 @@ for (const [id, record] of Object.entries(records)) {
   if (record.xFit && !xFitValues.has(record.xFit)) fail(`Invalid X-fit for ${id}: ${record.xFit}`);
   if (record.status && !statusValues.has(record.status)) fail(`Invalid status for ${id}: ${record.status}`);
   if (record.apiStatus && !apiValues.has(record.apiStatus)) fail(`Invalid API status for ${id}: ${record.apiStatus}`);
+  if (record.openSource != null && typeof record.openSource !== 'boolean') fail(`Open-source flag must be boolean for ${id}.`);
   for (const job of record.jobs ?? []) if (!jobIds.has(job)) fail(`Unknown job for ${id}: ${job}`);
   for (const network of record.networks ?? []) if (!networkIds.has(network)) fail(`Unknown network for ${id}: ${network}`);
   if (record.threadSupport && !threadSupportValues.has(record.threadSupport)) fail(`Invalid thread support for ${id}: ${record.threadSupport}`);

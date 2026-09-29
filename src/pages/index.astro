@@ -4,12 +4,23 @@ import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
 import { compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, BadgeCheck, CalendarPlus, ExternalLink, Rocket } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Gauge, MessageCircle, PenLine, Rocket } from '@lucide/astro';
 
-const picks = [...TOOLS].filter(tool => tool.status === 'live' && tool.editorPick && tool.xFit === 'high')
-  .sort((a, b) => (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999) || compareTools(a, b))
-  .slice(0, 9);
-const recent = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit !== 'low')
+const JOB_STACKS = [
+  { label: 'Create & publish content', icon: PenLine, jobs: ['write', 'schedule', 'visuals'] },
+  { label: 'Engage your network', icon: MessageCircle, jobs: ['engage', 'dms', 'agents'] },
+  { label: 'Analyze your growth', icon: ChartNoAxesCombined, jobs: ['analytics', 'listen'] },
+  { label: 'Organize posts & saves', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
+] as const;
+
+const xNativeTools = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit === 'high')
+  .sort((a, b) => Number(Boolean(b.editorPick)) - Number(Boolean(a.editorPick))
+    || (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999)
+    || compareTools(a, b));
+const xNativePreview = xNativeTools.slice(0, 6);
+const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low');
+const bestFit = [...orderableTools].sort(compareTools).slice(0, 9);
+const recent = [...orderableTools]
   .sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')) || compareTools(a, b))
   .slice(0, 9);
 const ninetyDaysAgo = new Date();
@@ -17,7 +28,7 @@ ninetyDaysAgo.setUTCDate(ninetyDaysAgo.getUTCDate() - 90);
 const shipped = TOOLS.filter(tool => tool.status === 'live' && tool.demoPostUrl && tool.launchedAt && new Date(`${tool.launchedAt}T00:00:00Z`) >= ninetyDaysAgo)
   .sort((a, b) => (a.shippedOnXOrder ?? 999) - (b.shippedOnXOrder ?? 999) || String(b.launchedAt).localeCompare(String(a.launchedAt)))
   .slice(0, 8);
-const formatDate = date => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+const formatDate = (date: string) => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 
 const title = `${SITE_NAME} — Grow, engage and monetise your audience on X`;
 const description = `Discover, compare and pick the best tools for content writing, growth, scheduling, analytics and engagement on X. Hand-curated directory of X-native tools.`;
@@ -38,28 +49,34 @@ const jsonld = {
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-inner">
-      <div class="hero-badge">🚀 {TOOLS.length} tools, hand-curated</div>
+      <div class="hero-badge">🚀 Hand-curated from 100s of X tools</div>
       <h1>
         <span class="hero-title-line">Every tool to grow and monetise</span>
         <span class="hero-title-line">your audience on <span class="grad-text">X, in one place.</span></span>
       </h1>
-      <p>Discover, compare and pick the best X tools for content writing, growth, scheduling and analytics.</p>
+      <p>Know what you need? Search by tool or use case.</p>
       <form class="hero-search" action="/tools/" method="get" role="search">
-        <input name="q" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
-        <button type="submit">Search</button>
+        <input name="q" placeholder="Search by tool or use case" aria-label="Search X tools" />
+        <button type="submit">Search tools</button>
       </form>
       <div class="hero-actions">
-        <a class="hero-action hero-action-primary" href="/tools/">Browse Tools</a>
+        <a class="hero-action hero-action-primary" href="/tools/">Browse all tools</a>
         <a class="hero-action hero-action-secondary" href="/submit/">Submit a Tool</a>
       </div>
+      <nav class="hero-workflow-nav" aria-label="Browse X tools by workflow">
+        <p class="hero-workflow-label">Not sure where to start? Browse by workflow</p>
+        <div class="home-workflow-grid">
+          {JOB_STACKS.map(stack => {
+            const StackIcon = stack.icon;
+            return <div class="home-workflow-card">
+              <div class="home-discovery-heading"><span><StackIcon size={15} aria-hidden="true" /></span><b>{stack.label}</b></div>
+              <div class="home-discovery-links">{stack.jobs.map((slug: keyof typeof JOBS) => <a href={`/tools/?job=${slug}`}>{JOBS[slug].label}</a>)}</div>
+            </div>;
+          })}
+        </div>
+      </nav>
     </div>
   </section>
-
-  <nav class="home-filter-strip" aria-label="Filter the X tools catalog">
-    <div class="home-filter-group"><span>Job</span><div>{Object.entries(JOBS).map(([slug, job]) => <a href={`/tools/?job=${slug}`}>{job.label}</a>)}</div></div>
-    <div class="home-filter-group"><span>Pricing</span><div><a href="/tools/?price=Free">Free</a><a href="/tools/?price=Freemium">Freemium</a><a href="/tools/?price=Paid">Paid</a></div></div>
-    <div class="home-filter-group"><span>Verified fit</span><div><a href="/tools/?filter=x-native">X-native</a><a href="/tools/?filter=official-api">Official API</a><a href="/tools/?filter=founder-built">Founder-built</a></div></div>
-  </nav>
 
   {shipped.length > 0 && <section class="home-curated-section">
     <div class="home-section-heading"><div><span>Fresh demos</span><h2>Shipped on X</h2><p>Recent launches and product demos, manually selected from X.</p></div><Rocket size={22} aria-hidden="true" /></div>
@@ -72,25 +89,40 @@ const jsonld = {
     </div>
   </section>}
 
-  {picks.length > 0 && <section class="home-curated-section">
-    <div class="home-section-heading"><div><span>High X-fit only</span><h2>Editor’s Picks</h2><p>Live, X-native tools we would put on a serious shortlist.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
-    <div class="grid-tools">{picks.map(tool => <ToolCard tool={tool} />)}</div>
+  {xNativePreview.length > 0 && <section class="home-curated-section">
+    <div class="home-section-heading"><div><span>Built for X</span><h2>X-native highlights</h2><p>A focused selection from {xNativeTools.length} live tools with X at the core of the product.</p></div><BadgeCheck size={22} aria-hidden="true" /></div>
+    <div class="grid-tools">{xNativePreview.map(tool => <ToolCard tool={tool} />)}</div>
+    <div class="view-all-wrap">
+      <a class="btn-view-all btn-view-all-link" href="/tools/?filter=x-native">
+        View all {xNativeTools.length} X-native tools
+        <ArrowRight size={16} stroke-width={2} aria-hidden="true" />
+      </a>
+    </div>
   </section>}
 
   <section class="section-home-main">
     <div class="layout-sidebar">
       <CategorySidebar active="all" />
-      <div>
+      <div class="home-order-region">
         <div class="toolbar">
-          <div class="seg" aria-label="Tool ordering">
-            <button class="seg-btn active" type="button" aria-pressed="true">
+          <div class="seg" role="radiogroup" aria-label="Tool ordering">
+            <input class="home-order-radio" id="homeOrderBest" type="radio" name="home-order" checked />
+            <label class="seg-btn" for="homeOrderBest">
+              <Gauge size={16} stroke-width={2} aria-hidden="true" />
+              Best fit for X
+            </label>
+            <input class="home-order-radio" id="homeOrderRecent" type="radio" name="home-order" />
+            <label class="seg-btn" for="homeOrderRecent">
               <CalendarPlus size={16} stroke-width={2} aria-hidden="true" />
               Recently added
-            </button>
+            </label>
           </div>
           <span class="count-label">{TOOLS.length} tools</span>
         </div>
-        <div class="grid-tools">
+        <div class="grid-tools home-order-panel-best">
+          {bestFit.map(t => <ToolCard tool={t} />)}
+        </div>
+        <div class="grid-tools home-order-panel-recent">
           {recent.map(t => <ToolCard tool={t} />)}
         </div>
         <div class="view-all-wrap">

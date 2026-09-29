@@ -5,14 +5,12 @@ Every tool and category is a pre-rendered static HTML page (crawlable, with meta
 JSON-LD structured data and a sitemap). Submissions post to a serverless endpoint that
 appends rows to a Google Sheet.
 
-The original claude.ai/design prototype (client-only SPA) is preserved in `prototype/`
-for reference; it is not deployed.
-
 ## Commands
 
 ```bash
 npm install       # once
 npm run dev       # local dev at http://localhost:4321
+npm run qa        # data validation, type checks, build and generated-page checks
 npm run build     # production build (outputs .vercel/output via the adapter)
 ```
 
@@ -22,7 +20,7 @@ npm run build     # production build (outputs .vercel/output via the adapter)
    configured, no settings needed.
 2. Set two environment variables in the Vercel project:
    - `SITE_URL` — the real domain, e.g. `https://xtoolsdirectory.com` (drives
-     canonical URLs and the sitemap). Also update the domain in `public/robots.txt`.
+     canonical URLs, the sitemap and the generated `robots.txt`).
    - `SUBMISSIONS_WEBHOOK_URL` — the Google Apps Script URL (setup below).
 
 **Netlify instead:** `npm rm @astrojs/vercel && npm i @astrojs/netlify`, then in
@@ -80,9 +78,9 @@ Add these environment variables to the Vercel project:
   **Contents: Read and write** permission.
 
 Also add `ADMIN_PASSWORD` to `.env` for local editing. In development, saves write
-directly to the two data files; no GitHub settings are required. The
-admin password is kept only in the browser tab's session storage and is sent only to
-the site's own serverless endpoint. The GitHub token never reaches the browser.
+directly to `src/data/tool-admin-data.json`; no GitHub settings are required. The
+admin password stays in memory for the current editor session and is sent only to the
+site's own serverless endpoint. The GitHub token never reaches the browser.
 
 Original seed listings remain in `src/data/tools.js`; admin changes are non-destructive
 overrides. Git history can restore deleted records. Tool `id` becomes the URL slug
@@ -98,31 +96,15 @@ The `/tools/` prefix deliberately leaves room for future listing types, e.g.
 `/agencies/<slug>/` for X growth agencies — copy the pattern of
 `src/pages/tools/[slug].astro` with a new data file when that day comes.
 
-## Homepage screenshots
+## Catalog principles
 
-Tool detail pages show a real homepage screenshot (`public/screenshots/<id>.jpg`,
-1200px JPEG, also used as the page's `og:image`). Tools without one automatically
-fall back to the striped placeholder.
-
-Captured via Firecrawl: `scripts/capture-screenshots.sh` loops over every tool URL in
-`src/data/tools.js`, scrapes with `--format screenshot`, and resizes with `sips`.
-It skips ids that already have an image — to refresh a stale one, delete its jpg
-and re-run; to refresh everything, empty `public/screenshots/` first. Re-run every
-month or two (or wire it into CI later) so captures don't rot. ~1 Firecrawl credit
-per page.
-
-Known gap (placeholder shown): `xpro` — pro.x.com blocks all bots; capture
-manually from a logged-in browser and save as `public/screenshots/xpro.jpg`.
-
-## Before real launch — honesty checklist
-
-- Fabricated stats (ratings, user counts, founding years) were removed from the
-  UI and data in 2026-07. The `users` field that remains in `src/data/tools.js`
-  is an internal curation weight that drives the "Recommended" ordering and the
-  Editorial Picks section — it is never displayed. Reorder recommendations by
-  editing those weights.
-- Footer Contact is a non-link placeholder; Privacy Policy / Terms pages are not
-  shipped yet.
-- Removed after the 2026-07 screenshot audit: `blackmagic` (shut down 2026-07-01),
-  `tweetflick`, `hashtagify`, `twindr`, `tweetmonk` (sites dead or blank).
-  `geniusx`/`clonex` URLs corrected to their blockmm.ai service pages.
+- Public recommendations use observable fields such as operational status, X-fit,
+  last-checked date, supported jobs, networks and access method. The directory does
+  not display invented popularity scores, ratings or user counts.
+- `Editor's Pick` is limited to live tools with High X-fit. `Founder-built`,
+  `Open source` and `Official API` are independent, evidence-backed labels.
+- First-party pages and documentation belong in `verificationSources`. Claims stay
+  `unclear` when the access method or product status cannot be confirmed.
+- Historical or changed products can remain indexed with `Degraded`, `Dropped X` or
+  `Shut down` status so older recommendations do not silently become misleading.
+- Run `npm run qa` before publishing catalog or application changes.

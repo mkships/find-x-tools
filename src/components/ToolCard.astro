@@ -1,17 +1,23 @@
 ---
 import { API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
-import { BadgeCheck, CalendarCheck, CodeXml, Star, Wrench } from '@lucide/astro';
+import { BadgeCheck, CodeXml, GitFork, Rocket, Star } from '@lucide/astro';
 
 const { tool } = Astro.props;
 const primaryCategory = CATS[tool.cat] || {};
 const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
 const initial = (tool.name || '?').trim().charAt(0).toUpperCase();
 const categories = (tool.categories || [tool.cat])
-  .map(key => CATS[key])
+  .map((key: keyof typeof CATS) => CATS[key])
   .filter(Boolean);
 const checkedLabel = tool.lastChecked
   ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(`${tool.lastChecked}T00:00:00Z`))
   : '';
+const toolNetworks = tool.networks || ['x'];
+const networkNames = toolNetworks.map((network: keyof typeof NETWORKS) => NETWORKS[network] || network);
+const isXOnly = toolNetworks.length === 1 && toolNetworks[0] === 'x';
+const networkText = isXOnly ? 'Built just for X' : networkNames.join(' · ') || 'Adjacent';
+const networkTitle = isXOnly ? 'Supported network: X' : `Supported networks: ${networkNames.join(', ')}`;
+const movingNetworks = networkNames.length > 4;
 ---
 <a
   class="tool-card"
@@ -23,6 +29,7 @@ const checkedLabel = tool.lastChecked
   data-x-fit={tool.xFit}
   data-api-status={tool.apiStatus}
   data-founder-built={String(Boolean(tool.founderBuilt))}
+  data-open-source={String(Boolean(tool.openSource))}
   data-status={tool.status}
   data-editor-pick={String(Boolean(tool.editorPick && tool.xFit === 'high' && tool.status === 'live'))}
   data-network-scope={!tool.networks?.includes('x') ? 'adjacent' : tool.networks.length === 1 ? 'x-only' : 'multi'}
@@ -34,49 +41,57 @@ const checkedLabel = tool.lastChecked
     <div class="tool-card-body">
       <div class="tool-card-title">
         <span class="name">{tool.name}</span>
-        {tool.tested && (
-          <span class="badge-tested" title="Personally used and checked by X Tools Directory">
-            <BadgeCheck size={13} stroke-width={2.2} aria-hidden="true" />
-            Tested
-          </span>
-        )}
         {tool.editorPick && tool.xFit === 'high' && tool.status === 'live' && (
           <span class="badge-editor-pick" title="Recommended by the X Tools Directory editorial team">
             <Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" />
             Editor's Pick
           </span>
         )}
-        {tool.xFit === 'high' && (
-          <span class="badge-x-native" title="Built primarily for X">X-native</span>
-        )}
-        {tool.apiStatus === 'official' && (
-          <span class="badge-official-api" title={API_STATUS.official.label}>
-            <CodeXml size={12} stroke-width={2.2} aria-hidden="true" />
-            Official API
-          </span>
-        )}
         {tool.founderBuilt && (
           <span class="badge-founder-built" title="Run by its original maker or a small founding team">
-            <Wrench size={12} stroke-width={2.2} aria-hidden="true" />
+            <Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" />
             Founder-built
           </span>
         )}
       </div>
       <p class="tool-card-tagline">{tool.tagline}</p>
     </div>
+    <span
+      class={`x-fit-indicator x-fit-indicator-${tool.xFit}`}
+      title={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label} — ${X_FIT[tool.xFit]?.description || X_FIT.unknown.description}`}
+      aria-label={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label}`}
+      role="img"
+    >
+      <span aria-hidden="true">X-fit</span>
+      <span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span>
+    </span>
   </div>
   <div class="tool-card-foot">
-    <div class="category-chips">
-      {categories.map(category => <span class="cat-chip">{category.label}</span>)}
-    </div>
-    <div class="tool-card-facts">
-      <span class={`x-fit-chip x-fit-${tool.xFit}`} title={X_FIT[tool.xFit]?.description || X_FIT.unknown.description}>
-        X-fit: {X_FIT[tool.xFit]?.label || X_FIT.unknown.label}
-      </span>
-      {checkedLabel && <span class="last-checked-chip" title={`Last checked ${tool.lastChecked}`}><CalendarCheck size={13} stroke-width={1.9} aria-hidden="true" />{checkedLabel}</span>}
-      {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
+    <div class="tool-card-category-row">
+      <div class="category-chips">
+        {categories.map((category: { label: string }) => <span class="cat-chip">{category.label}</span>)}
+      </div>
       <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price || 'Freemium'}</span>
     </div>
-    <span class="tool-network-line" title="Supported networks">{(tool.networks || ['x']).map(network => NETWORKS[network] || network).join(' · ') || 'Adjacent'}</span>
+    {(tool.xFit === 'high' || tool.apiStatus === 'official' || tool.openSource || tool.status !== 'live') && <div class="tool-card-trust-row">
+      {tool.xFit === 'high' && <span class="badge-x-native" title="Built primarily for X">X-native</span>}
+      {tool.apiStatus === 'official' && <span class="badge-official-api" title={API_STATUS.official.label}><CodeXml size={12} stroke-width={2.2} aria-hidden="true" />Official API</span>}
+      {tool.openSource && <span class="badge-open-source" title="Source code is publicly available under an open-source license"><GitFork size={12} stroke-width={2.2} aria-hidden="true" />Open source</span>}
+      {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
+    </div>}
+    <div class="tool-card-status-row">
+      <div class={`tool-network-marquee${movingNetworks ? ' is-moving' : ''}`} title={networkTitle}>
+        <div class="tool-network-track">
+          <span>{networkText}</span>
+          {movingNetworks && <span aria-hidden="true">{networkText}</span>}
+        </div>
+      </div>
+      {checkedLabel && (
+        <span class="verified-date-chip" title={`Last checked ${tool.lastChecked}`} aria-label={`Last checked ${checkedLabel}`}>
+          <BadgeCheck size={14} stroke-width={2} aria-hidden="true" />
+          <time datetime={tool.lastChecked}>{checkedLabel}</time>
+        </span>
+      )}
+    </div>
   </div>
 </a>

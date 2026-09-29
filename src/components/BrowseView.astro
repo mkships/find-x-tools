@@ -65,15 +65,17 @@ const priceFilters = [
             {Object.entries(JOBS).map(([value, job]) => <option value={value}>{job.label}</option>)}
           </select>
           <select id="trustFilter" aria-label="Filter by X fit and verification">
-            <option value="All">All X tools</option>
+            <option value="x-relevant">X-relevant tools</option>
             <option value="x-native">X-native</option>
             <option value="official-api">Official API</option>
             <option value="founder-built">Founder-built</option>
+            <option value="open-source">Open source</option>
             <option value="x-only">X only</option>
             <option value="multi">Also posts elsewhere</option>
             <option value="threads-yes">Threads: Yes</option>
             <option value="threads-partial">Threads: Partial</option>
             <option value="threads-no">Threads: No</option>
+            <option value="All">Include adjacent tools</option>
           </select>
         </div>
         <span class="count-label" id="resultsCount">{tools.length} tool{tools.length === 1 ? '' : 's'} found</span>
@@ -115,9 +117,11 @@ const priceFilters = [
       const matchP = price === 'All' || c.dataset.price === price;
       const matchJob = job === 'All' || c.dataset.jobs!.split(' ').includes(job);
       const matchTrust = trust === 'All'
+        || (trust === 'x-relevant' && ['high', 'medium'].includes(c.dataset.xFit!) && ['live', 'degraded'].includes(c.dataset.status!))
         || (trust === 'x-native' && c.dataset.xFit === 'high')
         || (trust === 'official-api' && c.dataset.apiStatus === 'official')
         || (trust === 'founder-built' && c.dataset.founderBuilt === 'true')
+        || (trust === 'open-source' && c.dataset.openSource === 'true')
         || (trust === 'x-only' && c.dataset.networkScope === 'x-only')
         || (trust === 'multi' && c.dataset.networkScope === 'multi')
         || (trust === 'threads-yes' && c.dataset.threadSupport === 'native')
@@ -135,7 +139,7 @@ const priceFilters = [
     if (q) params.set('q', searchInput.value.trim());
     if (price !== 'All') params.set('price', price);
     if (job !== 'All') params.set('job', job);
-    if (trust !== 'All') params.set('filter', trust);
+    if (trust !== 'x-relevant') params.set('filter', trust);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
@@ -162,7 +166,7 @@ const priceFilters = [
     searchInput.value = '';
     price = 'All';
     jobFilter.value = 'All';
-    trustFilter.value = 'All';
+    trustFilter.value = 'x-relevant';
     priceChips.querySelectorAll<HTMLElement>('.seg-btn').forEach(b => {
       const active = b.dataset.price === 'All';
       b.classList.toggle('active', active);
@@ -183,6 +187,6 @@ const priceFilters = [
     });
   }
   if (init.get('job') && Array.from(jobFilter.options).some(option => option.value === init.get('job'))) jobFilter.value = init.get('job')!;
-  if (init.get('filter') && ['x-native', 'official-api', 'founder-built', 'x-only', 'multi', 'threads-yes', 'threads-partial', 'threads-no'].includes(init.get('filter')!)) trustFilter.value = init.get('filter')!;
-  if (init.toString()) apply();
+  if (init.get('filter') && ['All', 'x-relevant', 'x-native', 'official-api', 'founder-built', 'open-source', 'x-only', 'multi', 'threads-yes', 'threads-partial', 'threads-no'].includes(init.get('filter')!)) trustFilter.value = init.get('filter')!;
+  apply();
 </script>

@@ -10,7 +10,7 @@ const footerCats = Object.entries(CATS);
 const currentYear = new Date().getFullYear();
 const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
 const currentPath = Astro.url.pathname;
-const jsonForHtml = value => JSON.stringify(value).replace(/</g, '\\u003c');
+const jsonForHtml = (value: unknown) => JSON.stringify(value).replace(/</g, '\\u003c');
 ---
 <!DOCTYPE html>
 <html lang="en">

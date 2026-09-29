@@ -20,12 +20,12 @@ const hasFeatures = tool.features.length > 0;
 const detail = tool.detail || {};
 const isDemo = detail.status === 'demo';
 const pricingTiers = isDemo || !Array.isArray(detail.pricingTiers) ? [] : detail.pricingTiers;
-const relatedCategories = tool.categories.map(slug => ({ slug, ...CATS[slug] })).filter(item => item.label);
+const relatedCategories = tool.categories.map((slug: keyof typeof CATS) => ({ slug, ...CATS[slug] })).filter((item: { label?: string }) => item.label);
 
 const related = TOOLS.filter(candidate => candidate.id !== tool.id
     && candidate.status !== 'shut-down'
     && candidate.status !== 'dropped-x'
-    && (candidate.jobs?.some(job => tool.jobs?.includes(job)) || candidate.categories.includes(tool.cat)))
+    && (candidate.jobs?.some((job: string) => tool.jobs?.includes(job)) || candidate.categories.includes(tool.cat)))
   .sort(compareTools)
   .slice(0, 3);
 
@@ -103,7 +103,7 @@ const jsonld = [
             <h2 id="base-features-title">What {tool.name} helps you do</h2>
           </div>
           <div class="tool-base-feature-list">
-            {tool.features.map(feature => <span><CircleCheckBig size={16} stroke-width={2} aria-hidden="true" />{feature}</span>)}
+            {tool.features.map((feature: string) => <span><CircleCheckBig size={16} stroke-width={2} aria-hidden="true" />{feature}</span>)}
           </div>
         </section>}
 
