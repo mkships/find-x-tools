@@ -18,7 +18,6 @@ const isXOnly = toolNetworks.length === 1 && toolNetworks[0] === 'x';
 const networkText = isXOnly ? 'Built just for X' : networkNames.join(' · ') || 'Adjacent';
 const networkTitle = isXOnly ? 'Supported network: X' : `Supported networks: ${networkNames.join(', ')}`;
 const movingNetworks = networkNames.length > 4;
-const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12;
 ---
 <a
   class="tool-card"
@@ -59,11 +58,13 @@ const fitFill = { high: 100, medium: 60, low: 30, unknown: 12 }[tool.xFit] || 12
     </div>
     <span
       class={`x-fit-indicator x-fit-indicator-${tool.xFit}`}
-      style={`--x-fit-fill:${fitFill}%`}
       title={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label} — ${X_FIT[tool.xFit]?.description || X_FIT.unknown.description}`}
       aria-label={`X-fit: ${X_FIT[tool.xFit]?.label || X_FIT.unknown.label}`}
       role="img"
-    ><span aria-hidden="true">X-fit</span></span>
+    >
+      <span aria-hidden="true">X-fit</span>
+      <span class="x-fit-meter" aria-hidden="true"><i></i><i></i><i></i></span>
+    </span>
   </div>
   <div class="tool-card-foot">
     <div class="tool-card-category-row">
