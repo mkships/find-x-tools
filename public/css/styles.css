@@ -449,8 +449,6 @@ main { animation: xfade .3s ease; }
 .home-discovery-section-label { margin: 0 0 7px 2px; color: var(--color-text-muted); font: 650 9px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .home-workflow-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
 .home-workflow-card, .home-refinement-card { min-width: 0; padding: 12px; background: rgba(255,255,255,.72); border: 1px solid rgba(15,20,25,.07); border-radius: 13px; box-shadow: 0 2px 8px rgba(15,20,25,.025); }
-.home-workflow-card { position: relative; overflow: hidden; }
-.home-workflow-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--stack-accent,#7856FF); opacity: .62; }
 .home-workflow-card:nth-child(1) { --stack-accent: #1D9BF0; }
 .home-workflow-card:nth-child(2) { --stack-accent: #7856FF; }
 .home-workflow-card:nth-child(3) { --stack-accent: #00A86B; }
