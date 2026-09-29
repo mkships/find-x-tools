@@ -449,7 +449,7 @@ main { animation: xfade .3s ease; }
 }
 .hero .hero-workflow-label {
   max-width: none; margin: 0 0 9px 2px; color: var(--color-category-active-text);
-  font: 650 10px/1.3 var(--font-mono); letter-spacing: .09em; text-transform: uppercase;
+  font: 650 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase;
 }
 .home-workflow-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
 .home-workflow-card { min-width: 0; padding: 12px; background: rgba(255,255,255,.72); border: 1px solid rgba(15,20,25,.07); border-radius: 13px; box-shadow: 0 2px 8px rgba(15,20,25,.025); }
@@ -459,10 +459,10 @@ main { animation: xfade .3s ease; }
 .home-workflow-card:nth-child(4) { --stack-accent: #E8A400; }
 .home-discovery-heading { display: flex; align-items: center; gap: 8px; }
 .home-discovery-heading > span { width: 28px; height: 28px; display: grid; place-items: center; flex: none; color: var(--stack-accent,var(--color-category-active-text)); background: color-mix(in srgb, var(--stack-accent,#7856FF) 10%, white); border: 1px solid color-mix(in srgb, var(--stack-accent,#7856FF) 12%, white); border-radius: 8px; }
-.home-discovery-heading b { color: var(--color-ink); font-size: 12px; line-height: 1.25; }
+.home-discovery-heading b { color: var(--color-ink); font-size: 13px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
 .home-workflow-card .home-discovery-heading { min-height: 32px; }
 .home-discovery-links { display: grid; gap: 0; margin-top: 9px; }
-.home-discovery-links a { min-width: 0; padding: 7px 5px; color: var(--color-text-secondary); border-top: 1px solid rgba(15,20,25,.055); border-radius: 0; font-size: 10.5px; font-weight: 600; line-height: 1.25; }
+.home-discovery-links a { min-width: 0; padding: 7px 5px; color: var(--color-text-secondary); border-top: 1px solid rgba(15,20,25,.055); border-radius: 0; font-size: 11.5px; font-weight: 600; line-height: 1.35; }
 .home-discovery-links a::after { content: '\203A'; float: right; color: var(--color-text-muted); transition: transform var(--motion-fast), color var(--motion-fast); }
 .home-discovery-links a:hover { color: var(--stack-accent,var(--color-category-active-text)); background: color-mix(in srgb, var(--stack-accent,#7856FF) 6%, transparent); }
 .home-discovery-links a:hover::after { color: currentColor; transform: translateX(2px); }
@@ -1028,6 +1028,8 @@ main { animation: xfade .3s ease; }
 }
 @media (max-width: 640px) {
   .hero-workflow-nav { margin-top: 36px; padding-top: 20px; }
+  .hero-search input { padding-left: 10px; padding-right: 8px; font-size: 14px; }
+  .hero-search button { padding: 0 18px; font-size: 14px; }
   .header-layout { column-gap: 12px; padding: 0 16px; }
   .search-pill { min-width: 0; flex: 1; }
   .footer-inner { grid-template-columns: 1fr; }

@@ -47,22 +47,22 @@ const jsonld = {
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-inner">
-      <div class="hero-badge">🚀 {TOOLS.length} tools, hand-curated</div>
+      <div class="hero-badge">🚀 {TOOLS.length} hand-curated X tools</div>
       <h1>
         <span class="hero-title-line">Every tool to grow and monetise</span>
         <span class="hero-title-line">your audience on <span class="grad-text">X, in one place.</span></span>
       </h1>
-      <p>Discover, compare and pick the best X tools for content writing, growth, scheduling and analytics.</p>
+      <p>Know what you need? Search by tool or use case.</p>
       <form class="hero-search" action="/tools/" method="get" role="search">
-        <input name="q" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
-        <button type="submit">Search</button>
+        <input name="q" placeholder="Search by tool or use case" aria-label="Search X tools" />
+        <button type="submit">Search tools</button>
       </form>
       <div class="hero-actions">
-        <a class="hero-action hero-action-primary" href="/tools/">Browse Tools</a>
+        <a class="hero-action hero-action-primary" href="/tools/">Browse all tools</a>
         <a class="hero-action hero-action-secondary" href="/submit/">Submit a Tool</a>
       </div>
       <nav class="hero-workflow-nav" aria-label="Browse X tools by workflow">
-        <p class="hero-workflow-label">Browse by workflow</p>
+        <p class="hero-workflow-label">Not sure where to start? Browse by workflow</p>
         <div class="home-workflow-grid">
           {JOB_STACKS.map(stack => {
             const StackIcon = stack.icon;
