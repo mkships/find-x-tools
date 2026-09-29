@@ -1,57 +1,82 @@
 ---
-import { CATS, PRICE_STYLES } from '../data/tools.js';
-import { BadgeCheck, Star, TrendingUp } from '@lucide/astro';
+import { API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
+import { BadgeCheck, CalendarCheck, CodeXml, Star, Wrench } from '@lucide/astro';
 
-const { tool: t } = Astro.props;
-const cat = CATS[t.cat] || {};
-const p = PRICE_STYLES[t.price] || PRICE_STYLES.Freemium;
-const initial = (t.name || '?').trim().charAt(0).toUpperCase();
-const popularity = Number(t.popularityScore).toLocaleString('en-US');
-const categories = (t.categories || [t.cat])
+const { tool } = Astro.props;
+const primaryCategory = CATS[tool.cat] || {};
+const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
+const initial = (tool.name || '?').trim().charAt(0).toUpperCase();
+const categories = (tool.categories || [tool.cat])
   .map(key => CATS[key])
   .filter(Boolean);
+const checkedLabel = tool.lastChecked
+  ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(`${tool.lastChecked}T00:00:00Z`))
+  : '';
 ---
 <a
   class="tool-card"
-  href={`/tools/${t.id}/`}
-  data-name={t.name.toLowerCase()}
-  data-tagline={t.tagline.toLowerCase()}
-  data-catlabel={(cat.label || '').toLowerCase()}
-  data-cat={t.cat}
-  data-price={t.price}
-  data-editor-pick={String(Boolean(t.editorPick))}
-  data-popularity={t.popularityScore}
+  href={`/tools/${tool.id}/`}
+  data-name={tool.name.toLowerCase()}
+  data-tagline={tool.tagline.toLowerCase()}
+  data-catlabel={(primaryCategory.label || '').toLowerCase()}
+  data-price={tool.price}
+  data-x-fit={tool.xFit}
+  data-api-status={tool.apiStatus}
+  data-founder-built={String(Boolean(tool.founderBuilt))}
+  data-status={tool.status}
+  data-editor-pick={String(Boolean(tool.editorPick && tool.xFit === 'high' && tool.status === 'live'))}
+  data-network-scope={!tool.networks?.includes('x') ? 'adjacent' : tool.networks.length === 1 ? 'x-only' : 'multi'}
+  data-jobs={(tool.jobs || []).join(' ')}
+  data-thread-support={tool.threadSupport || ''}
 >
   <div class="tool-card-top">
-    <div class="tile" style={`background:${t.color || '#1D9BF0'}`}>{t.icon ? <img src={t.icon} alt="" loading="lazy" /> : initial}</div>
+    <div class="tile" style={`background:${tool.color || '#1D9BF0'}`}>{tool.icon ? <img src={tool.icon} alt="" loading="lazy" /> : initial}</div>
     <div class="tool-card-body">
       <div class="tool-card-title">
-        <span class="name">{t.name}</span>
-        {t.tested && (
+        <span class="name">{tool.name}</span>
+        {tool.tested && (
           <span class="badge-tested" title="Personally used and checked by X Tools Directory">
-            <BadgeCheck size={13} strokeWidth={2.2} aria-hidden="true" />
+            <BadgeCheck size={13} stroke-width={2.2} aria-hidden="true" />
             Tested
           </span>
         )}
-        {t.editorPick && (
+        {tool.editorPick && tool.xFit === 'high' && tool.status === 'live' && (
           <span class="badge-editor-pick" title="Recommended by the X Tools Directory editorial team">
-            <Star size={12} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
+            <Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" />
             Editor's Pick
           </span>
         )}
-        {t.sponsored && <span class="badge-sponsored">Sponsored</span>}
+        {tool.xFit === 'high' && (
+          <span class="badge-x-native" title="Built primarily for X">X-native</span>
+        )}
+        {tool.apiStatus === 'official' && (
+          <span class="badge-official-api" title={API_STATUS.official.label}>
+            <CodeXml size={12} stroke-width={2.2} aria-hidden="true" />
+            Official API
+          </span>
+        )}
+        {tool.founderBuilt && (
+          <span class="badge-founder-built" title="Run by its original maker or a small founding team">
+            <Wrench size={12} stroke-width={2.2} aria-hidden="true" />
+            Founder-built
+          </span>
+        )}
       </div>
-      <p class="tool-card-tagline">{t.tagline}</p>
+      <p class="tool-card-tagline">{tool.tagline}</p>
     </div>
   </div>
   <div class="tool-card-foot">
     <div class="category-chips">
       {categories.map(category => <span class="cat-chip">{category.label}</span>)}
     </div>
-    <span class="popularity-chip" title="Popularity score">
-      <TrendingUp size={13} strokeWidth={1.9} aria-hidden="true" />
-      {popularity}
-    </span>
-    <span class="price-badge" style={`background:${p.bg};color:${p.fg}`}>{t.price || 'Freemium'}</span>
+    <div class="tool-card-facts">
+      <span class={`x-fit-chip x-fit-${tool.xFit}`} title={X_FIT[tool.xFit]?.description || X_FIT.unknown.description}>
+        X-fit: {X_FIT[tool.xFit]?.label || X_FIT.unknown.label}
+      </span>
+      {checkedLabel && <span class="last-checked-chip" title={`Last checked ${tool.lastChecked}`}><CalendarCheck size={13} stroke-width={1.9} aria-hidden="true" />{checkedLabel}</span>}
+      {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
+      <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price || 'Freemium'}</span>
+    </div>
+    <span class="tool-network-line" title="Supported networks">{(tool.networks || ['x']).map(network => NETWORKS[network] || network).join(' · ') || 'Adjacent'}</span>
   </div>
 </a>

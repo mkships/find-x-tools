@@ -8,7 +8,7 @@ const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00
 
 <section class="pricing-detail-card" aria-labelledby="pricing-title">
   <div class="tool-section-heading compact">
-    <span class="tool-section-icon"><CircleDollarSign size={18} strokeWidth={2} aria-hidden="true" /></span>
+    <span class="tool-section-icon"><CircleDollarSign size={18} stroke-width={2} aria-hidden="true" /></span>
     <div><h2 id="pricing-title">Pricing</h2></div>
   </div>
   {tiers.length ? (
@@ -20,16 +20,16 @@ const formatDate = value => value ? formatter.format(new Date(`${value}T00:00:00
             <span class="pricing-tier-price">{tier.price}{tier.cadence && <small>{tier.cadence}</small>}</span>
           </div>
           {tier.description && <p>{tier.description}</p>}
-          {tier.features?.length > 0 && <ul>{tier.features.map(feature => <li><Check size={13} strokeWidth={2.5} aria-hidden="true" /><span>{feature}</span></li>)}</ul>}
+          {tier.features?.length > 0 && <ul>{tier.features.map(feature => <li><Check size={13} stroke-width={2.5} aria-hidden="true" /><span>{feature}</span></li>)}</ul>}
         </article>
       ))}
     </div>
   ) : (
     <div class="pricing-tier-grid"><article class="pricing-tier-card pricing-tier-fallback"><div class="pricing-tier-head"><strong>{pricingModel}</strong><span class="pricing-tier-price">See website</span></div><p>Check the official website for current plans and availability.</p></article></div>
   )}
-  {note && <p class="pricing-note"><BadgePercent size={16} strokeWidth={2} aria-hidden="true" /><span>{note}</span></p>}
+  {note && <p class="pricing-note"><BadgePercent size={16} stroke-width={2} aria-hidden="true" /><span>{note}</span></p>}
   <div class="pricing-card-foot">
     {checkedAt && <span>Checked {formatDate(checkedAt)}</span>}
-    <a href={url || '#'} target="_blank" rel="noopener">View current pricing <ExternalLink size={13} strokeWidth={2} aria-hidden="true" /></a>
+    <a href={url} target="_blank" rel="noopener noreferrer">View current pricing <ExternalLink size={13} stroke-width={2} aria-hidden="true" /></a>
   </div>
 </section>

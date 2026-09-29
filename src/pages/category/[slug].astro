@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import { CATS, ICONS, TOOLS } from '../../data/tools.js';
+import { compareTools, CATS, ICONS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
 import {
   BadgeCheck,
@@ -9,7 +9,7 @@ import {
   ChevronRight,
   CreditCard,
   Gift,
-  Layers3,
+  Layers,
   LayoutGrid,
   Star
 } from '@lucide/astro';
@@ -65,7 +65,7 @@ const { slug } = Astro.params;
 const cat = CATS[slug];
 const content = categoryContent[slug];
 const tools = TOOLS.filter(tool => tool.categories.includes(slug))
-  .sort((a, b) => b.popularityScore - a.popularityScore);
+  .sort(compareTools);
 const otherCategories = Object.entries(CATS)
   .filter(([key]) => key !== slug)
   .sort(([, a], [, b]) => a.label.localeCompare(b.label));
@@ -76,7 +76,7 @@ const categoryArticle = /^[aeiou]/i.test(cat.label) ? 'an' : 'a';
 const filters = [
   { value: 'All', label: 'All Tools', Icon: LayoutGrid },
   { value: 'Free', label: 'Free', Icon: Gift },
-  { value: 'Freemium', label: 'Freemium', Icon: Layers3 },
+  { value: 'Freemium', label: 'Freemium', Icon: Layers },
   { value: 'Paid', label: 'Paid', Icon: CreditCard },
   { value: 'Editor', label: "Editor's Pick", Icon: Star }
 ];
@@ -84,19 +84,19 @@ const filters = [
 const faqs = [
   {
     question: `What should I look for in ${categoryArticle} ${cat.label} tool?`,
-    answer: `Placeholder: we are preparing a detailed buying guide for ${cat.label.toLowerCase()} tools. For now, compare the workflow fit, pricing model, supported features, and how much setup each option requires.`
+    answer: `Start with the workflow you need to improve, then compare pricing, supported features, setup effort, and whether the tool fits your publishing volume. Test the core workflow before committing to a paid plan.`
   },
   {
     question: `Are there free ${cat.label} tools for X?`,
-    answer: 'Placeholder: this answer will explain the strongest free and freemium options in this category, along with the common limits to expect before upgrading.'
+    answer: `${freePlanCount} ${freePlanCount === 1 ? 'tool in this category has' : 'tools in this category have'} a free or freemium option. Free plans commonly limit accounts, scheduled posts, history, exports, or advanced analytics, so check the current limits on the tool's website.`
   },
   {
     question: 'How does X Tools Directory select these tools?',
-    answer: 'Placeholder: this answer will document our inclusion, testing, editorial review, and listing-update process for this category.'
+    answer: 'Listings are selected for their relevance to X workflows and reviewed for clear product information, a working website, and practical value. Tested tools and editor picks are labelled separately; product details should still be confirmed with the provider before purchase.'
   },
   {
     question: `Which ${cat.label} tool is best for my workflow?`,
-    answer: 'Placeholder: this answer will compare the best options for solo creators, growing teams, agencies, and larger organizations.'
+    answer: `The best choice depends on your team size, budget, and required workflow. Use the filters and tool pages to build a shortlist, then compare each provider's current features and limits in a trial or free plan where available.`
   }
 ];
 
@@ -132,9 +132,9 @@ const jsonld = [
       <div class="category-landing-hero-inner">
         <nav class="breadcrumbs category-breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <a href="/tools/">Tools</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <span aria-current="page">{cat.label}</span>
         </nav>
 
@@ -146,7 +146,7 @@ const jsonld = [
             <div class="category-hero-stats" aria-label="Category statistics">
               <span>🛠️ {tools.length} tool{tools.length === 1 ? '' : 's'}</span>
               <span>🎁 {freePlanCount} with free plans</span>
-              <span><BadgeCheck size={14} strokeWidth={2} aria-hidden="true" /> {testedCount} tested</span>
+              <span><BadgeCheck size={14} stroke-width={2} aria-hidden="true" /> {testedCount} tested</span>
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@ const jsonld = [
               >
                 <Icon
                   size={14}
-                  strokeWidth={value === 'Editor' ? 2.1 : 1.9}
+                  stroke-width={value === 'Editor' ? 2.1 : 1.9}
                   fill={value === 'Editor' ? 'currentColor' : 'none'}
                   aria-hidden="true"
                 />
@@ -201,7 +201,7 @@ const jsonld = [
             <details class="faq-item" open={index === 0}>
               <summary>
                 <span>{faq.question}</span>
-                <ChevronDown size={18} strokeWidth={2} aria-hidden="true" />
+                <ChevronDown size={18} stroke-width={2} aria-hidden="true" />
               </summary>
               <div class="faq-answer"><p>{faq.answer}</p></div>
             </details>

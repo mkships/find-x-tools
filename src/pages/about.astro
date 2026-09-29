@@ -18,19 +18,19 @@ const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools acro
       <div class="about-hero-inner">
         <nav class="breadcrumbs about-breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <span aria-current="page">About</span>
         </nav>
 
         <div class="about-hero-content">
-          <div class="about-hero-icon" aria-hidden="true"><Compass size={36} strokeWidth={1.7} /></div>
+          <div class="about-hero-icon" aria-hidden="true"><Compass size={36} stroke-width={1.7} /></div>
           <div>
             <h1>A clearer way to find tools for X</h1>
             <p>We believe finding great X (Twitter) tools should be easy. Our mission is to be the go-to resource for discovering, comparing, and evaluating every type of tool for X.</p>
             <div class="about-hero-stats" aria-label="Directory statistics">
               <span>🛠️ {TOOLS.length} tools</span>
               <span>🗂️ {categoryEntries.length} categories</span>
-              <span><BadgeCheck size={14} strokeWidth={2} aria-hidden="true" /> {testedCount} tested</span>
+              <span><BadgeCheck size={14} stroke-width={2} aria-hidden="true" /> {testedCount} tested</span>
               <span>🎁 {freePlanCount} with free plans</span>
             </div>
           </div>
@@ -52,24 +52,25 @@ const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools acro
 
         <div class="about-method-grid">
           <article class="about-method-card">
-            <span class="about-method-icon"><FolderTree size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <span class="about-method-icon"><FolderTree size={21} stroke-width={1.9} aria-hidden="true" /></span>
             <p class="about-method-number">01</p>
             <h3>Organized by the job</h3>
             <p>Tools are grouped into consistent, practical categories based on the work they help you do, making relevant options easier to find and compare.</p>
           </article>
           <article class="about-method-card">
-            <span class="about-method-icon"><SearchCheck size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <span class="about-method-icon"><SearchCheck size={21} stroke-width={1.9} aria-hidden="true" /></span>
             <p class="about-method-number">02</p>
             <h3>Tested means tested</h3>
             <p>The Tested badge is reserved for tools we have personally used and checked. It shows where our evaluation goes beyond the standard listing review.</p>
           </article>
           <article class="about-method-card">
-            <span class="about-method-icon"><ShieldCheck size={21} strokeWidth={1.9} aria-hidden="true" /></span>
+            <span class="about-method-icon"><ShieldCheck size={21} stroke-width={1.9} aria-hidden="true" /></span>
             <p class="about-method-number">03</p>
             <h3>Accuracy stays open</h3>
             <p>We check each tool for legitimacy, describe it accurately, and keep its information current. Makers and readers can flag anything that needs correcting.</p>
           </article>
         </div>
+        <div class="view-all-wrap"><a class="btn-view-all btn-view-all-link" href="/methodology/">Read the full methodology<ArrowRight size={16} stroke-width={2} aria-hidden="true" /></a></div>
       </section>
 
       <section class="about-section" aria-labelledby="about-categories-title">
@@ -83,7 +84,7 @@ const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools acro
               <span class="about-category-icon" aria-hidden="true">{ICONS[slug]}</span>
               <span class="about-category-label">{category.label}</span>
               <span class="about-category-count">{counts[slug]} tool{counts[slug] === 1 ? '' : 's'}</span>
-              <ChevronRight size={16} strokeWidth={1.8} aria-hidden="true" />
+              <ChevronRight size={16} stroke-width={1.8} aria-hidden="true" />
             </a>
           ))}
         </div>
@@ -95,7 +96,7 @@ const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools acro
           <h2 id="about-submit-title">Know a useful tool we’re missing?</h2>
           <p>Built an X (Twitter) tool and want it listed? Send it our way. We review every submission within 2–3 business days.</p>
         </div>
-        <a class="hero-action hero-action-primary" href="/submit/">Submit a Tool<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></a>
+        <a class="hero-action hero-action-primary" href="/submit/">Submit a Tool<ArrowRight size={16} stroke-width={2} aria-hidden="true" /></a>
       </section>
     </div>
   </main>

@@ -1,20 +1,15 @@
-// POST /api/submit — validates a tool submission and appends it to the
-// Google Sheet via an Apps Script web-app webhook (SUBMISSIONS_WEBHOOK_URL).
-// See README.md § "Submissions → Google Sheets" for the one-time Sheet setup.
-
-import { PAID_SUBMISSIONS } from '../../config.js';
-
 export const prerender = false;
 
 const RATE_LIMIT = 5;
-const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_WINDOW_MS = 60 * 60 * 1000;
+const MAX_BODY_BYTES = 10_000;
 
 const json = (status, body) =>
-  new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+  });
 
-// Best-effort in-memory limiter. Survives warm serverless instances via globalThis;
-// cold starts / multi-instance deploys reset the bucket (pair with Turnstile later if needed).
-// In local dev, reset on module reload so iterative testing isn't stuck behind a hot bucket.
 if (import.meta.env.DEV) globalThis.__submitRateBuckets = new Map();
 const buckets = (globalThis.__submitRateBuckets ||= new Map());
 
@@ -24,26 +19,25 @@ function clientIp(request) {
     || 'unknown';
 }
 
-function allowedHosts() {
-  const hosts = new Set(['localhost', '127.0.0.1', '[::1]']);
-  const site = import.meta.env.SITE_URL || process.env.SITE_URL || 'https://x-tools-directory.vercel.app';
-  try { hosts.add(new URL(site).hostname); } catch { /* ignore */ }
-  // Always allow the current Vercel preview/default host while a custom domain is TBD.
-  hosts.add('x-tools-directory.vercel.app');
-  return hosts;
+function allowedOrigins(request) {
+  const origins = new Set([new URL(request.url).origin]);
+  const site = import.meta.env.SITE_URL || process.env.SITE_URL;
+  if (site) {
+    try { origins.add(new URL(site).origin); } catch { /* invalid configuration is ignored */ }
+  }
+  return origins;
 }
 
 function originAllowed(request) {
-  const hosts = allowedHosts();
+  const origins = allowedOrigins(request);
   const origin = request.headers.get('origin');
   if (origin) {
-    try { return hosts.has(new URL(origin).hostname); } catch { return false; }
+    try { return origins.has(new URL(origin).origin); } catch { return false; }
   }
   const referer = request.headers.get('referer');
   if (referer) {
-    try { return hosts.has(new URL(referer).hostname); } catch { return false; }
+    try { return origins.has(new URL(referer).origin); } catch { return false; }
   }
-  // Browser form POSTs always send Origin; missing both is treated as non-browser abuse.
   return false;
 }
 
@@ -61,7 +55,11 @@ function rateLimit(ip) {
 export async function POST({ request }) {
   let data;
   try {
-    data = await request.json();
+    const declaredLength = Number(request.headers.get('content-length') || 0);
+    if (declaredLength > MAX_BODY_BYTES) throw new Error('Request body is too large.');
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) throw new Error('Request body is too large.');
+    data = JSON.parse(raw);
   } catch {
     return json(400, { error: 'Invalid request body.' });
   }
@@ -75,7 +73,6 @@ export async function POST({ request }) {
     return json(429, { error: 'Too many submissions. Please try again later.' });
   }
 
-  // Honeypot: real users never fill this hidden field.
   if (data.website) return json(200, { ok: true });
 
   const name = String(data.name || '').trim();
@@ -84,30 +81,39 @@ export async function POST({ request }) {
   const desc = String(data.desc || '').trim();
   const category = String(data.category ?? data.cat ?? '').trim();
   const pricing = String(data.pricing ?? data.price ?? '').trim();
+  const demoPostUrl = String(data.demoPostUrl || '').trim();
   if (!name || name.length > 120) return json(400, { error: 'Please enter the tool name.' });
   if (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) {
     return json(400, { error: 'Please enter a valid email address.' });
   }
-  if (!/^https?:\/\/.+\..+/.test(url) || url.length > 500) return json(400, { error: 'Please enter a valid website URL.' });
+  let parsedUrl;
+  try { parsedUrl = new URL(url); } catch { /* handled below */ }
+  if (!parsedUrl || !['http:', 'https:'].includes(parsedUrl.protocol) || !parsedUrl.hostname.includes('.')
+    || parsedUrl.username || parsedUrl.password || url.length > 500) {
+    return json(400, { error: 'Please enter a valid website URL.' });
+  }
   if (!desc || desc.length > 2000) return json(400, { error: 'Please add a short description of the tool.' });
   if (!category || category.length > 80) return json(400, { error: 'Please choose or suggest a category.' });
   if (!['Free', 'Freemium', 'Paid'].includes(pricing)) return json(400, { error: 'Please choose a valid pricing model.' });
-
-  const requestedPlan = String(data.plan || 'free').slice(0, 20);
-  const plan = PAID_SUBMISSIONS && ['free', 'featured', 'premium'].includes(requestedPlan)
-    ? requestedPlan
-    : 'free';
+  if (demoPostUrl && (!/^https:\/\/(?:www\.)?(?:x|twitter)\.com\/[^/]+\/status\/\d+/.test(demoPostUrl) || demoPostUrl.length > 500)) {
+    return json(400, { error: 'Please enter a valid X launch or demo post URL.' });
+  }
 
   const row = {
     submittedAt: new Date().toISOString(),
     name,
     email,
     url,
-    tagline: String(data.tagline || '').slice(0, 300),
+    tagline: String(data.tagline || '').trim().slice(0, 300),
     desc,
     category,
     pricing,
-    plan,
+    demoPostUrl,
+    xPrimary: ['yes', 'no'].includes(data.xPrimary) ? data.xPrimary : '',
+    apiStatus: ['official', 'official-plus-other', 'no-api', 'unclear'].includes(data.apiStatus) ? data.apiStatus : '',
+    networks: String(data.networks || '').trim().slice(0, 300),
+    teamSize: ['solo', 'small', 'team'].includes(data.teamSize) ? data.teamSize : '',
+    xJobs: String(data.xJobs || '').trim().slice(0, 500),
     status: 'pending review'
   };
 
@@ -131,8 +137,8 @@ export async function POST({ request }) {
     if (!(res.ok && parsed && parsed.ok === true)) {
       throw new Error(`webhook responded ${res.status}: ${raw.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120)}`);
     }
-  } catch (err) {
-    console.error('Failed to record submission:', err);
+  } catch {
+    console.error('Failed to record submission');
     return json(502, { error: 'Could not record your submission. Please try again.' });
   }
 

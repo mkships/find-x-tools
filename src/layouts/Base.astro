@@ -5,9 +5,12 @@ import { Search } from '@lucide/astro';
 
 const { title, description, jsonld, ogImage, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(ogImage || '/assets/x-black.png', Astro.site);
 const footerCats = Object.entries(CATS);
 const currentYear = new Date().getFullYear();
 const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
+const currentPath = Astro.url.pathname;
+const jsonForHtml = value => JSON.stringify(value).replace(/</g, '\\u003c');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -25,42 +28,47 @@ const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-<meta property="og:image" content={new URL(ogImage || '/assets/x-black.png', Astro.site)} />
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:alt" content={`${SITE_NAME} logo`} />
 <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/styles.css" />
 {jsonldBlocks.map(block => (
-  <script type="application/ld+json" set:html={JSON.stringify(block)} />
+  <script type="application/ld+json" set:html={jsonForHtml(block)} />
 ))}
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div id="app">
   <header class="header">
     <div class="header-layout">
       <div class="header-left">
         <a class="logo" href="/" style="text-decoration:none">
-          <div class="logo-badge"><img src="/assets/x-white.png" alt={SITE_NAME + ' logo'} /></div>
+          <div class="logo-badge"><img src="/assets/x-white.png" alt="" /></div>
           <span class="logo-text">Tools<span> Directory</span></span>
         </a>
       </div>
-      <nav class="header-center nav">
-        <a class="nav-link" href="/tools/">Browse Tools</a>
-        <a class="nav-link" href="/categories/">Categories</a>
-        <a class="nav-link" href="/about/">About</a>
+      <nav class="header-center nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/tools/" aria-current={currentPath.startsWith('/tools/') ? 'page' : undefined}>Browse Tools</a>
+        <a class="nav-link" href="/categories/" aria-current={currentPath === '/categories/' ? 'page' : undefined}>Categories</a>
+        <a class="nav-link" href="/about/" aria-current={currentPath === '/about/' ? 'page' : undefined}>About</a>
       </nav>
       <div class="header-right">
-        <div class="search-pill">
-          <Search class="search-icon" size={18} strokeWidth={1.75} aria-hidden="true" />
-          <input id="headerSearch" placeholder="Search tools" aria-label="Search tools" />
-        </div>
+        <form class="search-pill" action="/tools/" method="get" role="search">
+          <Search class="search-icon" size={18} stroke-width={1.75} aria-hidden="true" />
+          <input name="q" placeholder="Search tools" aria-label="Search tools" />
+        </form>
         <a class="btn-submit-header" href="/submit/">Submit a Tool</a>
       </div>
     </div>
   </header>
 
-  <slot />
+  <div class="site-content" id="main-content"><slot /></div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -88,7 +96,7 @@ const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
           <a href="/categories/">Browse Categories</a>
           <a href="/submit/">Submit a Tool</a>
           <a href="/about/">About the Directory</a>
-          <a href="/about/#method">How We Curate</a>
+          <a href="/methodology/">How We Verify</a>
         </div>
       </div>
     </div>
@@ -101,13 +109,5 @@ const jsonldBlocks = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
   </footer>
 </div>
 
-<script>
-  const headerSearch = document.getElementById('headerSearch') as HTMLInputElement;
-  headerSearch?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && headerSearch.value.trim()) {
-      location.href = '/tools/?q=' + encodeURIComponent(headerSearch.value.trim());
-    }
-  });
-</script>
 </body>
 </html>

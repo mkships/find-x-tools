@@ -1,11 +1,10 @@
 ---
 import { CATS, ICONS, TOOLS } from '../data/tools.js';
 
-// active: 'all' or a category key — controls the highlighted row.
 const { active = 'all' } = Astro.props;
 const counts = {};
-TOOLS.forEach(t => {
-  (t.categories || [t.cat]).forEach(category => {
+TOOLS.forEach(tool => {
+  (tool.categories || [tool.cat]).forEach(category => {
     counts[category] = (counts[category] || 0) + 1;
   });
 });
@@ -14,15 +13,15 @@ TOOLS.forEach(t => {
   <div class="sidebar-label">Categories</div>
   <div class="cat-list">
     <a class={`cat-row${active === 'all' ? ' active' : ''}`} href="/tools/">
-      <span class="icon">{ICONS.all}</span>
+      <span class="icon" aria-hidden="true">{ICONS.all}</span>
       <span class="label">All Tools</span>
       <span class="count">{TOOLS.length}</span>
     </a>
-    {Object.keys(CATS).map(k => (
-      <a class={`cat-row${active === k ? ' active' : ''}`} href={`/category/${k}/`}>
-        <span class="icon">{ICONS[k] || '•'}</span>
-        <span class="label">{CATS[k].label}</span>
-        <span class="count">{counts[k] || 0}</span>
+    {Object.keys(CATS).map(categoryId => (
+      <a class={`cat-row${active === categoryId ? ' active' : ''}`} href={`/category/${categoryId}/`}>
+        <span class="icon" aria-hidden="true">{ICONS[categoryId] || '•'}</span>
+        <span class="label">{CATS[categoryId].label}</span>
+        <span class="count">{counts[categoryId] || 0}</span>
       </a>
     ))}
   </div>

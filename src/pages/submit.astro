@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { CATS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, CheckCircle2, ChevronRight } from '@lucide/astro';
+import { ArrowRight, CircleCheckBig, ChevronRight } from '@lucide/astro';
 
 const title = `Submit a Tool | ${SITE_NAME}`;
 const description = 'Suggest an X (Twitter) tool for the directory. We review submissions within 2–3 business days.';
@@ -12,7 +12,7 @@ const categoryEntries = Object.entries(CATS);
   <main class="page-submit">
     <nav class="breadcrumbs submit-breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
-      <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+      <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
       <span aria-current="page">Submit a Tool</span>
     </nav>
 
@@ -72,6 +72,39 @@ const categoryEntries = Object.entries(CATS);
           </div>
 
           <div class="submit-field submit-field-wide">
+            <label for="demoPostUrl">Launch or Demo Post on X <small>Optional</small></label>
+            <input id="demoPostUrl" name="demoPostUrl" type="url" maxlength="500" placeholder="https://x.com/yourhandle/status/…" inputmode="url" />
+            <p class="submit-field-help">A real product launch or demo post may be considered for the curated Shipped on X section.</p>
+            <p class="submit-field-error" data-error-for="demoPostUrl"></p>
+          </div>
+
+          <div class="submit-field">
+            <label for="xPrimary">Is X the primary product? <small>Optional</small></label>
+            <select id="xPrimary" name="xPrimary"><option value="">Choose one</option><option value="yes">Yes — built primarily for X</option><option value="no">No — multi-network or adjacent</option></select>
+          </div>
+
+          <div class="submit-field">
+            <label for="apiStatus">How does it access X? <small>Optional</small></label>
+            <select id="apiStatus" name="apiStatus"><option value="">Choose one</option><option value="official">Official X API</option><option value="official-plus-other">Official API plus other data</option><option value="no-api">Extension or local — no API</option><option value="unclear">Not sure</option></select>
+          </div>
+
+          <div class="submit-field">
+            <label for="networks">Other Networks <small>Optional</small></label>
+            <input id="networks" name="networks" maxlength="300" placeholder="LinkedIn, Bluesky" />
+          </div>
+
+          <div class="submit-field">
+            <label for="teamSize">Team Size <small>Optional</small></label>
+            <select id="teamSize" name="teamSize"><option value="">Choose one</option><option value="solo">Solo founder</option><option value="small">2–10 people</option><option value="team">11+ people</option></select>
+          </div>
+
+          <div class="submit-field submit-field-wide">
+            <label for="xJobs">Main Jobs on X <small>Optional</small></label>
+            <input id="xJobs" name="xJobs" maxlength="500" placeholder="Writing threads, scheduling posts, analytics…" />
+            <p class="submit-field-help">These are maker-supplied claims. We independently verify them before publishing.</p>
+          </div>
+
+          <div class="submit-field submit-field-wide">
             <label for="submitterEmail">Your Email <small>Optional</small></label>
             <input id="submitterEmail" name="email" type="email" maxlength="254" placeholder="you@company.com" autocomplete="email" />
             <p class="submit-field-help">We’ll only use this if we need to clarify the submission.</p>
@@ -84,13 +117,13 @@ const categoryEntries = Object.entries(CATS);
         <div class="submit-form-actions">
           <button class="hero-action hero-action-primary submit-form-button" type="submit">
             <span>Submit for Review</span>
-            <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
+            <ArrowRight size={17} stroke-width={2} aria-hidden="true" />
           </button>
         </div>
       </form>
 
       <div class="success-card submit-success" id="submitSuccess" hidden>
-        <div class="success-mark"><CheckCircle2 size={38} strokeWidth={2} aria-hidden="true" /></div>
+        <div class="success-mark"><CircleCheckBig size={38} stroke-width={2} aria-hidden="true" /></div>
         <h2>Submission received</h2>
         <p>Thanks—your tool is now in our review queue. We’ll review it within 2–3 business days.</p>
         <div class="success-actions">
@@ -152,6 +185,7 @@ const categoryEntries = Object.entries(CATS);
       const description = document.getElementById('toolDescription') as HTMLTextAreaElement;
       const pricing = document.getElementById('pricingModel') as HTMLSelectElement;
       const email = document.getElementById('submitterEmail') as HTMLInputElement;
+      const demoPostUrl = document.getElementById('demoPostUrl') as HTMLInputElement;
 
       if (!name.value.trim()) { setFieldError(name, 'Please enter the tool name.'); valid = false; }
       if (!validWebsite(url.value.trim())) { setFieldError(url, 'Enter a complete website URL, such as https://example.com.'); valid = false; }
@@ -160,6 +194,7 @@ const categoryEntries = Object.entries(CATS);
       if (category.value === 'other' && !customCategory.value.trim()) { setFieldError(customCategory, 'Please enter your suggested category.'); valid = false; }
       if (!pricing.value) { setFieldError(pricing, 'Please choose a pricing model.'); valid = false; }
       if (email.value && !email.validity.valid) { setFieldError(email, 'Please enter a valid email address or leave this field blank.'); valid = false; }
+      if (demoPostUrl.value && !/^https:\/\/(?:www\.)?(?:x|twitter)\.com\/[^/]+\/status\/\d+/.test(demoPostUrl.value.trim())) { setFieldError(demoPostUrl, 'Enter a complete X post URL.'); valid = false; }
 
       if (!valid) form.querySelector<HTMLElement>('.is-invalid')?.focus();
       return valid;

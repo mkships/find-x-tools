@@ -1,14 +1,12 @@
 ---
-import { CATS, TOOLS } from '../data/tools.js';
+import { compareTools, JOBS, TOOLS, CATS } from '../data/tools.js';
 import ToolCard from './ToolCard.astro';
 import CategorySidebar from './CategorySidebar.astro';
-import { ChevronRight, CreditCard, Gift, LayoutGrid, Layers3 } from '@lucide/astro';
+import { ChevronRight, CreditCard, Gift, LayoutGrid, Layers } from '@lucide/astro';
 
-// cat: 'all' or a category key. All matching tools are prerendered (SEO);
-// the client script only hides them for search and price filtering.
 const { cat = 'all' } = Astro.props;
 const tools = (cat === 'all' ? [...TOOLS] : TOOLS.filter(t => t.categories.includes(cat)))
-  .sort((a, b) => b.popularityScore - a.popularityScore);
+  .sort(compareTools);
 const pageHeading = cat === 'all' ? 'Browse all X Tools' : `Browse ${CATS[cat].label} Tools for X`;
 const pageDescription = cat === 'all'
   ? 'Discover the best tools for X creators, marketers, and agencies.'
@@ -16,7 +14,7 @@ const pageDescription = cat === 'all'
 const priceFilters = [
   { value: 'All', label: 'All Tools', Icon: LayoutGrid },
   { value: 'Free', label: 'Free', Icon: Gift },
-  { value: 'Freemium', label: 'Freemium', Icon: Layers3 },
+  { value: 'Freemium', label: 'Freemium', Icon: Layers },
   { value: 'Paid', label: 'Paid', Icon: CreditCard }
 ];
 ---
@@ -24,13 +22,13 @@ const priceFilters = [
   <div class="browse-heading">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
-      <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+      <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
       {cat === 'all' ? (
         <span aria-current="page">All Tools</span>
       ) : (
         <>
           <a href="/tools/">All Tools</a>
-          <ChevronRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          <ChevronRight size={15} stroke-width={1.8} aria-hidden="true" />
           <span aria-current="page">{CATS[cat].label}</span>
         </>
       )}
@@ -39,10 +37,10 @@ const priceFilters = [
     <p class="page-description">{pageDescription}</p>
   </div>
 
-  <div class="hero-search browse-search">
-    <input id="browseSearch" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
-    <button id="browseSearchBtn" type="button">Search</button>
-  </div>
+  <form class="hero-search browse-search" id="browseSearchForm" role="search">
+    <input id="browseSearch" name="q" placeholder="Search X tools — e.g. Content Writing, Scheduling, Analytics" aria-label="Search X tools" />
+    <button type="submit">Search</button>
+  </form>
 
   <div class="layout-sidebar">
     <CategorySidebar active={cat} />
@@ -56,10 +54,27 @@ const priceFilters = [
               data-price={value}
               aria-pressed={value === 'All' ? 'true' : 'false'}
             >
-              <Icon size={14} strokeWidth={1.9} aria-hidden="true" />
+              <Icon size={14} stroke-width={1.9} aria-hidden="true" />
               {label}
             </button>
           ))}
+        </div>
+        <div class="catalog-select-filters" aria-label="More filters">
+          <select id="jobFilter" aria-label="Filter by job">
+            <option value="All">All jobs</option>
+            {Object.entries(JOBS).map(([value, job]) => <option value={value}>{job.label}</option>)}
+          </select>
+          <select id="trustFilter" aria-label="Filter by X fit and verification">
+            <option value="All">All X tools</option>
+            <option value="x-native">X-native</option>
+            <option value="official-api">Official API</option>
+            <option value="founder-built">Founder-built</option>
+            <option value="x-only">X only</option>
+            <option value="multi">Also posts elsewhere</option>
+            <option value="threads-yes">Threads: Yes</option>
+            <option value="threads-partial">Threads: Partial</option>
+            <option value="threads-no">Threads: No</option>
+          </select>
         </div>
         <span class="count-label" id="resultsCount">{tools.length} tool{tools.length === 1 ? '' : 's'} found</span>
       </div>
@@ -78,22 +93,37 @@ const priceFilters = [
 
 <script>
   const grid = document.getElementById('browseGrid')!;
+  const searchForm = document.getElementById('browseSearchForm') as HTMLFormElement;
   const cards = Array.from(grid.querySelectorAll<HTMLElement>('.tool-card'));
   const searchInput = document.getElementById('browseSearch') as HTMLInputElement;
   const priceChips = document.getElementById('priceChips')!;
   const countEl = document.getElementById('resultsCount')!;
   const emptyEl = document.getElementById('emptyState')!;
+  const jobFilter = document.getElementById('jobFilter') as HTMLSelectElement;
+  const trustFilter = document.getElementById('trustFilter') as HTMLSelectElement;
 
   let price = 'All';
 
   function apply() {
     const q = searchInput.value.trim().toLowerCase();
+    const job = jobFilter.value;
+    const trust = trustFilter.value;
 
     let visible = 0;
     for (const c of cards) {
-      const matchQ = !q || c.dataset.name!.includes(q) || c.dataset.tagline!.includes(q) || c.dataset.catlabel!.includes(q);
+      const matchQ = !q || c.dataset.name!.includes(q) || c.dataset.tagline!.includes(q) || c.dataset.catlabel!.includes(q) || c.dataset.jobs!.includes(q);
       const matchP = price === 'All' || c.dataset.price === price;
-      const show = matchQ && matchP;
+      const matchJob = job === 'All' || c.dataset.jobs!.split(' ').includes(job);
+      const matchTrust = trust === 'All'
+        || (trust === 'x-native' && c.dataset.xFit === 'high')
+        || (trust === 'official-api' && c.dataset.apiStatus === 'official')
+        || (trust === 'founder-built' && c.dataset.founderBuilt === 'true')
+        || (trust === 'x-only' && c.dataset.networkScope === 'x-only')
+        || (trust === 'multi' && c.dataset.networkScope === 'multi')
+        || (trust === 'threads-yes' && c.dataset.threadSupport === 'native')
+        || (trust === 'threads-partial' && ['split-only', 'queue-only'].includes(c.dataset.threadSupport!))
+        || (trust === 'threads-no' && c.dataset.threadSupport === 'none');
+      const show = matchQ && matchP && matchJob && matchTrust;
       c.classList.toggle('hidden', !show);
       if (show) visible++;
     }
@@ -104,12 +134,17 @@ const priceFilters = [
     const params = new URLSearchParams();
     if (q) params.set('q', searchInput.value.trim());
     if (price !== 'All') params.set('price', price);
+    if (job !== 'All') params.set('job', job);
+    if (trust !== 'All') params.set('filter', trust);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
 
   searchInput.addEventListener('input', apply);
-  document.getElementById('browseSearchBtn')!.addEventListener('click', apply);
+  searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    apply();
+  });
   priceChips.addEventListener('click', (e) => {
     const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-price]');
     if (!chip) return;
@@ -121,9 +156,13 @@ const priceFilters = [
     });
     apply();
   });
+  jobFilter.addEventListener('change', apply);
+  trustFilter.addEventListener('change', apply);
   document.getElementById('clearFilters')!.addEventListener('click', () => {
     searchInput.value = '';
     price = 'All';
+    jobFilter.value = 'All';
+    trustFilter.value = 'All';
     priceChips.querySelectorAll<HTMLElement>('.seg-btn').forEach(b => {
       const active = b.dataset.price === 'All';
       b.classList.toggle('active', active);
@@ -132,7 +171,6 @@ const priceFilters = [
     apply();
   });
 
-  // Seed controls from URL (?q=, ?price=) — used by header/hero search.
   const init = new URLSearchParams(location.search);
   if (init.get('q')) searchInput.value = init.get('q')!;
   const initPrice = init.get('price');
@@ -144,5 +182,7 @@ const priceFilters = [
       b.setAttribute('aria-pressed', String(active));
     });
   }
+  if (init.get('job') && Array.from(jobFilter.options).some(option => option.value === init.get('job'))) jobFilter.value = init.get('job')!;
+  if (init.get('filter') && ['x-native', 'official-api', 'founder-built', 'x-only', 'multi', 'threads-yes', 'threads-partial', 'threads-no'].includes(init.get('filter')!)) trustFilter.value = init.get('filter')!;
   if (init.toString()) apply();
 </script>
