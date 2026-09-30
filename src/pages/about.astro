@@ -9,7 +9,7 @@ const counts = Object.fromEntries(categoryEntries.map(([slug]) => [slug, TOOLS.f
 const testedCount = TOOLS.filter(tool => tool.tested).length;
 const freePlanCount = TOOLS.filter(tool => tool.price === 'Free' || tool.price === 'Freemium').length;
 
-const title = `About the Independent X Tools Directory | ${SITE_NAME}`;
+const title = `About the Independent XToolsList | ${SITE_NAME}`;
 const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools across ${categoryEntries.length} practical categories, distinguishes tested listings and keeps corrections open to the community.`;
 ---
 <Base title={title} description={description}>
@@ -40,7 +40,7 @@ const description = `Learn how ${SITE_NAME} organizes ${TOOLS.length} tools acro
 
     <div class="about-body">
       <section class="about-overview" aria-label="About the directory">
-        <p>X Tools Directory is the most complete curated directory of X (Twitter) tools on the internet. We help content creators, growth marketers, agencies, and small businesses find the right tools quickly to grow on X, without the noise.</p>
+        <p>XToolsList is the most complete curated directory of X (Twitter) tools on the internet. We help content creators, growth marketers, agencies, and small businesses find the right tools quickly to grow on X, without the noise.</p>
       </section>
 
       <section class="about-section" id="method" aria-labelledby="method-title">

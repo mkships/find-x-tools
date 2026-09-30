@@ -1,4 +1,4 @@
-// Canonical tool data for X Tools Directory.
+// Canonical tool data for XToolsList.
 import adminData from './tool-admin-data.json';
 import { CATALOG_CURATION, CATEGORY_JOBS } from './catalog-curation.js';
 

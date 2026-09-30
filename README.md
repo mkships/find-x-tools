@@ -1,4 +1,4 @@
-# X Tools Directory
+# XToolsList
 
 SEO-first directory of tools for growing on X, built with [Astro](https://astro.build).
 Every tool and category is a pre-rendered static HTML page (crawlable, with meta tags,
@@ -19,7 +19,7 @@ npm run build     # production build (outputs .vercel/output via the adapter)
 1. Push this folder to a Git repo and import it in Vercel — the adapter is already
    configured, no settings needed.
 2. Set two environment variables in the Vercel project:
-   - `SITE_URL` — the real domain, e.g. `https://xtoolsdirectory.com` (drives
+   - `SITE_URL` — the real domain, e.g. `https://your-domain.example` (drives
      canonical URLs, the sitemap and the generated `robots.txt`).
    - `SUBMISSIONS_WEBHOOK_URL` — the Google Apps Script URL (setup below).
 

@@ -1,1 +1,1 @@
-export const SITE_NAME = 'X Tools Directory';
+export const SITE_NAME = 'XToolsList';

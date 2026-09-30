@@ -43,7 +43,7 @@ async function githubRequest(config, path, method = 'GET', body) {
       Accept: 'application/vnd.github+json',
       Authorization: `Bearer ${config.token}`,
       'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'x-tools-directory-admin',
+      'User-Agent': 'xtoolslist-admin',
       ...(body ? { 'Content-Type': 'application/json' } : {})
     },
     body: body ? JSON.stringify(body) : undefined
