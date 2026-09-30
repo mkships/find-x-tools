@@ -947,13 +947,12 @@ main { animation: xfade .3s ease; }
 .methodology-fit-label.fit-low .x-fit-meter i:first-child { background: var(--fit-color); }
 .methodology-fit-card > p:last-child { margin-top: 13px; }
 .methodology-definition-list { margin-top: 20px; overflow: hidden; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 16px; }
-.methodology-definition-list > div { display: grid; grid-template-columns: minmax(140px,190px) minmax(0,1fr); gap: 16px; padding: 17px 20px; }
+.methodology-definition-list > div { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 16px; padding: 17px 20px; }
 .methodology-definition-list > div + div { border-top: 1px solid var(--color-border); }
 .methodology-definition-list strong { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
-.methodology-definition-list span { color: var(--color-text-secondary); font-size: 13px; line-height: 1.55; }
+.methodology-definition-list > div > span { color: var(--color-text-secondary); font-size: 13px; line-height: 1.55; }
 .methodology-badge-list > div { align-items: center; }
 .methodology-badge-list strong { min-height: 22px; }
-.methodology-badge-list strong > span { color: inherit; line-height: 1; }
 .methodology-source-note {
   display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 15px; align-items: start;
   margin-top: 20px; padding: 20px 22px; background: var(--color-white);
@@ -992,6 +991,19 @@ main { animation: xfade .3s ease; }
 .about-submit-cta:hover {
   transform: translateY(-2px); border-color: rgba(29,155,240,.34);
   box-shadow: 0 14px 30px rgba(53,64,87,.1);
+}
+.methodology-body .about-submit-cta { transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.methodology-body .about-submit-cta:hover,
+.methodology-body .about-submit-cta:focus-within {
+  background: var(--gradient-category-active);
+  border-color: rgba(120,86,255,.4);
+  box-shadow: 0 16px 32px rgba(69,113,249,.15);
+  transform: translateY(-3px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .methodology-body .about-submit-cta { transition: none; }
+  .methodology-body .about-submit-cta:hover,
+  .methodology-body .about-submit-cta:focus-within { transform: none; }
 }
 .about-submit-cta > div { min-width: 0; }
 .about-submit-cta h2 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -.02em; }
