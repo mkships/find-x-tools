@@ -78,18 +78,17 @@ const jsonld = {
     </div>
   </section>
 
-  {shipped.length > 0 && <section class="home-curated-section">
-    <div class="home-section-heading"><div><span>Fresh demos</span><h2>Shipped on X</h2><p>Recent launches and product demos, manually selected from X.</p></div><Rocket size={22} aria-hidden="true" /></div>
+  {shipped.length > 0 && <section class="home-curated-section" aria-labelledby="shipped-title">
+    <div class="home-section-heading"><div><span>Fresh demos</span><h2 id="shipped-title">Shipped on X</h2><p>See tools in action through hand-picked launches and demos from X.</p></div><Rocket size={22} aria-hidden="true" /></div>
     <div class="shipped-grid">
       {shipped.map(tool => <article class="shipped-card">
         {tool.demoImage && <img src={tool.demoImage} alt="" loading="lazy" />}
         <div class="shipped-card-head">
           <span class="shipped-card-icon" style={`background:${tool.color}`}><img src={tool.icon} alt="" loading="lazy" /></span>
-          <div class="shipped-card-identity"><p class="shipped-meta">{tool.founderHandle ? `@${tool.founderHandle}` : tool.name}</p><h3>{tool.name}</h3></div>
-          <time class="shipped-date" datetime={tool.launchedAt}>{formatDate(tool.launchedAt)}</time>
+          <div class="shipped-card-identity"><h3><a href={`/tools/${tool.id}/`}>{tool.name}</a></h3><p class="shipped-meta">{tool.founderHandle && <span>@{tool.founderHandle}</span>}<time datetime={tool.launchedAt}>{formatDate(tool.launchedAt)}</time></p></div>
         </div>
         <p class="shipped-summary">{tool.demoSummary || tool.tagline}</p>
-        <div class="shipped-actions"><a href={`/tools/${tool.id}/`}>View listing</a><a href={tool.demoPostUrl} target="_blank" rel="noopener">View post<ExternalLink size={13} /></a></div>
+        <div class="shipped-actions"><a href={`/tools/${tool.id}/`} aria-label={`Explore ${tool.name}`}>Explore tool<ArrowRight size={13} aria-hidden="true" /></a><a href={tool.demoPostUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${tool.name} post on X (opens in a new tab)`}>View post on X<ExternalLink size={13} aria-hidden="true" /></a></div>
       </article>)}
     </div>
   </section>}

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE_NAME } from '../config.js';
-import { BadgeCheck, ChevronRight, CodeXml, Compass, GitFork, RefreshCw, Rocket, Scale, Star } from '@lucide/astro';
+import { Archive, BadgeCheck, ChevronRight, CircleCheck, CodeXml, Compass, GitFork, RefreshCw, Rocket, Scale, Star, TriangleAlert, Unplug } from '@lucide/astro';
 
 const title = `Our Methodology | ${SITE_NAME}`;
 const description = 'The public methodology behind X-fit, tool status, last-checked dates, API labels, testing and editorial recommendations.';
@@ -50,10 +50,10 @@ const description = 'The public methodology behind X-fit, tool status, last-chec
       <section class="about-section" aria-labelledby="status-title">
         <div class="about-section-heading"><span>02 · Freshness</span><h2 id="status-title">Operational status is separate from visibility</h2><p>We retain useful historical pages so an old recommendation does not silently become a broken link.</p></div>
         <div class="methodology-definition-list">
-          <div><strong>Live</strong><span>The product is operating and any X workflow described in its listing is currently available. Adjacent tools can be live without being X-native.</span></div>
-          <div><strong>Degraded</strong><span>The tool works, but an important X feature is limited, unreliable, or materially changed.</span></div>
-          <div><strong>Dropped X</strong><span>The product remains active but no longer supports its former X workflow.</span></div>
-          <div><strong>Shut down</strong><span>The product is no longer operating. Its page remains as a clearly marked historical reference.</span></div>
+          <div><strong><span class="tool-status-chip status-live"><CircleCheck size={12} stroke-width={2} aria-hidden="true" />Live</span></strong><span>The product is operating and any X workflow described in its listing is currently available. Adjacent tools can be live without being X-native.</span></div>
+          <div><strong><span class="tool-status-chip status-degraded"><TriangleAlert size={12} stroke-width={2} aria-hidden="true" />Degraded</span></strong><span>The tool works, but an important X feature is limited, unreliable, or materially changed.</span></div>
+          <div><strong><span class="tool-status-chip status-dropped-x"><Unplug size={12} stroke-width={2} aria-hidden="true" />Dropped X</span></strong><span>The product remains active but no longer supports its former X workflow.</span></div>
+          <div><strong><span class="tool-status-chip status-shut-down"><Archive size={12} stroke-width={2} aria-hidden="true" />Shut down</span></strong><span>The product is no longer operating. Its page remains as a clearly marked historical reference.</span></div>
         </div>
       </section>
 
@@ -79,7 +79,7 @@ const description = 'The public methodology behind X-fit, tool status, last-chec
       <section class="about-section" aria-labelledby="badges-title">
         <div class="about-section-heading"><span>05 · Editorial labels</span><h2 id="badges-title">What the other badges mean</h2></div>
         <div class="methodology-definition-list methodology-badge-list">
-          <div><strong><span class="badge-tested"><BadgeCheck size={13} stroke-width={2.2} aria-hidden="true" /> Tested</span></strong><span>We personally used and checked the product, beyond reviewing its public information.</span></div>
+          <div><strong><span class="verified-date-chip"><BadgeCheck size={14} stroke-width={2} aria-hidden="true" />Last checked</span></strong><span>The date at the bottom right of each tool card records our latest review of its listing. It is not a guarantee of current availability or a claim of hands-on testing.</span></div>
           <div><strong><span class="badge-editor-pick"><Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span></strong><span>A Live, High-X-fit tool we would put on a serious shortlist for its job.</span></div>
           <div><strong><span class="badge-x-native">X-native</span></strong><span>A filterable display of High X-fit—not a second independent score.</span></div>
           <div><strong><span class="badge-founder-built"><Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" /> Founder-built</span></strong><span>The original maker or a small founding team still operates the product.</span></div>
