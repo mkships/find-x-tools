@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import { SITE_NAME } from '../config.js';
 import { CATS, ICONS, TOOLS } from '../data/tools.js';
 import { Search } from '@lucide/astro';
@@ -109,5 +110,6 @@ const jsonForHtml = (value: unknown) => JSON.stringify(value).replace(/</g, '\\u
   </footer>
 </div>
 
+<Analytics />
 </body>
 </html>
