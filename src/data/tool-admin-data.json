@@ -1348,9 +1348,9 @@
       "url": "https://getdewey.co",
       "tagline": "Search, organize and back up your X bookmarks",
       "desc": "Dewey syncs X and Bluesky bookmarks into a searchable library with tags, folders, exports and optional AI-assisted bulk tagging.",
-      "cat": "comments",
+      "cat": "bookmarks",
       "categories": [
-        "comments"
+        "bookmarks"
       ],
       "price": "Freemium",
       "best": "Researchers, founders and other heavy bookmark users who need search, organization and export",
@@ -1732,7 +1732,7 @@
       "published": true,
       "icon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhypefury.com&sz=128",
       "url": "https://hypefury.com",
-      "tagline": "Automate your growth and influence by building and monetising your audience",
+      "tagline": "Draft, schedule, and reuse posts across X and other social networks.",
       "desc": "Hypefury is a social media scheduling and automation platform designed to help content creators, entrepreneurs, and businesses grow and monetize their audience. Hypefury queues content, recycles your best posts, auto-plugs threads once they take off, and turns engagement into subscribers and sales.",
       "cat": "schedule",
       "categories": [
@@ -1786,7 +1786,8 @@
         ],
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
-      }
+      },
+      "notFor": "A simple drafting-only editor or a workspace dedicated exclusively to X."
     },
     "ilo": {
       "id": "ilo",
@@ -4028,7 +4029,13 @@
         ],
         "pricingNote": "Month-to-month USD prices shown. Annual billing lowers the effective monthly prices to $9 for Personal, $49 for Professional, $149 for Business and $299 for Enterprise. Paid plans offer a seven-day trial.",
         "pricingLastChecked": "2026-09-23"
-      }
+      },
+      "networks": [
+        "x",
+        "instagram",
+        "facebook"
+      ],
+      "xFit": "medium"
     },
     "socialinsider": {
       "id": "socialinsider",
@@ -4459,7 +4466,7 @@
         "Cross-posting — Publish across X, Threads, LinkedIn and Bluesky"
       ],
       "tested": false,
-      "editorPick": false,
+      "editorPick": true,
       "freePlan": "no",
       "mobileApp": "yes",
       "apiAccess": "unknown",
@@ -4618,7 +4625,7 @@
         "Complete X Analytics — Track content performance and audience growth to improve what you publish"
       ],
       "tested": true,
-      "editorPick": false,
+      "editorPick": true,
       "freePlan": "no",
       "mobileApp": "unknown",
       "apiAccess": "unknown",
@@ -4725,9 +4732,9 @@
       "url": "https://www.tweetsmash.com/",
       "tagline": "Turn your X bookmarks into a searchable knowledge library",
       "desc": "Tweetsmash imports and organizes X bookmarks so saved ideas are easy to search, revisit and reuse. Paid options add AI chat, reading digests, exports to other tools and access for AI agents.",
-      "cat": "comments",
+      "cat": "bookmarks",
       "categories": [
-        "comments"
+        "bookmarks"
       ],
       "price": "Freemium",
       "best": "Creators, researchers and knowledge workers organizing saved X posts for reading and reuse",
@@ -5544,7 +5551,8 @@
       "mobileApp": "unknown",
       "apiAccess": "unknown",
       "addedAt": "2026-07-14",
-      "lastChecked": "2026-09-23"
+      "lastChecked": "2026-09-23",
+      "notFor": "People whose main task is replying to conversations or managing inbound messages, rather than drafting and publishing content."
     },
     "postiz": {
       "id": "postiz",

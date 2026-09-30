@@ -2,7 +2,7 @@
 import { compareTools, JOBS, TOOLS, CATS } from '../data/tools.js';
 import ToolCard from './ToolCard.astro';
 import CategorySidebar from './CategorySidebar.astro';
-import { ChevronRight, CreditCard, Gift, LayoutGrid, Layers } from '@lucide/astro';
+import { ChevronRight, CreditCard, Gift, LayoutGrid, Layers, CodeXml, Rocket, GitFork } from '@lucide/astro';
 
 const { cat = 'all' } = Astro.props;
 const tools = (cat === 'all' ? [...TOOLS] : TOOLS.filter(t => t.categories.includes(cat)))
@@ -64,21 +64,20 @@ const priceFilters = [
             <option value="All">All jobs</option>
             {Object.entries(JOBS).map(([value, job]) => <option value={value}>{job.label}</option>)}
           </select>
-          <select id="trustFilter" aria-label="Filter by X fit and verification">
+          <select id="trustFilter" aria-label="Filter by X fit and networks">
             <option value="All">All tools</option>
-            <option value="x-relevant">X-relevant tools</option>
-            <option value="x-native">X-native</option>
-            <option value="official-api">Official API</option>
-            <option value="founder-built">Founder-built</option>
-            <option value="open-source">Open source</option>
-            <option value="x-only">X only</option>
+            <option value="x-relevant">High X-fit</option>
             <option value="multi">Also posts elsewhere</option>
-            <option value="threads-yes">Threads: Yes</option>
-            <option value="threads-partial">Threads: Partial</option>
-            <option value="threads-no">Threads: No</option>
           </select>
         </div>
         <span class="count-label" id="resultsCount">{tools.length} tool{tools.length === 1 ? '' : 's'} found</span>
+      </div>
+      <div class="directory-trust-chips" id="trustChips" aria-label="Filter by tool labels">
+        <button type="button" class="label-filter badge-all-labels" data-trust="All" aria-pressed="true">All labels</button>
+        <button type="button" class="label-filter badge-x-native" data-trust="x-native" aria-pressed="false">X-native</button>
+        <button type="button" class="label-filter badge-official-api" data-trust="official-api" aria-pressed="false"><CodeXml size={12} stroke-width={2.2} aria-hidden="true" />Official API</button>
+        <button type="button" class="label-filter badge-founder-built" data-trust="founder-built" aria-pressed="false"><Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" />Founder-built</button>
+        <button type="button" class="label-filter badge-open-source" data-trust="open-source" aria-pressed="false"><GitFork size={12} stroke-width={2.2} aria-hidden="true" />Open source</button>
       </div>
       <div class="grid-tools" id="browseGrid">
         {tools.map(t => <ToolCard tool={t} />)}
@@ -105,29 +104,33 @@ const priceFilters = [
   const trustFilter = document.getElementById('trustFilter') as HTMLSelectElement;
 
   let price = 'All';
+  let label = 'All';
 
   function apply() {
     const q = searchInput.value.trim().toLowerCase();
     const job = jobFilter.value;
-    const trust = trustFilter.value;
+    const scope = trustFilter.value;
+    const trust = label;
+    document.querySelectorAll<HTMLElement>('[data-trust]').forEach(button => {
+      const active = button.dataset.trust === trust;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
 
     let visible = 0;
     for (const c of cards) {
       const matchQ = !q || c.dataset.name!.includes(q) || c.dataset.tagline!.includes(q) || c.dataset.catlabel!.includes(q) || c.dataset.jobs!.includes(q);
       const matchP = price === 'All' || c.dataset.price === price;
       const matchJob = job === 'All' || c.dataset.jobs!.split(' ').includes(job);
+      const matchScope = scope === 'All'
+        || (scope === 'x-relevant' && c.dataset.xFit === 'high' && ['live', 'degraded'].includes(c.dataset.status!))
+        || (scope === 'multi' && c.dataset.networkScope === 'multi');
       const matchTrust = trust === 'All'
-        || (trust === 'x-relevant' && ['high', 'medium'].includes(c.dataset.xFit!) && ['live', 'degraded'].includes(c.dataset.status!))
-        || (trust === 'x-native' && c.dataset.xFit === 'high')
+        || (trust === 'x-native' && c.dataset.networkScope === 'x-only' && ['live', 'degraded'].includes(c.dataset.status!))
         || (trust === 'official-api' && c.dataset.apiStatus === 'official')
         || (trust === 'founder-built' && c.dataset.founderBuilt === 'true')
-        || (trust === 'open-source' && c.dataset.openSource === 'true')
-        || (trust === 'x-only' && c.dataset.networkScope === 'x-only')
-        || (trust === 'multi' && c.dataset.networkScope === 'multi')
-        || (trust === 'threads-yes' && c.dataset.threadSupport === 'native')
-        || (trust === 'threads-partial' && ['split-only', 'queue-only'].includes(c.dataset.threadSupport!))
-        || (trust === 'threads-no' && c.dataset.threadSupport === 'none');
-      const show = matchQ && matchP && matchJob && matchTrust;
+        || (trust === 'open-source' && c.dataset.openSource === 'true');
+      const show = matchQ && matchP && matchJob && matchScope && matchTrust;
       c.classList.toggle('hidden', !show);
       if (show) visible++;
     }
@@ -140,6 +143,8 @@ const priceFilters = [
     if (price !== 'All') params.set('price', price);
     if (job !== 'All') params.set('job', job);
     if (trust !== 'All') params.set('filter', trust);
+    else if (scope !== 'All') params.set('filter', scope);
+    if (trust !== 'All' && scope !== 'All') params.set('scope', scope);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
@@ -160,6 +165,10 @@ const priceFilters = [
     });
     apply();
   });
+  document.getElementById('trustChips')!.addEventListener('click', event => {
+    const chip = (event.target as HTMLElement).closest<HTMLElement>('[data-trust]');
+    if (chip) { label = chip.dataset.trust!; apply(); }
+  });
   jobFilter.addEventListener('change', apply);
   trustFilter.addEventListener('change', apply);
   document.getElementById('clearFilters')!.addEventListener('click', () => {
@@ -167,6 +176,7 @@ const priceFilters = [
     price = 'All';
     jobFilter.value = 'All';
     trustFilter.value = 'All';
+    label = 'All';
     priceChips.querySelectorAll<HTMLElement>('.seg-btn').forEach(b => {
       const active = b.dataset.price === 'All';
       b.classList.toggle('active', active);
@@ -187,6 +197,19 @@ const priceFilters = [
     });
   }
   if (init.get('job') && Array.from(jobFilter.options).some(option => option.value === init.get('job'))) jobFilter.value = init.get('job')!;
-  if (init.get('filter') && ['All', 'x-relevant', 'x-native', 'official-api', 'founder-built', 'open-source', 'x-only', 'multi', 'threads-yes', 'threads-partial', 'threads-no'].includes(init.get('filter')!)) trustFilter.value = init.get('filter')!;
+  const initialFilter = init.get('filter');
+  if (initialFilter && ['x-native', 'official-api', 'founder-built', 'open-source'].includes(initialFilter)) label = initialFilter;
+  if (initialFilter && ['x-relevant', 'multi'].includes(initialFilter)) trustFilter.value = initialFilter;
+  const initialScope = init.get('scope');
+  if (initialScope && ['x-relevant', 'multi'].includes(initialScope)) trustFilter.value = initialScope;
   apply();
 </script>
+
+<style>
+  .directory-trust-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .label-filter { display: inline-flex; align-items: center; gap: 4px; padding: 5px 9px; border: 1px solid transparent; border-radius: 999px; font: inherit; font-size: 12px; font-weight: 650; line-height: 1.2; cursor: pointer; }
+  .badge-all-labels { color: #536471; background: #EFF3F4; }
+  .label-filter.active { outline: 2px solid currentColor; outline-offset: 2px; }
+  .label-filter:hover { filter: brightness(.96); }
+  .label-filter:focus-visible { outline: 2px solid #1D9BF0; outline-offset: 3px; }
+</style>

@@ -1,11 +1,12 @@
 ---
+import { formatListingDate } from '../../utils/dates.js';
 import Base from '../../layouts/Base.astro';
 import ToolIntro from '../../components/tool-detail/ToolIntro.astro';
 import EditorialAbout from '../../components/tool-detail/EditorialAbout.astro';
 import ToolDates from '../../components/tool-detail/ToolDates.astro';
 import BaseToolFacts from '../../components/tool-detail/BaseToolFacts.astro';
 import PricingCard from '../../components/tool-detail/PricingCard.astro';
-import { compareTools, CATS, ICONS, TOOL_STATUS, TOOLS } from '../../data/tools.js';
+import { API_STATUS, THREAD_SUPPORT, X_FIT, compareTools, CATS, ICONS, TOOL_STATUS, TOOLS } from '../../data/tools.js';
 import { SITE_NAME } from '../../config.js';
 import { ArrowLeftRight, ArrowRight, CircleCheckBig, ChevronRight, ListChecks, Sparkles } from '@lucide/astro';
 import '../../styles/tool-detail.css';
@@ -91,8 +92,12 @@ const jsonld = [
           </div>
           <dl>
             <div><dt>Best for</dt><dd>{tool.best || `${category.label} workflows`}</dd></div>
-            <div><dt>Not for</dt><dd>{tool.notFor || 'Not yet independently assessed'}</dd></div>
-            <div><dt>Pricing</dt><dd>{tool.price}</dd></div>
+            {tool.notFor && <div><dt>Not for</dt><dd>{tool.notFor}</dd></div>}
+            <div><dt>X-fit</dt><dd>{X_FIT[tool.xFit]?.label || 'Not rated'}</dd></div>
+            <div><dt>API</dt><dd>{API_STATUS[tool.apiStatus]?.label || 'Unclear'}</dd></div>
+            <div><dt>Starting price</dt><dd>{tool.startingPrice || (tool.price === 'Free' ? 'Free' : 'Check current pricing')}</dd></div>
+            {tool.jobs?.some((job: string) => ['write', 'schedule'].includes(job)) && <div><dt>Thread support</dt><dd>{THREAD_SUPPORT[tool.threadSupport]?.label || 'Not confirmed'}</dd></div>}
+            <div><dt>Last checked</dt><dd>{tool.lastChecked ? <time datetime={tool.lastChecked}>{formatListingDate(tool.lastChecked)}</time> : 'Not yet verified'}</dd></div>
             <div><dt>Primary use</dt><dd>{category.label}</dd></div>
           </dl>
         </section>

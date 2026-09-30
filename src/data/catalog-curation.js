@@ -2,7 +2,7 @@
 // been independently verified from first-party documentation.
 export const CATEGORY_JOBS = {
   content: ['write'], growth: ['engage'], schedule: ['schedule'], analytics: ['analytics'],
-  ai: ['engage'], design: ['visuals'], audit: ['clean'], comments: ['bookmarks'], bio: [], listening: ['listen']
+  ai: ['engage'], design: ['visuals'], audit: ['clean'], bookmarks: ['bookmarks'], bio: [], listening: ['listen']
 };
 
 const MULTI_SOCIAL = ['x', 'linkedin', 'instagram', 'facebook'];
@@ -63,7 +63,7 @@ export const CATALOG_CURATION = {
   brand24: { xFit: 'medium', jobs: ['listen', 'analytics'], networks: BROAD_SOCIAL }, mention: { xFit: 'medium', jobs: ['listen'], networks: BROAD_SOCIAL }, keyhole: { xFit: 'medium', jobs: ['listen', 'analytics'], networks: BROAD_SOCIAL },
   daily140: { xFit: 'high', jobs: ['listen'], founderBuilt: true }, glance: { xFit: 'high', jobs: ['listen'], founderBuilt: true },
   audiense: { xFit: 'high', jobs: ['analytics', 'listen'], networks: ['x'] }, catchintent: { xFit: 'high', jobs: ['listen', 'engage'], founderBuilt: true },
-  socialdog: { xFit: 'high', jobs: ['schedule', 'analytics', 'clean', 'listen'] }, circleboom: { xFit: 'high', jobs: ['schedule', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook', 'pinterest'] },
+  socialdog: { networks: ['x', 'instagram', 'facebook'], xFit: 'medium', jobs: ['schedule', 'analytics', 'clean', 'listen'] }, circleboom: { xFit: 'high', jobs: ['schedule', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook', 'pinterest'] },
   phantombuster: { xFit: 'medium', jobs: ['engage', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook'] }, geniusx: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, clonex: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
   volumn: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, autopublix: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, dmdad: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, xautopilot: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
   deviai: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true }, replyguy: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true },

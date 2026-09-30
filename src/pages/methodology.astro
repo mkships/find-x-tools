@@ -60,35 +60,25 @@ const description = 'The public methodology behind X-fit, tool status, last-chec
       <section class="about-section" aria-labelledby="api-title">
         <div class="about-section-heading"><span>03 · API honesty</span><h2 id="api-title">A green badge requires verification</h2></div>
         <div class="about-method-grid">
-          <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>Official API</h3><p>The main X job publishes or reads through X's official API. This is the only classification that receives the public green badge.</p></article>
+          <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>Official API</h3><p>The main X job publishes or reads through X's official API. API classifications appear in tool overviews. Card API badges are currently paused pending a consistent verification pass.</p></article>
           <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>Official API + other data</h3><p>At least part of the workflow uses the official API, while extensions, scraping, imported data, or other sources are also involved.</p></article>
           <article class="about-method-card"><span class="about-method-icon"><CodeXml size={21} /></span><h3>No API or unclear</h3><p>Extensions and local tools can still be excellent. When we cannot verify the access method, we say so rather than awarding a badge.</p></article>
         </div>
       </section>
 
-      <section class="about-section" aria-labelledby="threads-title">
-        <div class="about-section-heading"><span>04 · Thread support</span><h2 id="threads-title">A connected reply chain is not a posting queue</h2><p>We use this field only when threads are relevant to the product. Blank is intentional for analytics, bookmarks, listening, and other unrelated jobs.</p></div>
-        <div class="methodology-definition-list">
-          <div><strong>Native</strong><span>Write, split, preview, and publish the draft as one ordered reply chain.</span></div>
-          <div><strong>Split only</strong><span>Turns a long draft into X-sized chunks, but you post the connected thread manually.</span></div>
-          <div><strong>Queue only</strong><span>Schedules multiple standalone posts; they are not linked as replies.</span></div>
-          <div><strong>None</strong><span>The product handles writing or publishing but offers no connected-thread workflow.</span></div>
-        </div>
-      </section>
-
       <section class="about-section" aria-labelledby="badges-title">
-        <div class="about-section-heading"><span>05 · Editorial labels</span><h2 id="badges-title">What the other badges mean</h2></div>
+        <div class="about-section-heading"><span>04 · Editorial labels</span><h2 id="badges-title">What the other badges mean</h2></div>
         <div class="methodology-definition-list methodology-badge-list">
           <div><strong><span class="verified-date-chip"><BadgeCheck size={14} stroke-width={2} aria-hidden="true" />Last checked</span></strong><span>The date at the bottom right of each tool card records our latest review of its listing. It is not a guarantee of current availability or a claim of hands-on testing.</span></div>
           <div><strong><span class="badge-editor-pick"><Star size={12} stroke-width={2.2} fill="currentColor" aria-hidden="true" /> Editor's Pick</span></strong><span>A Live, High-X-fit tool we would put on a serious shortlist for its job.</span></div>
-          <div><strong><span class="badge-x-native">X-native</span></strong><span>A filterable display of High X-fit—not a second independent score.</span></div>
+          <div><strong><span class="badge-x-native">X-native</span></strong><span>A product whose only listed network is X, with Live or Degraded status. “Built just for X” describes the same network scope regardless of status. High X-fit is a separate assessment and can apply to multi-network tools.</span></div>
           <div><strong><span class="badge-founder-built"><Rocket size={12} stroke-width={1.8} fill="currentColor" aria-hidden="true" /> Founder-built</span></strong><span>The original maker or a small founding team still operates the product.</span></div>
           <div><strong><span class="badge-open-source"><GitFork size={12} stroke-width={2.2} aria-hidden="true" /> Open source</span></strong><span>The product publishes its source code under an open-source license. A public repository alone does not imply that the hosted service is free.</span></div>
         </div>
       </section>
 
       <section class="about-section" aria-labelledby="sources-title">
-        <div class="about-section-heading"><span>06 · Discovery</span><h2 id="sources-title">Where new tools come from</h2></div>
+        <div class="about-section-heading"><span>05 · Discovery</span><h2 id="sources-title">Where new tools come from</h2></div>
         <div class="methodology-source-note">
           <span class="methodology-source-icon" aria-hidden="true"><Compass size={21} stroke-width={1.9} /></span>
           <p>We review maker launch posts, product documentation, open-source repositories and the official <a href="https://developer.x.com/exhibit" target="_blank" rel="noopener noreferrer">X Developer Exhibit</a>. Discovery is not verification: every candidate still needs a working first-party product page and enough evidence to describe its current X workflow accurately.</p>

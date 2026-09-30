@@ -2,9 +2,9 @@
 import Base from '../layouts/Base.astro';
 import ToolCard from '../components/ToolCard.astro';
 import CategorySidebar from '../components/CategorySidebar.astro';
-import { compareTools, JOBS, TOOLS } from '../data/tools.js';
+import { isXNative, compareTools, JOBS, TOOLS } from '../data/tools.js';
 import { SITE_NAME } from '../config.js';
-import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Gauge, MessageCircle, PenLine, Rocket } from '@lucide/astro';
+import { ArrowRight, BadgeCheck, CalendarPlus, ChartNoAxesCombined, ExternalLink, FolderOpen, Star, MessageCircle, PenLine, Rocket } from '@lucide/astro';
 
 const JOB_STACKS = [
   { label: 'Create & publish content', icon: PenLine, jobs: ['write', 'schedule', 'visuals'] },
@@ -13,14 +13,16 @@ const JOB_STACKS = [
   { label: 'Organize posts & saves', icon: FolderOpen, jobs: ['bookmarks', 'clean'] }
 ] as const;
 
-const xNativeTools = [...TOOLS].filter(tool => tool.status === 'live' && tool.xFit === 'high')
+const xNativeTools = [...TOOLS].filter(tool => tool.status === 'live' && isXNative(tool))
   .sort((a, b) => Number(Boolean(b.editorPick)) - Number(Boolean(a.editorPick))
     || (a.editorPickOrder ?? 999) - (b.editorPickOrder ?? 999)
     || compareTools(a, b));
 const xNativePreview = xNativeTools.slice(0, 6);
-const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low');
+const highlightIds = new Set(xNativePreview.map(tool => tool.id));
+const orderableTools = TOOLS.filter(tool => tool.status === 'live' && tool.xFit !== 'low' && !highlightIds.has(tool.id));
 const bestFit = [...orderableTools].sort(compareTools).slice(0, 9);
-const recent = [...orderableTools]
+const recommendedIds = new Set(bestFit.map(tool => tool.id));
+const recent = orderableTools.filter(tool => !recommendedIds.has(tool.id) && tool.addedAt)
   .sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')) || compareTools(a, b))
   .slice(0, 9);
 const ninetyDaysAgo = new Date();
@@ -109,11 +111,11 @@ const jsonld = {
       <CategorySidebar active="all" />
       <div class="home-order-region">
         <div class="toolbar">
-          <div class="seg" role="radiogroup" aria-label="Tool ordering">
+          <div class="seg" role="radiogroup" aria-label="Browse recommendations or new additions">
             <input class="home-order-radio" id="homeOrderBest" type="radio" name="home-order" checked />
             <label class="seg-btn" for="homeOrderBest">
-              <Gauge size={16} stroke-width={2} aria-hidden="true" />
-              Best fit for X
+              <Star size={16} stroke-width={2} aria-hidden="true" />
+              Recommended
             </label>
             <input class="home-order-radio" id="homeOrderRecent" type="radio" name="home-order" />
             <label class="seg-btn" for="homeOrderRecent">

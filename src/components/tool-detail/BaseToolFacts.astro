@@ -1,16 +1,12 @@
 ---
+import { formatListingDate } from '../../utils/dates.js';
 import { ArrowRight, Info, Tags } from '@lucide/astro';
 import { API_STATUS, JOBS, NETWORKS, PRICE_STYLES, THREAD_SUPPORT, TOOL_STATUS, X_FIT } from '../../data/tools.js';
 
 const { tool, category, categories = [], categoryIcon = '' } = Astro.props;
 const priceStyle = PRICE_STYLES[tool.price] || PRICE_STYLES.Freemium;
 const answer = (value: string) => value === 'yes' ? 'Yes' : value === 'no' ? 'No' : 'Not confirmed';
-const formatDate = (value: string) => new Intl.DateTimeFormat('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric',
-  timeZone: 'UTC'
-}).format(new Date(`${value}T00:00:00Z`));
+
 ---
 
 <div class="tool-base-sidebar-stack">
@@ -23,7 +19,7 @@ const formatDate = (value: string) => new Intl.DateTimeFormat('en-US', {
       <div><dt>Pricing</dt><dd><span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price}</span></dd></div>
       <div><dt>X-fit</dt><dd>{X_FIT[tool.xFit]?.label || X_FIT.unknown.label}</dd></div>
       <div><dt>Status</dt><dd>{TOOL_STATUS[tool.status]?.label || 'Live'}</dd></div>
-      <div><dt>Last checked</dt><dd>{tool.lastChecked ? <time datetime={tool.lastChecked}>{formatDate(tool.lastChecked)}</time> : 'Not yet verified'}</dd></div>
+      <div><dt>Last checked</dt><dd>{tool.lastChecked ? <time datetime={tool.lastChecked}>{formatListingDate(tool.lastChecked)}</time> : 'Not yet verified'}</dd></div>
       <div><dt>Starting price</dt><dd>{tool.startingPrice || tool.price}</dd></div>
       {tool.threadSupport && <div><dt>Thread support</dt><dd><strong>{THREAD_SUPPORT[tool.threadSupport]?.label}</strong> — {THREAD_SUPPORT[tool.threadSupport]?.description}</dd></div>}
       <div><dt>X access</dt><dd>{API_STATUS[tool.apiStatus]?.label || API_STATUS.unclear.label}</dd></div>
