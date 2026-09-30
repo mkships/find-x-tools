@@ -65,6 +65,7 @@ const priceFilters = [
             {Object.entries(JOBS).map(([value, job]) => <option value={value}>{job.label}</option>)}
           </select>
           <select id="trustFilter" aria-label="Filter by X fit and verification">
+            <option value="All">All tools</option>
             <option value="x-relevant">X-relevant tools</option>
             <option value="x-native">X-native</option>
             <option value="official-api">Official API</option>
@@ -75,7 +76,6 @@ const priceFilters = [
             <option value="threads-yes">Threads: Yes</option>
             <option value="threads-partial">Threads: Partial</option>
             <option value="threads-no">Threads: No</option>
-            <option value="All">Include adjacent tools</option>
           </select>
         </div>
         <span class="count-label" id="resultsCount">{tools.length} tool{tools.length === 1 ? '' : 's'} found</span>
@@ -139,7 +139,7 @@ const priceFilters = [
     if (q) params.set('q', searchInput.value.trim());
     if (price !== 'All') params.set('price', price);
     if (job !== 'All') params.set('job', job);
-    if (trust !== 'x-relevant') params.set('filter', trust);
+    if (trust !== 'All') params.set('filter', trust);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
@@ -166,7 +166,7 @@ const priceFilters = [
     searchInput.value = '';
     price = 'All';
     jobFilter.value = 'All';
-    trustFilter.value = 'x-relevant';
+    trustFilter.value = 'All';
     priceChips.querySelectorAll<HTMLElement>('.seg-btn').forEach(b => {
       const active = b.dataset.price === 'All';
       b.classList.toggle('active', active);

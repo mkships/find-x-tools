@@ -1,6 +1,6 @@
 ---
 import { API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
-import { BadgeCheck, CodeXml, GitFork, Rocket, Star } from '@lucide/astro';
+import { BadgeCheck, CircleCheck, TriangleAlert, Unplug, Archive, CodeXml, GitFork, Rocket, Star } from '@lucide/astro';
 
 const { tool } = Astro.props;
 const primaryCategory = CATS[tool.cat] || {};
@@ -19,6 +19,13 @@ const networkText = isXOnly ? 'Built just for X' : networkNames.join(' · ') || 
 const networkTitle = isXOnly ? 'Supported network: X' : `Supported networks: ${networkNames.join(', ')}`;
 const movingNetworks = networkNames.length > 4;
 const xFitLabel = X_FIT[tool.xFit]?.label || X_FIT.unknown.label;
+const statusPresentation = {
+  live: { Icon: CircleCheck, description: 'Product is operating.' },
+  degraded: { Icon: TriangleAlert, description: 'Some X features are limited or unreliable.' },
+  'dropped-x': { Icon: Unplug, description: 'Product is active but no longer supports X.' },
+  'shut-down': { Icon: Archive, description: 'Product has closed. Retained for reference.' }
+};
+const { Icon: StatusIcon, description: statusDescription } = statusPresentation[tool.status] || statusPresentation.live;
 ---
 <a
   class="tool-card"
@@ -75,12 +82,13 @@ const xFitLabel = X_FIT[tool.xFit]?.label || X_FIT.unknown.label;
       </div>
       <span class="price-badge" style={`background:${priceStyle.bg};color:${priceStyle.fg}`}>{tool.price || 'Freemium'}</span>
     </div>
-    {(tool.xFit === 'high' || tool.apiStatus === 'official' || tool.openSource || tool.status !== 'live') && <div class="tool-card-trust-row">
+    <div class="tool-card-trust-row">
+      <span class={`tool-status-chip status-${tool.status}`} title={statusDescription}><StatusIcon size={12} stroke-width={2} aria-hidden="true" />{TOOL_STATUS[tool.status]?.label || 'Live'}</span>
       {tool.xFit === 'high' && <span class="badge-x-native" title="Built primarily for X">X-native</span>}
       {tool.apiStatus === 'official' && <span class="badge-official-api" title={API_STATUS.official.label}><CodeXml size={12} stroke-width={2.2} aria-hidden="true" />Official API</span>}
       {tool.openSource && <span class="badge-open-source" title="Source code is publicly available under an open-source license"><GitFork size={12} stroke-width={2.2} aria-hidden="true" />Open source</span>}
-      {tool.status !== 'live' && <span class={`tool-status-chip status-${tool.status}`}>{TOOL_STATUS[tool.status]?.label}</span>}
-    </div>}
+    </div>
+    {tool.status !== 'live' && <p class="tool-card-status-note">{statusDescription}</p>}
     <div class="tool-card-status-row">
       <div class={`tool-network-marquee${movingNetworks ? ' is-moving' : ''}`} title={networkTitle}>
         <div class="tool-network-track">
