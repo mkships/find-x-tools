@@ -67,11 +67,11 @@ export const CATALOG_CURATION = {
   phantombuster: { xFit: 'medium', jobs: ['engage', 'clean'], networks: ['x', 'linkedin', 'instagram', 'facebook'] }, geniusx: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, clonex: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
   volumn: { xFit: 'high', jobs: ['engage'], founderBuilt: true }, autopublix: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, dmdad: { xFit: 'high', jobs: ['dms'], founderBuilt: true }, xautopilot: { xFit: 'high', jobs: ['engage'], founderBuilt: true },
   deviai: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true }, replyguy: { xFit: 'medium', jobs: ['listen', 'engage'], networks: ['x', 'linkedin', 'reddit'], founderBuilt: true },
-  manychat: { xFit: 'low', jobs: ['dms'], networks: ['instagram', 'facebook', 'tiktok'], notFor: 'X-first direct-message automation' },
+  manychat: { xFit: 'low', jobs: ['dms'], networks: ['instagram', 'facebook', 'tiktok'] },
   birdy: { xFit: 'high', jobs: ['clean'], founderBuilt: true }, followeraudit: { xFit: 'high', jobs: ['clean'] }, twitteraudit: { xFit: 'high', jobs: ['clean'] }, untweeps: { xFit: 'high', status: 'dropped-x', jobs: ['clean'], verificationNotes: 'Untweeps was acquired by Circleboom and now directs the former workflow to Circleboom.', verificationSources: ['https://untweeps.com/coming-soon/'] },
   tweetsmash: { xFit: 'high', jobs: ['bookmarks'], founderBuilt: true }, dewey: { xFit: 'high', jobs: ['bookmarks'], founderBuilt: true }, twitterbiogen: { xFit: 'high', jobs: ['write'], founderBuilt: true },
   brandbird: { xFit: 'medium', jobs: ['visuals'], networks: BROAD_SOCIAL, founderBuilt: true }, tweetpik: { xFit: 'high', jobs: ['visuals', 'agents'], founderBuilt: true }, beautifythis: { xFit: 'medium', jobs: ['visuals'], networks: BROAD_SOCIAL, founderBuilt: true },
   pfpmaker: { xFit: 'low', jobs: ['visuals'], networks: BROAD_SOCIAL }, pictory: { xFit: 'low', jobs: ['visuals'], networks: BROAD_SOCIAL },
-  loom: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, krisp: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' },
-  linktree: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, beacons: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }, biolink: { xFit: 'low', jobs: [], networks: [], notFor: 'X-specific publishing, analytics, or growth workflows' }
+  loom: { xFit: 'low', jobs: [], networks: [] }, krisp: { xFit: 'low', jobs: [], networks: [] },
+  linktree: { xFit: 'low', jobs: [], networks: [] }, beacons: { xFit: 'low', jobs: [], networks: [] }, biolink: { xFit: 'low', jobs: [], networks: [] }
 };

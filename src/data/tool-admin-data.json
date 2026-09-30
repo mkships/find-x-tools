@@ -287,7 +287,7 @@
       "jobs": [],
       "networks": [],
       "threadSupport": "",
-      "notFor": "X-specific publishing, analytics, or growth workflows",
+      "notFor": "",
       "startingPrice": "",
       "editorPickOrder": null,
       "demoPostUrl": "",
@@ -1787,7 +1787,7 @@
         "pricingNote": "",
         "pricingLastChecked": "2026-09-22"
       },
-      "notFor": "A simple drafting-only editor or a workspace dedicated exclusively to X."
+      "notFor": ""
     },
     "ilo": {
       "id": "ilo",
@@ -1898,7 +1898,7 @@
       "jobs": [],
       "networks": [],
       "threadSupport": "",
-      "notFor": "X-specific publishing, analytics, or growth workflows",
+      "notFor": "",
       "startingPrice": "",
       "editorPickOrder": null,
       "demoPostUrl": "",
@@ -5602,7 +5602,7 @@
         "reddit"
       ],
       "threadSupport": "",
-      "notFor": "People seeking an X-only interface.",
+      "notFor": "",
       "startingPrice": "Free self-hosted or $29/month cloud",
       "editorPickOrder": null,
       "demoPostUrl": "",
@@ -5738,7 +5738,7 @@
         "youtube"
       ],
       "threadSupport": "",
-      "notFor": "People looking for a permanent free scheduler.",
+      "notFor": "",
       "startingPrice": "Paid after 3-day trial",
       "editorPickOrder": null,
       "demoPostUrl": "",
@@ -5867,7 +5867,7 @@
         "x"
       ],
       "threadSupport": "none",
-      "notFor": "Publishing connected reply threads or automating replies.",
+      "notFor": "",
       "startingPrice": "Paid after 7-day trial",
       "editorPickOrder": null,
       "demoPostUrl": "",
