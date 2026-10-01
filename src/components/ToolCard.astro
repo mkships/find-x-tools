@@ -1,7 +1,7 @@
 ---
 import { formatListingDate } from '../utils/dates.js';
-import { isXNative, API_STATUS, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
-import { BadgeCheck, CircleCheck, TriangleAlert, Unplug, Archive, CodeXml, GitFork, Rocket, Star } from '@lucide/astro';
+import { isXNative, CATS, NETWORKS, PRICE_STYLES, TOOL_STATUS, X_FIT } from '../data/tools.js';
+import { BadgeCheck, CircleCheck, TriangleAlert, Unplug, Archive, GitFork, Rocket, Star } from '@lucide/astro';
 
 const { tool } = Astro.props;
 const primaryCategory = CATS[tool.cat] || {};

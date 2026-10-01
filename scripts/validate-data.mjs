@@ -1,10 +1,9 @@
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
-const [toolsSource, adminData, stacksSource, curationSource] = await Promise.all([
+const [toolsSource, adminData, curationSource] = await Promise.all([
   readFile(new URL('src/data/tools.js', root), 'utf8'),
   readFile(new URL('src/data/tool-admin-data.json', root), 'utf8').then(JSON.parse),
-  readFile(new URL('src/data/stacks.js', root), 'utf8'),
   readFile(new URL('src/data/catalog-curation.js', root), 'utf8')
 ]);
 
@@ -23,13 +22,10 @@ const apiValues = new Set(['official', 'official-plus-other', 'no-api', 'unclear
 const jobIds = new Set(['write', 'schedule', 'engage', 'analytics', 'bookmarks', 'listen', 'clean', 'agents', 'dms', 'visuals']);
 const networkIds = new Set(['x', 'linkedin', 'bluesky', 'instagram', 'facebook', 'threads', 'tiktok', 'youtube', 'pinterest', 'mastodon', 'reddit']);
 const threadSupportValues = new Set(['native', 'split-only', 'queue-only', 'none']);
-const stackToolIds = [...stacksSource.matchAll(/toolIds:\s*\[([^\]]+)\]/g)]
-  .flatMap(match => [...match[1].matchAll(/'([^']+)'/g)].map(idMatch => idMatch[1]));
 const curatedIds = new Set([...curationSource.matchAll(/^\s{2}([a-z0-9]+):\s*\{/gm)].map(match => match[1]));
 
 if (!baseIds.length) fail('No base tool IDs were found.');
 if (new Set(baseIds).size !== baseIds.length) fail('Base tool IDs must be unique.');
-for (const id of stackToolIds) if (!activeIds.has(id)) fail(`Stack references an inactive or missing tool: ${id}`);
 for (const id of curatedIds) if (!activeIds.has(id) && !baseIds.includes(id)) fail(`Curation metadata has no matching tool: ${id}`);
 
 for (const [id, record] of Object.entries(records)) {
