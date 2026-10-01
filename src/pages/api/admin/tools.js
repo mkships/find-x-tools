@@ -1,13 +1,15 @@
 import { timingSafeEqual } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { API_STATUS, BASE_TOOLS, CATS, JOBS, mergeAdminTools, NETWORKS, THREAD_SUPPORT, TOOL_STATUS, X_FIT } from '../../../data/tools.js';
+import { API_STATUS, CATS, JOBS, NETWORKS, THREAD_SUPPORT, TOOL_STATUS, X_FIT } from '../../../data/tools.js';
+
+import { upsertTool, removeTool } from '../../../utils/catalog.js';
 
 export const prerender = false;
 
-const dataUrl = new URL('../../../data/tool-admin-data.json', import.meta.url);
+const dataUrl = new URL('../../../data/tools.json', import.meta.url);
 const dataPath = fileURLToPath(dataUrl);
-const adminDataRepoPath = 'src/data/tool-admin-data.json';
+const catalogRepoPath = 'src/data/tools.json';
 const json = (status, body) => new Response(JSON.stringify(body), {
   status,
   headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
@@ -132,7 +134,7 @@ function normalizeTool(input) {
   const apiStatus = Object.hasOwn(API_STATUS, input.apiStatus) ? input.apiStatus : 'unclear';
   const jobs = [...new Set(Array.isArray(input.jobs) ? input.jobs : [])].filter(job => JOBS[job]);
   const networks = [...new Set(Array.isArray(input.networks) ? input.networks : [])].filter(network => NETWORKS[network]);
-  const threadSupport = Object.hasOwn(THREAD_SUPPORT, input.threadSupport) ? input.threadSupport : '';
+  const threadSupport = jobs.some(job => ['write', 'schedule'].includes(job)) && Object.hasOwn(THREAD_SUPPORT, input.threadSupport) ? input.threadSupport : '';
   const demoPostUrl = cleanText(input.demoPostUrl, 500);
   const launchedAt = cleanText(input.launchedAt, 10);
   if (demoPostUrl && !/^https:\/\/(?:www\.)?(?:x|twitter)\.com\/[^/]+\/status\/\d+/.test(demoPostUrl)) {
@@ -210,9 +212,9 @@ function normalizeTool(input) {
 export async function GET({ request }) {
   if (!authorized(request)) return json(401, { error: 'Incorrect admin password.' });
   try {
-    const data = await readJson(dataPath, adminDataRepoPath);
+    const data = await readJson(dataPath, catalogRepoPath);
     return json(200, {
-      tools: mergeAdminTools(BASE_TOOLS, data, true).sort((a, b) => a.name.localeCompare(b.name)),
+      tools: [...data].sort((a, b) => a.name.localeCompare(b.name)),
       categories: CATS,
       jobs: JOBS,
       networks: NETWORKS,
@@ -230,23 +232,10 @@ export async function PUT({ request }) {
     const tool = normalizeTool(body.tool || {});
     const originalId = cleanText(body.originalId, 80);
     if (originalId && !/^[a-z0-9-]+$/.test(originalId)) throw new Error('Original tool id is invalid.');
-    const data = await readJson(dataPath, adminDataRepoPath);
-    data.records ||= {};
-    data.deleted ||= [];
-    let listingChanged = JSON.stringify(data.records[tool.id]) !== JSON.stringify(tool)
-      || data.deleted.includes(tool.id);
-    if (originalId && originalId !== tool.id) {
-      delete data.records[originalId];
-      if (BASE_TOOLS.some(item => item.id === originalId)) {
-        if (!data.deleted.includes(originalId)) data.deleted.push(originalId);
-      } else {
-        data.deleted = data.deleted.filter(id => id !== originalId);
-      }
-      listingChanged = true;
-    }
-    data.records[tool.id] = tool;
-    data.deleted = data.deleted.filter(id => id !== tool.id);
-    const files = listingChanged ? [{ data, localPath: dataPath, repoPath: adminDataRepoPath }] : [];
+    const data = await readJson(dataPath, catalogRepoPath);
+    const updated = upsertTool(data, tool, originalId);
+    const listingChanged = JSON.stringify(data) !== JSON.stringify(updated);
+    const files = listingChanged ? [{ data: updated, localPath: dataPath, repoPath: catalogRepoPath }] : [];
     const message = `Update ${tool.name} directory listing`;
     const result = files.length
       ? await saveJsonFiles(files, message)
@@ -262,16 +251,9 @@ export async function DELETE({ request }) {
   try {
     const id = cleanText((await readJsonBody(request, 10_000)).id, 80);
     if (!/^[a-z0-9-]+$/.test(id)) throw new Error('A valid tool id is required.');
-    const data = await readJson(dataPath, adminDataRepoPath);
-    data.records ||= {};
-    data.deleted ||= [];
-    delete data.records[id];
-    const files = [{ data, localPath: dataPath, repoPath: adminDataRepoPath }];
-    if (BASE_TOOLS.some(item => item.id === id)) {
-      if (!data.deleted.includes(id)) data.deleted.push(id);
-    } else {
-      data.deleted = data.deleted.filter(deletedId => deletedId !== id);
-    }
+    const data = await readJson(dataPath, catalogRepoPath);
+    const updated = removeTool(data, id);
+    const files = [{ data: updated, localPath: dataPath, repoPath: catalogRepoPath }];
     const result = await saveJsonFiles(files, `Remove ${id} from directory`);
     return json(200, { ok: true, ...result });
   } catch (error) {

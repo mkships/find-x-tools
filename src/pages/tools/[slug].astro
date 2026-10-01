@@ -19,7 +19,7 @@ const { tool } = Astro.props;
 const category = CATS[tool.cat];
 const hasFeatures = tool.features.length > 0;
 const detail = tool.detail || {};
-const isDemo = detail.status === 'demo';
+const isDemo = 'status' in detail && detail.status === 'demo';
 const pricingTiers = isDemo || !Array.isArray(detail.pricingTiers) ? [] : detail.pricingTiers;
 const relatedCategories = tool.categories.map((slug: keyof typeof CATS) => ({ slug, ...CATS[slug] })).filter((item: { label?: string }) => item.label);
 

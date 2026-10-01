@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { upsertTool, removeTool } from '../src/utils/catalog.js';
+const original = [{ id: 'one', name: 'One', published: true }, { id: 'two', name: 'Two', published: false }];
+assert.equal(upsertTool(original, { id: 'three', name: 'Three' }).length, 3);
+assert.equal(upsertTool(original, { id: 'one', name: 'Updated' }, 'one')[0].name, 'Updated');
+assert.equal(upsertTool(original, { id: 'one', published: false }, 'one')[0].published, false);
+const renamed = upsertTool(original, { id: 'renamed', name: 'One' }, 'one');
+assert.deepEqual(renamed.map(t => t.id), ['renamed', 'two']);
+assert.throws(() => upsertTool(original, { id: 'two' }, 'one'), /already belongs/);
+assert.throws(() => upsertTool(original, { id: 'two' }), /already belongs/);
+assert.throws(() => upsertTool(original, { id: 'three' }, 'missing'), /no longer exists/);
+assert.deepEqual(removeTool(original, 'one'), [original[1]]);
+assert.deepEqual(removeTool(original, 'missing'), original);
+assert.equal(original[0].name, 'One');
+console.log('Catalog add, edit, hide, rename, collision, and deletion checks passed.');

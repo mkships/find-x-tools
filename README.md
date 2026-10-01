@@ -8,7 +8,7 @@ Search by tool or job, browse categories, and compare pricing, supported network
 
 - **Astro 7** with JavaScript and TypeScript
 - **Custom CSS** and Lucide icons
-- **JavaScript and JSON** for catalog data
+- **JSON** for the catalog: `src/data/tools.json` is the single source of truth; admin edits it directly. Shared definitions and helpers live in `src/data/tools.js`.
 - **Astro API routes** for submissions and catalog administration
 - **Vercel** for hosting and Web Analytics
 - **Astro Sitemap** and structured data for SEO
